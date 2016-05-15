@@ -1,0 +1,39 @@
+PODS:
+  - Alamofire (3.4.0)
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
+  - FBSDKCoreKit (4.11.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.11.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.11.0):
+    - FBSDKCoreKit
+  - IQKeyboardManagerSwift (4.0.2)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - FBSDKLoginKit (~> 4.11)
+  - FBSDKShareKit (~> 4.11)
+  - IQKeyboardManagerSwift (~> 4.0)
+  - SDWebImage
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
+  FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
+  FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
+  IQKeyboardManagerSwift: 2f2c19c509f67c4c0df2826db54033d3e090ce65
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0
