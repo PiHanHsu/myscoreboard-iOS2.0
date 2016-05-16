@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		31808C955C6D9D2A7FA88A7A /* Pods_myscoreboard2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D8BBC375238D263101B402 /* Pods_myscoreboard2_0.framework */; };
 		E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15A01CE8C94E0070940D /* AppDelegate.swift */; };
-		E89B15A31CE8C94E0070940D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15A21CE8C94E0070940D /* FirstViewController.swift */; };
-		E89B15A51CE8C94E0070940D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15A41CE8C94E0070940D /* SecondViewController.swift */; };
 		E89B15A81CE8C94F0070940D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A61CE8C94F0070940D /* Main.storyboard */; };
 		E89B15AA1CE8C94F0070940D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A91CE8C94F0070940D /* Assets.xcassets */; };
 		E89B15AD1CE8C94F0070940D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89B15AB1CE8C94F0070940D /* LaunchScreen.storyboard */; };
@@ -42,8 +40,6 @@
 		B8CBD25F74E2991D60A78730 /* Pods-myscoreboard2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myscoreboard2.0.release.xcconfig"; path = "Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0.release.xcconfig"; sourceTree = "<group>"; };
 		E89B159D1CE8C94E0070940D /* myscoreboard2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myscoreboard2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89B15A01CE8C94E0070940D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E89B15A21CE8C94E0070940D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		E89B15A41CE8C94E0070940D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E89B15A71CE8C94F0070940D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E89B15A91CE8C94F0070940D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E89B15AC1CE8C94F0070940D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -125,11 +121,12 @@
 		E89B159F1CE8C94E0070940D /* myscoreboard2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				E89B15A61CE8C94F0070940D /* Main.storyboard */,
+				E89B15D51CE9C9790070940D /* Profile */,
+				E89B15D41CE9C9720070940D /* Ranking */,
+				E89B15D31CE9C9690070940D /* Team */,
 				E89B15D01CE8DCCF0070940D /* Login */,
 				E89B15A01CE8C94E0070940D /* AppDelegate.swift */,
-				E89B15A21CE8C94E0070940D /* FirstViewController.swift */,
-				E89B15A41CE8C94E0070940D /* SecondViewController.swift */,
-				E89B15A61CE8C94F0070940D /* Main.storyboard */,
 				E89B15A91CE8C94F0070940D /* Assets.xcassets */,
 				E89B15AB1CE8C94F0070940D /* LaunchScreen.storyboard */,
 				E89B15AE1CE8C94F0070940D /* Info.plist */,
@@ -161,6 +158,27 @@
 				E89B15D11CE8DCFA0070940D /* LoginTableViewController.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		E89B15D31CE9C9690070940D /* Team */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Team;
+			sourceTree = "<group>";
+		};
+		E89B15D41CE9C9720070940D /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Ranking;
+			sourceTree = "<group>";
+		};
+		E89B15D51CE9C9790070940D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,10 +363,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E89B15A51CE8C94E0070940D /* SecondViewController.swift in Sources */,
 				E89B15D21CE8DCFA0070940D /* LoginTableViewController.swift in Sources */,
 				E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */,
-				E89B15A31CE8C94E0070940D /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

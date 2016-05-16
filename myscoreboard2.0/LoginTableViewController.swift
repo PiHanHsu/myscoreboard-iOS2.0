@@ -11,7 +11,7 @@ import UIKit
 class LoginTableViewController: UITableViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
-    
+
     var headerHeight = UIScreen.mainScreen().bounds.height * 0.66
     var footerHeight = UIScreen.mainScreen().bounds.height * 0.075
     
@@ -20,11 +20,12 @@ class LoginTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    self.tableView.backgroundView = UIImageView(image: UIImage(named: "bg_login_page"))
     
     self.headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: headerHeight)
-        
+    
     self.footerView.frame = CGRect(x: 0, y: self.view.frame.size.height - 50, width: UIScreen.mainScreen().bounds.width, height: footerHeight )
-        
+    
     }
 
     override func didReceiveMemoryWarning() {
