@@ -69,6 +69,7 @@ class LoginTableViewController: UITableViewController {
                         apiFunc: APiFunction.FBLogin,
                         param: ["access_token":accessToken],
                         success: { (code, data ) in
+                            print("success")
                             self.success(code, data: data)
                         }, failure: { (code, data) in
                             self.failure(code!, data: data!)
