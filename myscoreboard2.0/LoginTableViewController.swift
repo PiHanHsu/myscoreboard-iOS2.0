@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftyJSON
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginTableViewController: UITableViewController {
     @IBOutlet weak var headerView: UIView!
@@ -43,6 +46,48 @@ class LoginTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 4
+    }
+
+    @IBAction func fbLogin(sender: AnyObject) {
+        
+        let facebookLogin = FBSDKLoginManager()
+        
+        facebookLogin.logInWithReadPermissions(["email"], fromViewController: self, handler: {
+            (facebookresult, facebookError) -> Void in
+            
+            if facebookError != nil {
+                print("FaceBook login failed. Error: \(facebookError)")
+            }else if facebookresult.isCancelled{
+                print("Facebook login was cancelled.")
+            }else {
+                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+                print(accessToken)
+                
+                HttpManager.sharedInstance
+                    .request(
+                        HttpMethod.HttpMethodPost,
+                        apiFunc: APiFunction.FBLogin,
+                        param: ["access_token":accessToken],
+                        success: { (code, data ) in
+                            self.success(code, data: data)
+                        }, failure: { (code, data) in
+                            self.failure(code!, data: data!)
+                        }, complete: nil)
+            }
+        })
+
+    }
+    
+    func success(code:Int, data:JSON ) {
+        print("\(#function)")
+        print(code)
+        print(data)
+    }
+    
+    func failure(code:Int, data:JSON ) {
+        print("\(#function)")
+        print(code)
+        print(data)
     }
 
     /*
