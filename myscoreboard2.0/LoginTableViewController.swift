@@ -15,7 +15,14 @@ class LoginTableViewController: UITableViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
 
-    var headerHeight = UIScreen.mainScreen().bounds.height * 0.66
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var headerHeight:CGFloat {
+        get {
+           return UIScreen.mainScreen().bounds.height * 0.66
+        }
+    }
     var footerHeight = UIScreen.mainScreen().bounds.height * 0.075
     
 //    var tableCellHeight = ( UIScreen.mainScreen().bounds.height - headerHeight - footerHeight - 20 ) / 4
@@ -83,6 +90,19 @@ class LoginTableViewController: UITableViewController {
         print("\(#function)")
         print(code)
         print(data)
+        
+        //haven't test from FBLogin
+        
+        
+        
+        //save token to userDefault
+        
+        let token:String = data["auth_token"].stringValue
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.setObject(token, forKey: "token")
+        userDefault.synchronize()
+        
+        //should go to main page
     }
     
     func failure(code:Int, data:JSON ) {
@@ -91,59 +111,28 @@ class LoginTableViewController: UITableViewController {
         print(data)
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+    @IBAction func loginButtonPressed(sender: UIButton) {
+    
+        let email = emailTextField.text!.stringByTrimmingCharactersInSet(
+                NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        let password = passwordTextField.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        
+        HttpManager.sharedInstance
+            .request(
+                HttpMethod.HttpMethodPost,
+                apiFunc: APiFunction.Login,
+                param: ["email": email,
+                        "password": password],
+                success: { (code, data ) in
+                    self.success(code, data: data)
+                }, failure: { (code, data) in
+                    self.failure(code!, data: data!)
+                }, complete: nil)
 
-        // Configure the cell...
-
-        return cell
+        
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

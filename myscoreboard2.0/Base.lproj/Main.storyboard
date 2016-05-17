@@ -160,6 +160,9 @@
                                                     <state key="normal" title="登入">
                                                         <color key="titleColor" red="0.0" green="0.14509803921568626" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="loginButtonPressed:" destination="y1q-Ao-LIZ" eventType="touchUpInside" id="SDH-Hk-JRo"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -190,8 +193,10 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="emailTextField" destination="fAO-oN-snW" id="JLt-IS-m8a"/>
                         <outlet property="footerView" destination="jMh-eV-vUh" id="Wk9-jO-cNL"/>
                         <outlet property="headerView" destination="mFI-zu-seF" id="vLV-33-rHa"/>
+                        <outlet property="passwordTextField" destination="wzZ-Ev-oiG" id="2Xz-lu-Lf4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xar-QC-bbB" userLabel="First Responder" sceneMemberID="firstResponder"/>

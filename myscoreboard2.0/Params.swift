@@ -14,7 +14,7 @@ struct Params {
     static let passwordReg = "[A-Z0-9a-z._%+-]{8,}"
     
     //api
-    static let apiRootPath = "http://product.myscoreboardapp.com/api/v1/"
+    static let apiRootPath = "https://product.myscoreboardapp.com/api/v1/"
     static let apiLogin = "login"
     static let apiLogout = "logout"
     static let apiSignup = "signup"
