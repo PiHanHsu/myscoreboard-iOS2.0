@@ -110,6 +110,32 @@ class LoginTableViewController: UITableViewController {
         print("\(#function)")
         print(code)
         print(data)
+        
+        let message = data["message"].stringValue
+        let alertController = UIAlertController(title: "登入失敗!", message: message, preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+
+    func isValidEmail(emailStr:String) -> Bool {
+        print("validate : \(emailStr)")
+        let emailRegEx = Params.emailReg
+        let range = emailStr.rangeOfString(emailRegEx, options:.RegularExpressionSearch)
+        return range != nil
+    }
+    
+    func isValidpassword(passwordStr:String) -> Bool {
+        print("validate : \(passwordStr)")
+        let passwordRegEx = Params.passwordReg
+        let range = passwordStr.rangeOfString(passwordRegEx, options:.RegularExpressionSearch)
+        return range != nil
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
@@ -121,19 +147,32 @@ class LoginTableViewController: UITableViewController {
             NSCharacterSet.whitespaceAndNewlineCharacterSet()
         )
         
-        HttpManager.sharedInstance
-            .request(
-                HttpMethod.HttpMethodPost,
-                apiFunc: APiFunction.Login,
-                param: ["email": email,
+        //check email and password
+        if self.isValidEmail(email) && self.isValidpassword(password){
+            HttpManager.sharedInstance
+                .request(
+                    HttpMethod.HttpMethodPost,
+                    apiFunc: APiFunction.Login,
+                    param: ["email": email,
                         "password": password],
-                success: { (code, data ) in
-                    self.success(code, data: data)
-                }, failure: { (code, data) in
-                    self.failure(code!, data: data!)
-                }, complete: nil)
+                    success: { (code, data ) in
+                        self.success(code, data: data)
+                    }, failure: { (code, data) in
+                        self.failure(code!, data: data!)
+                    }, complete: nil)
+        }else{
+            //alert
+            let alertController = UIAlertController(title: "注意!", message: "email 或 密碼格式不對", preferredStyle: .Alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            presentViewController(alertController, animated: true, completion: nil)
 
+        }
         
+        
+
     }
     
 }
