@@ -19,6 +19,8 @@
 		E89B15DB1CE9CF4E0070940D /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15DA1CE9CF4E0070940D /* protocol.swift */; };
 		E89B15DD1CE9CF570070940D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15DC1CE9CF570070940D /* Api.swift */; };
 		E89B15DF1CE9CF6E0070940D /* pickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15DE1CE9CF6E0070940D /* pickerView.swift */; };
+		E89B15E11CEB75DC0070940D /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15E01CEB75DC0070940D /* RegisterTableViewController.swift */; };
+		E89B15E31CEB7EE60070940D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15E21CEB7EE60070940D /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		E89B15DA1CE9CF4E0070940D /* protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = protocol.swift; sourceTree = "<group>"; };
 		E89B15DC1CE9CF570070940D /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		E89B15DE1CE9CF6E0070940D /* pickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pickerView.swift; sourceTree = "<group>"; };
+		E89B15E01CEB75DC0070940D /* RegisterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
+		E89B15E21CEB7EE60070940D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				E89B15D11CE8DCFA0070940D /* LoginTableViewController.swift */,
+				E89B15E01CEB75DC0070940D /* RegisterTableViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				E89B15DC1CE9CF570070940D /* Api.swift */,
 				E89B15DA1CE9CF4E0070940D /* protocol.swift */,
 				E89B15DE1CE9CF6E0070940D /* pickerView.swift */,
+				E89B15E21CEB7EE60070940D /* Utils.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -385,10 +391,12 @@
 			files = (
 				E89B15DF1CE9CF6E0070940D /* pickerView.swift in Sources */,
 				E89B15D91CE9CF3B0070940D /* Params.swift in Sources */,
+				E89B15E11CEB75DC0070940D /* RegisterTableViewController.swift in Sources */,
 				E89B15D21CE8DCFA0070940D /* LoginTableViewController.swift in Sources */,
 				E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */,
 				E89B15DD1CE9CF570070940D /* Api.swift in Sources */,
 				E89B15DB1CE9CF4E0070940D /* protocol.swift in Sources */,
+				E89B15E31CEB7EE60070940D /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

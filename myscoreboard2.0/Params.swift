@@ -68,5 +68,9 @@ enum PickerType {
     case Gender
     case ChoseTeam
     case GameMode
-    
+}
+
+class Gender {
+    static let male = "male"
+    static let female = "female"
 }
