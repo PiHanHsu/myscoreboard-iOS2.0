@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class RegisterTableViewController: UITableViewController {
 
@@ -19,6 +20,8 @@ class RegisterTableViewController: UITableViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var retypePasswordTextField: UITextField!
     
+    var email:String?
+    var password:String?
     var gender:String?
     
     override func viewDidLoad() {
@@ -80,8 +83,8 @@ class RegisterTableViewController: UITableViewController {
     @IBAction func createAccountButtonPressed(sender: UIButton) {
         
         let userName = nickNameTextField.text!.trim()
-        let email = emailTextField.text!.trim()
-        let password = passwordTextField.text!.trim()
+        email = emailTextField.text!.trim()
+        password = passwordTextField.text!.trim()
         
         
         HttpManager.sharedInstance
@@ -90,16 +93,59 @@ class RegisterTableViewController: UITableViewController {
                 apiFunc: APiFunction.Register,
                 param: [
                     "username" : userName,
-                    "email": email,
-                    "password": password,
+                    "email": email!,
+                    "password": password!,
                     "gender" : gender! ],
                 success: { (code, data ) in
                     print("account created!!")
-                    //self.success(code, data: data)
+                    self.success(code, data: data)
                 }, failure: { (code, data) in
                     //self.failure(code!, data: data!)
                 }, complete: nil)
-
-        
     }
+    
+    func success(code:Int, data:JSON ) {
+        print("\(#function)")
+        print(code)
+        print(data)
+        
+        HttpManager.sharedInstance
+            .request(
+                HttpMethod.HttpMethodPost,
+                apiFunc: APiFunction.Login,
+                param: ["email": email!,
+                    "password": password!],
+                success: { (code, data ) in
+                    //save token to userDefault
+                    
+                    let token:String = data["auth_token"].stringValue
+                    let userDefault = NSUserDefaults.standardUserDefaults()
+                    userDefault.setObject(token, forKey: "token")
+                    userDefault.synchronize()
+                    
+                    //go to main page
+                    self.performSegueWithIdentifier("Go to main page", sender: self)
+                }, failure: { (code, data) in
+                   //self.failure(code!, data: data!)
+                }, complete: nil)
+    }
+    
+    func failure(code:Int, data:JSON ) {
+        print("\(#function)")
+        print(code)
+        print(data)
+        
+        let message = data["message"].stringValue
+        let alertController = UIAlertController(title: "登入失敗!", message: message, preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+
 }

@@ -492,6 +492,8 @@
                         <outlet property="passwordTextField" destination="tPE-8d-UCL" id="tEY-Cj-ad2"/>
                         <outlet property="photoButton" destination="3dB-Su-aDs" id="elh-3v-TeT"/>
                         <outlet property="retypePasswordTextField" destination="XDm-0X-pXf" id="8KP-cN-bRr"/>
+                        <outlet property="view" destination="3u1-UB-R8E" id="hz8-qN-fVg"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="Go to main page" animates="NO" id="6yj-8J-Xj3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2l-8L-3VE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -586,4 +588,7 @@
         <image name="tab_icon_ranking" width="24" height="24"/>
         <image name="tab_icon_teams" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6yj-8J-Xj3"/>
+    </inferredMetricsTieBreakers>
 </document>
