@@ -102,7 +102,8 @@ class LoginTableViewController: UITableViewController {
         userDefault.setObject(token, forKey: "token")
         userDefault.synchronize()
         
-        //should go to main page
+        //go to main page
+        self.performSegueWithIdentifier("Show main page", sender: self)
     }
     
     func failure(code:Int, data:JSON ) {

@@ -180,6 +180,12 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eiv-Gx-p04" id="nH5-BI-WbJ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hev-2V-VMt">
+                                                    <rect key="frame" x="270" y="7" width="60" height="30"/>
+                                                    <state key="normal" title="建立帳號"/>
+                                                </button>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -197,11 +203,12 @@
                         <outlet property="footerView" destination="jMh-eV-vUh" id="Wk9-jO-cNL"/>
                         <outlet property="headerView" destination="mFI-zu-seF" id="vLV-33-rHa"/>
                         <outlet property="passwordTextField" destination="wzZ-Ev-oiG" id="2Xz-lu-Lf4"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="Show main page" animates="NO" id="CSB-3U-MfM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xar-QC-bbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-130" y="-358"/>
+            <point key="canvasLocation" x="-685" y="318"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hNz-n2-bh7">
