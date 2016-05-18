@@ -21,6 +21,7 @@
 		E89B15DF1CE9CF6E0070940D /* pickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15DE1CE9CF6E0070940D /* pickerView.swift */; };
 		E89B15E11CEB75DC0070940D /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15E01CEB75DC0070940D /* RegisterTableViewController.swift */; };
 		E89B15E31CEB7EE60070940D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15E21CEB7EE60070940D /* Utils.swift */; };
+		E89B15EB1CEC4F110070940D /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15EA1CEC4F110070940D /* EditProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E89B15DE1CE9CF6E0070940D /* pickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pickerView.swift; sourceTree = "<group>"; };
 		E89B15E01CEB75DC0070940D /* RegisterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		E89B15E21CEB7EE60070940D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		E89B15EA1CEC4F110070940D /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 		E89B15D51CE9C9790070940D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E89B15EA1CEC4F110070940D /* EditProfileTableViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				E89B15E11CEB75DC0070940D /* RegisterTableViewController.swift in Sources */,
 				E89B15D21CE8DCFA0070940D /* LoginTableViewController.swift in Sources */,
 				E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */,
+				E89B15EB1CEC4F110070940D /* EditProfileTableViewController.swift in Sources */,
 				E89B15DD1CE9CF570070940D /* Api.swift in Sources */,
 				E89B15DB1CE9CF4E0070940D /* protocol.swift in Sources */,
 				E89B15E31CEB7EE60070940D /* Utils.swift in Sources */,
