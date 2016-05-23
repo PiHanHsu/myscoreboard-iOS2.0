@@ -43,7 +43,29 @@ class EditProfileTableViewController: UITableViewController {
         default:
             return 0
         }
-        return 0
+    }
+    
+    
+    @IBAction func logout(sender: AnyObject) {
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        let token = userDefault.objectForKey("token") as! String
+        
+        HttpManager.sharedInstance
+            .request(
+                HttpMethod.HttpMethodPost,
+                apiFunc: APiFunction.Logout,
+                param: ["auth_token": token],
+                success: { (code, data ) in
+                    print("success")
+                    
+                    //need to back to root viewcontroller
+                    //self.navigationController?.popToRootViewControllerAnimated(true)
+                    
+                    //self.success(code, data: data)
+                }, failure: { (code, data) in
+                    //self.failure(code!, data: data!)
+                }, complete: nil)
+  
     }
 
     /*
