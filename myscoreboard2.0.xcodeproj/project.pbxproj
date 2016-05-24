@@ -23,6 +23,7 @@
 		E89B15E31CEB7EE60070940D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15E21CEB7EE60070940D /* Utils.swift */; };
 		E89B15EB1CEC4F110070940D /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15EA1CEC4F110070940D /* EditProfileTableViewController.swift */; };
 		E8DE72CE1CF2E9A600C66DBD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72CD1CF2E9A600C66DBD /* ProfileViewController.swift */; };
+		E8DE72D01CF314CC00C66DBD /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72CF1CF314CC00C66DBD /* RankingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		E89B15E21CEB7EE60070940D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E89B15EA1CEC4F110070940D /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		E8DE72CD1CF2E9A600C66DBD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E8DE72CF1CF314CC00C66DBD /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 		E89B15D41CE9C9720070940D /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
+				E8DE72CF1CF314CC00C66DBD /* RankingViewController.swift */,
 			);
 			name = Ranking;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				E89B15DD1CE9CF570070940D /* Api.swift in Sources */,
 				E89B15DB1CE9CF4E0070940D /* protocol.swift in Sources */,
 				E89B15E31CEB7EE60070940D /* Utils.swift in Sources */,
+				E8DE72D01CF314CC00C66DBD /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
