@@ -1016,6 +1016,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-9V-SbU">
                                 <rect key="frame" x="20" y="64" width="560" height="487"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="10" id="iHa-XV-1Jo">
                                     <size key="itemSize" width="200" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1023,15 +1024,40 @@
                                     <inset key="sectionInset" minX="45" minY="0.0" maxX="45" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="rankingCollectionViewCell" id="M62-kW-Quo">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="rankingCollectionViewCell" id="M62-kW-Quo" customClass="RankingCollectionViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
                                         <rect key="frame" x="45" y="69" width="200" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-2x-Lvm">
+                                                    <rect key="frame" x="8" y="8" width="184" height="284"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RankingTableViewCell" id="Piv-CP-kcU" customClass="RankingTableViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="28" width="184" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Piv-CP-kcU" id="TPU-fS-mia">
+                                                                <rect key="frame" x="0.0" y="0.0" width="184" height="43"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </tableViewCellContentView>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                </tableView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="1" green="0.7468603841" blue="0.11802370030000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="dSg-2x-Lvm" secondAttribute="trailing" id="TRP-YD-WKd"/>
+                                            <constraint firstItem="dSg-2x-Lvm" firstAttribute="leading" secondItem="M62-kW-Quo" secondAttribute="leadingMargin" id="jlY-IT-uac"/>
+                                            <constraint firstItem="dSg-2x-Lvm" firstAttribute="top" secondItem="M62-kW-Quo" secondAttribute="topMargin" id="oRw-gl-4ff"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="dSg-2x-Lvm" secondAttribute="bottom" id="y65-Q9-MTo"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="rankingTableView" destination="dSg-2x-Lvm" id="iTu-Vr-Cuz"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

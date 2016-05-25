@@ -159,7 +159,7 @@ class LoginTableViewController: UITableViewController {
                     success: { (code, data ) in
                         self.success(code, data: data)
                     }, failure: { (code, data) in
-                        self.failure(code!, data: data!)
+                        //self.failure(code!, data: data!)
                     }, complete: nil)
         }else{
             //alert

@@ -24,6 +24,8 @@
 		E89B15EB1CEC4F110070940D /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15EA1CEC4F110070940D /* EditProfileTableViewController.swift */; };
 		E8DE72CE1CF2E9A600C66DBD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72CD1CF2E9A600C66DBD /* ProfileViewController.swift */; };
 		E8DE72D01CF314CC00C66DBD /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72CF1CF314CC00C66DBD /* RankingViewController.swift */; };
+		E8DE72D21CF5752700C66DBD /* RankingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72D11CF5752700C66DBD /* RankingCollectionViewCell.swift */; };
+		E8DE72D41CF5AD2F00C66DBD /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72D31CF5AD2F00C66DBD /* RankingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		E89B15EA1CEC4F110070940D /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		E8DE72CD1CF2E9A600C66DBD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E8DE72CF1CF314CC00C66DBD /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		E8DE72D11CF5752700C66DBD /* RankingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8DE72D31CF5AD2F00C66DBD /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				E8DE72CF1CF314CC00C66DBD /* RankingViewController.swift */,
+				E8DE72D11CF5752700C66DBD /* RankingCollectionViewCell.swift */,
+				E8DE72D31CF5AD2F00C66DBD /* RankingTableViewCell.swift */,
 			);
 			name = Ranking;
 			sourceTree = "<group>";
@@ -404,11 +410,13 @@
 				E89B15E11CEB75DC0070940D /* RegisterTableViewController.swift in Sources */,
 				E89B15D21CE8DCFA0070940D /* LoginTableViewController.swift in Sources */,
 				E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */,
+				E8DE72D41CF5AD2F00C66DBD /* RankingTableViewCell.swift in Sources */,
 				E89B15EB1CEC4F110070940D /* EditProfileTableViewController.swift in Sources */,
 				E89B15DD1CE9CF570070940D /* Api.swift in Sources */,
 				E89B15DB1CE9CF4E0070940D /* protocol.swift in Sources */,
 				E89B15E31CEB7EE60070940D /* Utils.swift in Sources */,
 				E8DE72D01CF314CC00C66DBD /* RankingViewController.swift in Sources */,
+				E8DE72D21CF5752700C66DBD /* RankingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
