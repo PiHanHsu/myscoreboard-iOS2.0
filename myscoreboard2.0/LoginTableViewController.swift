@@ -97,6 +97,7 @@ class LoginTableViewController: UITableViewController {
         
         //save token to userDefault
         
+        Token.sharedInstance.auth_token = data["auth_token"].stringValue
         let token:String = data["auth_token"].stringValue
         let userDefault = NSUserDefaults.standardUserDefaults()
         userDefault.setObject(token, forKey: "token")

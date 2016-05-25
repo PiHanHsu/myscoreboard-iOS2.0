@@ -21,15 +21,12 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        let token = userDefault.objectForKey("token") as! String
-        print(token)
         
         HttpManager.sharedInstance
             .request(
                 HttpMethod.HttpMethodGet,
                 apiFunc: APiFunction.GetUserStats,
-                param: ["auth_token": token],
+                param: ["auth_token": Token.sharedInstance.auth_token],
                 success: { (code, data ) in
                     print("success")
                     print(data)

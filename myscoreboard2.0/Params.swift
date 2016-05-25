@@ -30,6 +30,10 @@ struct Params {
     
 }
 
+class Token {
+    static let sharedInstance = Token()
+    var auth_token: String = ""
+}
 
 class GameType {
     static let single = "single"
