@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController {
             .request(
                 HttpMethod.HttpMethodGet,
                 apiFunc: APiFunction.GetUserStats,
-                param: ["auth_token": Token.sharedInstance.auth_token],
+                param: ["auth_token": CurrentUser.sharedInstance.authToken],
                 success: { (code, data ) in
                     print("success")
                     print(data)

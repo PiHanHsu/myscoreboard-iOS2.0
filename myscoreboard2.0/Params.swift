@@ -30,9 +30,10 @@ struct Params {
     
 }
 
-class Token {
-    static let sharedInstance = Token()
-    var auth_token: String = ""
+class CurrentUser {
+    static let sharedInstance = CurrentUser()
+    var authToken: String = ""
+    var userId: String = ""
 }
 
 class GameType {

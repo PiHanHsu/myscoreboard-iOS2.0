@@ -15,13 +15,12 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Token.sharedInstance.auth_token)
         
         HttpManager.sharedInstance
             .request(
                 HttpMethod.HttpMethodGet,
                 apiFunc: APiFunction.GetRanking,
-                param: ["auth_token": Token.sharedInstance.auth_token],
+                param: ["auth_token": CurrentUser.sharedInstance.authToken],
                 success: { (code, data ) in
                     print("success")
                     print(data)

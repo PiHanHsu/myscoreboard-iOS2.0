@@ -87,9 +87,6 @@ class LoginTableViewController: UITableViewController {
     }
     
     func success(code:Int, data:JSON ) {
-        print("\(#function)")
-        print(code)
-        print(data)
         
         //haven't test from FBLogin
         
@@ -97,7 +94,9 @@ class LoginTableViewController: UITableViewController {
         
         //save token to userDefault
         
-        Token.sharedInstance.auth_token = data["auth_token"].stringValue
+        CurrentUser.sharedInstance.authToken = data["auth_token"].stringValue
+        CurrentUser.sharedInstance.userId = data["id"].stringValue
+        
         let token:String = data["auth_token"].stringValue
         let userDefault = NSUserDefaults.standardUserDefaults()
         userDefault.setObject(token, forKey: "token")
@@ -169,11 +168,24 @@ class LoginTableViewController: UITableViewController {
             alertController.addAction(defaultAction)
             
             presentViewController(alertController, animated: true, completion: nil)
-
         }
-        
-        
-
+    }
+    
+    func loadData() {
+        HttpManager.sharedInstance
+            .request(HttpMethod.HttpMethodGet,
+                     apiFunc: APiFunction.GetTeamList,
+                     param: ["auth_token" : CurrentUser.sharedInstance.authToken,
+                                ":user_id": CurrentUser.sharedInstance.userId],
+                     success: { (code , data ) in
+                        for team in data["results"].arrayValue {
+                            Teams.sharedInstance.teams.append(Team(data: team))
+                        }
+                },
+                     failure: { (code , data) in
+                        self.failure(code!, data: data!)
+                },
+                     complete: nil)
     }
     
 }
