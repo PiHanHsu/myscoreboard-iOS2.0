@@ -89,21 +89,24 @@ class LoginTableViewController: UITableViewController {
     func success(code:Int, data:JSON ) {
         
         //haven't test from FBLogin
-        
+        print(data)
         
         
         //save token to userDefault
         
         CurrentUser.sharedInstance.authToken = data["auth_token"].stringValue
-        CurrentUser.sharedInstance.userId = data["id"].stringValue
+        CurrentUser.sharedInstance.userId = data["user_id"].stringValue
+        CurrentUser.sharedInstance.username = data["username"].stringValue
+        CurrentUser.sharedInstance.gender = data["gender"].stringValue
+        CurrentUser.sharedInstance.photo_url = data["photo"].stringValue
         
         let token:String = data["auth_token"].stringValue
         let userDefault = NSUserDefaults.standardUserDefaults()
         userDefault.setObject(token, forKey: "token")
         userDefault.synchronize()
         
-        //go to main page
-        self.performSegueWithIdentifier("Show main page", sender: self)
+        loadData()
+        
     }
     
     func failure(code:Int, data:JSON ) {
@@ -175,17 +178,21 @@ class LoginTableViewController: UITableViewController {
         HttpManager.sharedInstance
             .request(HttpMethod.HttpMethodGet,
                      apiFunc: APiFunction.GetTeamList,
-                     param: ["auth_token" : CurrentUser.sharedInstance.authToken,
-                                ":user_id": CurrentUser.sharedInstance.userId],
+                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
+                                ":user_id": CurrentUser.sharedInstance.userId!],
                      success: { (code , data ) in
+                        //print(data)
                         for team in data["results"].arrayValue {
                             Teams.sharedInstance.teams.append(Team(data: team))
                         }
+                        //go to main page
+                        self.performSegueWithIdentifier("Show main page", sender: self)
                 },
                      failure: { (code , data) in
                         self.failure(code!, data: data!)
                 },
                      complete: nil)
+        
     }
     
 }

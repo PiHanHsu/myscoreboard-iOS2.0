@@ -802,6 +802,8 @@
                         <outlet property="bestDoubleTeammateName" destination="3l5-iX-4oy" id="zxo-W4-5J6"/>
                         <outlet property="bestMixTeammateImageView" destination="FMa-Zv-sOQ" id="ZCf-HY-8L9"/>
                         <outlet property="bestMixTeammateName" destination="bn4-9I-T90" id="Mzb-Dc-EOB"/>
+                        <outlet property="gameNumberLabel" destination="xTa-mJ-eGg" id="PVT-e2-EYV"/>
+                        <outlet property="teamNumberLabel" destination="tdZ-HL-q3L" id="qXY-Nk-H10"/>
                         <outlet property="userNameLabel" destination="QbN-sQ-qj3" id="nwc-MD-XE8"/>
                     </connections>
                 </viewController>
@@ -821,17 +823,25 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rY4-Zk-pjx">
+                                    <rect key="frame" x="250" y="10" width="100" height="100"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="QVD-FG-yAn"/>
+                                        <constraint firstAttribute="height" constant="100" id="heA-fV-IcY"/>
+                                    </constraints>
+                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EE4-t5-YbY">
                                     <rect key="frame" x="250" y="10" width="100" height="100"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="83y-eM-Mhi"/>
                                         <constraint firstAttribute="height" constant="100" id="B3V-XN-WWb"/>
                                     </constraints>
-                                    <state key="normal" title="Photo"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="rY4-Zk-pjx" firstAttribute="centerX" secondItem="EE4-t5-YbY" secondAttribute="centerX" id="M4D-wn-hf3"/>
+                                <constraint firstItem="rY4-Zk-pjx" firstAttribute="centerY" secondItem="EE4-t5-YbY" secondAttribute="centerY" id="Zfe-Fc-B8K"/>
                                 <constraint firstItem="EE4-t5-YbY" firstAttribute="centerY" secondItem="a7G-HJ-m8R" secondAttribute="centerY" id="dpo-Qi-wCl"/>
                                 <constraint firstItem="EE4-t5-YbY" firstAttribute="centerX" secondItem="a7G-HJ-m8R" secondAttribute="centerX" id="vmd-BO-Gt6"/>
                             </constraints>
@@ -997,6 +1007,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="headPhotoImageView" destination="rY4-Zk-pjx" id="11s-S3-2eS"/>
+                        <outlet property="photoButton" destination="EE4-t5-YbY" id="D8R-bi-Abc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fB8-EU-fHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

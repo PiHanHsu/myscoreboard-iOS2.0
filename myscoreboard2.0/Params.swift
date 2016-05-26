@@ -32,8 +32,11 @@ struct Params {
 
 class CurrentUser {
     static let sharedInstance = CurrentUser()
-    var authToken: String = ""
-    var userId: String = ""
+    var authToken: String?
+    var userId: String?
+    var gender: String?
+    var username: String?
+    var photo_url: String?
 }
 
 class GameType {

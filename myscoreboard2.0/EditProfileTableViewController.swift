@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import SDWebImage
 
 class EditProfileTableViewController: UITableViewController {
-
+    @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet weak var headPhotoImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        if (CurrentUser.sharedInstance.photo_url != nil) {
+            headPhotoImageView.layer.cornerRadius = 50
+            headPhotoImageView.clipsToBounds = true
+            headPhotoImageView.sd_setImageWithURL(NSURL(string: CurrentUser.sharedInstance.photo_url!))
+        }
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

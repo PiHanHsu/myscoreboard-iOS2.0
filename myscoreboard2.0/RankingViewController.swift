@@ -20,7 +20,7 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
             .request(
                 HttpMethod.HttpMethodGet,
                 apiFunc: APiFunction.GetRanking,
-                param: ["auth_token": CurrentUser.sharedInstance.authToken],
+                param: ["auth_token": CurrentUser.sharedInstance.authToken!],
                 success: { (code, data ) in
                     print("success")
                     print(data)

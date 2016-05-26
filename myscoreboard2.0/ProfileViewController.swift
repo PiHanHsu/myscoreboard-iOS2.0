@@ -13,6 +13,8 @@ class ProfileViewController: UIViewController {
 
     
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var teamNumberLabel: UILabel!
+    @IBOutlet weak var gameNumberLabel: UILabel!
     
     @IBOutlet weak var bestDoubleTeammateImageView: UIImageView!
     @IBOutlet weak var bestDoubleTeammateName: UILabel!
@@ -21,20 +23,22 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         HttpManager.sharedInstance
             .request(
                 HttpMethod.HttpMethodGet,
                 apiFunc: APiFunction.GetUserStats,
-                param: ["auth_token": CurrentUser.sharedInstance.authToken],
+                param: ["auth_token": CurrentUser.sharedInstance.authToken!],
                 success: { (code, data ) in
                     print("success")
-                    print(data)
+                    //print(data)
                     //self.success(code, data: data)
                 }, failure: { (code, data) in
                     //self.failure(code!, data: data!)
                 }, complete: nil)
         // Do any additional setup after loading the view.
+        
+        teamNumberLabel.text! = "參加球隊：\(Teams.sharedInstance.teams.count)"
+        userNameLabel.text = CurrentUser.sharedInstance.username
     }
 
     override func didReceiveMemoryWarning() {
