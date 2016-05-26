@@ -26,6 +26,9 @@
 		E8DE72D01CF314CC00C66DBD /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72CF1CF314CC00C66DBD /* RankingViewController.swift */; };
 		E8DE72D21CF5752700C66DBD /* RankingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72D11CF5752700C66DBD /* RankingCollectionViewCell.swift */; };
 		E8DE72D41CF5AD2F00C66DBD /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72D31CF5AD2F00C66DBD /* RankingTableViewCell.swift */; };
+		E8DE72D71CF68F7700C66DBD /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72D51CF68F7700C66DBD /* Team.swift */; };
+		E8DE72D81CF68F7700C66DBD /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72D61CF68F7700C66DBD /* Teams.swift */; };
+		E8DE72DA1CF68F8800C66DBD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE72D91CF68F8800C66DBD /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		E8DE72CF1CF314CC00C66DBD /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		E8DE72D11CF5752700C66DBD /* RankingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8DE72D31CF5AD2F00C66DBD /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
+		E8DE72D51CF68F7700C66DBD /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		E8DE72D61CF68F7700C66DBD /* Teams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
+		E8DE72D91CF68F8800C66DBD /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +224,9 @@
 				E89B15DA1CE9CF4E0070940D /* protocol.swift */,
 				E89B15DE1CE9CF6E0070940D /* pickerView.swift */,
 				E89B15E21CEB7EE60070940D /* Utils.swift */,
+				E8DE72D91CF68F8800C66DBD /* Player.swift */,
+				E8DE72D51CF68F7700C66DBD /* Team.swift */,
+				E8DE72D61CF68F7700C66DBD /* Teams.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -406,9 +415,12 @@
 			files = (
 				E89B15DF1CE9CF6E0070940D /* pickerView.swift in Sources */,
 				E89B15D91CE9CF3B0070940D /* Params.swift in Sources */,
+				E8DE72D71CF68F7700C66DBD /* Team.swift in Sources */,
 				E8DE72CE1CF2E9A600C66DBD /* ProfileViewController.swift in Sources */,
+				E8DE72DA1CF68F8800C66DBD /* Player.swift in Sources */,
 				E89B15E11CEB75DC0070940D /* RegisterTableViewController.swift in Sources */,
 				E89B15D21CE8DCFA0070940D /* LoginTableViewController.swift in Sources */,
+				E8DE72D81CF68F7700C66DBD /* Teams.swift in Sources */,
 				E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */,
 				E8DE72D41CF5AD2F00C66DBD /* RankingTableViewCell.swift in Sources */,
 				E89B15EB1CEC4F110070940D /* EditProfileTableViewController.swift in Sources */,
