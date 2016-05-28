@@ -157,7 +157,7 @@ class LoginTableViewController: UITableViewController {
                     HttpMethod.HttpMethodPost,
                     apiFunc: APiFunction.Login,
                     param: ["email": email,
-                        "password": password],
+                         "password": password],
                     success: { (code, data ) in
                         self.success(code, data: data)
                     }, failure: { (code, data) in

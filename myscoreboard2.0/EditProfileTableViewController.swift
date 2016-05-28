@@ -12,6 +12,9 @@ import SDWebImage
 class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var headPhotoImageView: UIImageView!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (CurrentUser.sharedInstance.photo_url != nil) {
@@ -47,7 +50,22 @@ class EditProfileTableViewController: UITableViewController {
         }
     }
     
-    
+    @IBAction func saveButtonPressed(sender: AnyObject) {
+        HttpManager.sharedInstance
+            .request(
+                
+                HttpMethod.HttpMethodPatch,
+                apiFunc: APiFunction.EditUser,
+                param: ["auth_token": CurrentUser.sharedInstance.authToken!,
+                    "username" : userNameTextField.text!,],
+                success: { (code, data ) in
+                    print("success")
+                    
+                }, failure: { (code, data) in
+                    //self.failure(code!, data: data!)
+                }, complete: nil)
+        
+    }
     @IBAction func logout(sender: AnyObject) {
         let userDefault = NSUserDefaults.standardUserDefaults()
         let token = userDefault.objectForKey("token") as! String

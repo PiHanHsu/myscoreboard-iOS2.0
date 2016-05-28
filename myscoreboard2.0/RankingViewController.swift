@@ -10,8 +10,8 @@ import UIKit
 
 class RankingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    //let TRANSFORM_CELL_VALUE = CGAffineTransformMakeScale(0.8, 0.8)
-    //let ANIMATION_SPEED = 0.2
+    let TRANSFORM_CELL_VALUE = CGAffineTransformMakeScale(0.8, 0.8)
+    let ANIMATION_SPEED = 0.2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +50,13 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: CollectionView Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return Teams.sharedInstance.teams.count + 1
-        return 15
+        return 5
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("rankingCollectionViewCell", forIndexPath: indexPath)
-        //cell.transform = TRANSFORM_CELL_VALUE
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("rankingCollectionViewCell", forIndexPath: indexPath) as! RankingCollectionViewCell
+        cell.transform = TRANSFORM_CELL_VALUE
         return cell
     }
     
@@ -86,26 +86,57 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
             newTargetOffset = scrollViewWidth
         }
         
-//        if newTargetOffset < 0 {
-//            newTargetOffset = 0
-//        } else if newTargetOffset > currentOffset {
-//            newTargetOffset = currentOffset
-//        }
-        
         print("newTargetOffset:\(newTargetOffset)")
         targetContentOffset.memory = CGPointMake( CGFloat(currentOffset) , 0)
         print("targetContentOffset:\(targetContentOffset.memory.x)")
         scrollView.setContentOffset(CGPointMake(CGFloat(newTargetOffset), 0), animated: true)
+        
+        let index = Int(newTargetOffset / pageWidth)
+        print("index: \(index)")
+        if index == 0 {
+            let cell = self.collerctionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as! RankingCollectionViewCell
+            
+            UIView.animateWithDuration(ANIMATION_SPEED) {
+                print("index0 normal")
+                cell.transform = CGAffineTransformIdentity
+            }
+            
+            if let cell = self.collerctionView.cellForItemAtIndexPath(NSIndexPath(forItem: index + 1, inSection: 0)) {
+                
+                UIView.animateWithDuration(ANIMATION_SPEED) {
+                    print("right")
+                    cell.transform = self.TRANSFORM_CELL_VALUE
+                }
+            }
+            
+        }else {
+            let cell = self.collerctionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as! RankingCollectionViewCell
+                
+            UIView.animateWithDuration(ANIMATION_SPEED) {
+                print("normal")
+                cell.transform = CGAffineTransformIdentity
+            }
+            
+            //left
+            if let cell = self.collerctionView.cellForItemAtIndexPath(NSIndexPath(forItem: index - 1, inSection: 0)) {
+                
+                UIView.animateWithDuration(ANIMATION_SPEED) {
+                    print("left")
+                    cell.transform = self.TRANSFORM_CELL_VALUE
+                }
+            }
+            
+            //right
+            if let cell = self.collerctionView.cellForItemAtIndexPath(NSIndexPath(forItem: index + 1, inSection: 0)) {
+                
+                UIView.animateWithDuration(ANIMATION_SPEED) {
+                    print("right")
+                    cell.transform = self.TRANSFORM_CELL_VALUE
+                }
+            }
+        }
+        
+
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

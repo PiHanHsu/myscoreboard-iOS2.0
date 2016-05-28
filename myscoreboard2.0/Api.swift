@@ -21,6 +21,7 @@ enum APiFunction {
     case Logout
     case FBLogin
     case Register
+    case EditUser
     case CreateTeam
     case UpdateTeam
     case AddPlayersInTeam
@@ -67,6 +68,8 @@ class HttpManager {
         case .FBLogin :
             path = Params.apiRootPath + Params.apiSignup
         case .Register :
+            path = Params.apiRootPath + Params.apiSignup
+        case .EditUser :
             path = Params.apiRootPath + Params.apiSignup
         case .CreateTeam :
             path = Params.apiRootPath + Params.apiCreateTeam

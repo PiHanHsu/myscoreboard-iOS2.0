@@ -28,7 +28,7 @@ class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return 8
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
