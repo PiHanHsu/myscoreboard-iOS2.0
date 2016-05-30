@@ -1034,15 +1034,15 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-9V-SbU">
                                 <rect key="frame" x="20" y="64" width="560" height="487"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="10" id="iHa-XV-1Jo">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iHa-XV-1Jo">
                                     <size key="itemSize" width="200" height="325"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="45" minY="0.0" maxX="45" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="65" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="rankingCollectionViewCell" id="M62-kW-Quo" customClass="RankingCollectionViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
-                                        <rect key="frame" x="45" y="57" width="200" height="325"/>
+                                        <rect key="frame" x="65" y="57" width="200" height="325"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="325"/>
@@ -1105,15 +1105,23 @@
                             <constraint firstItem="ObQ-9V-SbU" firstAttribute="top" secondItem="AT6-Ee-wXA" secondAttribute="bottom" constant="8" id="DHq-Qh-ndQ"/>
                             <constraint firstItem="ObQ-9V-SbU" firstAttribute="top" secondItem="AT6-Ee-wXA" secondAttribute="bottom" constant="8" id="GMm-LN-37T"/>
                             <constraint firstItem="ObQ-9V-SbU" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="dWp-Kz-Mgc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ObQ-9V-SbU" secondAttribute="trailing" id="do3-mj-YrS"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="ObQ-9V-SbU" secondAttribute="bottom" id="mNY-LJ-bib"/>
                             <constraint firstItem="AT6-Ee-wXA" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="8" id="n7i-8O-sEW"/>
+                            <constraint firstItem="ObQ-9V-SbU" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="wAF-h3-t0V"/>
                             <constraint firstItem="AT6-Ee-wXA" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="xOF-6o-aJe"/>
                             <constraint firstItem="ObQ-9V-SbU" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="yYU-Ph-xfs"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dWp-Kz-Mgc"/>
+                                <exclude reference="yYU-Ph-xfs"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ranking" image="tab_icon_ranking" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="collerctionView" destination="ObQ-9V-SbU" id="Vql-eh-iV0"/>
+                        <outlet property="collectionView" destination="ObQ-9V-SbU" id="OSL-m0-fgY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
