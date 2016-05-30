@@ -21,18 +21,18 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//                HttpManager.sharedInstance
-//                    .request(
-//                        HttpMethod.HttpMethodGet,
-//                        apiFunc: APiFunction.GetRanking,
-//                        param: ["auth_token": CurrentUser.sharedInstance.authToken!],
-//                        success: { (code, data ) in
-//                            print("success")
-//                            print(data)
-//                            //self.success(code, data: data)
-//                        }, failure: { (code, data) in
-//                            //self.failure(code!, data: data!)
-//                        }, complete: nil)
+        //                HttpManager.sharedInstance
+        //                    .request(
+        //                        HttpMethod.HttpMethodGet,
+        //                        apiFunc: APiFunction.GetRanking,
+        //                        param: ["auth_token": CurrentUser.sharedInstance.authToken!],
+        //                        success: { (code, data ) in
+        //                            print("success")
+        //                            print(data)
+        //                            //self.success(code, data: data)
+        //                        }, failure: { (code, data) in
+        //                            //self.failure(code!, data: data!)
+        //                        }, complete: nil)
         
     }
     
@@ -43,7 +43,7 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        widthSize = self.collectionView.frame.size.width * 0.7
+        widthSize = self.collectionView.frame.size.width * 0.75
         heightSize = self.collectionView.frame.size.height * 0.75
         
         return CGSize.init(width: widthSize!, height: heightSize!)
@@ -60,15 +60,7 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                                minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
-        switch self.view.frame.size.width {
-        case 320:
-            spacing = 2
-        case 375:
-            spacing = 10
-        default:
-            spacing = 15
-        }
-        
+        spacing = 2
         return spacing!
     }
     
@@ -80,6 +72,12 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("rankingCollectionViewCell", forIndexPath: indexPath) as! RankingCollectionViewCell
+        
+        cell.layer.borderColor = UIColor.orangeColor().CGColor
+        cell.layer.cornerRadius = 5.0
+        cell.layer.borderWidth = 1.0
+        
+        cell.teamNameLabel.text = Teams.sharedInstance.teams[indexPath.row].TeamName
         
         if (indexPath.row == 0 && isfirstTimeTransform) { // make a bool and set YES initially, this check will prevent fist load transform
             isfirstTimeTransform = false
@@ -140,7 +138,6 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
                     cell.transform = CGAffineTransformIdentity
                 }
             }
-            
             //left
             if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index - 1, inSection: 0)) {
                 
@@ -148,7 +145,6 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
                     cell.transform = self.TRANSFORM_CELL_VALUE
                 }
             }
-            
             //right
             if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index + 1, inSection: 0)) {
                 

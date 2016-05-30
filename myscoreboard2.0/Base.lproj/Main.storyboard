@@ -1032,8 +1032,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-9V-SbU">
-                                <rect key="frame" x="20" y="64" width="560" height="487"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="iHa-XV-1Jo">
                                     <size key="itemSize" width="200" height="325"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1048,8 +1048,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="325"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-2x-Lvm">
-                                                    <rect key="frame" x="8" y="8" width="184" height="375"/>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-2x-Lvm">
+                                                    <rect key="frame" x="8" y="58" width="184" height="259"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RankingTableViewCell" id="Piv-CP-kcU" customClass="RankingTableViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
@@ -1070,18 +1070,41 @@
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MM5-QX-ExJ">
+                                                    <rect key="frame" x="1" y="1" width="198" height="57"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uv1-GY-6sS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="198" height="57"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.50980392159999999" green="0.70588235290000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Uv1-GY-6sS" secondAttribute="trailing" id="6M2-1n-vrd"/>
+                                                        <constraint firstItem="Uv1-GY-6sS" firstAttribute="top" secondItem="MM5-QX-ExJ" secondAttribute="top" id="Xtm-Pz-0hw"/>
+                                                        <constraint firstItem="Uv1-GY-6sS" firstAttribute="leading" secondItem="MM5-QX-ExJ" secondAttribute="leading" id="mYl-rc-L52"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Uv1-GY-6sS" secondAttribute="bottom" id="xYT-9e-a9i"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="dSg-2x-Lvm" firstAttribute="top" secondItem="MM5-QX-ExJ" secondAttribute="bottom" id="6kX-Yx-P3l"/>
+                                            <constraint firstItem="MM5-QX-ExJ" firstAttribute="leading" secondItem="M62-kW-Quo" secondAttribute="leading" constant="1" id="MN4-Iu-OSk"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="dSg-2x-Lvm" secondAttribute="trailing" id="TRP-YD-WKd"/>
+                                            <constraint firstItem="MM5-QX-ExJ" firstAttribute="top" secondItem="M62-kW-Quo" secondAttribute="top" constant="1" id="WHJ-Ja-kKt"/>
+                                            <constraint firstAttribute="trailing" secondItem="MM5-QX-ExJ" secondAttribute="trailing" constant="1" id="hre-Zk-48C"/>
                                             <constraint firstItem="dSg-2x-Lvm" firstAttribute="leading" secondItem="M62-kW-Quo" secondAttribute="leadingMargin" id="jlY-IT-uac"/>
-                                            <constraint firstItem="dSg-2x-Lvm" firstAttribute="top" secondItem="M62-kW-Quo" secondAttribute="topMargin" id="oRw-gl-4ff"/>
+                                            <constraint firstItem="dSg-2x-Lvm" firstAttribute="top" secondItem="M62-kW-Quo" secondAttribute="topMargin" constant="50" id="oRw-gl-4ff"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="dSg-2x-Lvm" secondAttribute="bottom" id="y65-Q9-MTo"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="rankingTableView" destination="dSg-2x-Lvm" id="iTu-Vr-Cuz"/>
+                                            <outlet property="teamNameLabel" destination="Uv1-GY-6sS" id="pRZ-Pb-c11"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1105,10 +1128,10 @@
                             <constraint firstItem="ObQ-9V-SbU" firstAttribute="top" secondItem="AT6-Ee-wXA" secondAttribute="bottom" constant="8" id="DHq-Qh-ndQ"/>
                             <constraint firstItem="ObQ-9V-SbU" firstAttribute="top" secondItem="AT6-Ee-wXA" secondAttribute="bottom" constant="8" id="GMm-LN-37T"/>
                             <constraint firstItem="ObQ-9V-SbU" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="dWp-Kz-Mgc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ObQ-9V-SbU" secondAttribute="trailing" id="do3-mj-YrS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ObQ-9V-SbU" secondAttribute="trailing" constant="-20" id="do3-mj-YrS"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="ObQ-9V-SbU" secondAttribute="bottom" id="mNY-LJ-bib"/>
                             <constraint firstItem="AT6-Ee-wXA" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="8" id="n7i-8O-sEW"/>
-                            <constraint firstItem="ObQ-9V-SbU" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="wAF-h3-t0V"/>
+                            <constraint firstItem="ObQ-9V-SbU" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-20" id="wAF-h3-t0V"/>
                             <constraint firstItem="AT6-Ee-wXA" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="xOF-6o-aJe"/>
                             <constraint firstItem="ObQ-9V-SbU" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="yYU-Ph-xfs"/>
                         </constraints>

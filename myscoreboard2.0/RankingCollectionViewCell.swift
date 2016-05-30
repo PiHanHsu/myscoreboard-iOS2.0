@@ -13,6 +13,7 @@ class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
     
     @IBOutlet weak var rankingTableView: UITableView!
     
+    @IBOutlet weak var teamNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
