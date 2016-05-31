@@ -49,7 +49,7 @@ class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
+        return 68
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -63,21 +63,21 @@ class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
             let wins = rankData["male_single"][indexPath.row]["wins"].stringValue
             let losses = rankData["male_single"][indexPath.row]["losses"].stringValue
             cell.rateLabel.text = "勝率：\(rate)% "
-            cell.winsAndLossesLabel.text = "\(wins)勝\(losses)敗"
+            cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
         case GameType.double:
             cell.nameLabel.text = rankData["male_double"][indexPath.row]["user"].stringValue
             let rate = rankData["male_double"][indexPath.row]["rate"].stringValue
             let wins = rankData["male_double"][indexPath.row]["wins"].stringValue
             let losses = rankData["male_double"][indexPath.row]["losses"].stringValue
             cell.rateLabel.text = "勝率：\(rate)% "
-            cell.winsAndLossesLabel.text = "\(wins)勝\(losses)敗"
+            cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
         case GameType.mix:
             cell.nameLabel.text = rankData["male_mix"][indexPath.row]["user"].stringValue
             let rate = rankData["male_mix"][indexPath.row]["rate"].stringValue
             let wins = rankData["male_mix"][indexPath.row]["wins"].stringValue
             let losses = rankData["male_mix"][indexPath.row]["losses"].stringValue
             cell.rateLabel.text = "勝率：\(rate)% "
-            cell.winsAndLossesLabel.text = "\(wins)勝\(losses)敗"
+            cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
         default:
             return cell
         }

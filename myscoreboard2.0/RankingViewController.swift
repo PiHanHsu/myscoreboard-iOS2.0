@@ -103,7 +103,7 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("rankingCollectionViewCell", forIndexPath: indexPath) as! RankingCollectionViewCell
         
-        cell.layer.borderColor = UIColor.orangeColor().CGColor
+        cell.layer.borderColor = UIColor(red: 4.0/255.0, green: 190.0/255.0, blue: 255.0/255.0, alpha: 1).CGColor
         cell.layer.cornerRadius = 5.0
         cell.layer.borderWidth = 1.0
         
