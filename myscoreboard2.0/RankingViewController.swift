@@ -14,17 +14,20 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     let TRANSFORM_CELL_VALUE = CGAffineTransformMakeScale(0.9, 0.9)
     let ANIMATION_SPEED = 0.2
-    var isfirstTimeTransform = true
+    var isTransformNeeded = true
     var widthSize:CGFloat?
     var heightSize:CGFloat?
-    var spacing:CGFloat?
-    var rankingDictionary:Dictionary<String, String> = [:]
+    var spacing:CGFloat = 2.0
     var rankData:JSON = []
+    var gameType: String = GameType.single
+    var index = 0
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var gameTypeSegmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.automaticallyAdjustsScrollViewInsets = false
         
         HttpManager.sharedInstance
             .request(
@@ -45,10 +48,34 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func selectedGameType(sender: AnyObject) {
+        
+        isTransformNeeded = false
+        
+        switch self.gameTypeSegmentedControl.selectedSegmentIndex {
+        case 0:
+            gameType = GameType.single
+        case 1:
+            gameType = GameType.double
+        case 2:
+            gameType = GameType.mix
+            
+        default:
+            return
+        }
+        
+        self.collectionView.reloadData()
+        
+    }
+    
+    
+    
+    //collectionViewLayout
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         widthSize = self.view.frame.size.width * 0.75
-        heightSize = self.view.frame.size.height * 0.75
+        heightSize = self.view.frame.size.height * 0.7
         return CGSize.init(width: widthSize!, height: heightSize!)
     }
     
@@ -63,8 +90,7 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                                minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
-        spacing = 2
-        return spacing!
+        return spacing
     }
     
     // MARK: CollectionView Data Source
@@ -82,17 +108,28 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
         cell.layer.borderWidth = 1.0
         
         cell.teamNameLabel.text = rankData["result"][indexPath.row]["team"].stringValue
+        cell.rankData = rankData["result"][indexPath.row]
+        cell.gameType = gameType
+        cell.rankingTableView.reloadData()
         
-        if indexPath.row != 0 {
-            cell.transform = TRANSFORM_CELL_VALUE
+        if isTransformNeeded {
+            if indexPath.row != 0 {
+                cell.transform = TRANSFORM_CELL_VALUE
+            }
+        }else{
+            if indexPath.row != index {
+                cell.transform = TRANSFORM_CELL_VALUE
+            }
         }
         
         return cell
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print("y: \(scrollView.frame.origin.y)")
         
-        let pageWidth = Float(widthSize! + spacing!)
+        isTransformNeeded = true
+        let pageWidth = Float(widthSize! + spacing)
         let currentOffset = Float(scrollView.contentOffset.x)
         let targetOffset = Float(targetContentOffset.memory.x)
         var newTargetOffset = Float(0)
@@ -111,11 +148,10 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
             newTargetOffset = scrollViewWidth
         }
         
-        print("newTargetOffset:\(newTargetOffset)")
         targetContentOffset.memory = CGPointMake( CGFloat(currentOffset) , 0)
         scrollView.setContentOffset(CGPointMake(CGFloat(newTargetOffset), 0), animated: true)
         
-        let index = Int(newTargetOffset / pageWidth)
+        index = Int(newTargetOffset / pageWidth)
         if index == 0 {
             let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as! RankingCollectionViewCell
             

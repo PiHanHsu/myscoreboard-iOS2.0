@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var rankingTableView: UITableView!
-    
     @IBOutlet weak var teamNameLabel: UILabel!
+    var rankData:JSON = []
+    var gameType: String = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         self.rankingTableView.delegate = self
         self.rankingTableView.dataSource = self
+        let footerView = UIView()
+        footerView.frame = CGRectZero
+        self.rankingTableView.tableFooterView = footerView
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -29,12 +36,54 @@ class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 8
+        switch gameType {
+        case GameType.single:
+            return rankData["male_single"].count
+        case GameType.double:
+            return rankData["male_double"].count
+        case GameType.mix:
+            return rankData["male_mix"].count
+        default:
+            return 5
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("RankingTableViewCell", forIndexPath: indexPath) as! RankingTableViewCell
+        
+        switch gameType {
+        case GameType.single:
+            cell.nameLabel.text = rankData["male_single"][indexPath.row]["user"].stringValue
+            let rate = rankData["male_single"][indexPath.row]["rate"].stringValue
+            let wins = rankData["male_single"][indexPath.row]["wins"].stringValue
+            let losses = rankData["male_single"][indexPath.row]["losses"].stringValue
+            cell.rateLabel.text = "勝率：\(rate)% "
+            cell.winsAndLossesLabel.text = "\(wins)勝\(losses)敗"
+        case GameType.double:
+            cell.nameLabel.text = rankData["male_double"][indexPath.row]["user"].stringValue
+            let rate = rankData["male_double"][indexPath.row]["rate"].stringValue
+            let wins = rankData["male_double"][indexPath.row]["wins"].stringValue
+            let losses = rankData["male_double"][indexPath.row]["losses"].stringValue
+            cell.rateLabel.text = "勝率：\(rate)% "
+            cell.winsAndLossesLabel.text = "\(wins)勝\(losses)敗"
+        case GameType.mix:
+            cell.nameLabel.text = rankData["male_mix"][indexPath.row]["user"].stringValue
+            let rate = rankData["male_mix"][indexPath.row]["rate"].stringValue
+            let wins = rankData["male_mix"][indexPath.row]["wins"].stringValue
+            let losses = rankData["male_mix"][indexPath.row]["losses"].stringValue
+            cell.rateLabel.text = "勝率：\(rate)% "
+            cell.winsAndLossesLabel.text = "\(wins)勝\(losses)敗"
+        default:
+            return cell
+        }
+        
+            
+        cell.rankingLabel.text = "\(indexPath.row + 1)"
         
         return cell
         
