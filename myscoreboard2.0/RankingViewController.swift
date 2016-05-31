@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+
 
 class RankingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -16,23 +18,25 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     var widthSize:CGFloat?
     var heightSize:CGFloat?
     var spacing:CGFloat?
+    var rankingDictionary:Dictionary<String, String> = [:]
+    var rankData:JSON = []
     
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //                HttpManager.sharedInstance
-        //                    .request(
-        //                        HttpMethod.HttpMethodGet,
-        //                        apiFunc: APiFunction.GetRanking,
-        //                        param: ["auth_token": CurrentUser.sharedInstance.authToken!],
-        //                        success: { (code, data ) in
-        //                            print("success")
-        //                            print(data)
-        //                            //self.success(code, data: data)
-        //                        }, failure: { (code, data) in
-        //                            //self.failure(code!, data: data!)
-        //                        }, complete: nil)
+        
+        HttpManager.sharedInstance
+            .request(
+                HttpMethod.HttpMethodGet,
+                apiFunc: APiFunction.GetRanking,
+                param: ["auth_token": CurrentUser.sharedInstance.authToken!],
+                success: { (code, data ) in
+                    print(data)
+                    self.rankData = data
+                    self.collectionView.reloadData()
+                }, failure: { (code, data) in
+                }, complete: nil)
         
     }
     
@@ -43,16 +47,15 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        widthSize = self.collectionView.frame.size.width * 0.75
-        heightSize = self.collectionView.frame.size.height * 0.75
-        
+        widthSize = self.view.frame.size.width * 0.75
+        heightSize = self.view.frame.size.height * 0.75
         return CGSize.init(width: widthSize!, height: heightSize!)
     }
     
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                                insetForSectionAtIndex section: Int) -> UIEdgeInsets{
-        let inset = (self.collectionView.frame.size.width - widthSize!) / 2 - 8
+        let inset = (self.collectionView.frame.size.width - widthSize!) / 2
         
         return UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
     }
@@ -66,6 +69,7 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: CollectionView Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return Teams.sharedInstance.teams.count
     }
     
@@ -77,16 +81,12 @@ class RankingViewController: UIViewController, UICollectionViewDataSource, UICol
         cell.layer.cornerRadius = 5.0
         cell.layer.borderWidth = 1.0
         
-        cell.teamNameLabel.text = Teams.sharedInstance.teams[indexPath.row].TeamName
+        cell.teamNameLabel.text = rankData["result"][indexPath.row]["team"].stringValue
         
-        if (indexPath.row == 0 && isfirstTimeTransform) { // make a bool and set YES initially, this check will prevent fist load transform
-            isfirstTimeTransform = false
-        }else{
-            //print("before: \(cell.frame.size.width)")
+        if indexPath.row != 0 {
             cell.transform = TRANSFORM_CELL_VALUE
-            //print("after: \(cell.frame.size.width)")
-            // the new cell will always be transform and without animation
         }
+        
         return cell
     }
     
