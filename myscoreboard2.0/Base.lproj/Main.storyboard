@@ -501,6 +501,57 @@
             </objects>
             <point key="canvasLocation" x="-720" y="1069"/>
         </scene>
+        <!--個人頁面-->
+        <scene sceneID="TE9-lg-o9b">
+            <objects>
+                <viewController id="Eav-7s-zWS" customClass="ProfileViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jhp-8Q-agj"/>
+                        <viewControllerLayoutGuide type="bottom" id="3CY-dp-xmF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3DF-wm-LVE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XKb-ad-lqK" customClass="Pr">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lcE-mb-r8u">
+                                    <size key="itemSize" width="250" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCollectionViewCell" id="nJY-zd-fSk" customClass="ProfileCollectionViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="101" width="250" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XKb-ad-lqK" secondAttribute="trailing" id="7rA-Mp-UNw"/>
+                            <constraint firstItem="XKb-ad-lqK" firstAttribute="top" secondItem="Jhp-8Q-agj" secondAttribute="bottom" id="Gsh-83-6Wz"/>
+                            <constraint firstItem="3CY-dp-xmF" firstAttribute="top" secondItem="XKb-ad-lqK" secondAttribute="bottom" id="VNd-pu-aV3"/>
+                            <constraint firstItem="XKb-ad-lqK" firstAttribute="leading" secondItem="3DF-wm-LVE" secondAttribute="leading" id="jXW-ub-ucK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="個人頁面" id="Dmc-Ji-f7B"/>
+                    <connections>
+                        <outlet property="collectionView" destination="XKb-ad-lqK" id="DY6-oR-03e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pkc-Nm-p8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1571" y="-368"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -809,7 +860,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2374" y="-320"/>
+            <point key="canvasLocation" x="3186" y="-320"/>
         </scene>
         <!--Title-->
         <scene sceneID="itY-7H-fwV">
@@ -820,7 +871,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="a7G-HJ-m8R">
-                            <rect key="frame" x="0.0" y="64" width="600" height="120"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rY4-Zk-pjx">
@@ -850,7 +901,7 @@
                             <tableViewSection id="Lpy-rm-2j1">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UTR-K5-CKm">
-                                        <rect key="frame" x="0.0" y="184" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="120" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UTR-K5-CKm" id="h3q-Ep-SRi">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -884,7 +935,7 @@
                                         <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UOP-EY-pdX">
-                                        <rect key="frame" x="0.0" y="228" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="164" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UOP-EY-pdX" id="v2L-7L-EOo">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -923,7 +974,7 @@
                                         <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qDK-2H-H36">
-                                        <rect key="frame" x="0.0" y="272" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="208" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qDK-2H-H36" id="FER-ov-gvK">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -961,7 +1012,7 @@
                             <tableViewSection id="Zmb-kE-AT7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="zfa-pg-bfd">
-                                        <rect key="frame" x="0.0" y="316" width="600" height="64"/>
+                                        <rect key="frame" x="0.0" y="252" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zfa-pg-bfd" id="feo-OQ-E8P">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
@@ -1017,7 +1068,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fB8-EU-fHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3099" y="-320"/>
+            <point key="canvasLocation" x="3911" y="-320"/>
         </scene>
         <!--排行榜-->
         <scene sceneID="wg7-f3-ORb">
@@ -1241,10 +1292,10 @@
             </objects>
             <point key="canvasLocation" x="1682" y="378"/>
         </scene>
-        <!--Teams-->
+        <!--我的球隊-->
         <scene sceneID="RLh-3M-uhL">
             <objects>
-                <viewController id="OG6-jd-7IH" sceneMemberID="viewController">
+                <viewController id="OG6-jd-7IH" customClass="TeamViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XyO-Ca-UcZ"/>
                         <viewControllerLayoutGuide type="bottom" id="Bzu-JY-UDO"/>
@@ -1252,13 +1303,49 @@
                     <view key="view" contentMode="scaleToFill" id="reC-0a-Z7p">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MyN-qq-Rge">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gHb-5q-7gD">
+                                    <size key="itemSize" width="250" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="teamCollectionViewCell" id="ad6-6G-Qnw" customClass="TeamCollectionViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="101" width="250" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="OG6-jd-7IH" id="NXO-EA-bsB"/>
+                                    <outlet property="delegate" destination="OG6-jd-7IH" id="LKy-YH-Z0L"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="MyN-qq-Rge" secondAttribute="trailing" id="16V-Ub-CoH"/>
+                            <constraint firstItem="Bzu-JY-UDO" firstAttribute="top" secondItem="MyN-qq-Rge" secondAttribute="bottom" id="KuA-gx-imm"/>
+                            <constraint firstItem="MyN-qq-Rge" firstAttribute="top" secondItem="XyO-Ca-UcZ" secondAttribute="bottom" id="ThS-0f-bRD"/>
+                            <constraint firstItem="MyN-qq-Rge" firstAttribute="leading" secondItem="reC-0a-Z7p" secondAttribute="leading" id="tUc-5N-hK1"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Teams" image="tab_icon_teams" id="ObX-ks-YHq"/>
+                    <navigationItem key="navigationItem" title="我的球隊" id="5KI-Qh-NVL"/>
+                    <connections>
+                        <outlet property="collectionView" destination="MyN-qq-Rge" id="rao-PM-V62"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="687-bs-JrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="1096"/>
+            <point key="canvasLocation" x="1562" y="1096"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1271,33 +1358,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="aHg-jn-sU0" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="34V-no-ayA" kind="relationship" relationship="viewControllers" id="qMz-0j-41A"/>
                         <segue destination="JK5-7m-TzS" kind="relationship" relationship="viewControllers" id="CMY-c0-62B"/>
-                        <segue destination="OG6-jd-7IH" kind="relationship" relationship="viewControllers" id="qMz-0j-41A"/>
+                        <segue destination="vSd-bv-XPN" kind="relationship" relationship="viewControllers" id="ip9-7d-Upy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-38" y="318"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="b4E-1e-4al">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aHg-jn-sU0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="tab_icon_profile" id="acW-dT-cKf"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jse-rc-eSM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="Nea-vx-zG6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1an-kK-3nk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
         </scene>
         <!--Ranking-->
         <scene sceneID="A5Q-Fl-uvS">
@@ -1317,6 +1385,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbU-D2-YcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="870" y="378"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="2WP-Wm-Msh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vSd-bv-XPN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="tab_icon_profile" id="xFT-sa-eQF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z40-pf-gkO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Eav-7s-zWS" kind="relationship" relationship="rootViewController" id="n5T-Jm-TuI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVv-Zg-SMI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="-368"/>
+        </scene>
+        <!--Teams-->
+        <scene sceneID="mpA-2K-cEo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="34V-no-ayA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Teams" image="tab_icon_teams" id="ObX-ks-YHq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kPj-Sf-3y5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OG6-jd-7IH" kind="relationship" relationship="rootViewController" id="e1s-Le-V74"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DHw-mX-X9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="1096"/>
         </scene>
     </scenes>
     <resources>

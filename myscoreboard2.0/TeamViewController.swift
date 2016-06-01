@@ -1,20 +1,15 @@
 //
-//  ProfileViewController.swift
+//  TeamViewController.swift
 //  myscoreboard2.0
 //
-//  Created by PiHan Hsu on 5/23/16.
+//  Created by PiHan Hsu on 6/1/16.
 //  Copyright © 2016 PiHan Hsu. All rights reserved.
 //
 
 import UIKit
 import SwiftyJSON
 
-class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
-    
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    
+class TeamViewController: UIViewController {
     let TRANSFORM_CELL_VALUE = CGAffineTransformMakeScale(0.9, 0.9)
     let ANIMATION_SPEED = 0.2
     var isTransformNeeded = true
@@ -24,30 +19,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     var rankData:JSON = []
     var gameType: String = GameType.single
     var index = 0
-    
+
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
         self.automaticallyAdjustsScrollViewInsets = false
-
-        HttpManager.sharedInstance
-            .request(
-                HttpMethod.HttpMethodGet,
-                apiFunc: APiFunction.GetUserStats,
-                param: ["auth_token": CurrentUser.sharedInstance.authToken!],
-                success: { (code, data ) in
-                    print("success")
-                    //print(data)
-                    //self.success(code, data: data)
-                }, failure: { (code, data) in
-                    //self.failure(code!, data: data!)
-                }, complete: nil)
+        
         // Do any additional setup after loading the view.
-        
-//        teamNumberLabel.text! = "參加球隊：\(Teams.sharedInstance.teams.count)"
-//        userNameLabel.text = CurrentUser.sharedInstance.username
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,7 +55,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                                minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
         return spacing
     }
-   
+    
     // MARK: CollectionView Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -86,16 +64,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProfileCollectionViewCell", forIndexPath: indexPath) as! ProfileCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("teamCollectionViewCell", forIndexPath: indexPath) as! TeamCollectionViewCell
         
         cell.layer.borderColor = UIColor(red: 4.0/255.0, green: 190.0/255.0, blue: 255.0/255.0, alpha: 1).CGColor
         cell.layer.cornerRadius = 5.0
         cell.layer.borderWidth = 1.0
         
-//        cell.teamNameLabel.text = rankData["result"][indexPath.row]["team"].stringValue
-//        cell.rankData = rankData["result"][indexPath.row]
-//        cell.gameType = gameType
-//        cell.rankingTableView.reloadData()
+        //        cell.teamNameLabel.text = rankData["result"][indexPath.row]["team"].stringValue
+        //        cell.rankData = rankData["result"][indexPath.row]
+        //        cell.gameType = gameType
+        //        cell.rankingTableView.reloadData()
         
         if isTransformNeeded {
             if indexPath.row != 0 {
@@ -176,5 +154,4 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
 
-   
 }
