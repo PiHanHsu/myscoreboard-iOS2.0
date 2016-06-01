@@ -45,9 +45,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 }, complete: nil)
         // Do any additional setup after loading the view.
         
-//        teamNumberLabel.text! = "參加球隊：\(Teams.sharedInstance.teams.count)"
-//        userNameLabel.text = CurrentUser.sharedInstance.username
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,9 +55,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     //collectionViewLayout
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
         widthSize = self.view.frame.size.width * 0.75
         heightSize = self.view.frame.size.height * 0.7
-        print ("widthSize: \(widthSize), height: \(heightSize)")
+        
         return CGSize.init(width: widthSize!, height: heightSize!)
     }
     
@@ -81,7 +79,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: CollectionView Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 15
+        return Teams.sharedInstance.teams.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

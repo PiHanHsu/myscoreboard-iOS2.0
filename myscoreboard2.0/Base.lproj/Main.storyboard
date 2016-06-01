@@ -517,17 +517,17 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lcE-mb-r8u">
-                                    <size key="itemSize" width="250" height="300"/>
+                                    <size key="itemSize" width="250" height="350"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCollectionViewCell" id="nJY-zd-fSk" customClass="ProfileCollectionViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="101" width="250" height="300"/>
+                                        <rect key="frame" x="0.0" y="76" width="250" height="350"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="350"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -543,7 +543,13 @@
                             <constraint firstItem="XKb-ad-lqK" firstAttribute="leading" secondItem="3DF-wm-LVE" secondAttribute="leading" id="jXW-ub-ucK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="個人頁面" id="Dmc-Ji-f7B"/>
+                    <navigationItem key="navigationItem" title="個人頁面" id="Dmc-Ji-f7B">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="mth-vQ-4ai">
+                            <connections>
+                                <segue destination="l93-W2-1is" kind="show" id="6jX-1F-TNl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="XKb-ad-lqK" id="DY6-oR-03e"/>
                     </connections>
@@ -842,11 +848,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MlU-DB-253">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="jiq-uQ-O97">
-                            <connections>
-                                <segue destination="l93-W2-1is" kind="show" id="OmI-SX-Coo"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="jiq-uQ-O97"/>
                     </navigationItem>
                     <connections>
                         <outlet property="bestDoubleTeammateImageView" destination="b8X-9B-emi" id="9Vz-9I-EUi"/>
@@ -860,9 +862,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3186" y="-320"/>
+            <point key="canvasLocation" x="2948" y="-368"/>
         </scene>
-        <!--Title-->
+        <!--編輯個人資料-->
         <scene sceneID="itY-7H-fwV">
             <objects>
                 <tableViewController id="l93-W2-1is" customClass="EditProfileTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -871,7 +873,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="a7G-HJ-m8R">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rY4-Zk-pjx">
@@ -901,7 +903,7 @@
                             <tableViewSection id="Lpy-rm-2j1">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UTR-K5-CKm">
-                                        <rect key="frame" x="0.0" y="120" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="184" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UTR-K5-CKm" id="h3q-Ep-SRi">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -935,7 +937,7 @@
                                         <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UOP-EY-pdX">
-                                        <rect key="frame" x="0.0" y="164" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="228" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UOP-EY-pdX" id="v2L-7L-EOo">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -974,7 +976,7 @@
                                         <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qDK-2H-H36">
-                                        <rect key="frame" x="0.0" y="208" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="272" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qDK-2H-H36" id="FER-ov-gvK">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1012,7 +1014,7 @@
                             <tableViewSection id="Zmb-kE-AT7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="zfa-pg-bfd">
-                                        <rect key="frame" x="0.0" y="252" width="600" height="64"/>
+                                        <rect key="frame" x="0.0" y="316" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zfa-pg-bfd" id="feo-OQ-E8P">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
@@ -1051,7 +1053,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="tPw-ut-Rhr">
+                    <navigationItem key="navigationItem" title="編輯個人資料" id="tPw-ut-Rhr">
                         <barButtonItem key="rightBarButtonItem" title="登出" id="mGW-Rk-irF">
                             <connections>
                                 <action selector="logout:" destination="l93-W2-1is" id="4X3-CY-R6j"/>
@@ -1068,7 +1070,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fB8-EU-fHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3911" y="-320"/>
+            <point key="canvasLocation" x="2215" y="-368"/>
         </scene>
         <!--排行榜-->
         <scene sceneID="wg7-f3-ORb">

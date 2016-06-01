@@ -38,7 +38,6 @@ class TeamViewController: UIViewController {
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         widthSize = self.view.frame.size.width * 0.75
         heightSize = self.view.frame.size.height * 0.7
-        print ("widthSize: \(widthSize), height: \(heightSize)")
         return CGSize.init(width: widthSize!, height: heightSize!)
     }
     
@@ -59,7 +58,7 @@ class TeamViewController: UIViewController {
     // MARK: CollectionView Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 15
+        return Teams.sharedInstance.teams.count + 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -116,10 +115,10 @@ class TeamViewController: UIViewController {
         
         index = Int(newTargetOffset / pageWidth)
         if index == 0 {
-            let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as! ProfileCollectionViewCell
-            
-            UIView.animateWithDuration(ANIMATION_SPEED) {
-                cell.transform = CGAffineTransformIdentity
+            if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) {
+                UIView.animateWithDuration(ANIMATION_SPEED) {
+                    cell.transform = CGAffineTransformIdentity
+                }
             }
             
             if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index + 1, inSection: 0)) {
