@@ -7,11 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 struct Params {
     static let PersonalMainPageTitle = "Score Team"
     static let emailReg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     static let passwordReg = "[A-Z0-9a-z._%+-]{8,}"
+    
+    //collectionView Setting
+    static let ANIMATION_SPEED = 0.2
+    static let TRANSFORM_CELL_VALUE = CGAffineTransformMakeScale(0.9, 0.9)
+    static let spacing:CGFloat = 2.0
+    
     
     //api
     static let apiRootPath = "https://product.myscoreboardapp.com/api/v1/"

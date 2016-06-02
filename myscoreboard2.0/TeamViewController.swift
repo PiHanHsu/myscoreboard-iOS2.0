@@ -10,12 +10,10 @@ import UIKit
 import SwiftyJSON
 
 class TeamViewController: UIViewController {
-    let TRANSFORM_CELL_VALUE = CGAffineTransformMakeScale(0.9, 0.9)
-    let ANIMATION_SPEED = 0.2
+   
     var isTransformNeeded = true
     var widthSize:CGFloat?
     var heightSize:CGFloat?
-    var spacing:CGFloat = 2.0
     var rankData:JSON = []
     var gameType: String = GameType.single
     var index = 0
@@ -52,7 +50,7 @@ class TeamViewController: UIViewController {
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                                minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
-        return spacing
+        return Params.spacing
     }
     
     // MARK: CollectionView Data Source
@@ -76,11 +74,11 @@ class TeamViewController: UIViewController {
         
         if isTransformNeeded {
             if indexPath.row != 0 {
-                cell.transform = TRANSFORM_CELL_VALUE
+                cell.transform = Params.TRANSFORM_CELL_VALUE
             }
         }else{
             if indexPath.row != index {
-                cell.transform = TRANSFORM_CELL_VALUE
+                cell.transform = Params.TRANSFORM_CELL_VALUE
             }
         }
         
@@ -91,7 +89,7 @@ class TeamViewController: UIViewController {
         print("y: \(scrollView.frame.origin.y)")
         
         isTransformNeeded = true
-        let pageWidth = Float(widthSize! + spacing)
+        let pageWidth = Float(widthSize! + Params.spacing)
         let currentOffset = Float(scrollView.contentOffset.x)
         let targetOffset = Float(targetContentOffset.memory.x)
         var newTargetOffset = Float(0)
@@ -116,15 +114,14 @@ class TeamViewController: UIViewController {
         index = Int(newTargetOffset / pageWidth)
         if index == 0 {
             if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) {
-                UIView.animateWithDuration(ANIMATION_SPEED) {
+                UIView.animateWithDuration(Params.ANIMATION_SPEED) {
                     cell.transform = CGAffineTransformIdentity
                 }
             }
             
             if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index + 1, inSection: 0)) {
-                
-                UIView.animateWithDuration(ANIMATION_SPEED) {
-                    cell.transform = self.TRANSFORM_CELL_VALUE
+                UIView.animateWithDuration(Params.ANIMATION_SPEED) {
+                    cell.transform = Params.TRANSFORM_CELL_VALUE
                 }
             }
             
@@ -132,22 +129,21 @@ class TeamViewController: UIViewController {
             
             if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index , inSection: 0)) {
                 
-                UIView.animateWithDuration(ANIMATION_SPEED) {
+                UIView.animateWithDuration(Params.ANIMATION_SPEED) {
                     cell.transform = CGAffineTransformIdentity
                 }
             }
             //left
             if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index - 1, inSection: 0)) {
                 
-                UIView.animateWithDuration(ANIMATION_SPEED) {
-                    cell.transform = self.TRANSFORM_CELL_VALUE
+                UIView.animateWithDuration(Params.ANIMATION_SPEED) {
+                    cell.transform = Params.TRANSFORM_CELL_VALUE
                 }
             }
             //right
             if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index + 1, inSection: 0)) {
-                
-                UIView.animateWithDuration(ANIMATION_SPEED) {
-                    cell.transform = self.TRANSFORM_CELL_VALUE
+                UIView.animateWithDuration(Params.ANIMATION_SPEED) {
+                    cell.transform = Params.TRANSFORM_CELL_VALUE
                 }
             }
         }
