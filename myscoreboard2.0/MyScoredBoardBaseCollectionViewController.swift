@@ -43,7 +43,7 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                                minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
-        return 2
+        return Params.spacing
     }
     
     
