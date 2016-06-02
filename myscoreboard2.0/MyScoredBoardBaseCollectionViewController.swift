@@ -9,7 +9,7 @@
 import UIKit
 
 class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionViewDelegate {
-    @IBOutlet var collectionView: UICollectionView?
+    @IBOutlet weak var collectionView: UICollectionView?
     
     var index = 0
     var widthSize: CGFloat = 0
