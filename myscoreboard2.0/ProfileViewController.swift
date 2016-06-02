@@ -30,19 +30,16 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
                 }, failure: { (code, data) in
                     //self.failure(code!, data: data!)
                 }, complete: nil)
-        // Do any additional setup after loading the view.
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
     // MARK: CollectionView Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return Teams.sharedInstance.teams.count
     }
     

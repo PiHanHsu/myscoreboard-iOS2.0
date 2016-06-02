@@ -18,17 +18,15 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
         super.viewDidLoad()
         collectionView?.delegate = self
         self.automaticallyAdjustsScrollViewInsets = false
-        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        print("set size!!")
+        
         widthSize = UIScreen.mainScreen().bounds.size.width * 0.75
         heightSize = UIScreen.mainScreen().bounds.size.height * 0.7
         return CGSize.init(width: widthSize, height: heightSize)
@@ -47,7 +45,7 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
                                minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
         return 2
     }
-
+    
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
@@ -112,16 +110,5 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
             }
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

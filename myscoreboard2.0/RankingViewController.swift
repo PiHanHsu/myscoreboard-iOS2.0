@@ -21,7 +21,6 @@ class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.collectionView?.dataSource = self
         
         HttpManager.sharedInstance
@@ -30,7 +29,7 @@ class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollec
                 apiFunc: APiFunction.GetRanking,
                 param: ["auth_token": CurrentUser.sharedInstance.authToken!],
                 success: { (code, data ) in
-                    print(data)
+                    //print(data)
                     self.rankData = data
                     self.collectionView?.reloadData()
                 }, failure: { (code, data) in
@@ -40,7 +39,6 @@ class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollec
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -62,7 +60,7 @@ class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollec
         
     }
     
-
+    
     // MARK: CollectionView Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         

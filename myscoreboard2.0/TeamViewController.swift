@@ -10,19 +10,17 @@ import UIKit
 import SwiftyJSON
 
 class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollectionViewDataSource {
-   
+    
     var rankData:JSON = []
     var gameType: String = GameType.single
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView?.dataSource = self
-        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: CollectionView Data Source
@@ -45,5 +43,5 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         
         return cell
     }
-  
+    
 }
