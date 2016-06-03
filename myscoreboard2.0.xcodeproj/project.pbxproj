@@ -242,8 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				E8DE72CD1CF2E9A600C66DBD /* ProfileViewController.swift */,
-				E89B15EA1CEC4F110070940D /* EditProfileTableViewController.swift */,
 				E862029E1CFE8AEE0030F798 /* ProfileCollectionViewCell.swift */,
+				E89B15EA1CEC4F110070940D /* EditProfileTableViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
