@@ -1,19 +1,19 @@
 //
-//  BestPartnetTableViewCell.swift
+//  ProfileInfoTableViewCell.swift
 //  myscoreboard2.0
 //
-//  Created by PiHan Hsu on 6/2/16.
+//  Created by PiHan Hsu on 6/6/16.
 //  Copyright © 2016 PiHan Hsu. All rights reserved.
 //
 
 import UIKit
 
-class BestPartnetTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var bestDoublePartnerImageView: UIImageView!
-    @IBOutlet weak var bestDoublePartnerNameLabel: UILabel!
-    @IBOutlet weak var bestMixPartnerImageView: UIImageView!
-    @IBOutlet weak var bestMixPartnerNameLabel: UILabel!
+class ProfileInfoTableViewCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var gameCountLabel: UILabel!
+    @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var winsAndLossesLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

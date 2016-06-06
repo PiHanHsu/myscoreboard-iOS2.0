@@ -11,8 +11,7 @@ import SwiftyJSON
 
 class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollectionViewDataSource {
     
-    var rankData:JSON = []
-    var gameType: String = GameType.single
+    var statsData:JSON = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +24,10 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
                 param: ["auth_token": CurrentUser.sharedInstance.authToken!],
                 success: { (code, data ) in
                     print("success")
-                    //print(data)
-                    //self.success(code, data: data)
+                    print(data)
+                    self.statsData = data["result"]
+                    self.collectionView?.reloadData()
+                    print("reload")
                 }, failure: { (code, data) in
                     //self.failure(code!, data: data!)
                 }, complete: nil)
@@ -50,6 +51,10 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
         cell.layer.borderColor = UIColor(red: 4.0/255.0, green: 190.0/255.0, blue: 255.0/255.0, alpha: 1).CGColor
         cell.layer.cornerRadius = 5.0
         cell.layer.borderWidth = 1.0
+        
+        cell.statsData = statsData[indexPath.row]
+        cell.profileTableView.reloadData()
+        
         
         if indexPath.row != index {
             cell.transform = Params.TRANSFORM_CELL_VALUE

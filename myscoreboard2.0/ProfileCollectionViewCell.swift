@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import SwiftyJSON
+import SDWebImage
 
 class ProfileCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var profileTableView: UITableView!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var teamNameLabel: UILabel!
     
     let gameTableViewCell = "GameTableViewCell"
     let bestPartnerTableViewCell = "BestPartnetTableViewCell"
+    let profileInfoTableViewCell = "ProfileInfoTableViewCell"
+    var statsData:JSON = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,6 +30,8 @@ class ProfileCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
         self.profileTableView.estimatedRowHeight = 60
         self.profileTableView.rowHeight = UITableViewAutomaticDimension
         
+        
+        self.profileTableView.registerNib(UINib(nibName: profileInfoTableViewCell, bundle: nil), forCellReuseIdentifier: profileInfoTableViewCell)
         self.profileTableView.registerNib(UINib(nibName: gameTableViewCell, bundle: nil), forCellReuseIdentifier: gameTableViewCell)
         self.profileTableView.registerNib(UINib(nibName: bestPartnerTableViewCell, bundle: nil), forCellReuseIdentifier: bestPartnerTableViewCell)
         
@@ -31,6 +39,10 @@ class ProfileCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
         let footerView = UIView()
         footerView.frame = CGRectZero
         self.profileTableView.tableFooterView = footerView
+        
+        self.userNameLabel.text = CurrentUser.sharedInstance.username!
+        
+        
     }
     
     
@@ -78,15 +90,43 @@ class ProfileCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        self.teamNameLabel.text = statsData["team"].stringValue
+        
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("profileInfoTableViewCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier(profileInfoTableViewCell, forIndexPath: indexPath) as! ProfileInfoTableViewCell
+            let games = statsData["games"].stringValue
+            let rate = statsData["rate"].stringValue
+            let wins = statsData["wins"].stringValue
+            let losses = statsData["losses"].stringValue
+            cell.gameCountLabel.text = "比賽場次：\(games)"
+            cell.rateLabel.text = "勝率: \(rate)%"
+            cell.winsAndLossesLabel.text = "勝負場次：\(wins)勝\(losses)敗"
+            
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier(gameTableViewCell, forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier(gameTableViewCell, forIndexPath: indexPath) as! GameTableViewCell
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier(bestPartnerTableViewCell, forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier(bestPartnerTableViewCell, forIndexPath: indexPath) as! BestPartnetTableViewCell
+            cell.bestDoublePartnerNameLabel.text = statsData["best_double_name"].stringValue
+            
+            cell.bestDoublePartnerImageView.layer.cornerRadius = 25.0
+            cell.bestDoublePartnerImageView.clipsToBounds = true
+            if statsData["best_double_photo"] != nil {
+                cell.bestDoublePartnerImageView.sd_setImageWithURL(NSURL(string: statsData["best_double_photo"].stringValue))
+            }
+            
+            cell.bestMixPartnerNameLabel.text = statsData["best_mix_name"].stringValue
+            
+            cell.bestMixPartnerImageView.layer.cornerRadius = 25.0
+            cell.bestMixPartnerImageView.clipsToBounds = true
+
+            if statsData["best_mix_photo"] != nil {
+                cell.bestMixPartnerImageView.sd_setImageWithURL(NSURL(string: statsData["best_mix_name"].stringValue))
+            }
+            
             return cell
         default:
             break

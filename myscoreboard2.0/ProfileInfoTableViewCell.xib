@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileInfoTableViewCell" rowHeight="68" id="KGk-i7-Jjw" customClass="ProfileInfoTableViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qd5-By-aaU">
+                        <rect key="frame" x="8" y="9" width="304" height="73"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="ProfileInfoTableViewCell" text="比賽場次：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUd-wz-tiM">
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="K17-qZ-bE7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勝率：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUb-8A-LE9">
+                                <rect key="frame" x="0.0" y="26" width="304" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="v82-rj-MVp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勝/負場次：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbF-Ez-cr9">
+                                <rect key="frame" x="0.0" y="52" width="304" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="46z-UI-aUd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="tUd-wz-tiM" firstAttribute="width" secondItem="qd5-By-aaU" secondAttribute="width" id="9LZ-sh-9L0"/>
+                            <constraint firstItem="IbF-Ez-cr9" firstAttribute="width" secondItem="qd5-By-aaU" secondAttribute="width" id="HSQ-LO-bgA"/>
+                            <constraint firstItem="tUd-wz-tiM" firstAttribute="width" secondItem="qd5-By-aaU" secondAttribute="width" id="Vmt-0w-Ax6"/>
+                            <constraint firstItem="KUb-8A-LE9" firstAttribute="width" secondItem="qd5-By-aaU" secondAttribute="width" id="uej-gJ-45z"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="qd5-By-aaU" secondAttribute="trailing" id="PKn-WC-PDH"/>
+                    <constraint firstItem="qd5-By-aaU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="VAU-g3-Zq6"/>
+                    <constraint firstItem="qd5-By-aaU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="WXN-vn-u62"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="qd5-By-aaU" secondAttribute="bottom" id="yqJ-1k-SR9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="gameCountLabel" destination="tUd-wz-tiM" id="YAf-sx-mpV"/>
+                <outlet property="rateLabel" destination="KUb-8A-LE9" id="mKF-Fr-xWh"/>
+                <outlet property="winsAndLossesLabel" destination="IbF-Ez-cr9" id="l4K-HF-coc"/>
+            </connections>
+            <point key="canvasLocation" x="454" y="220.5"/>
+        </tableViewCell>
+    </objects>
+</document>

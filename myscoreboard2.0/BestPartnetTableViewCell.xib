@@ -88,6 +88,12 @@
                     <constraint firstItem="jQy-me-kbm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="hZi-Um-lgR"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="bestDoublePartnerImageView" destination="jQy-me-kbm" id="ykc-sl-eh0"/>
+                <outlet property="bestDoublePartnerNameLabel" destination="FIn-8X-VMb" id="rzh-ex-Mjm"/>
+                <outlet property="bestMixPartnerImageView" destination="ebs-7k-j2y" id="6ml-da-5BB"/>
+                <outlet property="bestMixPartnerNameLabel" destination="fvW-EX-EYD" id="3gM-eh-z85"/>
+            </connections>
             <point key="canvasLocation" x="353" y="380.5"/>
         </tableViewCell>
     </objects>

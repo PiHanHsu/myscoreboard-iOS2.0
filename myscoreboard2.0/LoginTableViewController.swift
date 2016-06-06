@@ -112,7 +112,7 @@ class LoginTableViewController: UITableViewController {
     func failure(code:Int, data:JSON ) {
         print("\(#function)")
         print(code)
-        print(data)
+        //print(data)
         
         let message = data["message"].stringValue
         let alertController = UIAlertController(title: "登入失敗!", message: message, preferredStyle: .Alert)
