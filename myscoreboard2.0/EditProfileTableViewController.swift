@@ -78,10 +78,11 @@ class EditProfileTableViewController: UITableViewController {
                 success: { (code, data ) in
                     print("success")
                     
-                    //need to back to root viewcontroller
-                    //self.navigationController?.popToRootViewControllerAnimated(true)
+                    //neeback to root viewcontroller
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let rootVC: UIViewController = sb.instantiateViewControllerWithIdentifier("LoginViewController")
+                    self.presentViewController(rootVC, animated: true, completion: nil)
                     
-                    //self.success(code, data: data)
                 }, failure: { (code, data) in
                     //self.failure(code!, data: data!)
                 }, complete: nil)

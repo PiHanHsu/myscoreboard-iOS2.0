@@ -10,7 +10,7 @@
         <!--Login Table View Controller-->
         <scene sceneID="U3I-VV-gy8">
             <objects>
-                <tableViewController id="y1q-Ao-LIZ" customClass="LoginTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LoginViewController" id="y1q-Ao-LIZ" customClass="LoginTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ARF-h1-Glq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
