@@ -110,8 +110,6 @@ class LoginTableViewController: UITableViewController {
     }
     
     func failure(code:Int, data:JSON ) {
-        print("\(#function)")
-        print(code)
         //print(data)
         
         let message = data["message"].stringValue

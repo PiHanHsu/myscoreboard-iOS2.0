@@ -31,8 +31,8 @@ class Team: NSObject {
             let newPlayer = Player()
             let playerData = member.dictionary!
             
-            print(member)
-            print(playerData["id"])
+            //print(member)
+            //print(playerData["id"])
  
             newPlayer.playerName = playerData["username"]?.stringValue
             newPlayer.playerId = playerData["id"]?.stringValue

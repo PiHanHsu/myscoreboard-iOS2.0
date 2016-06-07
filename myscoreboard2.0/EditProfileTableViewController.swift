@@ -78,7 +78,7 @@ class EditProfileTableViewController: UITableViewController {
                 success: { (code, data ) in
                     Teams.sharedInstance.teams.removeAll()
                     
-                    //neeback to root viewcontroller
+                    //back to root viewcontroller
                     let sb = UIStoryboard(name: "Main", bundle: nil)
                     let rootVC: UIViewController = sb.instantiateViewControllerWithIdentifier("LoginViewController")
                     self.presentViewController(rootVC, animated: true, completion: nil)

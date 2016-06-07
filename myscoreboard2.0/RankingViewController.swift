@@ -11,11 +11,9 @@ import SwiftyJSON
 
 
 class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollectionViewDataSource {
-    
-    var spacing:CGFloat = 2.0
+
     var rankData:JSON = []
     var gameType: String = GameType.single
-    
     
     @IBOutlet weak var gameTypeSegmentedControl: UISegmentedControl!
     
@@ -72,8 +70,8 @@ class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollec
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("rankingCollectionViewCell", forIndexPath: indexPath) as! RankingCollectionViewCell
         
         cell.layer.borderColor = UIColor(red: 4.0/255.0, green: 190.0/255.0, blue: 255.0/255.0, alpha: 1).CGColor
-        cell.layer.cornerRadius = 5.0
-        cell.layer.borderWidth = 1.0
+        cell.layer.cornerRadius = 8.0
+        cell.layer.borderWidth = 2.0
         
         cell.teamNameLabel.text = rankData["result"][indexPath.row]["team"].stringValue
         cell.rankData = rankData["result"][indexPath.row]

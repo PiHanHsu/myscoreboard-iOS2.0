@@ -34,8 +34,8 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("teamCollectionViewCell", forIndexPath: indexPath) as! TeamCollectionViewCell
         
         cell.layer.borderColor = UIColor(red: 4.0/255.0, green: 190.0/255.0, blue: 255.0/255.0, alpha: 1).CGColor
-        cell.layer.cornerRadius = 5.0
-        cell.layer.borderWidth = 1.0
+        cell.layer.cornerRadius = 8.0
+        cell.layer.borderWidth = 2.0
         
         if indexPath.row != index {
             cell.transform = Params.TRANSFORM_CELL_VALUE

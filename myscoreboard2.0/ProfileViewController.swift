@@ -23,11 +23,8 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
                 apiFunc: APiFunction.GetUserStats,
                 param: ["auth_token": CurrentUser.sharedInstance.authToken!],
                 success: { (code, data ) in
-                    print("success")
-                    print(data)
                     self.statsData = data["result"]
                     self.collectionView?.reloadData()
-                    print("reload")
                 }, failure: { (code, data) in
                     //self.failure(code!, data: data!)
                 }, complete: nil)
@@ -49,8 +46,8 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProfileCollectionViewCell", forIndexPath: indexPath) as! ProfileCollectionViewCell
         
         cell.layer.borderColor = UIColor(red: 4.0/255.0, green: 190.0/255.0, blue: 255.0/255.0, alpha: 1).CGColor
-        cell.layer.cornerRadius = 5.0
-        cell.layer.borderWidth = 1.0
+        cell.layer.cornerRadius = 8.0
+        cell.layer.borderWidth = 2.0
         
         cell.statsData = statsData[indexPath.row]
         cell.profileTableView.reloadData()

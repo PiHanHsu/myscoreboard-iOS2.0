@@ -27,8 +27,8 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        widthSize = UIScreen.mainScreen().bounds.size.width * 0.75
-        heightSize = UIScreen.mainScreen().bounds.size.height * 0.7
+        widthSize = UIScreen.mainScreen().bounds.size.width * 0.8
+        heightSize = UIScreen.mainScreen().bounds.size.height * 0.72
         return CGSize.init(width: widthSize, height: heightSize)
     }
     

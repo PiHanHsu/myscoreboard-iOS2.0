@@ -105,9 +105,6 @@ class RegisterTableViewController: UITableViewController {
     }
     
     func success(code:Int, data:JSON ) {
-        print("\(#function)")
-        print(code)
-        print(data)
         
         HttpManager.sharedInstance
             .request(
