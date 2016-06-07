@@ -76,7 +76,7 @@ class EditProfileTableViewController: UITableViewController {
                 apiFunc: APiFunction.Logout,
                 param: ["auth_token": token],
                 success: { (code, data ) in
-                    print("success")
+                    Teams.sharedInstance.teams.removeAll()
                     
                     //neeback to root viewcontroller
                     let sb = UIStoryboard(name: "Main", bundle: nil)
