@@ -75,6 +75,14 @@
                     <constraint firstItem="GHC-Ov-uF5" firstAttribute="leading" secondItem="ab1-Tb-hrG" secondAttribute="trailing" constant="8" id="uuF-hD-dKs"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="team1Player1NameLabel" destination="QpW-ae-wqX" id="8gn-cO-RHg"/>
+                <outlet property="team1Player2NameLabel" destination="QIi-On-72j" id="Xy1-gN-N68"/>
+                <outlet property="team1ScoreLabel" destination="zx3-ks-Gp4" id="jwZ-2k-DUd"/>
+                <outlet property="team2Player1NameLabel" destination="899-jb-pUg" id="rVX-9B-UjL"/>
+                <outlet property="team2Player2NameLabel" destination="P58-Ba-zte" id="bzK-EH-Vgp"/>
+                <outlet property="team2ScoreLabel" destination="GHC-Ov-uF5" id="ZEg-0r-bM6"/>
+            </connections>
             <point key="canvasLocation" x="340" y="342"/>
         </tableViewCell>
     </objects>

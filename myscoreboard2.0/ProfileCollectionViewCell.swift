@@ -107,6 +107,15 @@ class ProfileCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier(gameTableViewCell, forIndexPath: indexPath) as! GameTableViewCell
+            let gameData = statsData["last_3_games"][indexPath.row]["game"]
+            if gameData.count == 4 {
+                cell.team1Player1NameLabel.text = gameData[0]["user_id"].stringValue
+                cell.team1Player2NameLabel.text = gameData[1]["user_id"].stringValue
+                cell.team2Player1NameLabel.text = gameData[2]["user_id"].stringValue
+                cell.team2Player2NameLabel.text = gameData[3]["user_id"].stringValue
+                cell.team1ScoreLabel.text = gameData[0]["score"].stringValue
+                cell.team2ScoreLabel.text = gameData[2]["score"].stringValue
+            }
             return cell
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier(bestPartnerTableViewCell, forIndexPath: indexPath) as! BestPartnetTableViewCell
