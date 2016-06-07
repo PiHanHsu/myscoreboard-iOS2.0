@@ -69,7 +69,7 @@ class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollec
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("rankingCollectionViewCell", forIndexPath: indexPath) as! RankingCollectionViewCell
         
-        cell.layer.borderColor = UIColor(red: 4.0/255.0, green: 190.0/255.0, blue: 255.0/255.0, alpha: 1).CGColor
+        cell.layer.borderColor = UIColor.mainBlueColor().CGColor
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 2.0
         

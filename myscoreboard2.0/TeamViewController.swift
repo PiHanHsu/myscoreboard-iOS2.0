@@ -25,7 +25,6 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     
     // MARK: CollectionView Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return Teams.sharedInstance.teams.count + 1
     }
     
@@ -33,7 +32,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("teamCollectionViewCell", forIndexPath: indexPath) as! TeamCollectionViewCell
         
-        cell.layer.borderColor = UIColor(red: 4.0/255.0, green: 190.0/255.0, blue: 255.0/255.0, alpha: 1).CGColor
+        cell.layer.borderColor = UIColor.mainBlueColor().CGColor
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 2.0
         

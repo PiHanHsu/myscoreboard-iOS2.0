@@ -18,6 +18,7 @@
 		E86202B01D0032A60030F798 /* MyScoredBoardBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86202AF1D0032A60030F798 /* MyScoredBoardBaseCollectionViewController.swift */; };
 		E86202B31D0550380030F798 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86202B11D0550380030F798 /* ProfileInfoTableViewCell.swift */; };
 		E86202B41D0550380030F798 /* ProfileInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86202B21D0550380030F798 /* ProfileInfoTableViewCell.xib */; };
+		E889777F1D06EE3C00F263FF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E889777E1D06EE3C00F263FF /* Color.swift */; };
 		E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15A01CE8C94E0070940D /* AppDelegate.swift */; };
 		E89B15A81CE8C94F0070940D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A61CE8C94F0070940D /* Main.storyboard */; };
 		E89B15AA1CE8C94F0070940D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A91CE8C94F0070940D /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		E86202AF1D0032A60030F798 /* MyScoredBoardBaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScoredBoardBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		E86202B11D0550380030F798 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		E86202B21D0550380030F798 /* ProfileInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInfoTableViewCell.xib; sourceTree = "<group>"; };
+		E889777E1D06EE3C00F263FF /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E89B159D1CE8C94E0070940D /* myscoreboard2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myscoreboard2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89B15A01CE8C94E0070940D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E89B15A71CE8C94F0070940D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				E8DE72D91CF68F8800C66DBD /* Player.swift */,
 				E8DE72D51CF68F7700C66DBD /* Team.swift */,
 				E8DE72D61CF68F7700C66DBD /* Teams.swift */,
+				E889777E1D06EE3C00F263FF /* Color.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				E862029F1CFE8AEE0030F798 /* ProfileCollectionViewCell.swift in Sources */,
 				E86202A31CFE8F930030F798 /* TeamViewController.swift in Sources */,
 				E8DE72D71CF68F7700C66DBD /* Team.swift in Sources */,
+				E889777F1D06EE3C00F263FF /* Color.swift in Sources */,
 				E8DE72CE1CF2E9A600C66DBD /* ProfileViewController.swift in Sources */,
 				E8DE72DA1CF68F8800C66DBD /* Player.swift in Sources */,
 				E86202B01D0032A60030F798 /* MyScoredBoardBaseCollectionViewController.swift in Sources */,
