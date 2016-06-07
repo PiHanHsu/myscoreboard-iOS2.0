@@ -109,10 +109,16 @@ class ProfileCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
             let cell = tableView.dequeueReusableCellWithIdentifier(gameTableViewCell, forIndexPath: indexPath) as! GameTableViewCell
             let gameData = statsData["last_3_games"][indexPath.row]["game"]
             if gameData.count == 4 {
-                cell.team1Player1NameLabel.text = gameData[0]["user_id"].stringValue
-                cell.team1Player2NameLabel.text = gameData[1]["user_id"].stringValue
-                cell.team2Player1NameLabel.text = gameData[2]["user_id"].stringValue
-                cell.team2Player2NameLabel.text = gameData[3]["user_id"].stringValue
+                cell.team1Player1NameLabel.text = gameData[0]["username"].stringValue
+                cell.team1Player2NameLabel.text = gameData[1]["username"].stringValue
+                cell.team2Player1NameLabel.text = gameData[2]["username"].stringValue
+                cell.team2Player2NameLabel.text = gameData[3]["username"].stringValue
+                
+                if gameData[0]["score"].intValue > gameData[2]["score"].intValue {
+                    cell.team1ScoreLabel.textColor = UIColor.redColor()
+                }else {
+                    cell.team2ScoreLabel.textColor = UIColor.redColor()
+                }
                 cell.team1ScoreLabel.text = gameData[0]["score"].stringValue
                 cell.team2ScoreLabel.text = gameData[2]["score"].stringValue
             }
@@ -133,7 +139,7 @@ class ProfileCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
             cell.bestMixPartnerImageView.clipsToBounds = true
 
             if statsData["best_mix_photo"] != nil {
-                cell.bestMixPartnerImageView.sd_setImageWithURL(NSURL(string: statsData["best_mix_name"].stringValue))
+                cell.bestMixPartnerImageView.sd_setImageWithURL(NSURL(string: statsData["best_mix_photo"].stringValue))
             }
             
             return cell
