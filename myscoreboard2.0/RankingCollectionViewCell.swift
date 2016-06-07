@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import SDWebImage
 
 class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
     
@@ -64,6 +65,7 @@ class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
             let losses = rankData["male_single"][indexPath.row]["losses"].stringValue
             cell.rateLabel.text = "勝率：\(rate)% "
             cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
+            cell.userImageView.sd_setImageWithURL(NSURL(string:rankData["male_single"][indexPath.row]["user_photo"].stringValue))
         case GameType.double:
             cell.nameLabel.text = rankData["male_double"][indexPath.row]["user"].stringValue
             let rate = rankData["male_double"][indexPath.row]["rate"].stringValue
@@ -71,6 +73,8 @@ class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
             let losses = rankData["male_double"][indexPath.row]["losses"].stringValue
             cell.rateLabel.text = "勝率：\(rate)% "
             cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
+            cell.userImageView.sd_setImageWithURL(NSURL(string:rankData["male_double"][indexPath.row]["user_photo"].stringValue))
+            
         case GameType.mix:
             cell.nameLabel.text = rankData["male_mix"][indexPath.row]["user"].stringValue
             let rate = rankData["male_mix"][indexPath.row]["rate"].stringValue
@@ -78,6 +82,7 @@ class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITa
             let losses = rankData["male_mix"][indexPath.row]["losses"].stringValue
             cell.rateLabel.text = "勝率：\(rate)% "
             cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
+            cell.userImageView.sd_setImageWithURL(NSURL(string:rankData["male_mix"][indexPath.row]["user_photo"].stringValue))
         default:
             return cell
         }
