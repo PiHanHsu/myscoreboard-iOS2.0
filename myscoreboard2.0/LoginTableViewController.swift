@@ -23,7 +23,16 @@ class LoginTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.backgroundColor = UIColor.mainBlueColor()
+        if self.view.frame.size.height == 480 {
+            headerHeight = self.view.frame.size.height - 50 - 44 - 44 - 64
+        }else {
+            headerHeight = self.view.frame.size.height - 50 - 44 - 44 - 44 - 64
+        }
         
+        self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: headerHeight!)
+        self.footerView.frame = CGRect(x: 0, y: self.view.frame.size.height - 50, width: self.view.frame.size.width, height: 50 )
+        self.footerView.backgroundColor = UIColor(red: 0.0/255.0, green: 159.0/255.0, blue: 214.0/255.0, alpha: 1)
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -35,16 +44,7 @@ class LoginTableViewController: UITableViewController {
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string:"密碼",
                                                                           attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         
-        self.tableView.backgroundColor = UIColor.mainBlueColor()
-        if self.view.frame.size.height == 480 {
-            headerHeight = self.view.frame.size.height - 50 - 44 - 44 - 64
-        }else {
-            headerHeight = self.view.frame.size.height - 50 - 44 - 44 - 44 - 64
-        }
         
-        self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: headerHeight!)
-        self.footerView.frame = CGRect(x: 0, y: self.view.frame.size.height - 50, width: self.view.frame.size.width, height: 50 )
-        self.footerView.backgroundColor = UIColor(red: 0.0/255.0, green: 159.0/255.0, blue: 214.0/255.0, alpha: 1)
         
         self.loginButton.backgroundColor = UIColor.mainYellowColor()
         self.loginButton.layer.cornerRadius = 5.0

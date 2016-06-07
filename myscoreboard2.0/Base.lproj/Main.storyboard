@@ -12,7 +12,7 @@
         <scene sceneID="U3I-VV-gy8">
             <objects>
                 <tableViewController storyboardIdentifier="LoginViewController" id="y1q-Ao-LIZ" customClass="LoginTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ARF-h1-Glq">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ARF-h1-Glq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.50980392159999999" green="0.70588235290000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1269,6 +1269,6 @@
         <image name="tab_icon_teams" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6yj-8J-Xj3"/>
+        <segue reference="CSB-3U-MfM"/>
     </inferredMetricsTieBreakers>
 </document>
