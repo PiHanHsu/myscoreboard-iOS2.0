@@ -14,47 +14,66 @@ import FBSDKLoginKit
 class LoginTableViewController: UITableViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var headerHeight:CGFloat {
-        get {
-           return UIScreen.mainScreen().bounds.height * 0.66
-        }
-    }
-    var footerHeight = UIScreen.mainScreen().bounds.height * 0.075
-    
-//    var tableCellHeight = ( UIScreen.mainScreen().bounds.height - headerHeight - footerHeight - 20 ) / 4
-    
+    @IBOutlet weak var loginButton: UIButton!
+    var headerHeight:CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    self.tableView.backgroundView = UIImageView(image: UIImage(named: "bg_login_page"))
-    
-    self.headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: headerHeight)
-    
-    self.footerView.frame = CGRect(x: 0, y: self.view.frame.size.height - 50, width: UIScreen.mainScreen().bounds.width, height: footerHeight )
-    
+        
+        
     }
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        self.emailTextField.attributedPlaceholder = NSAttributedString(string:"信箱",
+                                                                       attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string:"密碼",
+                                                                          attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        self.tableView.backgroundColor = UIColor.mainBlueColor()
+        if self.view.frame.size.height == 480 {
+            headerHeight = self.view.frame.size.height - 50 - 44 - 44 - 64
+        }else {
+            headerHeight = self.view.frame.size.height - 50 - 44 - 44 - 44 - 64
+        }
+        
+        self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: headerHeight!)
+        self.footerView.frame = CGRect(x: 0, y: self.view.frame.size.height - 50, width: self.view.frame.size.width, height: 50 )
+        self.footerView.backgroundColor = UIColor(red: 0.0/255.0, green: 159.0/255.0, blue: 214.0/255.0, alpha: 1)
+        
+        self.loginButton.backgroundColor = UIColor.mainYellowColor()
+        self.loginButton.layer.cornerRadius = 5.0
+        self.loginButton.clipsToBounds = true
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        if self.view.frame.size.height == 480 {
+            return 3
+        }else {
+            return 4
+        }
+        
     }
-
+    
     @IBAction func fbLogin(sender: AnyObject) {
         
         let facebookLogin = FBSDKLoginManager()
@@ -83,7 +102,7 @@ class LoginTableViewController: UITableViewController {
                         }, complete: nil)
             }
         })
-
+        
     }
     
     func success(code:Int, data:JSON ) {
@@ -124,7 +143,7 @@ class LoginTableViewController: UITableViewController {
         emailTextField.text = ""
         passwordTextField.text = ""
     }
-
+    
     func isValidEmail(emailStr:String) -> Bool {
         print("validate : \(emailStr)")
         let emailRegEx = Params.emailReg
@@ -138,11 +157,11 @@ class LoginTableViewController: UITableViewController {
         let range = passwordStr.rangeOfString(passwordRegEx, options:.RegularExpressionSearch)
         return range != nil
     }
-
-    @IBAction func loginButtonPressed(sender: UIButton) {
     
+    @IBAction func loginButtonPressed(sender: UIButton) {
+        
         let email = emailTextField.text!.stringByTrimmingCharactersInSet(
-                NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
         )
         let password = passwordTextField.text!.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet()
@@ -155,7 +174,7 @@ class LoginTableViewController: UITableViewController {
                     HttpMethod.HttpMethodPost,
                     apiFunc: APiFunction.Login,
                     param: ["email": email,
-                         "password": password],
+                        "password": password],
                     success: { (code, data ) in
                         self.success(code, data: data)
                     }, failure: { (code, data) in
@@ -177,7 +196,7 @@ class LoginTableViewController: UITableViewController {
             .request(HttpMethod.HttpMethodGet,
                      apiFunc: APiFunction.GetTeamList,
                      param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
-                                ":user_id": CurrentUser.sharedInstance.userId!],
+                        ":user_id": CurrentUser.sharedInstance.userId!],
                      success: { (code , data ) in
                         //print(data)
                         for team in data["results"].arrayValue {

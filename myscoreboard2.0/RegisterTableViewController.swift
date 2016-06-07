@@ -11,12 +11,12 @@ import SwiftyJSON
 
 class RegisterTableViewController: UITableViewController {
 
+    @IBOutlet weak var navBarView: UIView!
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var retypePasswordTextField: UITextField!
     
@@ -33,6 +33,7 @@ class RegisterTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navBarView.backgroundColor = UIColor.mainBlueColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,5 +145,11 @@ class RegisterTableViewController: UITableViewController {
         emailTextField.text = ""
         passwordTextField.text = ""
     }
+    
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 
 }
