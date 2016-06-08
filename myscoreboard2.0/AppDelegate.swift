@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        
+        FBSDKApplicationDelegate.sharedInstance().application(application,didFinishLaunchingWithOptions: launchOptions)
         
         UINavigationBar.appearance().barTintColor = UIColor.mainBlueColor()
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor.mainBlueColor()
         UITabBar.appearance().tintColor = UIColor.whiteColor()
 
-        return FBSDKApplicationDelegate.sharedInstance().application(application,
-                                                                     didFinishLaunchingWithOptions: launchOptions)
+        return true
     }
     
     func application(application: UIApplication, openURL url: NSURL,

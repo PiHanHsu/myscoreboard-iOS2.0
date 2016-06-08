@@ -20,6 +20,7 @@ class LoginTableViewController: UITableViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     var headerHeight:CGFloat?
+    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,8 @@ class LoginTableViewController: UITableViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
+        self.indicator.center = self.view.center
+        self.view.addSubview(indicator)
         self.emailTextField.attributedPlaceholder = NSAttributedString(string:"信箱",
                                                                        attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string:"密碼",
@@ -75,6 +76,7 @@ class LoginTableViewController: UITableViewController {
     }
     
     @IBAction func fbLogin(sender: AnyObject) {
+        indicator.startAnimating()
         
         let facebookLogin = FBSDKLoginManager()
         
@@ -98,6 +100,7 @@ class LoginTableViewController: UITableViewController {
                             print("success")
                             self.success(code, data: data)
                         }, failure: { (code, data) in
+                            
                             self.failure(code!, data: data!)
                         }, complete: nil)
             }
@@ -106,6 +109,7 @@ class LoginTableViewController: UITableViewController {
     }
     
     func success(code:Int, data:JSON ) {
+        
         
         //haven't test from FBLogin
         print(data)
@@ -141,6 +145,7 @@ class LoginTableViewController: UITableViewController {
         
         presentViewController(alertController, animated: true, completion: nil)
         
+        indicator.stopAnimating()
         emailTextField.text = ""
         passwordTextField.text = ""
     }
@@ -161,6 +166,8 @@ class LoginTableViewController: UITableViewController {
     
     @IBAction func loginButtonPressed(sender: UIButton) {
         
+        indicator.startAnimating()
+        
         let email = emailTextField.text!.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet()
         )
@@ -179,9 +186,11 @@ class LoginTableViewController: UITableViewController {
                     success: { (code, data ) in
                         self.success(code, data: data)
                     }, failure: { (code, data) in
-                        //self.failure(code!, data: data!)
+                        print("failed")
+                        self.failure(code!, data: data!)
                     }, complete: nil)
         }else{
+            indicator.stopAnimating()
             //alert
             let alertController = UIAlertController(title: "注意!", message: "email 或 密碼格式不對", preferredStyle: .Alert)
             
@@ -203,6 +212,8 @@ class LoginTableViewController: UITableViewController {
                         for team in data["results"].arrayValue {
                             Teams.sharedInstance.teams.append(Team(data: team))
                         }
+                        //stop indicator Animating
+                        self.indicator.startAnimating()
                         //go to main page
                         self.performSegueWithIdentifier("Show main page", sender: self)
                 },
