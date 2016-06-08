@@ -104,7 +104,7 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
     
     //select gender
     func selectGender() {
-        let alertController = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let maleAlertAction = UIAlertAction(title: "男", style: .Default, handler: {
             maleAlertAction in
