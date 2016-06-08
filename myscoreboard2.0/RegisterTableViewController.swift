@@ -9,14 +9,12 @@
 import UIKit
 import SwiftyJSON
 
-class RegisterTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterTableViewController: MyScoreBoardEditInfoTableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var navBarView: UIView!
-    @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var nickNameTextField: UITextField!
     
     @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var userPhotoImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var retypePasswordTextField: UITextField!
@@ -31,14 +29,13 @@ class RegisterTableViewController: UITableViewController, UIPickerViewDelegate, 
     var password:String?
     var gender:String?
     var pickerContent:[String] = ["男", "女"]
-    let imagePicker = UIImagePickerController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navBarView.backgroundColor = UIColor.mainBlueColor()
-        self.userPhotoImageView.layer.cornerRadius = 50.0
-        self.userPhotoImageView.clipsToBounds = true
-        imagePicker.delegate = self
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -205,79 +202,6 @@ class RegisterTableViewController: UITableViewController, UIPickerViewDelegate, 
         pickerViewHeaderView.removeFromSuperview()
         pickerBackgroundView.removeFromSuperview()
     }
-    
-    
-    @IBAction func photoButtonPressed(sender: AnyObject) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        
-        let cameraAction = UIAlertAction(title: "Camera", style: .Default, handler: { cameraAction in
-            
-            if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
-                self.imagePicker.allowsEditing = false
-                self.imagePicker.sourceType = .Camera
-                self.imagePicker.cameraCaptureMode = .Photo
-                self.imagePicker.modalPresentationStyle = .FullScreen
-                
-                self.presentViewController(self.imagePicker, animated: true, completion: nil)
-            } else {
-                self.noCamera()
-            }
-            
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-        })
-        
-        let albumAction = UIAlertAction(title: "Photo Album", style: .Default, handler: { albumAction in
-            
-            self.imagePicker.allowsEditing = false
-            self.imagePicker.sourceType = .PhotoLibrary
-            
-            self.presentViewController(self.imagePicker, animated: true, completion: nil)
-
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { defaultAction in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-        })
-        
-        alertController.addAction(cameraAction)
-        alertController.addAction(albumAction)
-        alertController.addAction(cancelAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate Methods
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            userPhotoImageView.contentMode = .ScaleAspectFill
-            userPhotoImageView.image = pickedImage
-        }
-        
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func noCamera(){
-        let alertVC = UIAlertController(
-            title: "No Camera",
-            message: "Sorry, this device has no camera",
-            preferredStyle: .Alert)
-        let okAction = UIAlertAction(
-            title: "OK",
-            style:.Default,
-            handler: nil)
-        alertVC.addAction(okAction)
-        presentViewController(
-            alertVC,
-            animated: true,
-            completion: nil)
-    }
-    
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)

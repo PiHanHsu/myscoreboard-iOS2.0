@@ -342,7 +342,7 @@
                                     </constraints>
                                     <state key="normal" title="Photo"/>
                                     <connections>
-                                        <action selector="photoButtonPressed:" destination="CXH-eW-viT" eventType="touchUpInside" id="zOe-0v-6sq"/>
+                                        <action selector="photoButtonPressed:" destination="CXH-eW-viT" eventType="touchUpInside" id="vEn-ff-fWs"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -598,9 +598,8 @@
                         <outlet property="navBarView" destination="tWl-HQ-BpG" id="HMR-Sp-YwY"/>
                         <outlet property="nickNameTextField" destination="7oh-uc-K2U" id="Psn-tE-cFw"/>
                         <outlet property="passwordTextField" destination="tPE-8d-UCL" id="tEY-Cj-ad2"/>
-                        <outlet property="photoButton" destination="3dB-Su-aDs" id="elh-3v-TeT"/>
+                        <outlet property="photoImageView" destination="M6I-vd-KMM" id="kZb-BV-SDW"/>
                         <outlet property="retypePasswordTextField" destination="XDm-0X-pXf" id="8KP-cN-bRr"/>
-                        <outlet property="userPhotoImageView" destination="M6I-vd-KMM" id="ZEO-1f-rm2"/>
                         <outlet property="view" destination="3u1-UB-R8E" id="hz8-qN-fVg"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="Go to main page" animates="NO" id="6yj-8J-Xj3"/>
                     </connections>
