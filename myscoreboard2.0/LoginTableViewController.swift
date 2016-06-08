@@ -118,6 +118,7 @@ class LoginTableViewController: UITableViewController {
         CurrentUser.sharedInstance.username = data["username"].stringValue
         CurrentUser.sharedInstance.gender = data["gender"].stringValue
         CurrentUser.sharedInstance.photo_url = data["photo"].stringValue
+        CurrentUser.sharedInstance.email = data["email"].stringValue
         
         let token:String = data["auth_token"].stringValue
         let userDefault = NSUserDefaults.standardUserDefaults()

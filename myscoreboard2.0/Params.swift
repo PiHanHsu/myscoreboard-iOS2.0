@@ -25,6 +25,7 @@ struct Params {
     static let apiLogin = "login"
     static let apiLogout = "logout"
     static let apiSignup = "signup"
+    static let apiUsers = "users/"
     static let apiCreateTeam = "teams"
     static let apiUpdateTeam = "teams/"
     static let apiAddPlayerInTeam = "teams/"
@@ -41,6 +42,7 @@ class CurrentUser {
     var authToken: String?
     var userId: String?
     var gender: String?
+    var email: String?
     var username: String?
     var photo_url: String?
 }

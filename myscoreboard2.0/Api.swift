@@ -70,7 +70,8 @@ class HttpManager {
         case .Register :
             path = Params.apiRootPath + Params.apiSignup
         case .EditUser :
-            path = Params.apiRootPath + Params.apiSignup
+            path = Params.apiRootPath + Params.apiUsers + CurrentUser.sharedInstance.userId!
+            print(path)
         case .CreateTeam :
             path = Params.apiRootPath + Params.apiCreateTeam
         case .UpdateTeam :

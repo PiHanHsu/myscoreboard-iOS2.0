@@ -11,8 +11,9 @@ import UIKit
 class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var genderLabel: UILabel!
     let imagePicker = UIImagePickerController()
-    
+    var gender:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +77,7 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
             photoImageView.image = pickedImage
         }
         
-        let image_data = UIImagePNGRepresentation(photoImageView.image!)
+        //let image_data = UIImagePNGRepresentation(photoImageView.image!)
         
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -100,7 +101,27 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
             animated: true,
             completion: nil)
     }
-
+    
+    //select gender
+    func selectGender() {
+        let alertController = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
+        
+        let maleAlertAction = UIAlertAction(title: "男", style: .Default, handler: {
+            maleAlertAction in
+            self.gender = Gender.male
+            self.genderLabel.text = "男"
+        })
+        let femaleAlertAction = UIAlertAction(title: "女", style: .Default, handler: {
+            femaleAlertAction in
+            self.gender = Gender.female
+            self.genderLabel.text = "女"
+        })
+        
+        alertController.addAction(maleAlertAction)
+        alertController.addAction(femaleAlertAction)
+        
+        presentViewController(alertController, animated: true, completion:nil)
+    }
 
     // MARK: - Table view data source
 

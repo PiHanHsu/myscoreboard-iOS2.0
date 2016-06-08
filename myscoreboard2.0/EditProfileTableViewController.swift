@@ -9,18 +9,24 @@
 import UIKit
 import SDWebImage
 
-class EditProfileTableViewController: UITableViewController {
-    @IBOutlet weak var photoButton: UIButton!
-    @IBOutlet weak var headPhotoImageView: UIImageView!
+class EditProfileTableViewController: MyScoreBoardEditInfoTableViewController {
+    //@IBOutlet weak var photoButton: UIButton!
+    //@IBOutlet weak var headPhotoImageView: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if (CurrentUser.sharedInstance.photo_url != nil) {
-            headPhotoImageView.layer.cornerRadius = 50
-            headPhotoImageView.clipsToBounds = true
-            headPhotoImageView.sd_setImageWithURL(NSURL(string: CurrentUser.sharedInstance.photo_url!))
+            photoImageView.sd_setImageWithURL(NSURL(string: CurrentUser.sharedInstance.photo_url!))
+        }
+        self.userNameTextField.text = CurrentUser.sharedInstance.username
+        self.emailTextField.text = CurrentUser.sharedInstance.email
+        
+        if CurrentUser.sharedInstance.gender == "male" {
+            self.genderLabel.text = "男"
+        }else if CurrentUser.sharedInstance.gender == "female" {
+            self.genderLabel.text = "女"
         }
     }
     
@@ -50,16 +56,28 @@ class EditProfileTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 && indexPath.row == 1 {
+            selectGender()
+        }
+    }
+    
     @IBAction func saveButtonPressed(sender: AnyObject) {
+        
         HttpManager.sharedInstance
             .request(
-                
                 HttpMethod.HttpMethodPatch,
                 apiFunc: APiFunction.EditUser,
                 param: ["auth_token": CurrentUser.sharedInstance.authToken!,
-                    "username" : userNameTextField.text!,],
+                         "username" : userNameTextField.text!,
+                           "gender" : genderLabel.text!,
+                            "email" : emailTextField.text!],
                 success: { (code, data ) in
-                    print("success")
+                    let alertController = UIAlertController(title: "更新成功", message: "", preferredStyle: .Alert)
+                    let alertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    
+                    alertController.addAction(alertAction)
+                    self.presentViewController(alertController, animated: true, completion: nil)
                     
                 }, failure: { (code, data) in
                     //self.failure(code!, data: data!)
@@ -88,60 +106,5 @@ class EditProfileTableViewController: UITableViewController {
                 }, complete: nil)
   
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

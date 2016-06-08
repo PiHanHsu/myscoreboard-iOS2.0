@@ -9,33 +9,20 @@
 import UIKit
 import SwiftyJSON
 
-class RegisterTableViewController: MyScoreBoardEditInfoTableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
 
     @IBOutlet weak var navBarView: UIView!
     @IBOutlet weak var nickNameTextField: UITextField!
-    
-    @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var retypePasswordTextField: UITextField!
     
-    @IBOutlet weak var genderPicker: UIPickerView!
-    
-    var blackBackGround = UIView()
-    var pickerViewHeaderView = UIView()
-    var pickerBackgroundView = UIView()
-    
     var email:String?
     var password:String?
-    var gender:String?
-    var pickerContent:[String] = ["男", "女"]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navBarView.backgroundColor = UIColor.mainBlueColor()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,38 +52,12 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController, UIPi
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //設定每個header的高度
         return 20
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 1 {
-            genderPicker.delegate = self
-            genderPicker.dataSource = self
-            
-            self.blackBackGround = UIView(frame: CGRect(x: 0, y: 0 , width: UIScreen.mainScreen().bounds.width , height: UIScreen.mainScreen().bounds.height * 7/10 ))
-            self.blackBackGround.backgroundColor = UIColor.blackColor()
-            self.blackBackGround.alpha = 0.5
-            self.view.addSubview(self.blackBackGround)
-            
-            
-            pickerViewHeaderView.frame = CGRect(x: 0, y: UIScreen.mainScreen().bounds.height * 7/10 , width: UIScreen.mainScreen().bounds.width , height: UIScreen.mainScreen().bounds.height * 1/10 )
-            pickerViewHeaderView.backgroundColor = UIColor.whiteColor()
-            let headerTitleLabel = UILabel()
-            headerTitleLabel.text = "選擇性別"
-            headerTitleLabel.textColor = UIColor.blackColor()
-            headerTitleLabel.frame = CGRect(x: 0, y: 0 , width: 75, height: 21 )
-            headerTitleLabel.center = CGPoint(x: UIScreen.mainScreen().bounds.width * 0.5, y: UIScreen.mainScreen().bounds.height * 0.05)
-            pickerViewHeaderView.addSubview(headerTitleLabel)
-            self.view.addSubview(pickerViewHeaderView)
-            
-            pickerBackgroundView.frame = CGRect(x: 0, y: UIScreen.mainScreen().bounds.height * 8/10 , width: UIScreen.mainScreen().bounds.width , height: UIScreen.mainScreen().bounds.height * 2/10 )
-            pickerBackgroundView.backgroundColor = UIColor(red: 155.0/255.0, green: 155.0/255.0, blue: 155.0/255.0, alpha: 1)
-            self.view.addSubview(pickerBackgroundView)
-            
-            genderPicker.frame =  CGRect(x: 0, y: UIScreen.mainScreen().bounds.height * 8/10 , width: UIScreen.mainScreen().bounds.width , height: UIScreen.mainScreen().bounds.height * 2/10 )
-            self.view.addSubview(genderPicker)
-
+            selectGender()
         }
     }
    
@@ -163,44 +124,6 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController, UIPi
         
         emailTextField.text = ""
         passwordTextField.text = ""
-    }
-    
-    // MARK: - UIPickerViewDataSource
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 2
-    }
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // MARK: - UIPickerViewDelegate
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.pickerContent[row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        switch row
-        {
-        case 0:
-            gender = Gender.male;
-        case 1:
-            gender = Gender.female;
-        default:
-            break;
-        }
-        genderLabel.text = pickerContent[row]
-        dismissPickerView()
-    }
-    
-    func dismissPickerView() {
-        genderPicker.removeFromSuperview()
-        blackBackGround.removeFromSuperview()
-        pickerViewHeaderView.removeFromSuperview()
-        pickerBackgroundView.removeFromSuperview()
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
