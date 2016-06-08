@@ -341,6 +341,9 @@
                                         <constraint firstAttribute="width" constant="100" id="a8S-UR-hvr"/>
                                     </constraints>
                                     <state key="normal" title="Photo"/>
+                                    <connections>
+                                        <action selector="photoButtonPressed:" destination="CXH-eW-viT" eventType="touchUpInside" id="zOe-0v-6sq"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
