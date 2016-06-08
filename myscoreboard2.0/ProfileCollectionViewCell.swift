@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SDWebImage
 
-class ProfileCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
+class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var profileTableView: UITableView!
     @IBOutlet weak var userNameLabel: UILabel!

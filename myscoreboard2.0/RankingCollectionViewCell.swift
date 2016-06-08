@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SDWebImage
 
-class RankingCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
+class RankingCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var rankingTableView: UITableView!

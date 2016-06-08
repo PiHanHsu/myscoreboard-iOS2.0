@@ -69,10 +69,6 @@ class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollec
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("rankingCollectionViewCell", forIndexPath: indexPath) as! RankingCollectionViewCell
         
-        cell.layer.borderColor = UIColor.mainBlueColor().CGColor
-        cell.layer.cornerRadius = 8.0
-        cell.layer.borderWidth = 2.0
-        
         cell.teamNameLabel.text = rankData["result"][indexPath.row]["team"].stringValue
         cell.rankData = rankData["result"][indexPath.row]
         cell.gameType = gameType

@@ -45,10 +45,6 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProfileCollectionViewCell", forIndexPath: indexPath) as! ProfileCollectionViewCell
         
-        cell.layer.borderColor = UIColor.mainBlueColor().CGColor
-        cell.layer.cornerRadius = 8.0
-        cell.layer.borderWidth = 2.0
-        
         cell.statsData = statsData[indexPath.row]
         cell.profileTableView.reloadData()
         

@@ -8,6 +8,6 @@
 
 import UIKit
 
-class TeamCollectionViewCell: UICollectionViewCell {
+class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell {
     
 }
