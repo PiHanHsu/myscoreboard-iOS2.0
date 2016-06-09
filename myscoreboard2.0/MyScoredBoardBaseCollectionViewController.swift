@@ -18,6 +18,8 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
         super.viewDidLoad()
         collectionView?.delegate = self
         self.automaticallyAdjustsScrollViewInsets = false
+        self.view.backgroundColor = UIColor.backgroundGrayColor()
+        self.collectionView?.backgroundColor = UIColor.backgroundGrayColor()
     }
     
     override func didReceiveMemoryWarning() {
