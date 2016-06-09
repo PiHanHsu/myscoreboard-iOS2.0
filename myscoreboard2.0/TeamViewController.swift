@@ -32,6 +32,13 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("teamCollectionViewCell", forIndexPath: indexPath) as! TeamCollectionViewCell
         
+        if indexPath.row == Teams.sharedInstance.teams.count {
+            let label = UILabel()
+            label.text = "新增球隊"
+            label.frame = CGRectMake(50, 200, 100, 21)
+            cell.addSubview(label)
+        }
+        
         if indexPath.row != index {
             cell.transform = Params.TRANSFORM_CELL_VALUE
         }
@@ -39,4 +46,10 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == Teams.sharedInstance.teams.count {
+          performSegueWithIdentifier("GoToAddNewTeamPage", sender: self)
+        }
+        
+    }
 }
