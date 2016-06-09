@@ -42,7 +42,6 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
         default:
             break
         }
-        
         return 0
     }
 
