@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayerCardCollectionViewCell" id="gTV-IL-0wX" customClass="PlayerCardCollectionViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="230"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="180" height="230"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5BP-cb-wWb">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="230"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPO-YW-K30">
+                        <rect key="frame" x="3" y="182" width="174" height="45"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zim-Ew-3Co">
+                        <rect key="frame" x="3" y="3" width="174" height="174"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Zim-Ew-3Co" secondAttribute="height" multiplier="3:4" id="0hx-3W-3Io"/>
+                            <constraint firstAttribute="width" secondItem="Zim-Ew-3Co" secondAttribute="height" id="3me-Sz-riv"/>
+                            <constraint firstAttribute="width" secondItem="Zim-Ew-3Co" secondAttribute="height" multiplier="1:1" id="Fjw-fv-uMU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0hx-3W-3Io"/>
+                                <exclude reference="Fjw-fv-uMU"/>
+                            </mask>
+                        </variation>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="5BP-cb-wWb" secondAttribute="bottom" id="7B3-Uk-ZaT"/>
+                <constraint firstItem="PPO-YW-K30" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="7bg-E8-hyO"/>
+                <constraint firstItem="5BP-cb-wWb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="GSx-ha-drw"/>
+                <constraint firstItem="Zim-Ew-3Co" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="Gkk-7j-dJR"/>
+                <constraint firstItem="Zim-Ew-3Co" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="Jxh-7J-Pdk"/>
+                <constraint firstItem="PPO-YW-K30" firstAttribute="top" secondItem="Zim-Ew-3Co" secondAttribute="bottom" constant="5" id="KJi-kW-ug1"/>
+                <constraint firstItem="PPO-YW-K30" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="LaZ-iA-blP"/>
+                <constraint firstItem="Zim-Ew-3Co" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="QjR-10-UKZ"/>
+                <constraint firstAttribute="trailing" secondItem="5BP-cb-wWb" secondAttribute="trailing" id="V7o-e5-gKK"/>
+                <constraint firstAttribute="bottom" secondItem="Zim-Ew-3Co" secondAttribute="bottom" id="X3T-Ms-kRO"/>
+                <constraint firstItem="Zim-Ew-3Co" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="bb6-qD-qmA"/>
+                <constraint firstAttribute="trailing" secondItem="PPO-YW-K30" secondAttribute="trailing" constant="3" id="eud-A0-PlC"/>
+                <constraint firstAttribute="trailing" secondItem="Zim-Ew-3Co" secondAttribute="trailing" constant="3" id="hiM-ay-qGf"/>
+                <constraint firstItem="5BP-cb-wWb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qQP-fJ-NOW"/>
+                <constraint firstAttribute="bottom" secondItem="PPO-YW-K30" secondAttribute="bottom" constant="3" id="wtH-cs-pdi"/>
+            </constraints>
+            <size key="customSize" width="181" height="231"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="QjR-10-UKZ"/>
+                    <exclude reference="X3T-Ms-kRO"/>
+                    <exclude reference="bb6-qD-qmA"/>
+                    <exclude reference="7bg-E8-hyO"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="frameView" destination="5BP-cb-wWb" id="Qgc-GF-hNz"/>
+                <outlet property="playerImage" destination="Zim-Ew-3Co" id="U1F-eH-nEo"/>
+                <outlet property="playerName" destination="PPO-YW-K30" id="ZJz-px-swP"/>
+            </connections>
+            <point key="canvasLocation" x="-53.5" y="272.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

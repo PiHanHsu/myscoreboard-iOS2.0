@@ -17,6 +17,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView?.dataSource = self
+        self.collectionView?.registerNib(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TeamCollectionViewCell")
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,13 +31,17 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("teamCollectionViewCell", forIndexPath: indexPath) as! TeamCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TeamCollectionViewCell", forIndexPath: indexPath) as! TeamCollectionViewCell
+        
+        
         
         if indexPath.row == Teams.sharedInstance.teams.count {
             let label = UILabel()
             label.text = "新增球隊"
             label.frame = CGRectMake(50, 200, 100, 21)
             cell.addSubview(label)
+        }else{
+            cell.team = Teams.sharedInstance.teams[indexPath.row]
         }
         
         if indexPath.row != index {
