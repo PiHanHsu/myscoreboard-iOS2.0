@@ -37,10 +37,10 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         
         if indexPath.row == Teams.sharedInstance.teams.count {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("addTeamCollectionViewCell", forIndexPath: indexPath) as! MyScoreBoardBaseCollectionViewCell
-            
             return cell
         }else{
             cell.team = Teams.sharedInstance.teams[indexPath.row]
+            cell.startGameButton.addTarget(self, action: #selector(TeamViewController.startGame), forControlEvents: .TouchUpInside)
         }
         
         if indexPath.row != index {
@@ -54,6 +54,9 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         if indexPath.row == Teams.sharedInstance.teams.count {
           performSegueWithIdentifier("GoToAddNewTeamPage", sender: self)
         }
-        
+    }
+    
+    func startGame() {
+       performSegueWithIdentifier("GoToStartGamePage", sender: self)
     }
 }

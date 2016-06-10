@@ -88,5 +88,4 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
         return cell
     }
 
-
 }
