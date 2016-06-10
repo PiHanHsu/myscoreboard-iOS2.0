@@ -36,10 +36,9 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         
         
         if indexPath.row == Teams.sharedInstance.teams.count {
-            let label = UILabel()
-            label.text = "新增球隊"
-            label.frame = CGRectMake(50, 200, 100, 21)
-            cell.addSubview(label)
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("addTeamCollectionViewCell", forIndexPath: indexPath) as! MyScoreBoardBaseCollectionViewCell
+            
+            return cell
         }else{
             cell.team = Teams.sharedInstance.teams[indexPath.row]
         }

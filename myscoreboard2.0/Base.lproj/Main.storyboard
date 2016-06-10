@@ -1149,14 +1149,36 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="teamCollectionViewCell" id="ad6-6G-Qnw" customClass="TeamCollectionViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addTeamCollectionViewCell" id="ad6-6G-Qnw" customClass="MyScoreBoardBaseCollectionViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="101" width="250" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addTeam" translatesAutoresizingMaskIntoConstraints="NO" id="PzO-Uh-soH">
+                                                    <rect key="frame" x="63" y="88" width="125" height="125"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="130" id="cE8-nB-qoX"/>
+                                                        <constraint firstAttribute="height" constant="130" id="lgr-Uk-DWb"/>
+                                                        <constraint firstAttribute="width" secondItem="PzO-Uh-soH" secondAttribute="height" multiplier="1:1" id="op1-Zu-0Za"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="cE8-nB-qoX"/>
+                                                            <exclude reference="lgr-Uk-DWb"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="PzO-Uh-soH" firstAttribute="centerX" secondItem="ad6-6G-Qnw" secondAttribute="centerX" id="NBu-ti-3xa"/>
+                                            <constraint firstItem="PzO-Uh-soH" firstAttribute="width" secondItem="ad6-6G-Qnw" secondAttribute="width" multiplier="1:2" id="fnV-wd-sUc"/>
+                                            <constraint firstItem="PzO-Uh-soH" firstAttribute="centerY" secondItem="ad6-6G-Qnw" secondAttribute="centerY" id="jcr-bR-VlE"/>
+                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -1492,6 +1514,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addTeam" width="119" height="114"/>
         <image name="email" width="45" height="36"/>
         <image name="facebook_login" width="310" height="40"/>
         <image name="logo_80x80" width="80" height="80"/>

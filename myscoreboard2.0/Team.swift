@@ -37,7 +37,7 @@ class Team: NSObject {
             newPlayer.playerName = playerData["username"]?.stringValue
             newPlayer.playerId = playerData["id"]?.stringValue
             newPlayer.playerImageUrl = playerData["user_photo"]?.stringValue
-            print(playerData["user_photo"])
+            //print(playerData["user_photo"])
             self.players.append(newPlayer)
         }
         
