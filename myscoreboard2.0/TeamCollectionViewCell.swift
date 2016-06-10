@@ -69,7 +69,7 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
         
         if indexPath.item == 0 {
             cell.playerName.text = "新增成員"
-            cell.playerImage.image = UIImage(named: "ico_member_add_3x")
+            cell.playerImage.image = UIImage(named: "ico_member_add")
             
         }else{
             
