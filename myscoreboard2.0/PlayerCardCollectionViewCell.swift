@@ -13,8 +13,9 @@ class PlayerCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var playerImage: UIImageView!
     @IBOutlet weak var playerName: UILabel!
     @IBOutlet weak var frameView: UIImageView!
+    @IBOutlet weak var selectedButton: UIButton!
     
-     
+    var isPlayerSelected = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +31,12 @@ class PlayerCardCollectionViewCell: UICollectionViewCell {
         super.drawRect(rect)
         self.playerImage.layer.masksToBounds = true
         self.playerImage.layer.cornerRadius = self.playerImage.frame.size.width/2
+        if isPlayerSelected {
+            self.selectedButton.layer.cornerRadius = self.selectedButton.frame.size.width/2
+            self.selectedButton.clipsToBounds = true
+            self.selectedButton.layer.borderColor = UIColor.redColor().CGColor
+            self.selectedButton.layer.borderWidth = 2.0
+        }
         //print("width: \(self.playerImage.frame.size.width)")
     }
 }

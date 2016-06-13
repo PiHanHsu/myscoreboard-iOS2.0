@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="180" height="230"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPO-YW-K30">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="PPO-YW-K30">
                         <rect key="frame" x="3" y="182" width="174" height="45"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
@@ -38,29 +38,44 @@
                             </mask>
                         </variation>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfN-9G-j6K">
+                        <rect key="frame" x="1" y="1" width="178" height="178"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="vfN-9G-j6K" secondAttribute="height" multiplier="1:1" id="gyh-oW-hXS"/>
+                        </constraints>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="vfN-9G-j6K" firstAttribute="centerY" secondItem="Zim-Ew-3Co" secondAttribute="centerY" id="0Cb-pR-oPk"/>
                 <constraint firstAttribute="bottom" secondItem="5BP-cb-wWb" secondAttribute="bottom" id="7B3-Uk-ZaT"/>
                 <constraint firstItem="PPO-YW-K30" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="7bg-E8-hyO"/>
                 <constraint firstItem="5BP-cb-wWb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="GSx-ha-drw"/>
                 <constraint firstItem="Zim-Ew-3Co" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="Gkk-7j-dJR"/>
+                <constraint firstItem="vfN-9G-j6K" firstAttribute="centerX" secondItem="5BP-cb-wWb" secondAttribute="centerX" id="Iw7-vz-bHn"/>
                 <constraint firstItem="Zim-Ew-3Co" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="Jxh-7J-Pdk"/>
                 <constraint firstItem="PPO-YW-K30" firstAttribute="top" secondItem="Zim-Ew-3Co" secondAttribute="bottom" constant="5" id="KJi-kW-ug1"/>
                 <constraint firstItem="PPO-YW-K30" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="LaZ-iA-blP"/>
                 <constraint firstItem="Zim-Ew-3Co" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="QjR-10-UKZ"/>
                 <constraint firstAttribute="trailing" secondItem="5BP-cb-wWb" secondAttribute="trailing" id="V7o-e5-gKK"/>
                 <constraint firstAttribute="bottom" secondItem="Zim-Ew-3Co" secondAttribute="bottom" id="X3T-Ms-kRO"/>
+                <constraint firstItem="vfN-9G-j6K" firstAttribute="centerX" secondItem="Zim-Ew-3Co" secondAttribute="centerX" id="aLJ-Yo-RGH"/>
                 <constraint firstItem="Zim-Ew-3Co" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="bb6-qD-qmA"/>
                 <constraint firstAttribute="trailing" secondItem="PPO-YW-K30" secondAttribute="trailing" constant="3" id="eud-A0-PlC"/>
+                <constraint firstItem="vfN-9G-j6K" firstAttribute="width" relation="greaterThanOrEqual" secondItem="Zim-Ew-3Co" secondAttribute="width" constant="4" id="gD3-cl-mgs"/>
                 <constraint firstAttribute="trailing" secondItem="Zim-Ew-3Co" secondAttribute="trailing" constant="3" id="hiM-ay-qGf"/>
+                <constraint firstItem="vfN-9G-j6K" firstAttribute="width" relation="greaterThanOrEqual" secondItem="5BP-cb-wWb" secondAttribute="width" constant="4" id="mlv-CR-8Wk"/>
                 <constraint firstItem="5BP-cb-wWb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qQP-fJ-NOW"/>
+                <constraint firstItem="vfN-9G-j6K" firstAttribute="centerY" secondItem="5BP-cb-wWb" secondAttribute="centerY" id="sSp-dU-KfP"/>
                 <constraint firstAttribute="bottom" secondItem="PPO-YW-K30" secondAttribute="bottom" constant="3" id="wtH-cs-pdi"/>
             </constraints>
             <size key="customSize" width="181" height="231"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="Iw7-vz-bHn"/>
+                    <exclude reference="mlv-CR-8Wk"/>
+                    <exclude reference="sSp-dU-KfP"/>
                     <exclude reference="QjR-10-UKZ"/>
                     <exclude reference="X3T-Ms-kRO"/>
                     <exclude reference="bb6-qD-qmA"/>
@@ -71,6 +86,7 @@
                 <outlet property="frameView" destination="5BP-cb-wWb" id="Qgc-GF-hNz"/>
                 <outlet property="playerImage" destination="Zim-Ew-3Co" id="U1F-eH-nEo"/>
                 <outlet property="playerName" destination="PPO-YW-K30" id="ZJz-px-swP"/>
+                <outlet property="selectedButton" destination="vfN-9G-j6K" id="wNn-kC-fIG"/>
             </connections>
             <point key="canvasLocation" x="-53.5" y="272.5"/>
         </collectionViewCell>
