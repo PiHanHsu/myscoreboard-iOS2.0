@@ -46,12 +46,8 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProfileCollectionViewCell", forIndexPath: indexPath) as! ProfileCollectionViewCell
         
         cell.statsData = statsData[indexPath.row]
+        cell.transform = checkTransform(indexPath.row)
         cell.profileTableView.reloadData()
-        
-        
-        if indexPath.row != index {
-            cell.transform = Params.TRANSFORM_CELL_VALUE
-        }
         
         return cell
     }

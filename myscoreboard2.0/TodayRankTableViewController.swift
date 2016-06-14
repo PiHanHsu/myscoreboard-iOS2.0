@@ -9,10 +9,13 @@
 import UIKit
 
 class TodayRankTableViewController: UITableViewController {
-
+    
+    let gameTableViewCell = "GameTableViewCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.registerNib(UINib(nibName: gameTableViewCell, bundle: nil), forCellReuseIdentifier: gameTableViewCell)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,23 +32,28 @@ class TodayRankTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 3
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
+        let cell = tableView.dequeueReusableCellWithIdentifier(gameTableViewCell, forIndexPath: indexPath) as! GameTableViewCell
+        cell.team1Player1NameLabel.text = "PiHan"
+        cell.team1Player2NameLabel.text = "Dyson"
+        cell.team2Player1NameLabel.text = "Damon"
+        cell.team2Player2NameLabel.text = "Steven"
+        cell.team1ScoreLabel.text = "21"
+        cell.team2ScoreLabel.text = "19"
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

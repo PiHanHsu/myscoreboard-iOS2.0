@@ -72,11 +72,8 @@ class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollec
         cell.teamNameLabel.text = rankData["result"][indexPath.row]["team"].stringValue
         cell.rankData = rankData["result"][indexPath.row]
         cell.gameType = gameType
+        cell.transform = checkTransform(indexPath.row)
         cell.rankingTableView.reloadData()
-        
-        if indexPath.row != index {
-            cell.transform = Params.TRANSFORM_CELL_VALUE
-        }
         
         return cell
     }

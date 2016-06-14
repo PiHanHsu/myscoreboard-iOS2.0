@@ -26,6 +26,8 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
         super.didReceiveMemoryWarning()
     }
     
+    // collectionView Delegate
+    
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
@@ -48,6 +50,8 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
         return Params.spacing
     }
     
+    
+    // collectionView Paging
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
@@ -113,4 +117,13 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
         }
     }
     
+    // check if Transform needed?
+    
+    func checkTransform(cellIndex: Int) -> CGAffineTransform{
+        if cellIndex != index {
+            return CGAffineTransformMakeScale(0.9, 0.9)
+        }else {
+            return CGAffineTransformMakeScale(1, 1)
+        }
+    }
 }

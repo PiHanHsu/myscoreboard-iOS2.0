@@ -34,35 +34,30 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TeamCollectionViewCell", forIndexPath: indexPath) as! TeamCollectionViewCell
         
-        
-        
         if indexPath.row == Teams.sharedInstance.teams.count {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("addTeamCollectionViewCell", forIndexPath: indexPath) as! MyScoreBoardBaseCollectionViewCell
+            cell.transform = checkTransform(indexPath.row)
             return cell
         }else{
             cell.team = Teams.sharedInstance.teams[indexPath.row]
             cell.startGameButton.tag = indexPath.row
             cell.startGameButton.addTarget(self, action: #selector(TeamViewController.startGame), forControlEvents: .TouchUpInside)
         }
-        
-        if indexPath.row != index {
-            cell.transform = Params.TRANSFORM_CELL_VALUE
-        }
-        
+        cell.transform = checkTransform(indexPath.row)
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == Teams.sharedInstance.teams.count {
-            performSegueWithIdentifier("GoToAddNewTeamPage", sender: self)
+          performSegueWithIdentifier("GoToAddNewTeamPage", sender: self)
         }
     }
     
     func startGame(sender: UIButton) {
-        
-        selectedTeam = Teams.sharedInstance.teams[sender.tag]
-        self.performSegueWithIdentifier("GoToSelectPlayerPage", sender: self)
-        
+       
+       selectedTeam = Teams.sharedInstance.teams[sender.tag]
+       self.performSegueWithIdentifier("GoToSelectPlayerPage", sender: self)
+       
         
     }
     

@@ -48,17 +48,7 @@ class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerV
         Game.shareInstance.playerM = self.autoSet
         
         self.initPicker()
-        
-//        let rightItem = UIBarButtonItem()
-//        let backItem = UIBarButtonItem()
-//        rightItem.title = "今日紀錄"
-//        rightItem.target = self
-//        rightItem.action = #selector(self.getTodayRecord)
-//        backItem.title = "我的球隊"
-//        backItem.target = self
-//        backItem.action = #selector(self.backToGameSet)
-//        self.navigationItem.setLeftBarButtonItem(backItem, animated: true)
-//        self.navigationItem.setRightBarButtonItem(rightItem, animated: true)
+
     
     }
     
@@ -89,16 +79,7 @@ class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerV
         self.redSidePicker.selectRow(0, inComponent: 0, animated: true)
         self.blueSidePicker.selectRow(0, inComponent: 0, animated: true)
     }
-    
-//    func getTodayRecord() {
-//        let destinationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TodayRankTableViewController")
-//        self.navigationController?.pushViewController(destinationController, animated: true)
-//    }
-//    
-//    func backToGameSet() {
-//        self.navigationController?.popViewControllerAnimated(true)
-//    }
-    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -149,14 +130,13 @@ class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerV
     }
     
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+     
      }
-     */
+    
     
 }
