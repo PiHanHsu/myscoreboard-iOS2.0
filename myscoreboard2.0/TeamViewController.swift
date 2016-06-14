@@ -13,6 +13,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     
     var rankData:JSON = []
     var gameType: String = GameType.single
+    var selectedTeam: Team?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
             return cell
         }else{
             cell.team = Teams.sharedInstance.teams[indexPath.row]
+            cell.startGameButton.tag = indexPath.row
             cell.startGameButton.addTarget(self, action: #selector(TeamViewController.startGame), forControlEvents: .TouchUpInside)
         }
         
@@ -56,7 +58,10 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         }
     }
     
-    func startGame() {
+    func startGame(sender: UIButton) {
+       
+       selectedTeam = Teams.sharedInstance.teams[sender.tag]
+        
        let alertController = UIAlertController(title: "選擇排賽模式", message: nil, preferredStyle: .ActionSheet)
         let autoAction = UIAlertAction(title: "自動排賽", style: .Default, handler: {UIAlertAction in
             self.performSegueWithIdentifier("GoToSelectPlayerPage", sender: self)
@@ -73,5 +78,12 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         
         self.presentViewController(alertController, animated: true, completion: nil)
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "GoToSelectPlayerPage" {
+            let vc =  segue.destinationViewController as! SelectPlayerViewController
+            vc.team = selectedTeam
+        }
     }
 }
