@@ -59,7 +59,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     func startGame() {
        let alertController = UIAlertController(title: "選擇排賽模式", message: nil, preferredStyle: .ActionSheet)
         let autoAction = UIAlertAction(title: "自動排賽", style: .Default, handler: {UIAlertAction in
-            self.performSegueWithIdentifier("GoToStartGamePage", sender: self)
+            self.performSegueWithIdentifier("GoToSelectPlayerPage", sender: self)
         })
         let manualAction = UIAlertAction(title: "手動排賽", style: .Default, handler:{UIAlertAction in
             self.performSegueWithIdentifier("GoToStartGamePage", sender: self)
