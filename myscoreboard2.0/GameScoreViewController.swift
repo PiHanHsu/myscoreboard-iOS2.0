@@ -49,16 +49,16 @@ class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerV
         
         self.initPicker()
         
-        let rightItem = UIBarButtonItem()
-        let backItem = UIBarButtonItem()
-        rightItem.title = "今日紀錄"
-        rightItem.target = self
-        rightItem.action = #selector(self.getTodayRecord)
-        backItem.title = "我的球隊"
-        backItem.target = self
-        backItem.action = #selector(self.backToGameSet)
-        self.navigationItem.setLeftBarButtonItem(backItem, animated: true)
-        self.navigationItem.setRightBarButtonItem(rightItem, animated: true)
+//        let rightItem = UIBarButtonItem()
+//        let backItem = UIBarButtonItem()
+//        rightItem.title = "今日紀錄"
+//        rightItem.target = self
+//        rightItem.action = #selector(self.getTodayRecord)
+//        backItem.title = "我的球隊"
+//        backItem.target = self
+//        backItem.action = #selector(self.backToGameSet)
+//        self.navigationItem.setLeftBarButtonItem(backItem, animated: true)
+//        self.navigationItem.setRightBarButtonItem(rightItem, animated: true)
     
     }
     
@@ -82,7 +82,7 @@ class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerV
         self.redSidePicker.dataSource = self
         self.redSidePicker.delegate = self
         
-        for i in 0...21 {
+        for i in 0...35 {
             self.pickerContent.append(i)
         }
 
@@ -90,14 +90,14 @@ class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerV
         self.blueSidePicker.selectRow(0, inComponent: 0, animated: true)
     }
     
-    func getTodayRecord() {
-        let destinationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TodayRankTableViewController")
-        self.navigationController?.pushViewController(destinationController, animated: true)
-    }
-    
-    func backToGameSet() {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
+//    func getTodayRecord() {
+//        let destinationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TodayRankTableViewController")
+//        self.navigationController?.pushViewController(destinationController, animated: true)
+//    }
+//    
+//    func backToGameSet() {
+//        self.navigationController?.popViewControllerAnimated(true)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

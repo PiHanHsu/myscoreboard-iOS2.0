@@ -1563,7 +1563,7 @@
             </objects>
             <point key="canvasLocation" x="876" y="1155"/>
         </scene>
-        <!--Game Score View Controller-->
+        <!--計分板-->
         <scene sceneID="Pqw-fO-dfx">
             <objects>
                 <viewController storyboardIdentifier="GameScoreViewController" id="F1r-4e-mDh" customClass="GameScoreViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -1752,8 +1752,8 @@
                                     <constraint firstAttribute="width" constant="150" id="Bmv-4l-uvH"/>
                                     <constraint firstAttribute="width" secondItem="3Fs-hp-EMn" secondAttribute="height" multiplier="131:34" id="Sul-jD-3PX"/>
                                 </constraints>
-                                <state key="normal" image="bn_scoreboard_submit">
-                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="完成此局比賽">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1771,7 +1771,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uY-JK-dy4">
-                                <rect key="frame" x="0.0" y="401" width="600" height="150"/>
+                                <rect key="frame" x="0.0" y="406" width="600" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IpD-8s-ZsO">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
@@ -1931,6 +1931,15 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="計分板" id="N47-fw-J8Z">
+                        <barButtonItem key="rightBarButtonItem" title="今日紀錄" id="aPj-16-N1H">
+                            <connections>
+                                <segue destination="uf9-0W-Vuw" kind="show" id="XA7-yE-IWt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="blueSidePicker" destination="qnM-S1-DFt" id="xws-oV-4Qz"/>
                         <outlet property="blueTeamPlayerOne" destination="R0M-Oz-beB" id="8Wz-UJ-nmL"/>
@@ -1956,7 +1965,26 @@
             </objects>
             <point key="canvasLocation" x="2369" y="1936"/>
         </scene>
-        <!--Select Player View Controller-->
+        <!-- 今日紀錄-->
+        <scene sceneID="GrE-jv-UNk">
+            <objects>
+                <tableViewController storyboardIdentifier="TodayRankTableViewController" id="uf9-0W-Vuw" customClass="TodayRankTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vre-eh-3zr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="uf9-0W-Vuw" id="0NY-nL-HWf"/>
+                            <outlet property="delegate" destination="uf9-0W-Vuw" id="4dV-oY-1bw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title=" 今日紀錄" id="C0N-gv-0lr"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wxy-A7-jqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3025" y="1936"/>
+        </scene>
+        <!--選擇球員-->
         <scene sceneID="Acy-nI-YMM">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="NPi-ps-mZ8" customClass="SelectPlayerViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -2028,6 +2056,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="選擇球員" id="lNJ-ZM-2lv"/>
                     <connections>
                         <outlet property="selectPlayersCollectionView" destination="D9E-43-nV4" id="DEh-kZ-RSH"/>
                     </connections>
@@ -2040,7 +2069,6 @@
     <resources>
         <image name="addTeam" width="330" height="265"/>
         <image name="bg_nexton_bar" width="160" height="160"/>
-        <image name="bn_scoreboard_submit" width="160" height="160"/>
         <image name="email" width="45" height="36"/>
         <image name="facebook_login" width="310" height="40"/>
         <image name="icon_counter_dots" width="160" height="160"/>
