@@ -37,6 +37,7 @@ class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerV
     var pickerContent:[Int] = []
     var autoSet:[String:Int] = [:]
     var currentSetIndex = 0
+    var selectedPlayers = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

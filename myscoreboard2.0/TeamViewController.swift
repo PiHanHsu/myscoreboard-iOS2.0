@@ -54,29 +54,15 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == Teams.sharedInstance.teams.count {
-          performSegueWithIdentifier("GoToAddNewTeamPage", sender: self)
+            performSegueWithIdentifier("GoToAddNewTeamPage", sender: self)
         }
     }
     
     func startGame(sender: UIButton) {
-       
-       selectedTeam = Teams.sharedInstance.teams[sender.tag]
         
-       let alertController = UIAlertController(title: "選擇排賽模式", message: nil, preferredStyle: .ActionSheet)
-        let autoAction = UIAlertAction(title: "自動排賽", style: .Default, handler: {UIAlertAction in
-            self.performSegueWithIdentifier("GoToSelectPlayerPage", sender: self)
-        })
-        let manualAction = UIAlertAction(title: "手動排賽", style: .Default, handler:{UIAlertAction in
-            self.performSegueWithIdentifier("GoToStartGamePage", sender: self)
-        })
-
-        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+        selectedTeam = Teams.sharedInstance.teams[sender.tag]
+        self.performSegueWithIdentifier("GoToSelectPlayerPage", sender: self)
         
-        alertController.addAction(autoAction)
-        alertController.addAction(manualAction)
-        alertController.addAction(cancelAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
     

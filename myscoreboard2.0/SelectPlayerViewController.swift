@@ -8,20 +8,20 @@
 
 import UIKit
 
-class SelectPlayerViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-
+class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
     @IBOutlet weak var selectPlayersCollectionView: UICollectionView!
     var team: Team?
+    var selectedPlayers = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(team?.players)
         self.selectPlayersCollectionView.delegate = self
         self.selectPlayersCollectionView.dataSource = self
         selectPlayersCollectionView.registerNib(UINib(nibName: "PlayerCardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PlayerCardCollectionViewCell")
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,30 +63,68 @@ class SelectPlayerViewController: UIViewController,UICollectionViewDelegate,UICo
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlayerCardCollectionViewCell", forIndexPath: indexPath) as! PlayerCardCollectionViewCell
+        
+        let player = team!.players[indexPath.row]
+        cell.playerName.text = player.playerName
+        cell.selectedButton.tag = indexPath.row
+        cell.selectedButton.addTarget(self, action: #selector(SelectPlayerViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        if cell.isPlayerSelected {
             
-            let player = team!.players[indexPath.row]
-            cell.playerName.text = player.playerName
-            
-            if let imageUrl = player.playerImageUrl {
-                if imageUrl != "" {
-                    cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!)
-                }
-            }else{
-                cell.playerImage.image = UIImage()
+        }
+        if let imageUrl = player.playerImageUrl {
+            if imageUrl != "" {
+                cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!)
             }
-    
+        }else{
+            cell.playerImage.image = UIImage()
+        }
+        
         
         return cell
     }
+    
+//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        print("selected!!")
+//        let cell = self.selectPlayersCollectionView.cellForItemAtIndexPath(indexPath) as! PlayerCardCollectionViewCell
+//        if cell.isPlayerSelected {
+//            cell.isPlayerSelected = false
+//        }else{
+//            cell.isPlayerSelected = true
+//        }
+//        
+//        selectPlayersCollectionView.reloadData()
+//        
+//    }
+    
+    func buttonClicked(sender:UIButton)
+    {
+        let cell = self.selectPlayersCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag , inSection: 0)) as! PlayerCardCollectionViewCell
+        if cell.isPlayerSelected {
+            cell.isPlayerSelected = false
+            cell.selectedButton.layer.borderWidth = 0
+            selectedPlayers.removeObject(team!.players[sender.tag])
+        }else{
+            cell.isPlayerSelected = true
+            cell.selectedButton.layer.cornerRadius = cell.selectedButton.frame.size.width/2
+            cell.selectedButton.clipsToBounds = true
+            cell.selectedButton.layer.borderColor = UIColor.redColor().CGColor
+            cell.selectedButton.layer.borderWidth = 2.0
+            selectedPlayers.append(team!.players[sender.tag])
+        }
+        
+        
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "GoToGameScorePage" {
+            let vc =  segue.destinationViewController as! GameScoreViewController
+            vc.selectedPlayers = selectedPlayers
+        }
+     }
+ 
+    
 }

@@ -1198,7 +1198,6 @@
                         <outlet property="collectionView" destination="MyN-qq-Rge" id="Nyx-Ah-vFd"/>
                         <segue destination="mtB-2U-Vfs" kind="show" identifier="GoToAddNewTeamPage" id="n7F-gp-pOO"/>
                         <segue destination="dqI-Fl-WA4" kind="show" identifier="GoToAddNewPlayerPage" id="uD0-OX-9Z0"/>
-                        <segue destination="F1r-4e-mDh" kind="show" identifier="GoToStartGamePage" id="BaU-Bg-lM9"/>
                         <segue destination="NPi-ps-mZ8" kind="show" identifier="GoToSelectPlayerPage" id="VpO-hG-F1J"/>
                     </connections>
                 </viewController>
@@ -1955,7 +1954,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRO-Ii-Hz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1875" y="1930"/>
+            <point key="canvasLocation" x="2369" y="1936"/>
         </scene>
         <!--Select Player View Controller-->
         <scene sceneID="Acy-nI-YMM">
@@ -1990,6 +1989,9 @@
                                             <constraint firstAttribute="width" secondItem="7cn-cx-Pbo" secondAttribute="height" multiplier="31:4" id="gYF-KZ-dnV"/>
                                         </constraints>
                                         <state key="normal" title="開始"/>
+                                        <connections>
+                                            <segue destination="F1r-4e-mDh" kind="show" identifier="GoToGameScorePage" id="e6P-G5-xqr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2032,7 +2034,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emU-2d-DXi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2504" y="1930"/>
+            <point key="canvasLocation" x="1712" y="1936"/>
         </scene>
     </scenes>
     <resources>
