@@ -29,7 +29,6 @@
 		E88977831D07FBE800F263FF /* MyScoreBoardEditInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88977821D07FBE800F263FF /* MyScoreBoardEditInfoTableViewController.swift */; };
 		E88977851D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88977841D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift */; };
 		E890177E1D0EB2050057A8AB /* SelectPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E890177D1D0EB2050057A8AB /* SelectPlayerViewController.swift */; };
-		E89018001D103A700057A8AB /* TeamPlayerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89017FF1D103A700057A8AB /* TeamPlayerCollectionView.swift */; };
 		E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15A01CE8C94E0070940D /* AppDelegate.swift */; };
 		E89B15A81CE8C94F0070940D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A61CE8C94F0070940D /* Main.storyboard */; };
 		E89B15AA1CE8C94F0070940D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A91CE8C94F0070940D /* Assets.xcassets */; };
@@ -95,7 +94,6 @@
 		E88977821D07FBE800F263FF /* MyScoreBoardEditInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScoreBoardEditInfoTableViewController.swift; sourceTree = "<group>"; };
 		E88977841D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScoreBoardBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E890177D1D0EB2050057A8AB /* SelectPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlayerViewController.swift; sourceTree = "<group>"; };
-		E89017FF1D103A700057A8AB /* TeamPlayerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamPlayerCollectionView.swift; sourceTree = "<group>"; };
 		E89B159D1CE8C94E0070940D /* myscoreboard2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myscoreboard2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89B15A01CE8C94E0070940D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E89B15A71CE8C94F0070940D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 				E81012921D0A8EBF005385C6 /* AddNewPlayerViewController.swift */,
 				E81012941D0B14F8005385C6 /* GameScoreViewController.swift */,
 				E890177D1D0EB2050057A8AB /* SelectPlayerViewController.swift */,
-				E89017FF1D103A700057A8AB /* TeamPlayerCollectionView.swift */,
 			);
 			name = Team;
 			sourceTree = "<group>";
@@ -524,7 +521,6 @@
 				E81012931D0A8EBF005385C6 /* AddNewPlayerViewController.swift in Sources */,
 				E8DE72D01CF314CC00C66DBD /* RankingViewController.swift in Sources */,
 				E8DE72D21CF5752700C66DBD /* RankingCollectionViewCell.swift in Sources */,
-				E89018001D103A700057A8AB /* TeamPlayerCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
