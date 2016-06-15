@@ -27,17 +27,15 @@ class Team: NSObject {
         self.GameLocation = data["team"]["location"]["place_name"].stringValue
         self.TeamId = data["team"]["id"].stringValue
         
-        for member in data["teammates"].arrayValue {
+        for member in data["team"]["teammembers"].arrayValue {
             let newPlayer = Player()
             let playerData = member.dictionary!
             
-            //print(member)
-            //print(playerData["id"])
- 
             newPlayer.playerName = playerData["username"]?.stringValue
             newPlayer.playerId = playerData["id"]?.stringValue
-            newPlayer.playerImageUrl = playerData["user_photo"]?.stringValue
-            //print(playerData["user_photo"])
+            newPlayer.gender = playerData["gender"]?.stringValue
+            newPlayer.playerImageUrl = playerData["photo"]?.stringValue
+            
             self.players.append(newPlayer)
         }
         

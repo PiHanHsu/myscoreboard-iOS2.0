@@ -30,6 +30,8 @@
 		E88977851D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88977841D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift */; };
 		E890177E1D0EB2050057A8AB /* SelectPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E890177D1D0EB2050057A8AB /* SelectPlayerViewController.swift */; };
 		E89018021D1067030057A8AB /* TodayRankTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018011D1067030057A8AB /* TodayRankTableViewController.swift */; };
+		E89018041D115F6C0057A8AB /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018031D115F6C0057A8AB /* Match.swift */; };
+		E89018061D1160B60057A8AB /* MatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018051D1160B60057A8AB /* MatchList.swift */; };
 		E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15A01CE8C94E0070940D /* AppDelegate.swift */; };
 		E89B15A81CE8C94F0070940D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A61CE8C94F0070940D /* Main.storyboard */; };
 		E89B15AA1CE8C94F0070940D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A91CE8C94F0070940D /* Assets.xcassets */; };
@@ -96,6 +98,8 @@
 		E88977841D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScoreBoardBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E890177D1D0EB2050057A8AB /* SelectPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlayerViewController.swift; sourceTree = "<group>"; };
 		E89018011D1067030057A8AB /* TodayRankTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayRankTableViewController.swift; sourceTree = "<group>"; };
+		E89018031D115F6C0057A8AB /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		E89018051D1160B60057A8AB /* MatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchList.swift; sourceTree = "<group>"; };
 		E89B159D1CE8C94E0070940D /* myscoreboard2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myscoreboard2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89B15A01CE8C94E0070940D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E89B15A71CE8C94F0070940D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -301,6 +305,8 @@
 				E8DE72D61CF68F7700C66DBD /* Teams.swift */,
 				E889777E1D06EE3C00F263FF /* Color.swift */,
 				E81012961D0B158E005385C6 /* Game.swift */,
+				E89018031D115F6C0057A8AB /* Match.swift */,
+				E89018051D1160B60057A8AB /* MatchList.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -502,6 +508,7 @@
 				E889777F1D06EE3C00F263FF /* Color.swift in Sources */,
 				E8DE72CE1CF2E9A600C66DBD /* ProfileViewController.swift in Sources */,
 				E8DE72DA1CF68F8800C66DBD /* Player.swift in Sources */,
+				E89018061D1160B60057A8AB /* MatchList.swift in Sources */,
 				E86202B01D0032A60030F798 /* MyScoredBoardBaseCollectionViewController.swift in Sources */,
 				E88977831D07FBE800F263FF /* MyScoreBoardEditInfoTableViewController.swift in Sources */,
 				E89B15E11CEB75DC0070940D /* RegisterTableViewController.swift in Sources */,
@@ -517,6 +524,7 @@
 				E81012901D096F8C005385C6 /* PlayerCardCollectionViewCell.swift in Sources */,
 				E810127D1D09578C005385C6 /* AddTeamTableViewController.swift in Sources */,
 				E81012971D0B158E005385C6 /* Game.swift in Sources */,
+				E89018041D115F6C0057A8AB /* Match.swift in Sources */,
 				E89B15DD1CE9CF570070940D /* Api.swift in Sources */,
 				E86202A71CFFE1110030F798 /* GameTableViewCell.swift in Sources */,
 				E89B15DB1CE9CF4E0070940D /* protocol.swift in Sources */,
