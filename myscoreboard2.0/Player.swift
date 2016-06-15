@@ -12,6 +12,8 @@ class Player: NSObject {
     var playerName:String?
     var playerImageUrl:String?
     var playerId:String?
+    var gender:String?
     var didSelectToJoinGame:Bool = false
+    var uWeight: Int = 0
 }
 

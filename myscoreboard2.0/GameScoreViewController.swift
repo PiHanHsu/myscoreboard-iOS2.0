@@ -38,15 +38,21 @@ class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerV
     var autoSet:[String:Int] = [:]
     var currentSetIndex = 0
     var selectedPlayers = [Player]()
+    var matchesList = [Match]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for player in Game.shareInstance.GamePlayers {
-            self.autoSet[player.playerName!] = 0
-        }
-        Game.shareInstance.playerM = self.autoSet
+        let game = Game()
+        matchesList = game.getMatchesList(selectedPlayers)
         
+        print("matches count: \(matchesList.count)")
+        
+        redTeamPlayerOne.text = matchesList[0].pair1.player1.playerName
+        redTeamPlayerTwo.text = matchesList[0].pair1.player2.playerName
+        blueTeamPlayerOne.text = matchesList[0].pair2.player1.playerName
+        blueTeamPlayerTwo.text = matchesList[0].pair2.player2.playerName
+
         self.initPicker()
 
     
@@ -54,12 +60,12 @@ class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerV
     
     @IBAction func finishGameAction(sender: UIButton) {
         
-        let list = Game.shareInstance.getGameplayer()
-        print(list)
-        self.redTeamPlayerOne.text = list[0]
-        self.redTeamPlayerTwo.text = list[1]
-        self.blueTeamPlayerOne.text = list[2]
-        self.blueTeamPlayerTwo.text = list[3]
+//        let list = Game.shareInstance.getGameplayer()
+//        print(list)
+//        self.redTeamPlayerOne.text = list[0]
+//        self.redTeamPlayerTwo.text = list[1]
+//        self.blueTeamPlayerOne.text = list[2]
+//        self.blueTeamPlayerTwo.text = list[3]
         
     }
     

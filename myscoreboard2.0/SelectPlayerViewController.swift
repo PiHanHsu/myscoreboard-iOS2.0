@@ -83,19 +83,6 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
         return cell
     }
     
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        print("selected!!")
-//        let cell = self.selectPlayersCollectionView.cellForItemAtIndexPath(indexPath) as! PlayerCardCollectionViewCell
-//        if cell.isPlayerSelected {
-//            cell.isPlayerSelected = false
-//        }else{
-//            cell.isPlayerSelected = true
-//        }
-//        
-//        selectPlayersCollectionView.reloadData()
-//        
-//    }
-    
     func buttonClicked(sender:UIButton)
     {
         let cell = self.selectPlayersCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag , inSection: 0)) as! PlayerCardCollectionViewCell
@@ -118,7 +105,6 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
     
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GoToGameScorePage" {
             let vc =  segue.destinationViewController as! GameScoreViewController
