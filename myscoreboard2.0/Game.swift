@@ -87,6 +87,8 @@ class Game {
         }
         
         matchesList = mixMatches + maleDoublesMatches + femaleDoublesMatches
+        matchesList = matchesList.shuffle()
+        
         return matchesList
     }
     

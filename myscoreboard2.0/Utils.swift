@@ -17,6 +17,18 @@ extension String
     }
 }
 
+extension Array
+{
+    mutating func shuffle() -> [Element] {
+        for _ in 0...self.count {
+            let r = Int(arc4random_uniform(UInt32(self.count)))
+            self.insert(self.removeAtIndex(r), atIndex: 0)
+        }
+        return self
+    }
+    
+}
+
 extension RangeReplaceableCollectionType where Generator.Element : Equatable {
     
     // Remove first collection element that is equal to the given `object`:
