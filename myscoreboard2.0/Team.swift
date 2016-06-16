@@ -16,7 +16,7 @@ class Team: NSObject {
     var GameTimeDay:String?
     var GameTimeHour:String?
     var GameLocation:String?
-    var TeamId:String?
+    var teamId:String?
     
     init(data:JSON) {
         self.TeamImageUrl = data["team"]["logo_original_url"].stringValue
@@ -25,7 +25,7 @@ class Team: NSObject {
         self.GameTimeHour = (data["team"]["start_time_hour"].stringValue)+":"+(data["team"]["start_time_min"].stringValue)+"-"+(data["team"]["end_time_hour"].stringValue)+":"+(data["team"]["end_time_min"].stringValue)
 
         self.GameLocation = data["team"]["location"]["place_name"].stringValue
-        self.TeamId = data["team"]["id"].stringValue
+        self.teamId = data["team"]["id"].stringValue
         
         for member in data["team"]["teammembers"].arrayValue {
             let newPlayer = Player()

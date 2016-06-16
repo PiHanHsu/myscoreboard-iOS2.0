@@ -35,11 +35,18 @@
         @IBOutlet weak var nextPair2Player1ImageView: UIImageView!
         @IBOutlet weak var nextPair2Player2ImageView: UIImageView!
         
+        var pair1Player1: Player?
+        var pair1Player2: Player?
+        var pair2Player1: Player?
+        var pair2Player2: Player?
+        
+        
         var pickerContent:[Int] = []
         var autoSet:[String:Int] = [:]
         var currentSetIndex = 0
         var selectedPlayers = [Player]()
         var matchesList: Array<Match>?
+        var team = Team()
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -74,10 +81,51 @@
                 nextPair2Player1ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair2.player1.playerImageUrl)!) , placeholderImage: nil)
                 nextPair2Player2ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair2.player2.playerImageUrl)!) , placeholderImage: nil)
             }
-
+            
         }
         
         @IBAction func finishGameAction(sender: UIButton) {
+            
+            
+//            [ team_id,
+//              game_type,
+//              scores[{"user" : user_id, "score" : score, "result" : result}] ]
+            
+            let teamId = team.teamId!
+            var gameType = ""
+            pair1Player1 = matchesList?[0].pair1.player1
+            pair1Player2 = matchesList?[0].pair1.player2
+            pair2Player1 = matchesList?[0].pair2.player1
+            pair2Player2 = matchesList?[0].pair2.player2
+            
+            
+            let pair1player1Record = ["user":pair1Player1!.playerId!, "score" : "21", "result" : "W"] 
+            let pair1player2Record = ["user":pair1Player2!.playerId!, "score" : "21", "result" : "W"]
+            let pair2player1Record = ["user":pair2Player1!.playerId!, "score" : "19", "result" : "L"]
+            let pair2player2Record = ["user":pair2Player2!.playerId!, "score" : "19", "result" : "L"]
+            let scores = [ pair1player1Record, pair1player2Record, pair2player1Record, pair2player2Record ]
+            
+            if pair1Player1?.gender == pair1Player2?.gender {
+                gameType = GameType.double
+            }else {
+                gameType = GameType.mix
+            }
+            
+//            HttpManager.sharedInstance
+//                .request(HttpMethod.HttpMethodPost,
+//                         apiFunc: APiFunction.SaveGameScore,
+//                         param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
+//                                     "team_id": teamId,
+//                                    "gameType": gameType,
+//                                     "scores" : scores],
+//                         success: { (code , data ) in
+//                         print("score saved!!")
+//                    },
+//                         failure: { (code , data) in
+//                         print("failed with \(code), \(data)")
+//                    },
+//                         complete: nil)
+
             
             matchesList?.removeAtIndex(0)
             displayData()

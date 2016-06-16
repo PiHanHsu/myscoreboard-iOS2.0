@@ -29,7 +29,7 @@ class Teams{
         
         for team in teams {
             
-            if (team.TeamId! == updatedTeam.TeamId!) {
+            if (team.teamId! == updatedTeam.teamId!) {
                 team.players = updatedTeam.players
             }
         }
@@ -41,7 +41,7 @@ class Teams{
         
         for (index,team) in teams.enumerate() {
             
-            if (team.TeamId! == teamToDelete.TeamId!) {
+            if (team.teamId! == teamToDelete.teamId!) {
                 position = index
                 break
             }

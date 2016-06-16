@@ -109,6 +109,7 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
         if segue.identifier == "GoToGameScorePage" {
             let vc =  segue.destinationViewController as! GameScoreViewController
             vc.selectedPlayers = selectedPlayers
+            vc.team = team!
         }
      }
  
