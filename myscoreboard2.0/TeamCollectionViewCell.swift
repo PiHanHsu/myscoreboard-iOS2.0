@@ -78,7 +78,8 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
             
             if let imageUrl = player.playerImageUrl {
                 if imageUrl != "" {
-                    cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!)
+                    cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!, placeholderImage: nil, options: SDWebImageOptions.RetryFailed)
+                   
                 }
             }else{
                 cell.playerImage.image = UIImage()

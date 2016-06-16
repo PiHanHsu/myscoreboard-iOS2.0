@@ -7,32 +7,33 @@
     //
     
     import UIKit
+    import SDWebImage
     
     class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
         
-        @IBOutlet weak var redSidePicker: UIPickerView!
-        @IBOutlet weak var blueSidePicker: UIPickerView!
+        @IBOutlet weak var pair1SidePicker: UIPickerView!
+        @IBOutlet weak var pair2SidePicker: UIPickerView!
         
-        @IBOutlet weak var redTeamPlayerOne: UILabel!
-        @IBOutlet weak var redTeamPlayerTwo: UILabel!
-        @IBOutlet weak var blueTeamPlayerOne: UILabel!
-        @IBOutlet weak var blueTeamPlayerTwo: UILabel!
+        @IBOutlet weak var pair1Player1NameLabel: UILabel!
+        @IBOutlet weak var pair1Player2NameLabel: UILabel!
+        @IBOutlet weak var pair2Player1NameLabel: UILabel!
+        @IBOutlet weak var pair2Player2NameLabel: UILabel!
         
-        @IBOutlet weak var nextBluePlayerOne: UILabel!
-        @IBOutlet weak var nextRedPlayerOne: UILabel!
-        @IBOutlet weak var nextBluePlayerTwo: UILabel!
-        @IBOutlet weak var nextRedPlayerTwo: UILabel!
+        @IBOutlet weak var nextPair1Player1NameLabel: UILabel!
+        @IBOutlet weak var nextPair1Player2NameLabel: UILabel!
+        @IBOutlet weak var nextPair2Player1NameLabel: UILabel!
+        @IBOutlet weak var nextPair2Player2NameLabel: UILabel!
         
         
-        @IBOutlet weak var redTeamPlayerOneImage: UIImageView!
-        @IBOutlet weak var redTeamPlayerTwoimage: UIImageView!
-        @IBOutlet weak var blueTeamPlayerOneImage: UIImageView!
-        @IBOutlet weak var blueTeamPlayerTwoImage: UIImageView!
+        @IBOutlet weak var pair1Player1ImageView: UIImageView!
+        @IBOutlet weak var pair1Player2ImageView: UIImageView!
+        @IBOutlet weak var pair2Player1ImageView: UIImageView!
+        @IBOutlet weak var pair2Player2ImageView: UIImageView!
         
-        @IBOutlet weak var nextBlueTeamPlayerOneImage: UIImageView!
-        @IBOutlet weak var nextRedTeamPlayerOneImage: UIImageView!
-        @IBOutlet weak var nextRedTeamPlayerTwoImage: UIImageView!
-        @IBOutlet weak var nextBlueTeamPlayerTwoImage: UIImageView!
+        @IBOutlet weak var nextPair1Player1ImageView: UIImageView!
+        @IBOutlet weak var nextPair1Player2ImageView: UIImageView!
+        @IBOutlet weak var nextPair2Player1ImageView: UIImageView!
+        @IBOutlet weak var nextPair2Player2ImageView: UIImageView!
         
         var pickerContent:[Int] = []
         var autoSet:[String:Int] = [:]
@@ -44,21 +45,42 @@
             super.viewDidLoad()
             
             matchesList = MatchList.shareInstance.getMatchesList(selectedPlayers)
-            
+            displayData()
             print("matches count: \(matchesList!.count)")
-            if matchesList!.count > 0 {
-                redTeamPlayerOne.text = matchesList?[0].pair1.player1.playerName
-                redTeamPlayerTwo.text = matchesList?[0].pair1.player2.playerName
-                blueTeamPlayerOne.text = matchesList?[0].pair2.player1.playerName
-                blueTeamPlayerTwo.text = matchesList?[0].pair2.player2.playerName
-            }
-            self.initPicker()
+                        self.initPicker()
             
             
         }
         
+        func displayData() {
+            if matchesList!.count > 1 {
+                pair1Player1NameLabel.text = matchesList?[0].pair1.player1.playerName
+                pair1Player2NameLabel.text = matchesList?[0].pair1.player2.playerName
+                pair2Player1NameLabel.text = matchesList?[0].pair2.player1.playerName
+                pair2Player2NameLabel.text = matchesList?[0].pair2.player2.playerName
+                
+                pair1Player1ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[0].pair1.player1.playerImageUrl)!) , placeholderImage: nil)
+                pair1Player2ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[0].pair1.player2.playerImageUrl)!) , placeholderImage: nil)
+                pair2Player1ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[0].pair2.player1.playerImageUrl)!) , placeholderImage: nil)
+                pair2Player2ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[0].pair2.player2.playerImageUrl)!) , placeholderImage: nil)
+                nextPair1Player1NameLabel.text = matchesList?[1].pair1.player1.playerName
+                nextPair1Player2NameLabel.text = matchesList?[1].pair1.player2.playerName
+                nextPair2Player1NameLabel.text = matchesList?[1].pair2.player1.playerName
+                nextPair2Player2NameLabel.text = matchesList?[1].pair2.player2.playerName
+                
+                
+                nextPair1Player1ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair1.player1.playerImageUrl)!) , placeholderImage: nil)
+                nextPair1Player2ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair1.player2.playerImageUrl)!) , placeholderImage: nil)
+                nextPair2Player1ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair2.player1.playerImageUrl)!) , placeholderImage: nil)
+                nextPair2Player2ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair2.player2.playerImageUrl)!) , placeholderImage: nil)
+            }
+
+        }
+        
         @IBAction func finishGameAction(sender: UIButton) {
             
+            matchesList?.removeAtIndex(0)
+            displayData()
             //        let list = Game.shareInstance.getGameplayer()
             //        print(list)
             //        self.redTeamPlayerOne.text = list[0]
@@ -70,19 +92,19 @@
         
         func initPicker() {
             //self.blueSidePicker
-            self.blueSidePicker.dataSource = self
-            self.blueSidePicker.delegate = self
+            self.pair2SidePicker.dataSource = self
+            self.pair2SidePicker.delegate = self
             
             //self.redSidePicker
-            self.redSidePicker.dataSource = self
-            self.redSidePicker.delegate = self
+            self.pair1SidePicker.dataSource = self
+            self.pair1SidePicker.delegate = self
             
             for i in 0...35 {
                 self.pickerContent.append(i)
             }
             
-            self.redSidePicker.selectRow(0, inComponent: 0, animated: true)
-            self.blueSidePicker.selectRow(0, inComponent: 0, animated: true)
+            self.pair1SidePicker.selectRow(0, inComponent: 0, animated: true)
+            self.pair2SidePicker.selectRow(0, inComponent: 0, animated: true)
         }
         
         override func didReceiveMemoryWarning() {
@@ -131,7 +153,7 @@
         }
         
         func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-            return self.blueSidePicker.bounds.height
+            return self.pair2SidePicker.bounds.height
         }
         
         

@@ -1676,7 +1676,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MrH-f3-uZ1">
                                 <rect key="frame" x="0.0" y="214" width="600" height="240"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aUl-M3-vSF">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aUl-M3-vSF">
                                         <rect key="frame" x="120" y="8" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.015686274510000001" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1713,7 +1713,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E8i-0b-B5R">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E8i-0b-B5R">
                                         <rect key="frame" x="420" y="8" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.015686274510000001" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
@@ -1736,7 +1736,7 @@
                                             <action selector="finishGameAction:" destination="F1r-4e-mDh" eventType="touchUpInside" id="OPz-AX-H9o"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8tr-sa-Aen">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8tr-sa-Aen">
                                         <rect key="frame" x="120" y="99" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.015686274510000001" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1755,7 +1755,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WyE-y9-Sl5">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WyE-y9-Sl5">
                                         <rect key="frame" x="420" y="99" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.015686274510000001" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
@@ -1835,7 +1835,7 @@
                                                     <constraint firstAttribute="width" secondItem="ZHK-vv-tfC" secondAttribute="height" multiplier="141:13" id="HAr-kK-MQh"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kej-pQ-Pzk">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kej-pQ-Pzk">
                                                 <rect key="frame" x="45" y="-24" width="78" height="78"/>
                                                 <color key="backgroundColor" red="0.015686274510000001" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1848,7 +1848,7 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DeN-LJ-Cvn">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DeN-LJ-Cvn">
                                                 <rect key="frame" x="477" y="-24" width="78" height="78"/>
                                                 <color key="backgroundColor" red="0.015686274510000001" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </imageView>
@@ -2018,24 +2018,24 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="blueSidePicker" destination="qnM-S1-DFt" id="xws-oV-4Qz"/>
-                        <outlet property="blueTeamPlayerOne" destination="R0M-Oz-beB" id="8Wz-UJ-nmL"/>
-                        <outlet property="blueTeamPlayerOneImage" destination="E8i-0b-B5R" id="HiT-NZ-d90"/>
-                        <outlet property="blueTeamPlayerTwo" destination="Lbc-PA-vCE" id="4cP-zy-DFW"/>
-                        <outlet property="blueTeamPlayerTwoImage" destination="WyE-y9-Sl5" id="iVp-De-zV2"/>
-                        <outlet property="nextBluePlayerOne" destination="85e-wH-pKR" id="TKs-Hw-BSe"/>
-                        <outlet property="nextBluePlayerTwo" destination="pYB-VO-pvy" id="B2S-ms-BHs"/>
-                        <outlet property="nextBlueTeamPlayerOneImage" destination="kej-pQ-Pzk" id="xkk-5w-ZmO"/>
-                        <outlet property="nextBlueTeamPlayerTwoImage" destination="Evd-lK-22T" id="2DR-Os-2Tr"/>
-                        <outlet property="nextRedPlayerOne" destination="wDL-24-OAb" id="3Qy-CR-Zdi"/>
-                        <outlet property="nextRedPlayerTwo" destination="pgh-eL-y8w" id="W85-t5-XDo"/>
-                        <outlet property="nextRedTeamPlayerOneImage" destination="DeN-LJ-Cvn" id="7bu-E3-ip6"/>
-                        <outlet property="nextRedTeamPlayerTwoImage" destination="gFB-zJ-BnU" id="gb7-3Z-NGJ"/>
-                        <outlet property="redSidePicker" destination="MuC-1x-D28" id="uT1-OU-VnU"/>
-                        <outlet property="redTeamPlayerOne" destination="V7b-Df-bwy" id="Qgd-Kf-otw"/>
-                        <outlet property="redTeamPlayerOneImage" destination="aUl-M3-vSF" id="7oJ-m9-km5"/>
-                        <outlet property="redTeamPlayerTwo" destination="v6k-Dz-IGv" id="NKa-Vo-Zr7"/>
-                        <outlet property="redTeamPlayerTwoimage" destination="8tr-sa-Aen" id="yRL-qD-qcY"/>
+                        <outlet property="nextPair1Player1ImageView" destination="kej-pQ-Pzk" id="4jD-en-oQ4"/>
+                        <outlet property="nextPair1Player1NameLabel" destination="85e-wH-pKR" id="MHS-jr-eZl"/>
+                        <outlet property="nextPair1Player2ImageView" destination="Evd-lK-22T" id="oEA-Mr-zD7"/>
+                        <outlet property="nextPair1Player2NameLabel" destination="pYB-VO-pvy" id="jqL-uf-50U"/>
+                        <outlet property="nextPair2Player1ImageView" destination="DeN-LJ-Cvn" id="D7L-uJ-ABS"/>
+                        <outlet property="nextPair2Player1NameLabel" destination="wDL-24-OAb" id="gvU-tZ-EFb"/>
+                        <outlet property="nextPair2Player2ImageView" destination="gFB-zJ-BnU" id="Bic-T1-aQ9"/>
+                        <outlet property="nextPair2Player2NameLabel" destination="pgh-eL-y8w" id="hEb-zs-oup"/>
+                        <outlet property="pair1Player1ImageView" destination="aUl-M3-vSF" id="KDM-Hm-Roa"/>
+                        <outlet property="pair1Player1NameLabel" destination="V7b-Df-bwy" id="cqI-gY-XRN"/>
+                        <outlet property="pair1Player2ImageView" destination="8tr-sa-Aen" id="Jyl-Dq-fyF"/>
+                        <outlet property="pair1Player2NameLabel" destination="v6k-Dz-IGv" id="tNe-b2-o3a"/>
+                        <outlet property="pair1SidePicker" destination="MuC-1x-D28" id="PNi-Mu-2hG"/>
+                        <outlet property="pair2Player1ImageView" destination="E8i-0b-B5R" id="wZ1-60-Cv1"/>
+                        <outlet property="pair2Player1NameLabel" destination="R0M-Oz-beB" id="Txj-56-nOf"/>
+                        <outlet property="pair2Player2ImageView" destination="WyE-y9-Sl5" id="wYk-zV-DaT"/>
+                        <outlet property="pair2Player2NameLabel" destination="Lbc-PA-vCE" id="mvB-bv-oO1"/>
+                        <outlet property="pair2SidePicker" destination="qnM-S1-DFt" id="cCM-Yu-Zdj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRO-Ii-Hz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
