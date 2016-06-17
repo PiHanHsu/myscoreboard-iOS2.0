@@ -55,28 +55,25 @@
             currentMatch = matchesList![0]
             print(" currentMatchWeight: \(currentMatch?.mWeight)")
             displayCurrentMatchData()
-            //createScueduleMatches(matchesList!)
+            createScueduleMatches(matchesList!)
             self.initPicker()
-            for _ in 0...100{
-                testAlgorthim()
-            }
-            
-            //testAlgorthim()
-            if failCount == 0 {
-                print("success")
-            }else{
-                print("failed: \(failCount)")
-            }
+//            for _ in 0...100{
+//                testAlgorithm()
+//            }
+//            
+//            if failCount == 0 {
+//                print("success")
+//            }else{
+//                print("failed: \(failCount)")
+//            }
         }
         
         //test
-        func testAlgorthim(){
+        func testAlgorithm(){
             var match = Match()
             let set = NSCountedSet()
             match = matchesList![0]
             for _ in 0...selectedPlayers.count-1 {
-                
-               
                 
                 set.addObject(match.pair1.player1)
                 set.addObject(match.pair1.player2)
@@ -121,6 +118,13 @@
             }
         }
         
+        override func viewWillAppear(animated: Bool) {
+            super.viewWillAppear(animated)
+            
+            
+
+        }
+        
         func createScueduleMatches(matches: [Match]) {
             let match = matches[0]
             
@@ -154,6 +158,20 @@
         }
         
         func displayNextMatchData() {
+            
+            //set up layout
+            
+            nextPair1Player1ImageView.layoutIfNeeded()
+            nextPair1Player2ImageView.layoutIfNeeded()
+            
+            nextPair1Player1ImageView.layer.cornerRadius = nextPair1Player1ImageView.frame.size.width / 2
+            nextPair1Player1ImageView.clipsToBounds = true
+            nextPair1Player2ImageView.layer.cornerRadius = nextPair1Player2ImageView.frame.size.width / 2
+            nextPair1Player2ImageView.clipsToBounds = true
+            nextPair2Player1ImageView.layer.cornerRadius = nextPair1Player1ImageView.frame.size.width / 2
+            nextPair2Player1ImageView.clipsToBounds = true
+            nextPair2Player2ImageView.layer.cornerRadius = nextPair1Player1ImageView.frame.size.width / 2
+            nextPair2Player2ImageView.clipsToBounds = true
             
             nextPair1Player1NameLabel.text = nextMatch!.pair1.player1.playerName
             nextPair1Player2NameLabel.text = nextMatch!.pair1.player2.playerName
