@@ -35,82 +35,159 @@
         @IBOutlet weak var nextPair2Player1ImageView: UIImageView!
         @IBOutlet weak var nextPair2Player2ImageView: UIImageView!
         
-        var pair1Player1: Player?
-        var pair1Player2: Player?
-        var pair2Player1: Player?
-        var pair2Player2: Player?
-        
-        
+        var team = Team()
+        var selectedPlayers = [Player]()
+        var matchesList: Array<Match>?
+        var currentMatch: Match?
+        var nextMatch: Match?
+
         var pickerContent:[Int] = []
         var autoSet:[String:Int] = [:]
         var currentSetIndex = 0
-        var selectedPlayers = [Player]()
-        var matchesList: Array<Match>?
-        var team = Team()
+        
+        var failCount = 0
         
         override func viewDidLoad() {
             super.viewDidLoad()
             
             matchesList = MatchList.shareInstance.getMatchesList(selectedPlayers)
-            displayData()
             print("matches count: \(matchesList!.count)")
-                        self.initPicker()
+            currentMatch = matchesList![0]
+            print(" currentMatchWeight: \(currentMatch?.mWeight)")
+            displayCurrentMatchData()
+            //createScueduleMatches(matchesList!)
+            self.initPicker()
+            for _ in 0...100{
+                testAlgorthim()
+            }
             
+            //testAlgorthim()
+            if failCount == 0 {
+                print("success")
+            }else{
+                print("failed: \(failCount)")
+            }
+        }
+        
+        //test
+        func testAlgorthim(){
+            var match = Match()
+            let set = NSCountedSet()
+            match = matchesList![0]
+            for _ in 0...selectedPlayers.count-1 {
+                
+               
+                
+                set.addObject(match.pair1.player1)
+                set.addObject(match.pair1.player2)
+                set.addObject(match.pair2.player1)
+                set.addObject(match.pair2.player2)
+                
+                match.pair1.pWeight += 0
+                match.pair2.pWeight += 0
+                match.pair1.player1.uWeight += 50
+                match.pair1.player2.uWeight += 50
+                match.pair2.player1.uWeight += 50
+                match.pair2.player2.uWeight += 50
+                
+                matchesList = matchesList?.shuffle()
+                matchesList = matchesList!.sort({ $0.mWeight < $1.mWeight})
+                nextMatch = matchesList![0]
+              let matchPlayerArray = [match.pair1.player1,        match.pair1.player2,match.pair2.player1, match.pair2.player2 ]
+                if matchPlayerArray.contains((nextMatch?.pair1.player1)!){
+                    nextMatch?.pair1.player1.uWeight += 0
+                }else if matchPlayerArray.contains((nextMatch?.pair1.player2)!){
+                    nextMatch?.pair1.player2.uWeight += 0
+                }else if matchPlayerArray.contains((nextMatch?.pair2.player1)!){
+                    nextMatch?.pair2.player1.uWeight += 0
+                }else if matchPlayerArray.contains((nextMatch?.pair2.player2)!){
+                    nextMatch?.pair2.player2.uWeight += 0
+                }
+                
+                match = nextMatch!
+                
+                //print("\(match.pair1.player1.playerName!) \(match.pair1.player2.playerName!) \(match.pair2.player1.playerName!) \(match.pair2.player2.playerName!) \(match.mWeight)")
+                
+                
+           }
+            
+            for player in selectedPlayers {
+                
+                if set.countForObject(player) != 4 {
+                    //print("\(player.playerName): \(set.countForObject(player))")
+                    failCount += 1
+                    return
+                }
+            }
+        }
+        
+        func createScueduleMatches(matches: [Match]) {
+            let match = matches[0]
+            
+            match.pair1.pWeight += 1000
+            match.pair2.pWeight += 1000
+            match.pair1.player1.uWeight += 100
+            match.pair1.player2.uWeight += 100
+            match.pair2.player1.uWeight += 100
+            match.pair2.player2.uWeight += 100
+            
+            matchesList = matchesList?.shuffle()
+            matchesList = matches.sort({ $0.mWeight < $1.mWeight})
+            nextMatch = matchesList![0]
+            
+            displayNextMatchData()
+        
+        }
+        
+        func displayCurrentMatchData() {
+                
+                pair1Player1NameLabel.text = currentMatch!.pair1.player1.playerName
+                pair1Player2NameLabel.text = currentMatch!.pair1.player2.playerName
+                pair2Player1NameLabel.text = currentMatch!.pair2.player1.playerName
+                pair2Player2NameLabel.text = currentMatch!.pair2.player2.playerName
+                
+                pair1Player1ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair1.player1.playerImageUrl)!) , placeholderImage: nil)
+                pair1Player2ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair1.player2.playerImageUrl)!) , placeholderImage: nil)
+                pair2Player1ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair2.player1.playerImageUrl)!) , placeholderImage: nil)
+                pair2Player2ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair2.player2.playerImageUrl)!) , placeholderImage: nil)
             
         }
         
-        func displayData() {
-            if matchesList!.count > 1 {
-                pair1Player1NameLabel.text = matchesList?[0].pair1.player1.playerName
-                pair1Player2NameLabel.text = matchesList?[0].pair1.player2.playerName
-                pair2Player1NameLabel.text = matchesList?[0].pair2.player1.playerName
-                pair2Player2NameLabel.text = matchesList?[0].pair2.player2.playerName
-                
-                pair1Player1ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[0].pair1.player1.playerImageUrl)!) , placeholderImage: nil)
-                pair1Player2ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[0].pair1.player2.playerImageUrl)!) , placeholderImage: nil)
-                pair2Player1ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[0].pair2.player1.playerImageUrl)!) , placeholderImage: nil)
-                pair2Player2ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[0].pair2.player2.playerImageUrl)!) , placeholderImage: nil)
-                nextPair1Player1NameLabel.text = matchesList?[1].pair1.player1.playerName
-                nextPair1Player2NameLabel.text = matchesList?[1].pair1.player2.playerName
-                nextPair2Player1NameLabel.text = matchesList?[1].pair2.player1.playerName
-                nextPair2Player2NameLabel.text = matchesList?[1].pair2.player2.playerName
-                
-                
-                nextPair1Player1ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair1.player1.playerImageUrl)!) , placeholderImage: nil)
-                nextPair1Player2ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair1.player2.playerImageUrl)!) , placeholderImage: nil)
-                nextPair2Player1ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair2.player1.playerImageUrl)!) , placeholderImage: nil)
-                nextPair2Player2ImageView.sd_setImageWithURL(NSURL(string: (matchesList?[1].pair2.player2.playerImageUrl)!) , placeholderImage: nil)
-            }
+        func displayNextMatchData() {
             
+            nextPair1Player1NameLabel.text = nextMatch!.pair1.player1.playerName
+            nextPair1Player2NameLabel.text = nextMatch!.pair1.player2.playerName
+            nextPair2Player1NameLabel.text = nextMatch!.pair2.player1.playerName
+            nextPair2Player2NameLabel.text = nextMatch!.pair2.player2.playerName
+            
+            nextPair1Player1ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair1.player1.playerImageUrl)!) , placeholderImage: nil)
+            nextPair1Player2ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair1.player2.playerImageUrl)!) , placeholderImage: nil)
+            nextPair2Player1ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair2.player1.playerImageUrl)!) , placeholderImage: nil)
+            nextPair2Player2ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair2.player2.playerImageUrl)!) , placeholderImage: nil)
         }
+        
         
         @IBAction func finishGameAction(sender: UIButton) {
             
+            self.currentMatch = self.nextMatch
+            self.displayCurrentMatchData()
+            self.createScueduleMatches(self.matchesList!)
             
-//            [ team_id,
-//              game_type,
-//              scores[{"user" : user_id, "score" : score, "result" : result}] ]
-            
-            let teamId = team.teamId!
-            var gameType = ""
-            pair1Player1 = matchesList?[0].pair1.player1
-            pair1Player2 = matchesList?[0].pair1.player2
-            pair2Player1 = matchesList?[0].pair2.player1
-            pair2Player2 = matchesList?[0].pair2.player2
-            
-            
-            let pair1player1Record = ["user":pair1Player1!.playerId!, "score" : "21", "result" : "W"] 
-            let pair1player2Record = ["user":pair1Player2!.playerId!, "score" : "21", "result" : "W"]
-            let pair2player1Record = ["user":pair2Player1!.playerId!, "score" : "19", "result" : "L"]
-            let pair2player2Record = ["user":pair2Player2!.playerId!, "score" : "19", "result" : "L"]
-            let scores = [ pair1player1Record, pair1player2Record, pair2player1Record, pair2player2Record ]
-            
-            if pair1Player1?.gender == pair1Player2?.gender {
-                gameType = GameType.double
-            }else {
-                gameType = GameType.mix
-            }
-            
+//            let teamId = team.teamId!
+//            var gameType = ""
+//            
+//            let pair1player1Record = ["user":currentMatch!.pair1.player1.playerId!, "score" : "21", "result" : "W"]
+//            let pair1player2Record = ["user":currentMatch!.pair1.player2.playerId!, "score" : "21", "result" : "W"]
+//            let pair2player1Record = ["user":currentMatch!.pair2.player1.playerId!, "score" : "19", "result" : "L"]
+//            let pair2player2Record = ["user":currentMatch!.pair2.player2.playerId!, "score" : "19", "result" : "L"]
+//            let scores = [ pair1player1Record, pair1player2Record, pair2player1Record, pair2player2Record ]
+//            
+//            if currentMatch!.pair1.player1.gender == currentMatch!.pair1.player2.gender {
+//                gameType = GameType.double
+//            }else {
+//                gameType = GameType.mix
+//            }
+//            
 //            HttpManager.sharedInstance
 //                .request(HttpMethod.HttpMethodPost,
 //                         apiFunc: APiFunction.SaveGameScore,
@@ -120,21 +197,15 @@
 //                                     "scores" : scores],
 //                         success: { (code , data ) in
 //                         print("score saved!!")
+//                         self.currentMatch = self.nextMatch
+//                         self.displayCurrentMatchData()
+//                         self.createScueduleMatches(self.matchesList!)
 //                    },
 //                         failure: { (code , data) in
 //                         print("failed with \(code), \(data)")
 //                    },
 //                         complete: nil)
 
-            
-            matchesList?.removeAtIndex(0)
-            displayData()
-            //        let list = Game.shareInstance.getGameplayer()
-            //        print(list)
-            //        self.redTeamPlayerOne.text = list[0]
-            //        self.redTeamPlayerTwo.text = list[1]
-            //        self.blueTeamPlayerOne.text = list[2]
-            //        self.blueTeamPlayerTwo.text = list[3]
             
         }
         
