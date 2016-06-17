@@ -83,8 +83,8 @@
                 set.addObject(match.pair2.player1)
                 set.addObject(match.pair2.player2)
                 
-                match.pair1.pWeight += 0
-                match.pair2.pWeight += 0
+                match.pair1.pWeight += 1
+                match.pair2.pWeight += 1
                 match.pair1.player1.uWeight += 50
                 match.pair1.player2.uWeight += 50
                 match.pair2.player1.uWeight += 50
