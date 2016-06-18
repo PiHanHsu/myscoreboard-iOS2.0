@@ -107,7 +107,7 @@
                                         <constraint firstAttribute="width" constant="150" id="LXz-8I-zaJ"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hev-2V-VMt">
@@ -2161,6 +2161,6 @@
         <image name="tab_icon_teams" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6yj-8J-Xj3"/>
+        <segue reference="CSB-3U-MfM"/>
     </inferredMetricsTieBreakers>
 </document>

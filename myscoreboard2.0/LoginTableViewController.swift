@@ -33,7 +33,7 @@ class LoginTableViewController: UITableViewController {
         
         self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: headerHeight!)
         self.footerView.frame = CGRect(x: 0, y: self.view.frame.size.height - 50, width: self.view.frame.size.width, height: 50 )
-        self.footerView.backgroundColor = UIColor(red: 0.0/255.0, green: 159.0/255.0, blue: 214.0/255.0, alpha: 1)
+        self.footerView.backgroundColor = UIColor(red: 89.0/255.0, green: 212.0/255.0, blue: 255.0/255.0, alpha: 1)
         
     }
     override func viewWillAppear(animated: Bool) {
