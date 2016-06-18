@@ -38,7 +38,7 @@ class MatchList {
             var mixPairs = [Pair]()
             for malePlayer in malePlayerArray{
                 for femalePlayer in femalePlayerArray {
-                    var pair = Pair()
+                    let pair = Pair()
                     pair.player1 = malePlayer
                     pair.player2 = femalePlayer
                     mixPairs.append(pair)
@@ -54,7 +54,7 @@ class MatchList {
             
             for (index, malePlayer1) in malePlayerArray.enumerate() {
                 for malePlayer2 in malePlayerArray[index + 1 ..< malePlayerArray.count] {
-                    var pair = Pair()
+                    let pair = Pair()
                     pair.player1 = malePlayer1
                     pair.player2 = malePlayer2
                     maleDoublesPairs.append(pair)
@@ -71,7 +71,7 @@ class MatchList {
             
             for (index, femalePlayer1) in femalePlayerArray.enumerate() {
                 for femalePlayer2 in femalePlayerArray[index + 1 ..< femalePlayerArray.count] {
-                    var pair = Pair()
+                    let pair = Pair()
                     pair.player1 = femalePlayer1
                     pair.player2 = femalePlayer2
                     femaleDoublesPairs.append(pair)

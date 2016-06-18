@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UITabBar.appearance().barTintColor = UIColor.mainBlueColor()
         UITabBar.appearance().tintColor = UIColor.whiteColor()
-
+        //UILabel.appearance().font = UIFont(name: "PingFang TC", size: 17)
         return true
     }
     

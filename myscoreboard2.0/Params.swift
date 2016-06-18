@@ -90,3 +90,8 @@ class Gender {
     static let male = "male"
     static let female = "female"
 }
+
+struct Result {
+    static let win = "W"
+    static let loss = "L"
+}
