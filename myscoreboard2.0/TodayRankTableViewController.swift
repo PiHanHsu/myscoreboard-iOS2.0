@@ -11,16 +11,26 @@ import UIKit
 class TodayRankTableViewController: UITableViewController {
     
     let gameTableViewCell = "GameTableViewCell"
+    var team = Team()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.tableView.registerNib(UINib(nibName: gameTableViewCell, bundle: nil), forCellReuseIdentifier: gameTableViewCell)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        
+        HttpManager.sharedInstance
+            .request(HttpMethod.HttpMethodPost,
+                     apiFunc: APiFunction.GetTodayGames,
+                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
+                        "team_id": team.teamId!],
+                     success: { (code , data ) in
+                       print(data)
+                },
+                     failure: { (code , data) in
+                        print("failed with \(code), \(data)")
+                },
+                     complete: nil)
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
 
     override func didReceiveMemoryWarning() {

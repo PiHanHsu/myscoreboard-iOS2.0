@@ -288,6 +288,11 @@
         
         // In a storyboard-based application, you will often want to do a little preparation before navigation
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            if segue.identifier == "GoToTodayGamesPage" {
+                let vc =  segue.destinationViewController as! TodayRankTableViewController
+                vc.team = team
+                
+            }
             
         }
         

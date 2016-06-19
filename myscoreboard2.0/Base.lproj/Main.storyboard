@@ -2013,7 +2013,7 @@
                     <navigationItem key="navigationItem" title="計分板" id="N47-fw-J8Z">
                         <barButtonItem key="rightBarButtonItem" title="今日紀錄" id="aPj-16-N1H">
                             <connections>
-                                <segue destination="uf9-0W-Vuw" kind="show" id="XA7-yE-IWt"/>
+                                <segue destination="uf9-0W-Vuw" kind="show" identifier="GoToTodayGamesPage" id="XA7-yE-IWt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
