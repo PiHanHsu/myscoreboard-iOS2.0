@@ -13,13 +13,33 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
     @IBOutlet weak var selectPlayersCollectionView: UICollectionView!
     var team: Team?
     var selectedPlayers = [Player]()
+    var isChangePlayerMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if isChangePlayerMode {
+            let navigationBar = UINavigationBar(frame: CGRectMake(0, 0, self.view.frame.size.width, 64))
+            let navigationItem = UINavigationItem()
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(SelectPlayerViewController.cancel))
+            navigationBar.items = [navigationItem]
+            self.view.addSubview(navigationBar)
+            
+       
+            
+        }
         self.selectPlayersCollectionView.delegate = self
         self.selectPlayersCollectionView.dataSource = self
         selectPlayersCollectionView.registerNib(UINib(nibName: "PlayerCardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PlayerCardCollectionViewCell")
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
+    func cancel(){
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

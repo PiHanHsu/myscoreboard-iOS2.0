@@ -284,6 +284,15 @@
             return self.pair2SidePicker.bounds.height
         }
         
+        // Change player
+        
+        
+        @IBAction func pair1Player1ButtonPressed(sender: AnyObject) {
+            
+            performSegueWithIdentifier("ChangePlayer", sender: self)
+            
+        }
+        
         // MARK: - Navigation
         
         // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -291,11 +300,12 @@
             if segue.identifier == "GoToTodayGamesPage" {
                 let vc =  segue.destinationViewController as! TodayRankTableViewController
                 vc.team = team
-                
+            }else if segue.identifier == "ChangePlayer" {
+                let vc =  segue.destinationViewController as! SelectPlayerViewController
+                vc.team = team
+                vc.isChangePlayerMode = true
             }
-            
         }
-        
         
         //MARK: - test
         
