@@ -29,10 +29,22 @@ class ForgetPasswordViewController: UIViewController {
                      param: [
                         "email": emailTextField.text!],
                      success: { (code , data ) in
-                        print("success")
+                     let alertController = UIAlertController(title: "重設密碼郵件已送出", message: "", preferredStyle: .Alert)
+                        
+                     let alertAction = UIAlertAction(title: "OK", style: .Default, handler: { UIAlertAction in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                     })
+                     alertController.addAction(alertAction)
+                     self.presentViewController(alertController, animated: true, completion: nil)
                 },
                      failure: { (code , data) in
                         print("failed with \(code), \(data)")
+                        let alertController = UIAlertController(title: "email不正確", message: "請確認是否已註冊myscoreboard", preferredStyle: .Alert)
+                        
+                        let alertAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                        alertController.addAction(alertAction)
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                        
                 },
                      complete: nil)
 
