@@ -15,7 +15,7 @@ class Team: NSObject {
     var teamName:String?
     var gameTimeDay:String?
     var gameTimeHour:String?
-    var GameLocation:String?
+    var gameLocation:String?
     var teamId:String?
     
     init(data:JSON) {
@@ -24,7 +24,7 @@ class Team: NSObject {
         self.gameTimeDay = data["team"]["day"].stringValue
         self.gameTimeHour = (data["team"]["start_time_hour"].stringValue)+":"+(data["team"]["start_time_min"].stringValue)+"-"+(data["team"]["end_time_hour"].stringValue)+":"+(data["team"]["end_time_min"].stringValue)
 
-        self.GameLocation = data["team"]["location"]["place_name"].stringValue
+        self.gameLocation = data["team"]["location"]["place_name"].stringValue
         self.teamId = data["team"]["id"].stringValue
         
         for member in data["team"]["teammembers"].arrayValue {

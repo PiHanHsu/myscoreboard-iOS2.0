@@ -42,6 +42,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
             cell.team = Teams.sharedInstance.teams[indexPath.row]
             cell.teamNameLabel.text = cell.team?.teamName!
             cell.timeLabel.text = (cell.team?.gameTimeDay!)! + " " + (cell.team?.gameTimeHour)!
+            cell.placeLabel.text = cell.team?.gameLocation!
             cell.startGameButton.tag = indexPath.row
             cell.startGameButton.addTarget(self, action: #selector(TeamViewController.startGame), forControlEvents: .TouchUpInside)
         }
