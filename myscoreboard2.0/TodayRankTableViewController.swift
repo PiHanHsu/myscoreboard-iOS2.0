@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class TodayRankTableViewController: UITableViewController {
     
     let gameTableViewCell = "GameTableViewCell"
     var team = Team()
+    var gameData: JSON = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,11 @@ class TodayRankTableViewController: UITableViewController {
                      param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
                         "team_id": team.teamId!],
                      success: { (code , data ) in
-                       print(data)
+                       //print(data)
+                       self.gameData = data["result"]["today_games"]
+                       print("count: \(self.gameData.count)")
+                       print(self.gameData)
+                       self.tableView.reloadData()
                 },
                      failure: { (code , data) in
                         print("failed with \(code), \(data)")
@@ -47,20 +53,27 @@ class TodayRankTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return gameData.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(gameTableViewCell, forIndexPath: indexPath) as! GameTableViewCell
-        cell.team1Player1NameLabel.text = "PiHan"
-        cell.team1Player2NameLabel.text = "Dyson"
-        cell.team2Player1NameLabel.text = "Damon"
-        cell.team2Player2NameLabel.text = "Steven"
-        cell.team1ScoreLabel.text = "21"
-        cell.team2ScoreLabel.text = "19"
-        // Configure the cell...
-
+        
+        let oneGameData = gameData[indexPath.row]["game"]
+       
+        cell.team1Player1NameLabel.text = oneGameData[0]["username"].stringValue
+        cell.team1Player2NameLabel.text = oneGameData[1]["username"].stringValue
+        cell.team2Player1NameLabel.text = oneGameData[2]["username"].stringValue
+        cell.team2Player2NameLabel.text = oneGameData[3]["username"].stringValue
+        if oneGameData[0]["score"].intValue > oneGameData[2]["score"].intValue {
+            cell.team1ScoreLabel.textColor = UIColor.redColor()
+        }else {
+            cell.team2ScoreLabel.textColor = UIColor.redColor()
+        }
+        cell.team1ScoreLabel.text = oneGameData[0]["score"].stringValue
+        cell.team2ScoreLabel.text = oneGameData[2]["score"].stringValue
+        
         return cell
     }
     
