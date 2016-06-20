@@ -32,6 +32,7 @@
 		E89018021D1067030057A8AB /* TodayRankTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018011D1067030057A8AB /* TodayRankTableViewController.swift */; };
 		E89018041D115F6C0057A8AB /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018031D115F6C0057A8AB /* Match.swift */; };
 		E89018061D1160B60057A8AB /* MatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018051D1160B60057A8AB /* MatchList.swift */; };
+		E89018081D17AADE0057A8AB /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018071D17AADE0057A8AB /* ForgetPasswordViewController.swift */; };
 		E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15A01CE8C94E0070940D /* AppDelegate.swift */; };
 		E89B15A81CE8C94F0070940D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A61CE8C94F0070940D /* Main.storyboard */; };
 		E89B15AA1CE8C94F0070940D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A91CE8C94F0070940D /* Assets.xcassets */; };
@@ -100,6 +101,7 @@
 		E89018011D1067030057A8AB /* TodayRankTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayRankTableViewController.swift; sourceTree = "<group>"; };
 		E89018031D115F6C0057A8AB /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		E89018051D1160B60057A8AB /* MatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchList.swift; sourceTree = "<group>"; };
+		E89018071D17AADE0057A8AB /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		E89B159D1CE8C94E0070940D /* myscoreboard2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myscoreboard2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89B15A01CE8C94E0070940D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E89B15A71CE8C94F0070940D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				E89B15D11CE8DCFA0070940D /* LoginTableViewController.swift */,
 				E89B15E01CEB75DC0070940D /* RegisterTableViewController.swift */,
+				E89018071D17AADE0057A8AB /* ForgetPasswordViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */,
 				E8DE72D41CF5AD2F00C66DBD /* RankingTableViewCell.swift in Sources */,
 				E88977851D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift in Sources */,
+				E89018081D17AADE0057A8AB /* ForgetPasswordViewController.swift in Sources */,
 				E89B15EB1CEC4F110070940D /* EditProfileTableViewController.swift in Sources */,
 				E81012901D096F8C005385C6 /* PlayerCardCollectionViewCell.swift in Sources */,
 				E810127D1D09578C005385C6 /* AddTeamTableViewController.swift in Sources */,

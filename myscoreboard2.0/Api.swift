@@ -33,6 +33,7 @@ enum APiFunction {
     case GetRanking
     case GetUserStats
     case GetTodayGames
+    case ResetPassword
 }
 
 typealias HttpCallbackSuccess = (code: Int, data: JSON) -> Void
@@ -107,6 +108,8 @@ class HttpManager {
             path = Params.apiRootPath + Params.apiGetUserStats
         case .GetTodayGames :
             path = Params.apiRootPath + Params.apiGetTodayGames
+        case .ResetPassword :
+            path = Params.apiRootPath + Params.apiResetPassword
         }
         
         
