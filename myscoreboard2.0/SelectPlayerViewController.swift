@@ -35,18 +35,25 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
         
     }
     
+    func collectionView(collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                               insetForSectionAtIndex section: Int) -> UIEdgeInsets{
+
+        return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+    }
+    
     //計算 minimumInteritemSpacing 的間隔是多少
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                                minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0
+        return 10
     }
     
     //計算 LineSpacing 的間隔是多少
     func collectionView(collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0
+        return 10
     }
     
     
