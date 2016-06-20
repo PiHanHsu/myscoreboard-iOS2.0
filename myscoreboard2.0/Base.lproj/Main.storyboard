@@ -966,7 +966,7 @@
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rOr-Jm-0Na">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rOr-Jm-0Na">
                                                                         <rect key="frame" x="8" y="10" width="50" height="50"/>
                                                                         <color key="backgroundColor" red="1" green="0.83529411760000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
@@ -1047,10 +1047,23 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1QG-EW-aYz">
+                                                            <rect key="frame" x="194" y="14" width="46" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="46" id="FMN-kk-mvE"/>
+                                                                <constraint firstAttribute="height" constant="30" id="WGf-yW-bzg"/>
+                                                            </constraints>
+                                                            <state key="normal" title="切換"/>
+                                                            <connections>
+                                                                <action selector="switchGender:" destination="M62-kW-Quo" eventType="touchUpInside" id="zsp-ch-Q4Q"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.015686274509803921" green="0.74509803921568629" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="Uv1-GY-6sS" secondAttribute="trailing" id="6M2-1n-vrd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1QG-EW-aYz" secondAttribute="trailing" constant="8" id="IFR-vc-5lT"/>
+                                                        <constraint firstItem="1QG-EW-aYz" firstAttribute="centerY" secondItem="MM5-QX-ExJ" secondAttribute="centerY" id="Or1-ld-yH7"/>
                                                         <constraint firstItem="Uv1-GY-6sS" firstAttribute="top" secondItem="MM5-QX-ExJ" secondAttribute="top" id="Xtm-Pz-0hw"/>
                                                         <constraint firstItem="Uv1-GY-6sS" firstAttribute="leading" secondItem="MM5-QX-ExJ" secondAttribute="leading" id="mYl-rc-L52"/>
                                                         <constraint firstAttribute="bottom" secondItem="Uv1-GY-6sS" secondAttribute="bottom" id="xYT-9e-a9i"/>

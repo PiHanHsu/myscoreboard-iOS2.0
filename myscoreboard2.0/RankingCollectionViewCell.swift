@@ -17,6 +17,8 @@ class RankingCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
     @IBOutlet weak var teamNameLabel: UILabel!
     var rankData:JSON = []
     var gameType: String = ""
+    var rankVar = rankVariable()
+    var currentGender = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,25 +30,26 @@ class RankingCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         footerView.frame = CGRectZero
         self.rankingTableView.tableFooterView = footerView
         
+        rankVar.gameType = gameType
+        if CurrentUser.sharedInstance.gender! == "male" {
+            rankVar.gender = "male"
+            currentGender = "male"
+        }else{
+            rankVar.gender = "female"
+            currentGender = "female"
+        }
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch gameType {
-        case GameType.single:
-            return rankData["male_single"].count
-        case GameType.double:
-            return rankData["male_double"].count
-        case GameType.mix:
-            return rankData["male_mix"].count
-        default:
-            return 5
-        }
+        rankVar.gameType = gameType
+        return rankData[rankVar.rankType].count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -57,43 +60,40 @@ class RankingCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         
         let cell = tableView.dequeueReusableCellWithIdentifier("RankingTableViewCell", forIndexPath: indexPath) as! RankingTableViewCell
         
-        switch gameType {
-        case GameType.single:
-            cell.nameLabel.text = rankData["male_single"][indexPath.row]["user"].stringValue
-            let rate = rankData["male_single"][indexPath.row]["rate"].stringValue
-            let wins = rankData["male_single"][indexPath.row]["wins"].stringValue
-            let losses = rankData["male_single"][indexPath.row]["losses"].stringValue
-            cell.rateLabel.text = "勝率：\(rate)% "
-            cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
-            cell.userImageView.sd_setImageWithURL(NSURL(string:rankData["male_single"][indexPath.row]["user_photo"].stringValue))
-        case GameType.double:
-            cell.nameLabel.text = rankData["male_double"][indexPath.row]["user"].stringValue
-            let rate = rankData["male_double"][indexPath.row]["rate"].stringValue
-            let wins = rankData["male_double"][indexPath.row]["wins"].stringValue
-            let losses = rankData["male_double"][indexPath.row]["losses"].stringValue
-            cell.rateLabel.text = "勝率：\(rate)% "
-            cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
-            cell.userImageView.sd_setImageWithURL(NSURL(string:rankData["male_double"][indexPath.row]["user_photo"].stringValue))
-            
-        case GameType.mix:
-            cell.nameLabel.text = rankData["male_mix"][indexPath.row]["user"].stringValue
-            let rate = rankData["male_mix"][indexPath.row]["rate"].stringValue
-            let wins = rankData["male_mix"][indexPath.row]["wins"].stringValue
-            let losses = rankData["male_mix"][indexPath.row]["losses"].stringValue
-            cell.rateLabel.text = "勝率：\(rate)% "
-            cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
-            cell.userImageView.sd_setImageWithURL(NSURL(string:rankData["male_mix"][indexPath.row]["user_photo"].stringValue))
-        default:
-            return cell
-        }
-        
-            
+        cell.nameLabel.text = rankData[rankVar.rankType][indexPath.row]["user"].stringValue
+        rankVar.gameType = gameType
+        let rate = rankData[rankVar.rankType][indexPath.row]["rate"].floatValue
+        let wins = rankData[rankVar.rankType][indexPath.row]["wins"].stringValue
+        let losses = rankData[rankVar.rankType][indexPath.row]["losses"].stringValue
+        cell.rateLabel.text = "勝率：" + (NSString(format: "0,2f", rate) as String) + "%"
+        cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
+        cell.userImageView.sd_setImageWithURL(NSURL(string:rankData[rankVar.rankType][indexPath.row]["user_photo"].stringValue))
         cell.rankingLabel.text = "\(indexPath.row + 1)"
         
         return cell
         
     }
     
-
+    @IBAction func switchGender(sender: AnyObject) {
+        if currentGender == "male" {
+            rankVar.gender = "female"
+            currentGender = "female"
+        }else{
+            currentGender = "male"
+            rankVar.gender = "male"
+        }
+        self.rankingTableView.reloadData()
+    }
     
+}
+
+
+struct rankVariable {
+    var gender = ""
+    var gameType = ""
+    var rankType: String {
+        get {
+            return "\(gender)_\(gameType)"
+        }
+    }
 }
