@@ -129,11 +129,11 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier(profileInfoTableViewCell, forIndexPath: indexPath) as! ProfileInfoTableViewCell
             let games = statsData["games"].stringValue
-            let rate = statsData["rate"].stringValue
+            let rate = statsData["rate"].floatValue
             let wins = statsData["wins"].stringValue
             let losses = statsData["losses"].stringValue
             cell.gameCountLabel.text = "比賽場次：\(games)"
-            cell.rateLabel.text = "勝率: \(rate)%"
+            cell.rateLabel.text = "勝率: " + (NSString(format: "%.2f", rate) as String) + "%"
             cell.winsAndLossesLabel.text = "勝負場次：\(wins)勝\(losses)敗"
             
             return cell
@@ -159,7 +159,7 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
             let cell = tableView.dequeueReusableCellWithIdentifier(bestPartnerTableViewCell, forIndexPath: indexPath) as! BestPartnetTableViewCell
             cell.bestDoublePartnerNameLabel.text = statsData["best_double_name"].stringValue
             
-            cell.bestDoublePartnerImageView.layer.cornerRadius = 25.0
+            cell.bestDoublePartnerImageView.layer.cornerRadius = cell.bestDoublePartnerImageView.frame.size.width/2
             cell.bestDoublePartnerImageView.clipsToBounds = true
             if statsData["best_double_photo"] != nil {
                 cell.bestDoublePartnerImageView.sd_setImageWithURL(NSURL(string: statsData["best_double_photo"].stringValue))
@@ -167,7 +167,7 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
             
             cell.bestMixPartnerNameLabel.text = statsData["best_mix_name"].stringValue
             
-            cell.bestMixPartnerImageView.layer.cornerRadius = 25.0
+            cell.bestMixPartnerImageView.layer.cornerRadius = cell.bestMixPartnerImageView.frame.size.width/2
             cell.bestMixPartnerImageView.clipsToBounds = true
 
             if statsData["best_mix_photo"] != nil {

@@ -65,7 +65,7 @@ class RankingCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         let rate = rankData[rankVar.rankType][indexPath.row]["rate"].floatValue
         let wins = rankData[rankVar.rankType][indexPath.row]["wins"].stringValue
         let losses = rankData[rankVar.rankType][indexPath.row]["losses"].stringValue
-        cell.rateLabel.text = "勝率：" + (NSString(format: "0,2f", rate) as String) + "%"
+        cell.rateLabel.text = "勝率：" + (NSString(format: "%.2f", rate) as String) + "%"
         cell.winsAndLossesLabel.text = "\(wins) 勝\(losses) 敗"
         cell.userImageView.sd_setImageWithURL(NSURL(string:rankData[rankVar.rankType][indexPath.row]["user_photo"].stringValue))
         cell.rankingLabel.text = "\(indexPath.row + 1)"
