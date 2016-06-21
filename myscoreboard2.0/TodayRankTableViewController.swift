@@ -12,7 +12,7 @@ import SwiftyJSON
 class TodayRankTableViewController: UITableViewController {
     
     let gameTableViewCell = "GameTableViewCell"
-    var team = Team()
+    let team = Teams.sharedInstance.currentPlayingTeam
     var gameData: JSON = []
     
     override func viewDidLoad() {

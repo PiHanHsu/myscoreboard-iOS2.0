@@ -13,7 +13,6 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     
     var rankData:JSON = []
     var gameType: String = GameType.single
-    var selectedTeam: Team?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,17 +56,8 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     }
     
     func startGame(sender: UIButton) {
-       
-       selectedTeam = Teams.sharedInstance.teams[sender.tag]
+       Teams.sharedInstance.currentPlayingTeam = Teams.sharedInstance.teams[sender.tag]
        self.performSegueWithIdentifier("GoToSelectPlayerPage", sender: self)
-       
-        
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "GoToSelectPlayerPage" {
-            let vc =  segue.destinationViewController as! SelectPlayerViewController
-            vc.team = selectedTeam
-        }
-    }
 }

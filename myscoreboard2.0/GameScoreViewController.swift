@@ -37,7 +37,7 @@
         @IBOutlet weak var nextPair2Player2ImageView: UIImageView!
         @IBOutlet weak var finishGameButton: UIButton!
         
-        var team = Team()
+        let team = Teams.sharedInstance.currentPlayingTeam
         var selectedPlayers = [Player]()
         var matchesList: Array<Match>?
         var currentMatch: Match?
@@ -196,7 +196,6 @@
             }else {
                 gameType = GameType.mix
             }
-            print(gameType)
             
             HttpManager.sharedInstance
                 .request(HttpMethod.HttpMethodPost,
@@ -285,28 +284,41 @@
         
         
         @IBAction func pair1Player1ButtonPressed(sender: AnyObject) {
-            
             performSegueWithIdentifier("ChangePlayer", sender: sender)
-            print(sender.tag)
-            
         }
         
         // MARK: - Navigation
         
         // In a storyboard-based application, you will often want to do a little preparation before navigation
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-            print(sender!.tag)
-            if segue.identifier == "GoToTodayGamesPage" {
-                let vc =  segue.destinationViewController as! TodayRankTableViewController
-                vc.team = team
-            }else if segue.identifier == "ChangePlayer" {
+            if segue.identifier == "ChangePlayer" {
                 
-                let nav = segue.destinationViewController as! UINavigationController
+                                let nav = segue.destinationViewController as! UINavigationController
                 let vc =  nav.topViewController as! SelectPlayerViewController
                 vc.delegate = self
-                vc.team = team
                 vc.isChangePlayerMode = true
                 vc.changePlayerIndex = sender!.tag
+                
+                var currentMatchPlayers = [currentMatch!.pair1.player1, currentMatch!.pair1.player2, currentMatch!.pair2.player1, currentMatch!.pair2.player2]
+                switch sender!.tag {
+                case 1:
+                    currentMatchPlayers.removeAtIndex(0)
+                case 2:
+                    currentMatchPlayers.removeAtIndex(1)
+                case 3:
+                    currentMatchPlayers.removeAtIndex(2)
+                case 4:
+                    currentMatchPlayers.removeAtIndex(3)
+                default:
+                    break
+                }
+                
+                var players = Teams.sharedInstance.currentPlayingTeam.players
+                for player in currentMatchPlayers {
+                    players.removeAtIndex(players.indexOf(player)!)
+                }
+                vc.players = players
+                
             }
         }
         
@@ -362,7 +374,7 @@
         
         //change player Delegate
         func changePlayer(player: Player, playerIndex: Int) {
-                       
+            
             switch playerIndex {
             case 1:
                 currentMatch!.pair1.player1 = player
@@ -378,6 +390,4 @@
             
             displayCurrentMatchData()
         }
-    
-        
 }

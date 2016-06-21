@@ -10,9 +10,10 @@ import Foundation
 
 
 class Teams{
-    var teams = [Team]()
-   
+    
     static let sharedInstance = Teams()
+    var teams = [Team]()
+    var currentPlayingTeam = Team()
     
     private init() {}
     
