@@ -27,8 +27,8 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         self.profileTableView.delegate = self
         self.profileTableView.dataSource = self
         
-        self.profileTableView.estimatedRowHeight = 60
-        self.profileTableView.rowHeight = UITableViewAutomaticDimension
+        //self.profileTableView.estimatedRowHeight = 60
+        //self.profileTableView.rowHeight = UITableViewAutomaticDimension
         
         
         self.profileTableView.registerNib(UINib(nibName: profileInfoTableViewCell, bundle: nil), forCellReuseIdentifier: profileInfoTableViewCell)
@@ -66,6 +66,38 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
             return ""
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            let infoCellRowHeight:CGFloat = (tableView.frame.size.height - 34 - 34) * 0.23
+            return infoCellRowHeight
+        case 1:
+            let gameCellRowHeight:CGFloat = ((tableView.frame.size.height - 34 - 34) * 0.45) / 3
+            return gameCellRowHeight
+        case 2:
+            let bestPartnerCellRowHeight:CGFloat = (tableView.frame.size.height - 34 - 34) * 0.32
+            return bestPartnerCellRowHeight
+        default:
+            break
+        }
+        
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return 34
+        case 2:
+            return 34
+        default:
+            break
+        }
+        
+        return 0
+    }
     
     //tableView DataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
