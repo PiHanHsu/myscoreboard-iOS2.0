@@ -9,7 +9,7 @@
     import UIKit
     import SDWebImage
     
-    class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+    class GameScoreViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate, ChangePlayerDelegate {
         
         @IBOutlet weak var pair1SidePicker: UIPickerView!
         @IBOutlet weak var pair2SidePicker: UIPickerView!
@@ -53,9 +53,9 @@
             super.viewDidLoad()
             
             matchesList = MatchList.shareInstance.getMatchesList(selectedPlayers)
-            print("matches count: \(matchesList!.count)")
+            //print("matches count: \(matchesList!.count)")
             currentMatch = matchesList![0]
-            print(" currentMatchWeight: \(currentMatch?.mWeight)")
+            //print(" currentMatchWeight: \(currentMatch?.mWeight)")
             displayCurrentMatchData()
             createScueduleMatches(matchesList!)
             self.initPicker()
@@ -66,6 +66,7 @@
             finishGameButton.backgroundColor = UIColor.mainYellowColor()
             finishGameButton.layer.cornerRadius = 5.0
             finishGameButton.clipsToBounds = true
+            
             
             // test Algorithm
             //            for _ in 0...100{
@@ -166,10 +167,6 @@
         
         
         @IBAction func finishGameAction(sender: UIButton) {
-            
-            self.currentMatch = self.nextMatch
-            self.displayCurrentMatchData()
-            self.createScueduleMatches(self.matchesList!)
             
             let score1 = pair1SidePicker.selectedRowInComponent(0)
             let score2 = pair2SidePicker.selectedRowInComponent(0)
@@ -289,7 +286,8 @@
         
         @IBAction func pair1Player1ButtonPressed(sender: AnyObject) {
             
-            performSegueWithIdentifier("ChangePlayer", sender: self)
+            performSegueWithIdentifier("ChangePlayer", sender: sender)
+            print(sender.tag)
             
         }
         
@@ -297,13 +295,18 @@
         
         // In a storyboard-based application, you will often want to do a little preparation before navigation
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            print(sender!.tag)
             if segue.identifier == "GoToTodayGamesPage" {
                 let vc =  segue.destinationViewController as! TodayRankTableViewController
                 vc.team = team
             }else if segue.identifier == "ChangePlayer" {
-                let vc =  segue.destinationViewController as! SelectPlayerViewController
+                
+                let nav = segue.destinationViewController as! UINavigationController
+                let vc =  nav.topViewController as! SelectPlayerViewController
+                vc.delegate = self
                 vc.team = team
                 vc.isChangePlayerMode = true
+                vc.changePlayerIndex = sender!.tag
             }
         }
         
@@ -356,5 +359,25 @@
                 }
             }
         }
+        
+        //change player Delegate
+        func changePlayer(player: Player, playerIndex: Int) {
+                       
+            switch playerIndex {
+            case 1:
+                currentMatch!.pair1.player1 = player
+            case 2:
+                currentMatch!.pair1.player2 = player
+            case 3:
+                currentMatch!.pair2.player1 = player
+            case 4:
+                currentMatch!.pair2.player2 = player
+            default:
+                break
+            }
+            
+            displayCurrentMatchData()
+        }
+    
         
 }

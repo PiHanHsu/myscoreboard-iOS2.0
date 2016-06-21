@@ -33,6 +33,7 @@
 		E89018041D115F6C0057A8AB /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018031D115F6C0057A8AB /* Match.swift */; };
 		E89018061D1160B60057A8AB /* MatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018051D1160B60057A8AB /* MatchList.swift */; };
 		E89018081D17AADE0057A8AB /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018071D17AADE0057A8AB /* ForgetPasswordViewController.swift */; };
+		E890180A1D194E380057A8AB /* TestNavBehaviorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89018091D194E380057A8AB /* TestNavBehaviorViewController.swift */; };
 		E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B15A01CE8C94E0070940D /* AppDelegate.swift */; };
 		E89B15A81CE8C94F0070940D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A61CE8C94F0070940D /* Main.storyboard */; };
 		E89B15AA1CE8C94F0070940D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89B15A91CE8C94F0070940D /* Assets.xcassets */; };
@@ -102,6 +103,7 @@
 		E89018031D115F6C0057A8AB /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		E89018051D1160B60057A8AB /* MatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchList.swift; sourceTree = "<group>"; };
 		E89018071D17AADE0057A8AB /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
+		E89018091D194E380057A8AB /* TestNavBehaviorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNavBehaviorViewController.swift; sourceTree = "<group>"; };
 		E89B159D1CE8C94E0070940D /* myscoreboard2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myscoreboard2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89B15A01CE8C94E0070940D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E89B15A71CE8C94F0070940D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				E81012941D0B14F8005385C6 /* GameScoreViewController.swift */,
 				E890177D1D0EB2050057A8AB /* SelectPlayerViewController.swift */,
 				E89018011D1067030057A8AB /* TodayRankTableViewController.swift */,
+				E89018091D194E380057A8AB /* TestNavBehaviorViewController.swift */,
 			);
 			name = Team;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				E86202AB1CFFE2030030F798 /* BestPartnetTableViewCell.swift in Sources */,
 				E89B15A11CE8C94E0070940D /* AppDelegate.swift in Sources */,
 				E8DE72D41CF5AD2F00C66DBD /* RankingTableViewCell.swift in Sources */,
+				E890180A1D194E380057A8AB /* TestNavBehaviorViewController.swift in Sources */,
 				E88977851D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift in Sources */,
 				E89018081D17AADE0057A8AB /* ForgetPasswordViewController.swift in Sources */,
 				E89B15EB1CEC4F110070940D /* EditProfileTableViewController.swift in Sources */,

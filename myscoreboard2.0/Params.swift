@@ -53,7 +53,6 @@ class GameType {
     static let single = "single"
     static let double = "double"
     static let mix = "mix"
-    
 }
 
 class GameSetType {

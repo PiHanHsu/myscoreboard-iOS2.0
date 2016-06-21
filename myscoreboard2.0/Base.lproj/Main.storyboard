@@ -1770,20 +1770,29 @@
                                         <rect key="frame" x="416" y="108" width="69" height="69"/>
                                         <color key="backgroundColor" red="0.015686274510000001" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7I-pw-GXH">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7I-pw-GXH" userLabel="Button p1p1">
                                         <rect key="frame" x="94" y="8" width="113" height="95"/>
                                         <connections>
                                             <action selector="pair1Player1ButtonPressed:" destination="F1r-4e-mDh" eventType="touchUpInside" id="Vz6-SF-pRW"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oL-v2-03V">
-                                        <rect key="frame" x="394" y="8" width="113" height="95"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZv-gy-2jr">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZv-gy-2jr" userLabel="Button p1p2">
                                         <rect key="frame" x="94" y="108" width="113" height="95"/>
+                                        <connections>
+                                            <action selector="pair1Player1ButtonPressed:" destination="F1r-4e-mDh" eventType="touchUpInside" id="3N3-wV-Hjo"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zM7-a1-de2">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oL-v2-03V" userLabel="Button p2p1">
+                                        <rect key="frame" x="394" y="8" width="113" height="95"/>
+                                        <connections>
+                                            <action selector="pair1Player1ButtonPressed:" destination="F1r-4e-mDh" eventType="touchUpInside" id="Ujf-Kr-Gyp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zM7-a1-de2" userLabel="Button p2p2">
                                         <rect key="frame" x="394" y="108" width="113" height="95"/>
+                                        <connections>
+                                            <action selector="pair1Player1ButtonPressed:" destination="F1r-4e-mDh" eventType="touchUpInside" id="EPd-i9-Bw4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2087,12 +2096,22 @@
                         <outlet property="pair2Player2ImageView" destination="WyE-y9-Sl5" id="wYk-zV-DaT"/>
                         <outlet property="pair2Player2NameLabel" destination="Lbc-PA-vCE" id="mvB-bv-oO1"/>
                         <outlet property="pair2SidePicker" destination="qnM-S1-DFt" id="cCM-Yu-Zdj"/>
-                        <segue destination="NPi-ps-mZ8" kind="presentation" identifier="ChangePlayer" id="7YO-sf-fdp"/>
+                        <segue destination="mcO-px-R9t" kind="presentation" identifier="ChangePlayer" id="4yD-fd-QqW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRO-Ii-Hz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2369" y="1936"/>
+        </scene>
+        <!--SelectPlayerViewController-->
+        <scene sceneID="qdQ-Oc-X95">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="SelectPlayerViewController" id="D6X-tD-QDK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kw5-js-igD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Yb-4a-iei" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2880" y="2639"/>
         </scene>
         <!-- 今日紀錄-->
         <scene sceneID="GrE-jv-UNk">
@@ -2187,6 +2206,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="選擇球員" id="lNJ-ZM-2lv"/>
                     <connections>
+                        <outlet property="footerView" destination="Jaw-35-GgF" id="sIN-aX-WVl"/>
                         <outlet property="selectPlayersCollectionView" destination="D9E-43-nV4" id="DEh-kZ-RSH"/>
                     </connections>
                 </viewController>
@@ -2301,6 +2321,24 @@
             </objects>
             <point key="canvasLocation" x="162" y="-368"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yfe-H7-YU3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mcO-px-R9t" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v1O-Fg-lef">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="D6X-tD-QDK" kind="relationship" relationship="rootViewController" id="zBT-Rt-myb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbf-4N-mnv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2369" y="2639"/>
+        </scene>
     </scenes>
     <resources>
         <image name="addTeam" width="330" height="265"/>
@@ -2318,6 +2356,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6yj-8J-Xj3"/>
-        <segue reference="7YO-sf-fdp"/>
     </inferredMetricsTieBreakers>
 </document>
