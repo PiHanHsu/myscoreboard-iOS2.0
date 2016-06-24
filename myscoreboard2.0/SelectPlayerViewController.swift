@@ -131,5 +131,10 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
         }
      }
  
+    //TODO - change method to unwindForSegue
+    
+    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+    }
+   
     
 }

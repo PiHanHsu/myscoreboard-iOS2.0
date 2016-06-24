@@ -67,7 +67,13 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
         email = emailTextField.text!.trim()
         password = passwordTextField.text!.trim()
         
-        
+        var photoString = ""
+        if (photoImageView.image != nil) {
+          let imageData = UIImagePNGRepresentation(photoImageView.image!);
+          photoString = imageData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+          print("got photo string")
+        }
+        print(photoString)
         HttpManager.sharedInstance
             .request(
                 HttpMethod.HttpMethodPost,
@@ -76,11 +82,13 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
                     "username" : userName,
                     "email": email!,
                     "password": password!,
-                    "gender" : gender! ],
+                    "gender" : gender!,
+                    "head" : photoString ],
                 success: { (code, data ) in
                     print("account created!!")
                     self.success(code, data: data)
                 }, failure: { (code, data) in
+                    print(data)
                     //self.failure(code!, data: data!)
                 }, complete: nil)
     }
