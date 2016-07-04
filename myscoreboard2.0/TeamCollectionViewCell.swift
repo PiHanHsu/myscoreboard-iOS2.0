@@ -10,6 +10,10 @@ import UIKit
 import SDWebImage
 import SwiftyJSON
 
+protocol TeamCollectionViewCellDelegate: class {
+    func addNewPlayer()
+}
+
 class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var teamNameLabel: UILabel!
@@ -17,6 +21,8 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var teamPlayersCollectionView: UICollectionView?
+    
+    weak var delegate: TeamCollectionViewCellDelegate?
     
     var team:Team?
     
@@ -70,6 +76,7 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
         if indexPath.item == 0 {
             cell.playerName.text = "新增成員"
             cell.playerImage.image = UIImage(named: "ico_member_add")
+            cell.selectedButton.addTarget(self, action: #selector(addNewPlayer), forControlEvents: .TouchUpInside)
             
         }else{
             
@@ -88,5 +95,10 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
 
         return cell
     }
+    
+    func addNewPlayer() {
+       self.delegate?.addNewPlayer()
+    }
+    
 
 }

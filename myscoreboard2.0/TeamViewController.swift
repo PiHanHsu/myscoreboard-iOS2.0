@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollectionViewDataSource {
+class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollectionViewDataSource, TeamCollectionViewCellDelegate {
     
     var rankData:JSON = []
     var gameType: String = GameType.single
@@ -44,6 +44,8 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
             cell.placeLabel.text = cell.team?.gameLocation!
             cell.startGameButton.tag = indexPath.row
             cell.startGameButton.addTarget(self, action: #selector(TeamViewController.startGame), forControlEvents: .TouchUpInside)
+            
+            cell.delegate = self
         }
         cell.transform = checkTransform(indexPath.row)
         return cell
@@ -58,6 +60,18 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     func startGame(sender: UIButton) {
        Teams.sharedInstance.currentPlayingTeam = Teams.sharedInstance.teams[sender.tag]
        self.performSegueWithIdentifier("GoToSelectPlayerPage", sender: self)
+    }
+    
+    func addNewPlayer() {
+        
+       self.performSegueWithIdentifier("GoToAddNewPlayerPage", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "GoToAddNewPlayerPage" {
+            let vc = segue.destinationViewController as! AddNewPlayerViewController
+            vc.team = Teams.sharedInstance.teams[index]
+        }
     }
     
 }

@@ -9,6 +9,8 @@
 import UIKit
 
 class AddNewPlayerViewController: UIViewController {
+    
+    var team = Team()
 
     override func viewDidLoad() {
         super.viewDidLoad()
