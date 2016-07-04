@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol ChangePlayerDelegate {
+protocol ChangePlayerDelegate: class {
     func changePlayer(player: Player, playerIndex: Int)
 }
 
@@ -19,7 +19,7 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
     var selectedPlayers = [Player]()
     var players = [Player]()
     var isChangePlayerMode = false
-    var delegate = ChangePlayerDelegate?()
+    weak var delegate = ChangePlayerDelegate?()
     var changePlayerIndex: Int = 0
     
     override func viewDidLoad() {
