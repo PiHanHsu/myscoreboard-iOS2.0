@@ -1213,60 +1213,13 @@
                     <connections>
                         <outlet property="collectionView" destination="MyN-qq-Rge" id="Nyx-Ah-vFd"/>
                         <segue destination="mtB-2U-Vfs" kind="show" identifier="GoToAddNewTeamPage" id="n7F-gp-pOO"/>
-                        <segue destination="dqI-Fl-WA4" kind="show" identifier="GoToAddNewPlayerPage" id="uD0-OX-9Z0"/>
                         <segue destination="NPi-ps-mZ8" kind="show" identifier="GoToSelectPlayerPage" id="VpO-hG-F1J"/>
+                        <segue destination="zHM-Ca-sdK" kind="show" identifier="GoToAddNewPlayerPage" id="YQx-fW-8c1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="687-bs-JrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1571" y="1155"/>
-        </scene>
-        <!--Add New Player View Controller-->
-        <scene sceneID="X4l-YT-cXm">
-            <objects>
-                <viewController id="dqI-Fl-WA4" customClass="AddNewPlayerViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vj6-S4-5Rn"/>
-                        <viewControllerLayoutGuide type="bottom" id="Qeu-ED-fpN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Loj-or-Jfn">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="18b-Jj-Uiw">
-                                <rect key="frame" x="20" y="64" width="560" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="evH-Wh-Mwi"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="dqI-Fl-WA4" id="uKa-Zv-2XZ"/>
-                                </connections>
-                            </searchBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="18b-Jj-Uiw" firstAttribute="leading" secondItem="Loj-or-Jfn" secondAttribute="leadingMargin" id="IbM-Yt-xlR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="18b-Jj-Uiw" secondAttribute="trailing" id="TZc-Po-se6"/>
-                            <constraint firstItem="18b-Jj-Uiw" firstAttribute="top" secondItem="Vj6-S4-5Rn" secondAttribute="bottom" id="oZb-f3-Hxh"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="U8G-Th-RiH" id="6fo-VH-YlL"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0RR-uH-kRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="U8G-Th-RiH">
-                    <connections>
-                        <outlet property="delegate" destination="dqI-Fl-WA4" id="baB-Sp-BZf"/>
-                        <outlet property="searchBar" destination="18b-Jj-Uiw" id="XJs-VF-gWZ"/>
-                        <outlet property="searchContentsController" destination="dqI-Fl-WA4" id="hdt-8a-zZx"/>
-                        <outlet property="searchResultsDataSource" destination="dqI-Fl-WA4" id="vNn-wu-SRj"/>
-                        <outlet property="searchResultsDelegate" destination="dqI-Fl-WA4" id="MbL-nF-27y"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="1071" y="1930"/>
         </scene>
         <!--Add Team Table View Controller-->
         <scene sceneID="fOO-zk-vkG">
@@ -2207,12 +2160,49 @@
                     <navigationItem key="navigationItem" title="選擇球員" id="lNJ-ZM-2lv"/>
                     <connections>
                         <outlet property="footerView" destination="Jaw-35-GgF" id="sIN-aX-WVl"/>
+                        <outlet property="searchDisplayController" destination="uV4-nR-K6S" id="Pfm-IE-asB"/>
                         <outlet property="selectPlayersCollectionView" destination="D9E-43-nV4" id="DEh-kZ-RSH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emU-2d-DXi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="uV4-nR-K6S">
+                    <connections>
+                        <outlet property="delegate" destination="NPi-ps-mZ8" id="1l0-c6-PoL"/>
+                        <outlet property="searchContentsController" destination="NPi-ps-mZ8" id="1xU-JM-nlP"/>
+                        <outlet property="searchResultsDataSource" destination="NPi-ps-mZ8" id="zWE-QB-vxj"/>
+                        <outlet property="searchResultsDelegate" destination="NPi-ps-mZ8" id="7Ca-0z-Hyo"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1712" y="1936"/>
+        </scene>
+        <!--Add New Player Table View Controller-->
+        <scene sceneID="hcY-wW-i65">
+            <objects>
+                <tableViewController id="zHM-Ca-sdK" customClass="AddNewPlayerTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xr8-jC-qSS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="OZI-IV-OSK">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OZI-IV-OSK" id="UVP-bN-kLx">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zHM-Ca-sdK" id="e7j-Nt-Rb7"/>
+                            <outlet property="delegate" destination="zHM-Ca-sdK" id="lbA-AN-y97"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="co1-0u-9HG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="1936"/>
         </scene>
         <!--Forget Password View Controller-->
         <scene sceneID="z2g-ON-HBx">

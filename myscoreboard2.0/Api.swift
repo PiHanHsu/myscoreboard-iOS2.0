@@ -34,6 +34,7 @@ enum APiFunction {
     case GetUserStats
     case GetTodayGames
     case ResetPassword
+    case SearchUser
 }
 
 typealias HttpCallbackSuccess = (code: Int, data: JSON) -> Void
@@ -110,9 +111,9 @@ class HttpManager {
             path = Params.apiRootPath + Params.apiGetTodayGames
         case .ResetPassword :
             path = Params.apiRootPath + Params.apiResetPassword
+        case .SearchUser :
+            path = Params.apiRootPath + Params.apiSearchUser
         }
-        
-        
         
         switch httpMethod {
         case .HttpMethodGet, .HttpMethodPost:
@@ -163,7 +164,7 @@ class HttpManager {
     func uploadDataWithImage(httpMethod: HttpMethod,path: String, uploadImage: UIImage, param: [String: AnyObject]?, success: HttpCallbackSuccess? = nil, failure: HttpCallbackFailure? = nil, complete: HttpCallbackComplete? = nil) {
         
         var method: Alamofire.Method = .GET
-    
+        
         switch httpMethod {
         case .HttpMethodGet:
             method = .GET
@@ -185,7 +186,6 @@ class HttpManager {
                     for (key, value) in param! {
                         multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
                     }
-                    
                 },
                 encodingCompletion: { encodingResult in
                     switch encodingResult {
@@ -208,7 +208,6 @@ class HttpManager {
                     case .Failure:
                         failure?(code: nil, data: nil)
                     }
-                    
                     complete?()
                 }
         )

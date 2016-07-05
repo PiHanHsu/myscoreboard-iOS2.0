@@ -69,7 +69,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GoToAddNewPlayerPage" {
-            let vc = segue.destinationViewController as! AddNewPlayerViewController
+            let vc = segue.destinationViewController as! AddNewPlayerTableViewController
             vc.team = Teams.sharedInstance.teams[index]
         }
     }

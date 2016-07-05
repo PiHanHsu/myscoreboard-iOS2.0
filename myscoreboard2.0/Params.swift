@@ -37,6 +37,7 @@ struct Params {
     static let apiGetUserStats = "games/stats"
     static let apiGetTodayGames = "games/today_games"
     static let apiResetPassword = "reset_password"
+    static let apiSearchUser = "users/search"
 }
 
 class CurrentUser {
