@@ -70,7 +70,31 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let player = searchResults[indexPath.row]
+        
+        HttpManager.sharedInstance.request(HttpMethod.HttpMethodPatch,
+                                           apiFunc: APiFunction.AddPlayersInTeam,
+                                           param: ["auth_token": CurrentUser.sharedInstance.authToken!,
+                                                         ":id" : team.teamId!,
+                                              "added_user_ids" : [player.playerId!]],
+                                           success: { (code, data) in
+                                            
+                                            for team in Teams.sharedInstance.teams where team.teamId == team.teamId {
+                                                team.players.append(player)
+                                            }
+                                            print("add player successed!!")
+                                            self.navigationController?.popViewControllerAnimated(true)
+            }, failure: { (code, data) in
+                //failure
+                print("error: \(data)")
+               
+            }, complete: nil)
 
+    }
+    
+    
     
     func filterContentForSearchText(searchText: String ) {
         
@@ -92,7 +116,8 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
                                             
             }, failure: { (code, data) in
                 //failure
-                print("search faileds")
+                print("error: \(data)")
+               
             }, complete: nil)
         
     }

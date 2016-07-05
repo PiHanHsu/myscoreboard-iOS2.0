@@ -20,6 +20,11 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         self.collectionView?.registerNib(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TeamCollectionViewCell")
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView?.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -44,7 +49,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
             cell.placeLabel.text = cell.team?.gameLocation!
             cell.startGameButton.tag = indexPath.row
             cell.startGameButton.addTarget(self, action: #selector(TeamViewController.startGame), forControlEvents: .TouchUpInside)
-            
+            cell.teamPlayersCollectionView?.reloadData()
             cell.delegate = self
         }
         cell.transform = checkTransform(indexPath.row)
