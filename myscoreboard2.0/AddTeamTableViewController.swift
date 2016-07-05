@@ -59,9 +59,55 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
         return 0
     }
 
-    func updateTeamInfo() {
-        
+    //    place_name,
+    //    addres,
+    //    lat,
+    //    lng,
+    //    name,
+    //    day,
+    //    start_time,
+    //    end_time,
+    //    logo
+    
+    func createTeam() {
+        HttpManager.sharedInstance.request(HttpMethod.HttpMethodPost,
+                                           apiFunc: APiFunction.CreateTeam,
+                                           param: ["auth_token": CurrentUser.sharedInstance.authToken!,
+                                            "place_name" : "",
+                                            "address" : "",
+                                            "lat" : "",
+                                            "lng" : "",
+                                            "name" : teamNameTextField.text!,
+                                            "day" : "",
+                                            "start_time" : "",
+                                            "end_time" : ""]
+            , success: { (code, data) in
+                print("create team success")
+            }, failure: { (code, data) in
+                print("create team failed: \(data)")
+        })
+
     }
+    
+    func updateTeamInfo() {
+        HttpManager.sharedInstance.request(HttpMethod.HttpMethodPatch,
+                                           apiFunc: APiFunction.EditTeam,
+                                           param: ["auth_token": CurrentUser.sharedInstance.authToken!,
+                                            "place_name" : "",
+                                            "address" : "",
+                                            "lat" : "",
+                                            "lng" : "",
+                                            "name" : teamNameTextField.text!,
+                                            "day" : "",
+                                            "start_time" : "",
+                                            "end_time" : ""]
+            , success: { (code, data) in
+                print("update success")
+            }, failure: { (code, data) in
+                print("update team info failed: \(data)")
+        })
+    }
+
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
