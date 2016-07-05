@@ -1,5 +1,5 @@
 //
-//  PlayerTableViewCell.swift
+//  PlayerListTableViewCell.swift
 //  myscoreboard2.0
 //
 //  Created by PiHan Hsu on 7/5/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerTableViewCell: UITableViewCell {
+class PlayerListTableViewCell: UITableViewCell {
 
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -25,5 +25,5 @@ class PlayerTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

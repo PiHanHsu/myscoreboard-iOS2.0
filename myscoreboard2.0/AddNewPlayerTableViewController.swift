@@ -14,6 +14,7 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
     var team = Team()
     var searchController: UISearchController!
     var searchResults: [Player] = []
+    let playerListTableViewCell = "PlayerListTableViewCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
-        
+        self.tableView.registerNib(UINib(nibName: playerListTableViewCell, bundle: nil), forCellReuseIdentifier: playerListTableViewCell)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,9 +54,9 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PlayerTableViewCell", forIndexPath: indexPath) as! PlayerTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(playerListTableViewCell, forIndexPath: indexPath) as! PlayerListTableViewCell
 
-        // Configure the cell...
+        
         let player = searchResults[indexPath.row]
         cell.nameLabel.text = player.playerName
         

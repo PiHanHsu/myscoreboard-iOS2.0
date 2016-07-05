@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		31808C955C6D9D2A7FA88A7A /* Pods_myscoreboard2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D8BBC375238D263101B402 /* Pods_myscoreboard2_0.framework */; };
 		E80982DD1D2A6C27006F217C /* AddNewPlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */; };
-		E80982DF1D2B91A2006F217C /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982DE1D2B91A2006F217C /* PlayerTableViewCell.swift */; };
+		E80982E11D2BA05E006F217C /* EditPlayerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982E01D2BA05E006F217C /* EditPlayerListTableViewController.swift */; };
+		E80982E31D2BA06F006F217C /* SearchLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982E21D2BA06F006F217C /* SearchLocationTableViewController.swift */; };
+		E80982E61D2BB8FD006F217C /* PlayerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982E41D2BB8FD006F217C /* PlayerListTableViewCell.swift */; };
+		E80982E71D2BB8FD006F217C /* PlayerListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E80982E51D2BB8FD006F217C /* PlayerListTableViewCell.xib */; };
 		E810127D1D09578C005385C6 /* AddTeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810127C1D09578C005385C6 /* AddTeamTableViewController.swift */; };
 		E810128C1D096928005385C6 /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810128A1D096928005385C6 /* TeamCollectionViewCell.swift */; };
 		E810128D1D096928005385C6 /* TeamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E810128B1D096928005385C6 /* TeamCollectionViewCell.xib */; };
@@ -79,7 +82,10 @@
 		B1D8BBC375238D263101B402 /* Pods_myscoreboard2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myscoreboard2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CBD25F74E2991D60A78730 /* Pods-myscoreboard2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myscoreboard2.0.release.xcconfig"; path = "Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0.release.xcconfig"; sourceTree = "<group>"; };
 		E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPlayerTableViewController.swift; sourceTree = "<group>"; };
-		E80982DE1D2B91A2006F217C /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
+		E80982E01D2BA05E006F217C /* EditPlayerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPlayerListTableViewController.swift; sourceTree = "<group>"; };
+		E80982E21D2BA06F006F217C /* SearchLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewController.swift; sourceTree = "<group>"; };
+		E80982E41D2BB8FD006F217C /* PlayerListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListTableViewCell.swift; sourceTree = "<group>"; };
+		E80982E51D2BB8FD006F217C /* PlayerListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerListTableViewCell.xib; sourceTree = "<group>"; };
 		E810127C1D09578C005385C6 /* AddTeamTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeamTableViewController.swift; sourceTree = "<group>"; };
 		E810128A1D096928005385C6 /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		E810128B1D096928005385C6 /* TeamCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -273,7 +279,10 @@
 				E890177D1D0EB2050057A8AB /* SelectPlayerViewController.swift */,
 				E89018011D1067030057A8AB /* TodayRankTableViewController.swift */,
 				E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */,
-				E80982DE1D2B91A2006F217C /* PlayerTableViewCell.swift */,
+				E80982E01D2BA05E006F217C /* EditPlayerListTableViewController.swift */,
+				E80982E21D2BA06F006F217C /* SearchLocationTableViewController.swift */,
+				E80982E41D2BB8FD006F217C /* PlayerListTableViewCell.swift */,
+				E80982E51D2BB8FD006F217C /* PlayerListTableViewCell.xib */,
 			);
 			name = Team;
 			sourceTree = "<group>";
@@ -424,6 +433,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E80982E71D2BB8FD006F217C /* PlayerListTableViewCell.xib in Resources */,
 				E89B15AD1CE8C94F0070940D /* LaunchScreen.storyboard in Resources */,
 				E810128D1D096928005385C6 /* TeamCollectionViewCell.xib in Resources */,
 				E89B15AA1CE8C94F0070940D /* Assets.xcassets in Resources */,
@@ -508,6 +518,7 @@
 				E89B15DF1CE9CF6E0070940D /* pickerView.swift in Sources */,
 				E89B15D91CE9CF3B0070940D /* Params.swift in Sources */,
 				E862029F1CFE8AEE0030F798 /* ProfileCollectionViewCell.swift in Sources */,
+				E80982E61D2BB8FD006F217C /* PlayerListTableViewCell.swift in Sources */,
 				E86202A31CFE8F930030F798 /* TeamViewController.swift in Sources */,
 				E81012951D0B14F8005385C6 /* GameScoreViewController.swift in Sources */,
 				E8DE72D71CF68F7700C66DBD /* Team.swift in Sources */,
@@ -520,6 +531,7 @@
 				E89B15E11CEB75DC0070940D /* RegisterTableViewController.swift in Sources */,
 				E89B15D21CE8DCFA0070940D /* LoginTableViewController.swift in Sources */,
 				E890177E1D0EB2050057A8AB /* SelectPlayerViewController.swift in Sources */,
+				E80982E11D2BA05E006F217C /* EditPlayerListTableViewController.swift in Sources */,
 				E8DE72D81CF68F7700C66DBD /* Teams.swift in Sources */,
 				E89018021D1067030057A8AB /* TodayRankTableViewController.swift in Sources */,
 				E86202AB1CFFE2030030F798 /* BestPartnetTableViewCell.swift in Sources */,
@@ -536,10 +548,10 @@
 				E80982DD1D2A6C27006F217C /* AddNewPlayerTableViewController.swift in Sources */,
 				E86202A71CFFE1110030F798 /* GameTableViewCell.swift in Sources */,
 				E89B15DB1CE9CF4E0070940D /* protocol.swift in Sources */,
+				E80982E31D2BA06F006F217C /* SearchLocationTableViewController.swift in Sources */,
 				E89B15E31CEB7EE60070940D /* Utils.swift in Sources */,
 				E86202B31D0550380030F798 /* ProfileInfoTableViewCell.swift in Sources */,
 				E8DE72D01CF314CC00C66DBD /* RankingViewController.swift in Sources */,
-				E80982DF1D2B91A2006F217C /* PlayerTableViewCell.swift in Sources */,
 				E8DE72D21CF5752700C66DBD /* RankingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

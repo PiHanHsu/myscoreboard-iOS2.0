@@ -39,7 +39,7 @@
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3bp-ej-5Lh" userLabel="開始 比賽">
-                        <rect key="frame" x="150" y="8" width="68" height="68"/>
+                        <rect key="frame" x="172" y="8" width="68" height="68"/>
                         <color key="backgroundColor" red="0.99680107829999998" green="0.83325141670000002" blue="0.0006181913777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="3bp-ej-5Lh" secondAttribute="height" multiplier="1:1" id="0RY-bj-eWX"/>
@@ -87,7 +87,7 @@
                 <constraint firstItem="XOD-jL-mlE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="ZKc-eA-h9z"/>
                 <constraint firstItem="3bp-ej-5Lh" firstAttribute="width" secondItem="3bp-ej-5Lh" secondAttribute="height" multiplier="1:1" id="en7-au-RM9"/>
                 <constraint firstItem="6M7-UR-KBg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lk9-rc-yyu"/>
-                <constraint firstAttribute="trailing" secondItem="3bp-ej-5Lh" secondAttribute="trailing" constant="32" id="pPD-Zn-zYS"/>
+                <constraint firstAttribute="trailing" secondItem="3bp-ej-5Lh" secondAttribute="trailing" constant="10" id="pPD-Zn-zYS"/>
                 <constraint firstAttribute="trailing" secondItem="mN9-Yk-RR1" secondAttribute="trailing" constant="8" id="wj5-rU-8L9"/>
             </constraints>
             <size key="customSize" width="234" height="320"/>
