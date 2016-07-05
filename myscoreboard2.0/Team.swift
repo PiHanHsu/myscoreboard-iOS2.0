@@ -17,6 +17,7 @@ class Team: NSObject {
     var gameTimeHour:String?
     var gameLocation:String?
     var teamId:String?
+    var place: Place?
     
     init(data:JSON) {
         self.TeamImageUrl = data["team"]["logo_original_url"].stringValue

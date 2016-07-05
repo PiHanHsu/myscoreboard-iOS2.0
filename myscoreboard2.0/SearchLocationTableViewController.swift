@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SearchLocationTableViewController: UITableViewController , UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
     var searchController: UISearchController!
-    var searchResults: [Player] = []
+    var searchResults: [JSON] = []
+    var place = Place?()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,34 +37,80 @@ class SearchLocationTableViewController: UITableViewController , UISearchControl
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return searchResults.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
-
+        cell.textLabel?.text = searchResults[indexPath.row]["description"].stringValue
+        
         return cell
     }
-    */
+    
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        let placeId = searchResults[indexPath.row]["place_id"].stringValue
         
+        HttpManager.sharedInstance.request(HttpMethod.HttpMethodGet,
+                                           apiFunc: APiFunction.GooglePlaceDetail,
+                                           param: ["placeid" : placeId,
+                                                     "key" : Params.googlePlaceApiKey],
+                                           success: { (code, data) in
+                                            //print(data)
+                                            let name = data["result"]["name"].stringValue
+                                            let lat = data["result"]["geometry"]["location"]["lat"].doubleValue
+                                            let lng = data["result"]["geometry"]["location"]["lng"].doubleValue
+                                            let address = data["result"]["formatted_address"].stringValue
+                                            self.place = Place(placeId: placeId, name: name, latitude: lat, longitude: lng, address: address)
+                                            
+                                            
+            }, failure: { (code, data) in
+                
+            }, complete: nil)
+
     }
 
-
-
+    //TODO: unwind segue doesn't work
+    @IBAction func saveTeamPlace(segue:UIStoryboardSegue) {
+        print("hi")
+        if segue.identifier == "SaveTeamPlace" {
+            let vc = segue.sourceViewController as! AddTeamTableViewController
+            vc.place = place
+        }
+        //self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SaveTeamPlace" {
+            let vc = segue.sourceViewController as! AddTeamTableViewController
+            vc.place = place
+        }
+    }
+    
+    
+    // for search
     func filterContentForSearchText(searchText: String ) {
+        
+        HttpManager.sharedInstance.request(HttpMethod.HttpMethodGet,
+                                           apiFunc: APiFunction.GooglePlaceAutoComplete,
+                                           param: ["input" : searchText,
+                                                     "key" : Params.googlePlaceApiKey],
+                                           success: { (code, data) in
+                                            //print(data)
+                                            self.searchResults = data["predictions"].arrayValue
+                                            self.tableView.reloadData()
+            }, failure: { (code, data) in
+                
+            }, complete: nil)
+        
         
     }
 
@@ -80,6 +128,4 @@ class SearchLocationTableViewController: UITableViewController , UISearchControl
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         
     }
-
-
 }

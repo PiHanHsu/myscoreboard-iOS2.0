@@ -38,6 +38,11 @@ struct Params {
     static let apiGetTodayGames = "games/today_games"
     static let apiResetPassword = "reset_password"
     static let apiSearchUser = "users/search"
+    static let apiGooglePlaceAutoComplete = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
+    static let apiGooglePlaceDetail = "https://maps.googleapis.com/maps/api/place/details/json"
+    
+    //Google place api key
+    static let googlePlaceApiKey = "AIzaSyD9Phzy4CZWofeZD3RnEuFemlWTaM4n_po"
 }
 
 class CurrentUser {

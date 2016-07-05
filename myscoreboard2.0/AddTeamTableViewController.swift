@@ -12,6 +12,7 @@ import SDWebImage
 class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
 
     var team = Team()
+    var place = Place?()
     var isEditMode = false
     
     
@@ -33,6 +34,16 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
             photoImageView.sd_setImageWithURL(NSURL(string: team.TeamImageUrl!), placeholderImage: nil)
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if place != nil {
+            placeLabel.text = place!.name
+        }
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

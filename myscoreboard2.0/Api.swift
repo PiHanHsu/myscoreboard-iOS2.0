@@ -35,6 +35,8 @@ enum APiFunction {
     case GetTodayGames
     case ResetPassword
     case SearchUser
+    case GooglePlaceAutoComplete
+    case GooglePlaceDetail
 }
 
 typealias HttpCallbackSuccess = (code: Int, data: JSON) -> Void
@@ -113,6 +115,10 @@ class HttpManager {
             path = Params.apiRootPath + Params.apiResetPassword
         case .SearchUser :
             path = Params.apiRootPath + Params.apiSearchUser
+        case .GooglePlaceAutoComplete :
+            path = Params.apiGooglePlaceAutoComplete
+        case .GooglePlaceDetail :
+            path = Params.apiGooglePlaceDetail
         }
         
         switch httpMethod {
