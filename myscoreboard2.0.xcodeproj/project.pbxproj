@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		31808C955C6D9D2A7FA88A7A /* Pods_myscoreboard2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D8BBC375238D263101B402 /* Pods_myscoreboard2_0.framework */; };
 		E80982DD1D2A6C27006F217C /* AddNewPlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */; };
+		E80982DF1D2B91A2006F217C /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982DE1D2B91A2006F217C /* PlayerTableViewCell.swift */; };
 		E810127D1D09578C005385C6 /* AddTeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810127C1D09578C005385C6 /* AddTeamTableViewController.swift */; };
 		E810128C1D096928005385C6 /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810128A1D096928005385C6 /* TeamCollectionViewCell.swift */; };
 		E810128D1D096928005385C6 /* TeamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E810128B1D096928005385C6 /* TeamCollectionViewCell.xib */; };
@@ -78,6 +79,7 @@
 		B1D8BBC375238D263101B402 /* Pods_myscoreboard2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myscoreboard2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CBD25F74E2991D60A78730 /* Pods-myscoreboard2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myscoreboard2.0.release.xcconfig"; path = "Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0.release.xcconfig"; sourceTree = "<group>"; };
 		E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPlayerTableViewController.swift; sourceTree = "<group>"; };
+		E80982DE1D2B91A2006F217C /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
 		E810127C1D09578C005385C6 /* AddTeamTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeamTableViewController.swift; sourceTree = "<group>"; };
 		E810128A1D096928005385C6 /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		E810128B1D096928005385C6 /* TeamCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				E890177D1D0EB2050057A8AB /* SelectPlayerViewController.swift */,
 				E89018011D1067030057A8AB /* TodayRankTableViewController.swift */,
 				E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */,
+				E80982DE1D2B91A2006F217C /* PlayerTableViewCell.swift */,
 			);
 			name = Team;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				E89B15E31CEB7EE60070940D /* Utils.swift in Sources */,
 				E86202B31D0550380030F798 /* ProfileInfoTableViewCell.swift in Sources */,
 				E8DE72D01CF314CC00C66DBD /* RankingViewController.swift in Sources */,
+				E80982DF1D2B91A2006F217C /* PlayerTableViewCell.swift in Sources */,
 				E8DE72D21CF5752700C66DBD /* RankingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2180,18 +2180,47 @@
         <scene sceneID="hcY-wW-i65">
             <objects>
                 <tableViewController id="zHM-Ca-sdK" customClass="AddNewPlayerTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xr8-jC-qSS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" id="xr8-jC-qSS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="OZI-IV-OSK">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerTableViewCell" rowHeight="56" id="OZI-IV-OSK" customClass="PlayerTableViewCell" customModule="myscoreboard2_0" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OZI-IV-OSK" id="UVP-bN-kLx">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jfo-9I-1a0">
+                                            <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="7HZ-nl-8cV"/>
+                                                <constraint firstAttribute="width" secondItem="jfo-9I-1a0" secondAttribute="height" multiplier="1:1" id="X4g-8p-ECr"/>
+                                                <constraint firstAttribute="width" constant="40" id="baZ-AZ-ywU"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vND-c3-6l6">
+                                            <rect key="frame" x="63" y="8" width="529" height="39"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="jfo-9I-1a0" firstAttribute="top" secondItem="UVP-bN-kLx" secondAttribute="topMargin" id="33i-Zx-LJc"/>
+                                        <constraint firstItem="jfo-9I-1a0" firstAttribute="leading" secondItem="UVP-bN-kLx" secondAttribute="leadingMargin" id="6NI-7k-Xnh"/>
+                                        <constraint firstItem="vND-c3-6l6" firstAttribute="leading" secondItem="jfo-9I-1a0" secondAttribute="trailing" constant="15" id="7qx-XD-nPa"/>
+                                        <constraint firstItem="vND-c3-6l6" firstAttribute="bottom" secondItem="UVP-bN-kLx" secondAttribute="bottomMargin" id="7sz-Yh-Aoo"/>
+                                        <constraint firstItem="vND-c3-6l6" firstAttribute="trailing" secondItem="UVP-bN-kLx" secondAttribute="trailingMargin" id="fCR-Ca-fdt"/>
+                                        <constraint firstItem="vND-c3-6l6" firstAttribute="top" secondItem="UVP-bN-kLx" secondAttribute="topMargin" id="jbd-3n-VXZ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jfo-9I-1a0" secondAttribute="bottom" constant="-1" id="y7N-RY-efm"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="vND-c3-6l6" id="SvJ-Nc-XaV"/>
+                                    <outlet property="photoImageView" destination="jfo-9I-1a0" id="ZcS-8m-AV0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
