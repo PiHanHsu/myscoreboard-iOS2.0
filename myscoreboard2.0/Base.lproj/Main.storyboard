@@ -1210,7 +1210,13 @@
                             <constraint firstItem="MyN-qq-Rge" firstAttribute="leading" secondItem="reC-0a-Z7p" secondAttribute="leading" id="tUc-5N-hK1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的球隊" id="5KI-Qh-NVL"/>
+                    <navigationItem key="navigationItem" title="我的球隊" id="5KI-Qh-NVL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Ydy-U7-XYl">
+                            <connections>
+                                <segue destination="mtB-2U-Vfs" kind="show" identifier="GoToEditPlayerPage" id="gg0-FZ-gQG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="MyN-qq-Rge" id="Nyx-Ah-vFd"/>
                         <segue destination="mtB-2U-Vfs" kind="show" identifier="GoToAddNewTeamPage" id="n7F-gp-pOO"/>
@@ -1455,12 +1461,17 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="createTeamButton" destination="8AN-y4-hwR" id="NBw-wV-N0Y"/>
+                        <outlet property="editPlayersLabel" destination="jEy-wu-PwZ" id="GIt-Al-bTR"/>
                         <outlet property="photoImageView" destination="2nl-Ij-XIk" id="177-TM-l8q"/>
+                        <outlet property="placeLabel" destination="Mji-Vy-Ja5" id="r8B-KE-Yrj"/>
+                        <outlet property="teamNameTextField" destination="cmO-pm-vSU" id="Sf1-5f-lH0"/>
+                        <outlet property="timeLabel" destination="2Ib-fd-b4t" id="0SJ-1e-g5q"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWO-hC-i8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="1150"/>
+            <point key="canvasLocation" x="2259" y="1150"/>
         </scene>
         <!--Edit Player List Table View Controller-->
         <scene sceneID="B3E-fr-2Vl">
@@ -2399,6 +2410,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6yj-8J-Xj3"/>
-        <segue reference="8Iy-me-yzQ"/>
+        <segue reference="YQx-fW-8c1"/>
+        <segue reference="gg0-FZ-gQG"/>
     </inferredMetricsTieBreakers>
 </document>

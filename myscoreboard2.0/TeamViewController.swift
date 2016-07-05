@@ -76,7 +76,12 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
         if segue.identifier == "GoToAddNewPlayerPage" {
             let vc = segue.destinationViewController as! AddNewPlayerTableViewController
             vc.team = Teams.sharedInstance.teams[index]
+        }else if segue.identifier == "GoToEditPlayerPage" {
+            let vc = segue.destinationViewController as! AddTeamTableViewController
+            vc.team = Teams.sharedInstance.teams[index]
+            vc.isEditMode = true
         }
+        
     }
     
 }

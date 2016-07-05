@@ -7,17 +7,31 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
 
+    var team = Team()
+    var isEditMode = false
+    
+    
+   
+    @IBOutlet var teamNameTextField: UITextField!
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var placeLabel: UILabel!
+    @IBOutlet var editPlayersLabel: UILabel!
+    @IBOutlet var createTeamButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        if isEditMode {
+            teamNameTextField.text = team.teamName!
+            timeLabel.text = team.gameTimeDay! + " " + team.gameTimeHour!
+            placeLabel.text = team.gameLocation!
+            editPlayersLabel.text = "成員(\(team.players.count))"
+            createTeamButton.setTitle("更新", forState: .Normal)
+            photoImageView.sd_setImageWithURL(NSURL(string: team.TeamImageUrl!), placeholderImage: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +59,9 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
         return 0
     }
 
+    func updateTeamInfo() {
+        
+    }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
