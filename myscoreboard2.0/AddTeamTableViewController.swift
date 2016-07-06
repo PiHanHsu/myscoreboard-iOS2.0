@@ -152,9 +152,11 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                 self.team.teamId = data["team_id"].stringValue
                 
                 if self.team.players.count > 1 {
-                    
-                    
-                    }
+                      self.addPlyaers()
+                }else{
+                   self.reloadDataFromServer()
+                }
+                
             }, failure: { (code, data) in
                 print("create team failed: \(data)")
         })
@@ -176,6 +178,7 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                            success: { (code, data) in
                                             
                     print("add players success")
+                    self.reloadDataFromServer()
             }, failure: { (code, data) in
                 //failure
                 print("error: \(data)")
@@ -199,6 +202,7 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                             "end_time" : team.gameEndTime!]
             , success: { (code, data) in
                 print("update success")
+                self.reloadDataFromServer()
             }, failure: { (code, data) in
                 print("update team info failed: \(data)")
         })
@@ -295,6 +299,7 @@ extension AddTeamTableViewController: UIPickerViewDelegate, UIPickerViewDataSour
                         for team in data["results"].arrayValue {
                             Teams.sharedInstance.teams.append(Team(data: team))
                         }
+                    self.navigationController?.popViewControllerAnimated(true)
                 },
                      failure: { (code , data) in
                         

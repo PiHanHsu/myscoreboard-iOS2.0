@@ -89,7 +89,7 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
                                                success: { (code, data) in
                                                 
                                                 self.team.players.append(player)
-                                                self.navigationController?.popViewControllerAnimated(true)
+                                            self.navigationController?.popViewControllerAnimated(true)
                 }, failure: { (code, data) in
                     //failure
                     print("error: \(data)")
