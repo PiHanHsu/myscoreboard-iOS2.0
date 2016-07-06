@@ -22,6 +22,7 @@ class Team: NSObject {
     
     var teamId:String?
     var place: Place?
+    var placeName: String?
     
     init(data:JSON) {
         self.TeamImageUrl = data["team"]["logo_original_url"].stringValue
@@ -32,7 +33,7 @@ class Team: NSObject {
         
         self.gameTimeHour = self.gameStartTime! + " ~ " + self.gameEndTime!
         
-        self.place?.name = data["team"]["location"]["place_name"].stringValue
+        self.placeName = data["team"]["location"]["place_name"].stringValue
         
         self.teamId = data["team"]["id"].stringValue
         

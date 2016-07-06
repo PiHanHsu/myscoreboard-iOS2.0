@@ -32,6 +32,7 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if isEditMode {
             teamNameTextField.text = team.teamName!
             timeLabel.text = team.gameDay! + " " + team.gameTimeHour!

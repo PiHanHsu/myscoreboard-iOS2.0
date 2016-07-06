@@ -2411,8 +2411,8 @@
         <image name="tab_icon_teams" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6yj-8J-Xj3"/>
         <segue reference="gg0-FZ-gQG"/>
+        <segue reference="CSB-3U-MfM"/>
         <segue reference="8Iy-me-yzQ"/>
     </inferredMetricsTieBreakers>
 </document>

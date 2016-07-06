@@ -32,6 +32,7 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
         // Initialization code
         teamPlayersCollectionView?.delegate = self
         teamPlayersCollectionView?.dataSource = self
+        layoutIfNeeded()
         startGameButton.layer.cornerRadius = startGameButton.frame.size.height / 2
         startGameButton.clipsToBounds = true
     }

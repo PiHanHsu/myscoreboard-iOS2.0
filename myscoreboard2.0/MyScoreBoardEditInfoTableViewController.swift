@@ -17,6 +17,9 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        
         imagePicker.delegate = self
         photoImageView.layer.cornerRadius = 50.0
         photoImageView.clipsToBounds = true
