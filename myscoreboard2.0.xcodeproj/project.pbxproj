@@ -184,6 +184,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E80982EC1D2CBC12006F217C /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E810128A1D096928005385C6 /* TeamCollectionViewCell.swift */,
+				E810128B1D096928005385C6 /* TeamCollectionViewCell.xib */,
+				E810128E1D096F8C005385C6 /* PlayerCardCollectionViewCell.swift */,
+				E810128F1D096F8C005385C6 /* PlayerCardCollectionViewCell.xib */,
+				E80982E41D2BB8FD006F217C /* PlayerListTableViewCell.swift */,
+				E80982E51D2BB8FD006F217C /* PlayerListTableViewCell.xib */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
 		E86202A41CFFE0F40030F798 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,20 +284,15 @@
 		E89B15D31CE9C9690070940D /* Team */ = {
 			isa = PBXGroup;
 			children = (
+				E80982EC1D2CBC12006F217C /* TableViewCell */,
 				E86202A21CFE8F930030F798 /* TeamViewController.swift */,
-				E810128A1D096928005385C6 /* TeamCollectionViewCell.swift */,
-				E810128B1D096928005385C6 /* TeamCollectionViewCell.xib */,
-				E810128E1D096F8C005385C6 /* PlayerCardCollectionViewCell.swift */,
-				E810128F1D096F8C005385C6 /* PlayerCardCollectionViewCell.xib */,
+				E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */,
 				E810127C1D09578C005385C6 /* AddTeamTableViewController.swift */,
+				E80982E01D2BA05E006F217C /* EditPlayerListTableViewController.swift */,
+				E80982E21D2BA06F006F217C /* SearchLocationTableViewController.swift */,
 				E81012941D0B14F8005385C6 /* GameScoreViewController.swift */,
 				E890177D1D0EB2050057A8AB /* SelectPlayerViewController.swift */,
 				E89018011D1067030057A8AB /* TodayRankTableViewController.swift */,
-				E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */,
-				E80982E01D2BA05E006F217C /* EditPlayerListTableViewController.swift */,
-				E80982E21D2BA06F006F217C /* SearchLocationTableViewController.swift */,
-				E80982E41D2BB8FD006F217C /* PlayerListTableViewCell.swift */,
-				E80982E51D2BB8FD006F217C /* PlayerListTableViewCell.xib */,
 			);
 			name = Team;
 			sourceTree = "<group>";

@@ -1213,7 +1213,7 @@
                     <navigationItem key="navigationItem" title="我的球隊" id="5KI-Qh-NVL">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Ydy-U7-XYl">
                             <connections>
-                                <segue destination="mtB-2U-Vfs" kind="show" identifier="GoToEditPlayerPage" id="gg0-FZ-gQG"/>
+                                <segue destination="mtB-2U-Vfs" kind="show" identifier="GoToEditTeamPage" id="gg0-FZ-gQG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1490,7 +1490,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="0z4-nH-cCw">
                                 <connections>
-                                    <segue destination="zHM-Ca-sdK" kind="show" id="8Iy-me-yzQ"/>
+                                    <segue destination="zHM-Ca-sdK" kind="show" identifier="GoToAddPlayerPage" id="8Iy-me-yzQ"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="edit" id="J5F-OI-Wt8"/>
@@ -2412,7 +2412,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6yj-8J-Xj3"/>
-        <segue reference="YQx-fW-8c1"/>
         <segue reference="gg0-FZ-gQG"/>
+        <segue reference="8Iy-me-yzQ"/>
     </inferredMetricsTieBreakers>
 </document>

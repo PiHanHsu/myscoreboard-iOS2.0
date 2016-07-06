@@ -15,6 +15,7 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
     var searchController: UISearchController!
     var searchResults: [Player] = []
     let playerListTableViewCell = "PlayerListTableViewCell"
+    var isInListingMode = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,28 +76,28 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
         
         let player = searchResults[indexPath.row]
         
-        HttpManager.sharedInstance.request(HttpMethod.HttpMethodPatch,
-                                           apiFunc: APiFunction.AddPlayersInTeam,
-                                           param: ["auth_token": CurrentUser.sharedInstance.authToken!,
-                                                         ":id" : team.teamId!,
-                                              "added_user_ids" : [player.playerId!]],
-                                           success: { (code, data) in
-                                            
-                                            for team in Teams.sharedInstance.teams where team.teamId == team.teamId {
-                                                team.players.append(player)
-                                            }
-                                            print("add player successed!!")
-                                            self.navigationController?.popViewControllerAnimated(true)
-            }, failure: { (code, data) in
-                //failure
-                print("error: \(data)")
-               
-            }, complete: nil)
+        if isInListingMode {
 
+            self.team.players.append(player)
+            self.navigationController?.popViewControllerAnimated(true)
+        }else{
+            HttpManager.sharedInstance.request(HttpMethod.HttpMethodPatch,
+                                               apiFunc: APiFunction.AddPlayersInTeam,
+                                               param: ["auth_token": CurrentUser.sharedInstance.authToken!,
+                                                ":id" : team.teamId!,
+                                                "added_user_ids" : [player.playerId!]],
+                                               success: { (code, data) in
+                                                
+                                                self.team.players.append(player)
+                                                self.navigationController?.popViewControllerAnimated(true)
+                }, failure: { (code, data) in
+                    //failure
+                    print("error: \(data)")
+                    
+                }, complete: nil)
+        }
     }
-    
-    
-    
+
     func filterContentForSearchText(searchText: String ) {
         
         HttpManager.sharedInstance.request(HttpMethod.HttpMethodGet,
