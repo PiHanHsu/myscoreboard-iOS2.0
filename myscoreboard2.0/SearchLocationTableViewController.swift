@@ -14,6 +14,7 @@ class SearchLocationTableViewController: UITableViewController , UISearchControl
     var searchController: UISearchController!
     var searchResults: [JSON] = []
     var place = Place?()
+    var team = Team()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,31 +70,23 @@ class SearchLocationTableViewController: UITableViewController , UISearchControl
                                             let lat = data["result"]["geometry"]["location"]["lat"].doubleValue
                                             let lng = data["result"]["geometry"]["location"]["lng"].doubleValue
                                             let address = data["result"]["formatted_address"].stringValue
-                                            self.place = Place(placeId: placeId, name: name, latitude: lat, longitude: lng, address: address)
-                                            
+                                            self.team.place = Place(placeId: placeId, name: name, latitude: lat, longitude: lng, address: address)
+                                            self.navigationController?.popViewControllerAnimated(true)
                                             
             }, failure: { (code, data) in
                 
             }, complete: nil)
 
     }
-
-    //TODO: unwind segue doesn't work
-    @IBAction func saveTeamPlace(segue:UIStoryboardSegue) {
-        print("hi")
-        if segue.identifier == "SaveTeamPlace" {
-            let vc = segue.sourceViewController as! AddTeamTableViewController
-            vc.place = place
-        }
-        //self.navigationController?.popViewControllerAnimated(true)
-    }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SaveTeamPlace" {
-            let vc = segue.sourceViewController as! AddTeamTableViewController
-            vc.place = place
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//         print("prepare for segue")
+//        
+//        if segue.identifier == "SaveTeamPlace" {
+//            let vc = segue.destinationViewController as! AddTeamTableViewController
+//            vc.place = place
+//        }
+//    }
     
     
     // for search

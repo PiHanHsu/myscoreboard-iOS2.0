@@ -15,8 +15,6 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     var place = Place?()
     var isEditMode = false
     
-    
-   
     @IBOutlet var teamNameTextField: UITextField!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var placeLabel: UILabel!
@@ -38,9 +36,19 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if place != nil {
-            placeLabel.text = place!.name
+        if team.place != nil {
+            placeLabel.text = team.place!.name
         }
+        if team.players.isEmpty {
+            let currentPlayer = Player()
+            currentPlayer.playerId = CurrentUser.sharedInstance.userId
+            currentPlayer.playerName = CurrentUser.sharedInstance.username
+            currentPlayer.playerImageUrl = CurrentUser.sharedInstance.photo_url
+            currentPlayer.gender = CurrentUser.sharedInstance.gender
+            team.players.append(currentPlayer)
+        }
+        
+        editPlayersLabel.text = "成員(\(team.players.count))"
         
     }
     
@@ -118,60 +126,27 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                 print("update team info failed: \(data)")
         })
     }
+    
+//    @IBAction func saveTeamPlace(segue:UIStoryboardSegue) {
+//        print("unwind segue")
+//    }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+      
+        if segue.identifier == "GotoSearchLocationPage" {
+            let vc = segue.destinationViewController as! SearchLocationTableViewController
+            vc.team = team
+        }else if segue.identifier == "GoToPlayerListPage" {
+            let vc = segue.destinationViewController as! EditPlayerListTableViewController
+            vc.team = team
+        }
+        
+        
     }
-    */
+
 
 }

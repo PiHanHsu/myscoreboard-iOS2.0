@@ -17,7 +17,8 @@ class EditPlayerListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.tableView.estimatedRowHeight = 56
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.registerNib(UINib(nibName: playerListTableViewCell, bundle: nil), forCellReuseIdentifier: playerListTableViewCell)
         
     }
@@ -30,12 +31,12 @@ class EditPlayerListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    
         return team.players.count
     }
 
