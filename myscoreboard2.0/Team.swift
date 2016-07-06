@@ -13,19 +13,27 @@ class Team: NSObject {
     var players = [Player]()
     var TeamImageUrl:String?
     var teamName:String?
-    var gameTimeDay:String?
+    var gameDay:String?
+    var gameStartTime: String?
+    var gameEndTime: String?
+    
     var gameTimeHour:String?
     var gameLocation:String?
+    
     var teamId:String?
     var place: Place?
     
     init(data:JSON) {
         self.TeamImageUrl = data["team"]["logo_original_url"].stringValue
         self.teamName = data["team"]["name"].stringValue
-        self.gameTimeDay = data["team"]["day"].stringValue
-        self.gameTimeHour = (data["team"]["start_time_hour"].stringValue)+":"+(data["team"]["start_time_min"].stringValue)+"-"+(data["team"]["end_time_hour"].stringValue)+":"+(data["team"]["end_time_min"].stringValue)
-
-        self.gameLocation = data["team"]["location"]["place_name"].stringValue
+        self.gameDay = data["team"]["day"].stringValue
+        self.gameStartTime = data["team"]["start_time_hour"].stringValue + ":" + data["team"]["start_time_min"].stringValue
+        self.gameEndTime = data["team"]["end_time_hour"].stringValue + ":" + data["team"]["end_time_min"].stringValue
+        
+        self.gameTimeHour = self.gameStartTime! + " ~ " + self.gameEndTime!
+        
+        self.place?.name = data["team"]["location"]["place_name"].stringValue
+        
         self.teamId = data["team"]["id"].stringValue
         
         for member in data["team"]["teammembers"].arrayValue {

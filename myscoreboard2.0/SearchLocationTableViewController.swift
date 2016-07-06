@@ -79,16 +79,6 @@ class SearchLocationTableViewController: UITableViewController , UISearchControl
 
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//         print("prepare for segue")
-//        
-//        if segue.identifier == "SaveTeamPlace" {
-//            let vc = segue.destinationViewController as! AddTeamTableViewController
-//            vc.place = place
-//        }
-//    }
-    
-    
     // for search
     func filterContentForSearchText(searchText: String ) {
         

@@ -17,7 +17,6 @@ class Teams{
     
     private init() {}
     
-    
     func addTeam(team:Team)  {
         teams.append(team)
     }
