@@ -6,7 +6,6 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Login Table View Controller-->
@@ -1567,23 +1566,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="9vo-Rh-Yfz" id="eP7-i5-S80"/>
-                            <outlet property="delegate" destination="9vo-Rh-Yfz" id="Mod-Ie-HXO"/>
-                        </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6vY-Mj-pyB">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="0z4-nH-cCw">
-                                <connections>
-                                    <segue destination="zHM-Ca-sdK" kind="show" identifier="GoToAddPlayerPage" id="8Iy-me-yzQ"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="edit" id="J5F-OI-Wt8"/>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="6vY-Mj-pyB"/>
+                    <connections>
+                        <outlet property="addBarButton" destination="uIN-nE-zWb" id="wKf-xb-rSC"/>
+                        <outlet property="backBarButton" destination="Fv0-yC-RhN" id="QrQ-FI-1D1"/>
+                        <outlet property="cancelBarButton" destination="TG7-69-4y5" id="ldR-UQ-IFB"/>
+                        <outlet property="deleteBarButton" destination="lwM-xH-ybo" id="QX8-GM-HaN"/>
+                        <outlet property="editBarButton" destination="lKi-12-66c" id="us9-2h-GuZ"/>
+                        <segue destination="zHM-Ca-sdK" kind="show" identifier="GoToAddPlayerPage" id="T5z-j1-Fni"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOT-QT-bgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="取消" id="TG7-69-4y5">
+                    <connections>
+                        <action selector="cancelAction:" destination="9vo-Rh-Yfz" id="fnX-TE-nbS"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="編輯" id="lKi-12-66c">
+                    <connections>
+                        <action selector="editButtonPressed:" destination="9vo-Rh-Yfz" id="jHG-kZ-Rzo"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="刪除" id="lwM-xH-ybo">
+                    <connections>
+                        <action selector="deleteAction:" destination="9vo-Rh-Yfz" id="gHl-O7-erq"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="add" id="uIN-nE-zWb">
+                    <connections>
+                        <action selector="addButtonPressed:" destination="9vo-Rh-Yfz" id="lf0-Pa-Pe8"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Back" id="Fv0-yC-RhN">
+                    <connections>
+                        <action selector="backAction:" destination="9vo-Rh-Yfz" id="HaQ-Fp-ggB"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="2893" y="495"/>
         </scene>
@@ -2513,6 +2532,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="6yj-8J-Xj3"/>
         <segue reference="gg0-FZ-gQG"/>
-        <segue reference="YQx-fW-8c1"/>
+        <segue reference="T5z-j1-Fni"/>
     </inferredMetricsTieBreakers>
 </document>
