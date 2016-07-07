@@ -1998,7 +1998,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_nexton_bar" translatesAutoresizingMaskIntoConstraints="NO" id="ZHK-vv-tfC">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_nexton_bar_dark" translatesAutoresizingMaskIntoConstraints="NO" id="ZHK-vv-tfC">
                                                 <rect key="frame" x="45" y="7" width="510" height="47"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ZHK-vv-tfC" secondAttribute="height" multiplier="141:13" id="HAr-kK-MQh"/>
@@ -2076,7 +2076,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6r-j7-5Xy">
                                         <rect key="frame" x="0.0" y="60" width="600" height="60"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_nexton_bar" translatesAutoresizingMaskIntoConstraints="NO" id="aOK-pK-3Sk">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_nexton_bar_dark" translatesAutoresizingMaskIntoConstraints="NO" id="aOK-pK-3Sk">
                                                 <rect key="frame" x="45" y="7" width="510" height="47"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="aOK-pK-3Sk" secondAttribute="height" multiplier="141:13" id="6zz-et-xUc"/>
@@ -2491,7 +2491,7 @@
     </scenes>
     <resources>
         <image name="addTeam" width="330" height="265"/>
-        <image name="bg_nexton_bar" width="564" height="52"/>
+        <image name="bg_nexton_bar_dark" width="564" height="52"/>
         <image name="facebook_login" width="310" height="40"/>
         <image name="icon_arrow_down" width="50" height="50"/>
         <image name="icon_arrow_right" width="50" height="50"/>
@@ -2513,6 +2513,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="6yj-8J-Xj3"/>
         <segue reference="gg0-FZ-gQG"/>
-        <segue reference="8Iy-me-yzQ"/>
+        <segue reference="YQx-fW-8c1"/>
     </inferredMetricsTieBreakers>
 </document>
