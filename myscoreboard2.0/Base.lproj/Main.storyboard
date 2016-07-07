@@ -1570,7 +1570,6 @@
                     <navigationItem key="navigationItem" id="6vY-Mj-pyB"/>
                     <connections>
                         <outlet property="addBarButton" destination="uIN-nE-zWb" id="wKf-xb-rSC"/>
-                        <outlet property="backBarButton" destination="Fv0-yC-RhN" id="QrQ-FI-1D1"/>
                         <outlet property="cancelBarButton" destination="TG7-69-4y5" id="ldR-UQ-IFB"/>
                         <outlet property="deleteBarButton" destination="lwM-xH-ybo" id="QX8-GM-HaN"/>
                         <outlet property="editBarButton" destination="lKi-12-66c" id="us9-2h-GuZ"/>
@@ -1596,11 +1595,6 @@
                 <barButtonItem systemItem="add" id="uIN-nE-zWb">
                     <connections>
                         <action selector="addButtonPressed:" destination="9vo-Rh-Yfz" id="lf0-Pa-Pe8"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="Back" id="Fv0-yC-RhN">
-                    <connections>
-                        <action selector="backAction:" destination="9vo-Rh-Yfz" id="HaQ-Fp-ggB"/>
                     </connections>
                 </barButtonItem>
             </objects>

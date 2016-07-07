@@ -12,20 +12,13 @@ import SDWebImage
 class EditPlayerListTableViewController: UITableViewController {
     
     var team = Team()
-    var isEditMode = false
     let playerListTableViewCell = "PlayerListTableViewCell"
-
    
     @IBOutlet var cancelBarButton: UIBarButtonItem!
-    
-    
     @IBOutlet var deleteBarButton: UIBarButtonItem!
-    
     @IBOutlet var addBarButton: UIBarButtonItem!
-    
     @IBOutlet var editBarButton: UIBarButtonItem!
-    
-    @IBOutlet var backBarButton: UIBarButtonItem!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,31 +71,27 @@ class EditPlayerListTableViewController: UITableViewController {
 
     }
     
-
-    @IBAction func cancelAction(sender: AnyObject) {
-        tableView.setEditing(false, animated: true)
-        updateButtonsToMatchTableState()
-    }
-    
-    
-    @IBAction func backAction(sender: AnyObject) {
-        
-        navigationController?.popViewControllerAnimated(true)
-    }
-    
-    @IBAction func editButtonPressed(sender: AnyObject) {
-        
-        tableView.setEditing(true, animated: true)
-        updateButtonsToMatchTableState()
-    }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         
     }
     
     
+    // Bar Button Action
+
+    @IBAction func cancelAction(sender: AnyObject) {
+        tableView.setEditing(false, animated: true)
+        updateButtonsToMatchTableState()
+    }
+
+    @IBAction func editButtonPressed(sender: AnyObject) {
+        tableView.setEditing(true, animated: true)
+        updateButtonsToMatchTableState()
+    }
+    
     @IBAction func deleteAction(sender: AnyObject) {
+        
+        updateButtonsToMatchTableState()
     }
     
     func updateButtonsToMatchTableState() {
@@ -111,65 +100,20 @@ class EditPlayerListTableViewController: UITableViewController {
         {
             navigationItem.leftBarButtonItem = cancelBarButton
             navigationItem.rightBarButtonItems = [deleteBarButton]
-            
         }
         else
         {
-            navigationItem.leftBarButtonItem = backBarButton
+            navigationItem.leftBarButtonItem = navigationItem.backBarButtonItem
             navigationItem.rightBarButtonItems = [addBarButton, editBarButton]
             
-            if team.players.count > 0
-            {
+            if team.players.count > 0 {
                 self.editBarButton.enabled = true
-            }
-            else
-            {
+            }else {
                 self.editBarButton.enabled = false
             }
-           
         }
-
     }
     
-//    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-//        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.None
-//    }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-
-    // Override to support editing the table view.
-//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == .Delete {
-//            // Delete the row from the data source
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//        } else if editingStyle == .Insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }    
-//    }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     @IBAction func addButtonPressed(sender: AnyObject) {
   performSegueWithIdentifier("GoToAddPlayerPage", sender: self)
     }
@@ -184,6 +128,5 @@ class EditPlayerListTableViewController: UITableViewController {
             vc.isInListingMode = true
         }
     }
-
 
 }
