@@ -15,6 +15,9 @@ class RankingCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
     
     @IBOutlet weak var rankingTableView: UITableView!
     @IBOutlet weak var teamNameLabel: UILabel!
+    
+    @IBOutlet var switchGenderButton: UIButton!
+    
     var rankData:JSON = []
     var gameType: String = ""
     var rankVar = rankVariable()
@@ -34,9 +37,11 @@ class RankingCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         if CurrentUser.sharedInstance.gender! == "male" {
             rankVar.gender = "male"
             currentGender = "male"
+            switchGenderButton.setImage(UIImage(named: "icon_rank_female"), forState: .Normal)
         }else{
             rankVar.gender = "female"
             currentGender = "female"
+            switchGenderButton.setImage(UIImage(named: "icon_rank_male"), forState: .Normal)
         }
         
     }
@@ -78,9 +83,11 @@ class RankingCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         if currentGender == "male" {
             rankVar.gender = "female"
             currentGender = "female"
+            switchGenderButton.setImage(UIImage(named: "icon_rank_male"), forState: .Normal)
         }else{
             currentGender = "male"
             rankVar.gender = "male"
+            switchGenderButton.setImage(UIImage(named: "icon_rank_female"), forState: .Normal)
         }
         self.rankingTableView.reloadData()
     }

@@ -1072,19 +1072,25 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MM5-QX-ExJ">
                                                     <rect key="frame" x="1" y="1" width="248" height="57"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uv1-GY-6sS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="248" height="57"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Uv1-GY-6sS">
+                                                            <rect key="frame" x="55" y="0.0" width="138" height="57"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1QG-EW-aYz">
-                                                            <rect key="frame" x="194" y="14" width="46" height="30"/>
+                                                            <rect key="frame" x="16" y="9" width="39" height="39"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="46" id="FMN-kk-mvE"/>
-                                                                <constraint firstAttribute="height" constant="30" id="WGf-yW-bzg"/>
+                                                                <constraint firstAttribute="width" secondItem="1QG-EW-aYz" secondAttribute="height" multiplier="1:1" id="PHc-cs-51m"/>
+                                                                <constraint firstAttribute="height" constant="45" id="WGf-yW-bzg"/>
                                                             </constraints>
-                                                            <state key="normal" title="切換"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="FMN-kk-mvE"/>
+                                                                    <exclude reference="WGf-yW-bzg"/>
+                                                                </mask>
+                                                            </variation>
                                                             <connections>
                                                                 <action selector="switchGender:" destination="M62-kW-Quo" eventType="touchUpInside" id="zsp-ch-Q4Q"/>
                                                             </connections>
@@ -1093,12 +1099,31 @@
                                                     <color key="backgroundColor" red="0.015686274509803921" green="0.74509803921568629" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="Uv1-GY-6sS" secondAttribute="trailing" id="6M2-1n-vrd"/>
+                                                        <constraint firstItem="1QG-EW-aYz" firstAttribute="height" secondItem="MM5-QX-ExJ" secondAttribute="height" multiplier="0.7" id="7rb-rC-3ho"/>
+                                                        <constraint firstItem="Uv1-GY-6sS" firstAttribute="centerY" secondItem="MM5-QX-ExJ" secondAttribute="centerY" id="9Zf-Ef-sH6"/>
+                                                        <constraint firstItem="Uv1-GY-6sS" firstAttribute="height" secondItem="MM5-QX-ExJ" secondAttribute="height" id="A5B-Og-nYj"/>
+                                                        <constraint firstItem="1QG-EW-aYz" firstAttribute="leading" secondItem="MM5-QX-ExJ" secondAttribute="leading" constant="16" id="BZQ-4E-bww"/>
                                                         <constraint firstAttribute="trailing" secondItem="1QG-EW-aYz" secondAttribute="trailing" constant="8" id="IFR-vc-5lT"/>
+                                                        <constraint firstItem="Uv1-GY-6sS" firstAttribute="centerX" secondItem="MM5-QX-ExJ" secondAttribute="centerX" id="JbO-hL-AhT"/>
+                                                        <constraint firstItem="1QG-EW-aYz" firstAttribute="height" secondItem="Uv1-GY-6sS" secondAttribute="height" id="LEE-FQ-ho6"/>
                                                         <constraint firstItem="1QG-EW-aYz" firstAttribute="centerY" secondItem="MM5-QX-ExJ" secondAttribute="centerY" id="Or1-ld-yH7"/>
                                                         <constraint firstItem="Uv1-GY-6sS" firstAttribute="top" secondItem="MM5-QX-ExJ" secondAttribute="top" id="Xtm-Pz-0hw"/>
+                                                        <constraint firstItem="Uv1-GY-6sS" firstAttribute="leading" secondItem="1QG-EW-aYz" secondAttribute="trailing" constant="-62" id="c6x-Rh-aWN"/>
                                                         <constraint firstItem="Uv1-GY-6sS" firstAttribute="leading" secondItem="MM5-QX-ExJ" secondAttribute="leading" id="mYl-rc-L52"/>
+                                                        <constraint firstItem="Uv1-GY-6sS" firstAttribute="leading" secondItem="1QG-EW-aYz" secondAttribute="trailing" id="tVx-ty-rUZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="Uv1-GY-6sS" secondAttribute="bottom" id="xYT-9e-a9i"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="IFR-vc-5lT"/>
+                                                            <exclude reference="LEE-FQ-ho6"/>
+                                                            <exclude reference="6M2-1n-vrd"/>
+                                                            <exclude reference="Xtm-Pz-0hw"/>
+                                                            <exclude reference="c6x-Rh-aWN"/>
+                                                            <exclude reference="mYl-rc-L52"/>
+                                                            <exclude reference="xYT-9e-a9i"/>
+                                                        </mask>
+                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1126,6 +1151,7 @@
                                         </variation>
                                         <connections>
                                             <outlet property="rankingTableView" destination="dSg-2x-Lvm" id="iTu-Vr-Cuz"/>
+                                            <outlet property="switchGenderButton" destination="1QG-EW-aYz" id="k6u-RN-3XG"/>
                                             <outlet property="teamNameLabel" destination="Uv1-GY-6sS" id="pRZ-Pb-c11"/>
                                         </connections>
                                     </collectionViewCell>
