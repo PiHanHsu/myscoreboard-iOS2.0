@@ -722,7 +722,7 @@
         <!--編輯個人資料-->
         <scene sceneID="itY-7H-fwV">
             <objects>
-                <tableViewController id="l93-W2-1is" customClass="EditProfileTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="l93-W2-1is" customClass="EditProfileTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rm8-cT-E4d">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1261,7 +1261,7 @@
         <!--Add Team Table View Controller-->
         <scene sceneID="fOO-zk-vkG">
             <objects>
-                <tableViewController id="mtB-2U-Vfs" customClass="AddTeamTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="mtB-2U-Vfs" customClass="AddTeamTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="blb-0m-X1f">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1561,7 +1561,7 @@
         <!--Edit Player List Table View Controller-->
         <scene sceneID="B3E-fr-2Vl">
             <objects>
-                <tableViewController id="9vo-Rh-Yfz" customClass="EditPlayerListTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="9vo-Rh-Yfz" customClass="EditPlayerListTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wRX-pp-mOz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1603,7 +1603,7 @@
         <!--Search Location Table View Controller-->
         <scene sceneID="9ho-lQ-mSW">
             <objects>
-                <tableViewController id="Qv9-CD-6HA" customClass="SearchLocationTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="Qv9-CD-6HA" customClass="SearchLocationTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aL1-XV-mX0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2354,7 +2354,7 @@
         <!--Add New Player Table View Controller-->
         <scene sceneID="hcY-wW-i65">
             <objects>
-                <tableViewController id="zHM-Ca-sdK" customClass="AddNewPlayerTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="zHM-Ca-sdK" customClass="AddNewPlayerTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" id="xr8-jC-qSS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
