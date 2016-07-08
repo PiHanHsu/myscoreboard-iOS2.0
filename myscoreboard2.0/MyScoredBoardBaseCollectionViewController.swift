@@ -78,6 +78,10 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
         scrollView.setContentOffset(CGPointMake(CGFloat(newTargetOffset), 0), animated: true)
         
         index = Int(newTargetOffset / pageWidth)
+        //disale edit button when in Add Team cell
+        if index == Teams.sharedInstance.teams.count {
+            navigationItem.rightBarButtonItem?.enabled = false
+        }
         if index == 0 {
             if let cell = self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)){
                 UIView.animateWithDuration(Params.ANIMATION_SPEED) {
