@@ -24,6 +24,16 @@ class LoginTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        if userDefault.stringForKey("auth_token") != nil {
+            indicator.startAnimating()
+            setCurrentUser()
+        }
+        
+        // setup layout
         self.tableView.backgroundColor = UIColor.mainBlueColor()
         if self.view.frame.size.height == 480 {
             headerHeight = self.view.frame.size.height - 50 - 44 - 44 - 64
@@ -36,6 +46,7 @@ class LoginTableViewController: UITableViewController {
         self.footerView.backgroundColor = UIColor(red: 89.0/255.0, green: 212.0/255.0, blue: 255.0/255.0, alpha: 1)
         
     }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.indicator.center = self.view.center
@@ -82,11 +93,13 @@ class LoginTableViewController: UITableViewController {
             
             if facebookError != nil {
                 print("FaceBook login failed. Error: \(facebookError)")
+                self.indicator.stopAnimating()
             }else if facebookresult.isCancelled{
                 print("Facebook login was cancelled.")
+                self.indicator.stopAnimating()
             }else {
                 let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                print(accessToken)
+                //print(accessToken)
                 
                 HttpManager.sharedInstance
                     .request(
@@ -103,65 +116,6 @@ class LoginTableViewController: UITableViewController {
             }
         })
         
-    }
-    
-    func success(code:Int, data:JSON ) {
-        
-        //haven't test from FBLogin
-        print(data)
-        
-        //save token to userDefault
-        
-        CurrentUser.sharedInstance.authToken = data["auth_token"].stringValue
-        CurrentUser.sharedInstance.userId = data["user_id"].stringValue
-        CurrentUser.sharedInstance.username = data["username"].stringValue
-        CurrentUser.sharedInstance.gender = data["gender"].stringValue
-        CurrentUser.sharedInstance.photo_url = data["photo"].stringValue
-        CurrentUser.sharedInstance.email = data["email"].stringValue
-        
-        let token:String = data["auth_token"].stringValue
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        userDefault.setObject(token, forKey: "token")
-        userDefault.synchronize()
-        
-        GlobalFunction.sharedInstance.reloadDataFromServer({
-            //stop indicator Animating
-            self.indicator.startAnimating()
-            //go to main page
-            self.performSegueWithIdentifier("Show main page", sender: self)
-        })
-    
-    }
-    
-    func failure(code:Int, data:JSON ) {
-        //print(data)
-        
-        let message = data["message"].stringValue
-        let alertController = UIAlertController(title: "登入失敗!", message: message, preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        
-        alertController.addAction(defaultAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
-        
-        indicator.stopAnimating()
-        emailTextField.text = ""
-        passwordTextField.text = ""
-    }
-    
-    func isValidEmail(emailStr:String) -> Bool {
-        print("validate : \(emailStr)")
-        let emailRegEx = Params.emailReg
-        let range = emailStr.rangeOfString(emailRegEx, options:.RegularExpressionSearch)
-        return range != nil
-    }
-    
-    func isValidpassword(passwordStr:String) -> Bool {
-        print("validate : \(passwordStr)")
-        let passwordRegEx = Params.passwordReg
-        let range = passwordStr.rangeOfString(passwordRegEx, options:.RegularExpressionSearch)
-        return range != nil
     }
     
     @IBAction func loginButtonPressed(sender: UIButton) {
@@ -201,27 +155,101 @@ class LoginTableViewController: UITableViewController {
         }
     }
     
-//    func loadData() {
-//        HttpManager.sharedInstance
-//            .request(HttpMethod.HttpMethodGet,
-//                     apiFunc: APiFunction.GetTeamList,
-//                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
-//                        ":user_id": CurrentUser.sharedInstance.userId!],
-//                     success: { (code , data ) in
-//                        //print(data)
-//                        for team in data["results"].arrayValue {
-//                            Teams.sharedInstance.teams.append(Team(data: team))
-//                        }
-//                        //stop indicator Animating
-//                        self.indicator.startAnimating()
-//                        //go to main page
-//                        self.performSegueWithIdentifier("Show main page", sender: self)
-//                },
-//                     failure: { (code , data) in
-//                        self.failure(code!, data: data!)
-//                },
-//                     complete: nil)
-//        
-//    }
+    // login call back
+    func success(code:Int, data:JSON ) {
+        
+        //print(data)
+        
+        //save user to userDefault
+        let token = data["auth_token"].stringValue
+        let userId = data["user_id"].stringValue
+        let username = data["username"].stringValue
+        let gender = data["gender"].stringValue
+        let photo = data["photo"].stringValue
+        let email = data["email"].stringValue
+        
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.setObject(token, forKey: "auth_token")
+        userDefault.setObject(userId, forKey: "user_id")
+        userDefault.setObject(username, forKey: "username")
+        userDefault.setObject(gender, forKey: "gender")
+        userDefault.setObject(photo, forKey: "photo")
+        userDefault.setObject(email, forKey: "email")
+        
+        userDefault.synchronize()
+        
+        print("userDefault.token: \(token)")
+        
+        setCurrentUser()
+        
+    }
+    
+    func failure(code:Int, data:JSON ) {
+        
+        let message = data["message"].stringValue
+        let alertController = UIAlertController(title: "登入失敗!", message: message, preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
+        indicator.stopAnimating()
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
+    // set current user
+    
+    func setCurrentUser() {
+        
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        
+        CurrentUser.sharedInstance.authToken = userDefault.stringForKey("auth_token")
+        print("token: \( CurrentUser.sharedInstance.authToken)")
+        
+        CurrentUser.sharedInstance.userId = userDefault.stringForKey("user_id")
+        CurrentUser.sharedInstance.username = userDefault.stringForKey("username")
+        CurrentUser.sharedInstance.gender = userDefault.stringForKey("gender")
+        CurrentUser.sharedInstance.photo_url = userDefault.stringForKey("photo")
+        CurrentUser.sharedInstance.email = userDefault.stringForKey("email")
+        
+        GlobalFunction.sharedInstance.reloadDataFromServer({
+            
+            self.indicator.startAnimating()
+            //go to main page
+            self.performSegueWithIdentifier("Show main page", sender: self)
+        })
+    }
+    
+    // validate email and password
+    
+    func isValidEmail(emailStr:String) -> Bool {
+        print("validate : \(emailStr)")
+        let emailRegEx = Params.emailReg
+        let range = emailStr.rangeOfString(emailRegEx, options:.RegularExpressionSearch)
+        return range != nil
+    }
+    
+    func isValidpassword(passwordStr:String) -> Bool {
+        print("validate : \(passwordStr)")
+        let passwordRegEx = Params.passwordReg
+        let range = passwordStr.rangeOfString(passwordRegEx, options:.RegularExpressionSearch)
+        return range != nil
+    }
+
+}
+
+extension LoginTableViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        }else if textField == passwordTextField {
+            passwordTextField.resignFirstResponder()
+        }
+        return true
+    }
     
 }
