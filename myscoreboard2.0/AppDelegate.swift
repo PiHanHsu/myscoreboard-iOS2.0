@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application,didFinishLaunchingWithOptions: launchOptions)
         
         UINavigationBar.appearance().barTintColor = UIColor.mainBlueColor()
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().tintColor = UIColor.blackColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UITabBar.appearance().barTintColor = UIColor.mainBlueColor()
         UITabBar.appearance().tintColor = UIColor.whiteColor()
