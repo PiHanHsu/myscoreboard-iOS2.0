@@ -27,6 +27,7 @@ class EditPlayerListTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.registerNib(UINib(nibName: playerListTableViewCell, bundle: nil), forCellReuseIdentifier: playerListTableViewCell)
         self.tableView.allowsMultipleSelectionDuringEditing = true
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
         updateButtonsToMatchTableState()
     }
@@ -91,9 +92,11 @@ class EditPlayerListTableViewController: UITableViewController {
     }
     
     @IBAction func deleteAction(sender: AnyObject) {
+        
         let selectedRows = tableView.indexPathsForSelectedRows
         
         if selectedRows != nil && selectedRows!.count > 0{
+            
             for indexPath in selectedRows! {
                 let player = team.players[indexPath.row]
                 selectedPlayersToDelete.append(player.playerId!)
@@ -105,13 +108,20 @@ class EditPlayerListTableViewController: UITableViewController {
                                                 ":id" : team.teamId!,
                                                 "removed_user_ids" : selectedPlayersToDelete ]
                 , success: { (code, data) in
-                    print("remove players success")
-                    for indexPath in selectedRows! {
-                        let player = self.team.players[indexPath.row]
-                        print(player.playerName!)
-                        self.team.players.removeAtIndex(self.team.players.indexOf(player)!)
+                    
+                    //remove players from current playerList
+                    
+                    let indicesOfPlayerToDelete = NSMutableIndexSet()
+                    for selectionIndex in selectedRows! {
+                        indicesOfPlayerToDelete.addIndex(selectionIndex.row)
                     }
-                    self.reloadDataFromServer()
+                    self.team.players.removeAtIndexes(indicesOfPlayerToDelete)
+                    
+                    GlobalFunction.sharedInstance.reloadDataFromServer({ 
+                        self.tableView.reloadData()
+                        self.tableView.setEditing(false, animated: true)
+                        self.updateButtonsToMatchTableState()
+                    })
                 }, failure: { (code, data) in
                     print("update team info failed: \(data)")
             })
@@ -160,28 +170,5 @@ class EditPlayerListTableViewController: UITableViewController {
             vc.isInListingMode = true
         }
     }
-        
-        func reloadDataFromServer() {
-            HttpManager.sharedInstance
-                .request(HttpMethod.HttpMethodGet,
-                         apiFunc: APiFunction.GetTeamList,
-                         param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
-                            ":user_id": CurrentUser.sharedInstance.userId!],
-                         success: { (code , data ) in
-                            for team in data["results"].arrayValue {
-                                Teams.sharedInstance.teams.append(Team(data: team))
-                            }
-                            self.tableView.reloadData()
-                            self.tableView.setEditing(false, animated: true)
-                            self.updateButtonsToMatchTableState()
-                    
-                    },
-                         failure: { (code , data) in
-                            
-                    },
-                         complete: nil)
-            
-        }
-
-
+    
 }

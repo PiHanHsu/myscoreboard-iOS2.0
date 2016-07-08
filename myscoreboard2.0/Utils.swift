@@ -27,6 +27,14 @@ extension Array
         return self
     }
     
+    mutating func removeAtIndexes(indexes: NSIndexSet) {
+        var i = indexes.lastIndex
+        while i != NSNotFound {
+            self.removeAtIndex(i)
+            i = indexes.indexLessThanIndex(i)
+        }
+    }
+    
 }
 
 extension RangeReplaceableCollectionType where Generator.Element : Equatable {

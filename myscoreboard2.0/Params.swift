@@ -45,6 +45,32 @@ struct Params {
     static let googlePlaceApiKey = "AIzaSyD9Phzy4CZWofeZD3RnEuFemlWTaM4n_po"
 }
 
+class GlobalFunction {
+    static let sharedInstance = GlobalFunction()
+    
+    func reloadDataFromServer( completion: () -> ()) -> () {
+        HttpManager.sharedInstance
+            .request(HttpMethod.HttpMethodGet,
+                     apiFunc: APiFunction.GetTeamList,
+                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
+                        ":user_id": CurrentUser.sharedInstance.userId!],
+                     success: { (code , data ) in
+                        for team in data["results"].arrayValue {
+                            Teams.sharedInstance.teams.append(Team(data: team))
+                        }
+                     completion()
+                        
+                },
+                     failure: { (code , data) in
+                     print("reloadDataFailed: \(data)")
+                },
+                     complete: nil)
+        
+    }
+
+    
+}
+
 class CurrentUser {
     static let sharedInstance = CurrentUser()
     var authToken: String?

@@ -61,18 +61,15 @@ class LoginTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if self.view.frame.size.height == 480 {
             return 3
         }else {
             return 4
         }
-        
     }
     
     @IBAction func fbLogin(sender: AnyObject) {
@@ -110,10 +107,8 @@ class LoginTableViewController: UITableViewController {
     
     func success(code:Int, data:JSON ) {
         
-        
         //haven't test from FBLogin
         print(data)
-        
         
         //save token to userDefault
         
@@ -129,8 +124,13 @@ class LoginTableViewController: UITableViewController {
         userDefault.setObject(token, forKey: "token")
         userDefault.synchronize()
         
-        loadData()
-        
+        GlobalFunction.sharedInstance.reloadDataFromServer({
+            //stop indicator Animating
+            self.indicator.startAnimating()
+            //go to main page
+            self.performSegueWithIdentifier("Show main page", sender: self)
+        })
+    
     }
     
     func failure(code:Int, data:JSON ) {
@@ -201,27 +201,27 @@ class LoginTableViewController: UITableViewController {
         }
     }
     
-    func loadData() {
-        HttpManager.sharedInstance
-            .request(HttpMethod.HttpMethodGet,
-                     apiFunc: APiFunction.GetTeamList,
-                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
-                        ":user_id": CurrentUser.sharedInstance.userId!],
-                     success: { (code , data ) in
-                        //print(data)
-                        for team in data["results"].arrayValue {
-                            Teams.sharedInstance.teams.append(Team(data: team))
-                        }
-                        //stop indicator Animating
-                        self.indicator.startAnimating()
-                        //go to main page
-                        self.performSegueWithIdentifier("Show main page", sender: self)
-                },
-                     failure: { (code , data) in
-                        self.failure(code!, data: data!)
-                },
-                     complete: nil)
-        
-    }
+//    func loadData() {
+//        HttpManager.sharedInstance
+//            .request(HttpMethod.HttpMethodGet,
+//                     apiFunc: APiFunction.GetTeamList,
+//                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
+//                        ":user_id": CurrentUser.sharedInstance.userId!],
+//                     success: { (code , data ) in
+//                        //print(data)
+//                        for team in data["results"].arrayValue {
+//                            Teams.sharedInstance.teams.append(Team(data: team))
+//                        }
+//                        //stop indicator Animating
+//                        self.indicator.startAnimating()
+//                        //go to main page
+//                        self.performSegueWithIdentifier("Show main page", sender: self)
+//                },
+//                     failure: { (code , data) in
+//                        self.failure(code!, data: data!)
+//                },
+//                     complete: nil)
+//        
+//    }
     
 }

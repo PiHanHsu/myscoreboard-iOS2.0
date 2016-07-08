@@ -154,7 +154,9 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                 if self.team.players.count > 1 {
                       self.addPlyaers()
                 }else{
-                   self.reloadDataFromServer()
+                    GlobalFunction.sharedInstance.reloadDataFromServer({
+                        self.navigationController?.popViewControllerAnimated(true)
+                    })
                 }
                 
             }, failure: { (code, data) in
@@ -176,9 +178,11 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                             ":id" : team.teamId!,
                                             "added_user_ids" : playerIds],
                                            success: { (code, data) in
-                                            
                     print("add players success")
-                    self.reloadDataFromServer()
+                                            GlobalFunction.sharedInstance.reloadDataFromServer({
+                                                self.navigationController?.popViewControllerAnimated(true)
+                                            })
+
             }, failure: { (code, data) in
                 //failure
                 print("error: \(data)")
@@ -202,7 +206,10 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                             "end_time" : team.gameEndTime!]
             , success: { (code, data) in
                 print("update success")
-                self.reloadDataFromServer()
+                GlobalFunction.sharedInstance.reloadDataFromServer({
+                    self.navigationController?.popViewControllerAnimated(true)
+                })
+
             }, failure: { (code, data) in
                 print("update team info failed: \(data)")
         })
@@ -289,24 +296,24 @@ extension AddTeamTableViewController: UIPickerViewDelegate, UIPickerViewDataSour
 //        }
 //    }
     
-    func reloadDataFromServer() {
-        HttpManager.sharedInstance
-            .request(HttpMethod.HttpMethodGet,
-                     apiFunc: APiFunction.GetTeamList,
-                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
-                        ":user_id": CurrentUser.sharedInstance.userId!],
-                     success: { (code , data ) in
-                        for team in data["results"].arrayValue {
-                            Teams.sharedInstance.teams.append(Team(data: team))
-                        }
-                    self.navigationController?.popViewControllerAnimated(true)
-                },
-                     failure: { (code , data) in
-                        
-                },
-                     complete: nil)
-        
-    }
+//    func reloadDataFromServer() {
+//        HttpManager.sharedInstance
+//            .request(HttpMethod.HttpMethodGet,
+//                     apiFunc: APiFunction.GetTeamList,
+//                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
+//                        ":user_id": CurrentUser.sharedInstance.userId!],
+//                     success: { (code , data ) in
+//                        for team in data["results"].arrayValue {
+//                            Teams.sharedInstance.teams.append(Team(data: team))
+//                        }
+//                    self.navigationController?.popViewControllerAnimated(true)
+//                },
+//                     failure: { (code , data) in
+//                        
+//                },
+//                     complete: nil)
+//        
+//    }
 
 
 }
