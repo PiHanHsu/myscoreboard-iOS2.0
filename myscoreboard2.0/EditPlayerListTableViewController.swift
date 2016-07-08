@@ -13,6 +13,7 @@ class EditPlayerListTableViewController: UITableViewController {
     
     var team = Team()
     let playerListTableViewCell = "PlayerListTableViewCell"
+    var selectedPlayersToDelete = [String]()
    
     @IBOutlet var cancelBarButton: UIBarButtonItem!
     @IBOutlet var deleteBarButton: UIBarButtonItem!
@@ -90,6 +91,37 @@ class EditPlayerListTableViewController: UITableViewController {
     }
     
     @IBAction func deleteAction(sender: AnyObject) {
+        let selectedRows = tableView.indexPathsForSelectedRows
+        
+        if selectedRows != nil && selectedRows!.count > 0{
+            for indexPath in selectedRows! {
+                let player = team.players[indexPath.row]
+                selectedPlayersToDelete.append(player.playerId!)
+            }
+            
+            HttpManager.sharedInstance.request(HttpMethod.HttpMethodPatch,
+                                               apiFunc: APiFunction.RemovePlayerInTeam,
+                                               param: ["auth_token": CurrentUser.sharedInstance.authToken!,
+                                                ":id" : team.teamId!,
+                                                "removed_user_ids" : selectedPlayersToDelete ]
+                , success: { (code, data) in
+                    print("remove players success")
+                    for indexPath in selectedRows! {
+                        let player = self.team.players[indexPath.row]
+                        print(player.playerName!)
+                        self.team.players.removeAtIndex(self.team.players.indexOf(player)!)
+                    }
+                    self.reloadDataFromServer()
+                }, failure: { (code, data) in
+                    print("update team info failed: \(data)")
+            })
+        }else {
+            
+        }
+        
+        
+        
+        print(selectedPlayersToDelete)
         
         updateButtonsToMatchTableState()
     }
@@ -128,5 +160,28 @@ class EditPlayerListTableViewController: UITableViewController {
             vc.isInListingMode = true
         }
     }
+        
+        func reloadDataFromServer() {
+            HttpManager.sharedInstance
+                .request(HttpMethod.HttpMethodGet,
+                         apiFunc: APiFunction.GetTeamList,
+                         param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
+                            ":user_id": CurrentUser.sharedInstance.userId!],
+                         success: { (code , data ) in
+                            for team in data["results"].arrayValue {
+                                Teams.sharedInstance.teams.append(Team(data: team))
+                            }
+                            self.tableView.reloadData()
+                            self.tableView.setEditing(false, animated: true)
+                            self.updateButtonsToMatchTableState()
+                    
+                    },
+                         failure: { (code , data) in
+                            
+                    },
+                         complete: nil)
+            
+        }
+
 
 }
