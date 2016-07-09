@@ -135,34 +135,71 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     }
     
     func createTeam() {
-        HttpManager.sharedInstance.request(HttpMethod.HttpMethodPost,
-                                           apiFunc: APiFunction.CreateTeam,
-                                           param: ["auth_token": CurrentUser.sharedInstance.authToken!,
-                                            "place_name" : (team.place?.name)!,
-                                            "address" : (team.place?.address)!,
-                                            "lat" : (team.place?.latitude)!,
-                                            "lng" : (team.place?.longitude)!,
-                                            "google_id" : (team.place?.placeId)!,
-                                            "name" : teamNameTextField.text!,
-                                            "day" : daytime!,
-                                            "start_time" : starttime!,
-                                            "end_time" : endtime!]
-            , success: { (code, data) in
-                print("create team success")
-                self.team.teamId = data["team_id"].stringValue
-                
-                if self.team.players.count > 1 {
-                      self.addPlyaers()
-                }else{
-                    GlobalFunction.sharedInstance.reloadDataFromServer({
-                        self.navigationController?.popViewControllerAnimated(true)
-                    })
-                }
-                
-            }, failure: { (code, data) in
-                print("create team failed: \(data)")
-        })
+      
+        
+        if photoImageView.image != nil {
+            let path = "https://product.myscoreboardapp.com/api/v1/teams"
+            let lat = String((team.place?.latitude)!)
+            let lng = String((team.place?.longitude)!)
+            HttpManager.sharedInstance.uploadDataWithImage(HttpMethod.HttpMethodPost,
+                                                           path: path,
+                                                           uploadImage: photoImageView.image!,
+                                                           imageParam: "logo",
+                                                           param: ["auth_token": CurrentUser.sharedInstance.authToken!,
+                                                            "place_name" : (team.place?.name)!,
+                                                            "address" : (team.place?.address)!,
+                                                            "lat" : lat,
+                                                            "lng" : lng,
+                                                            "name" : teamNameTextField.text!,
+                                                            "day" : daytime!,
+                                                            "start_time" : starttime!,
+                                                            "end_time" : endtime!],
+                                                           success: { (code, data) in
+                                                            print("create team with image success")
+                                                            self.team.teamId = data["team_id"].stringValue
+                                                            
+                                                            if self.team.players.count > 1 {
+                                                                self.addPlyaers()
+                                                            }else{
+                                                                GlobalFunction.sharedInstance.reloadDataFromServer({
+                                                                    self.navigationController?.popViewControllerAnimated(true)
+                                                                })
+                                                            }
 
+                                                            
+                }, failure: { (code, data) in
+                    print("create team with image failed: \(data)")
+                }, complete: nil)
+        }else{
+            HttpManager.sharedInstance.request(HttpMethod.HttpMethodPost,
+                                               apiFunc: APiFunction.CreateTeam,
+                                               param: ["auth_token": CurrentUser.sharedInstance.authToken!,
+                                                "place_name" : (team.place?.name)!,
+                                                "address" : (team.place?.address)!,
+                                                "lat" : (team.place?.latitude)!,
+                                                "lng" : (team.place?.longitude)!,
+                                                "google_id" : (team.place?.placeId)!,
+                                                "name" : teamNameTextField.text!,
+                                                "day" : daytime!,
+                                                "start_time" : starttime!,
+                                                "end_time" : endtime!]
+                , success: { (code, data) in
+                    print("create team success")
+                    self.team.teamId = data["team_id"].stringValue
+                    
+                    if self.team.players.count > 1 {
+                        self.addPlyaers()
+                    }else{
+                        GlobalFunction.sharedInstance.reloadDataFromServer({
+                            self.navigationController?.popViewControllerAnimated(true)
+                        })
+                    }
+                    
+                }, failure: { (code, data) in
+                    print("create team failed: \(data)")
+            })
+        }
+        
     }
     
     func addPlyaers() {
@@ -283,37 +320,5 @@ extension AddTeamTableViewController: UIPickerViewDelegate, UIPickerViewDataSour
         pickerLabel.backgroundColor = UIColor.clearColor()
         return pickerLabel
     }
-
-    
-//    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        
-//        if component == 0{
-//            daytime = dayArray[row]
-//        }else if component == 1 {
-//            starttime = startTimeArray[row]
-//        }else{
-//            endtime = endTimeArray[row]
-//        }
-//    }
-    
-//    func reloadDataFromServer() {
-//        HttpManager.sharedInstance
-//            .request(HttpMethod.HttpMethodGet,
-//                     apiFunc: APiFunction.GetTeamList,
-//                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
-//                        ":user_id": CurrentUser.sharedInstance.userId!],
-//                     success: { (code , data ) in
-//                        for team in data["results"].arrayValue {
-//                            Teams.sharedInstance.teams.append(Team(data: team))
-//                        }
-//                    self.navigationController?.popViewControllerAnimated(true)
-//                },
-//                     failure: { (code , data) in
-//                        
-//                },
-//                     complete: nil)
-//        
-//    }
-
 
 }
