@@ -55,6 +55,7 @@ class GlobalFunction {
                      param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
                         ":user_id": CurrentUser.sharedInstance.userId!],
                      success: { (code , data ) in
+                        Teams.sharedInstance.teams.removeAll()
                         for team in data["results"].arrayValue {
                             Teams.sharedInstance.teams.append(Team(data: team))
                         }
