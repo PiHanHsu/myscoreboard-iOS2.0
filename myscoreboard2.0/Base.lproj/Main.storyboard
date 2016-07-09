@@ -336,7 +336,7 @@
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M6I-vd-KMM">
                                     <rect key="frame" x="250" y="76" width="100" height="100"/>
-                                    <color key="tintColor" red="0.015686274510000001" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.015686274510000001" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上傳個人照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Q0-Uh-P47">
                                     <rect key="frame" x="264" y="144" width="72" height="15"/>
@@ -515,7 +515,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="mk3-aR-Xqm"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -549,7 +549,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="78J-f7-Crp"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -2550,7 +2550,7 @@
         <image name="tab_icon_teams" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CSB-3U-MfM"/>
+        <segue reference="6yj-8J-Xj3"/>
         <segue reference="gg0-FZ-gQG"/>
         <segue reference="T5z-j1-Fni"/>
     </inferredMetricsTieBreakers>
