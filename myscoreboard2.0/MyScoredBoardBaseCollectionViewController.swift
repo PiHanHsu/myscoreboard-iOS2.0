@@ -81,6 +81,8 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
         //disale edit button when in Add Team cell
         if index == Teams.sharedInstance.teams.count {
             navigationItem.rightBarButtonItem?.enabled = false
+        }else{
+            navigationItem.rightBarButtonItem?.enabled = true
         }
         if index == 0 {
             if let cell = self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)){
