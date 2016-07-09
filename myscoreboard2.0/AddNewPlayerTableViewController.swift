@@ -76,27 +76,28 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
         
         let player = searchResults[indexPath.row]
         
-//        if isInListingMode {
-//
-//            self.team.players.append(player)
-//            self.navigationController?.popViewControllerAnimated(true)
-//        }else{
-//        }
-        HttpManager.sharedInstance.request(HttpMethod.HttpMethodPatch,
-                                           apiFunc: APiFunction.AddPlayersInTeam,
-                                           param: ["auth_token": CurrentUser.sharedInstance.authToken!,
-                                            ":id" : team.teamId!,
-                                            "added_user_ids" : [player.playerId!]],
-                                           success: { (code, data) in
-                                            
-                                            self.team.players.append(player)
-                                            self.navigationController?.popViewControllerAnimated(true)
-            }, failure: { (code, data) in
-                //failure
-                print("error: \(data)")
-                
-            }, complete: nil)
+        if isInListingMode {
 
+            self.team.players.append(player)
+            self.navigationController?.popViewControllerAnimated(true)
+        }else{
+            HttpManager.sharedInstance.request(HttpMethod.HttpMethodPatch,
+                                               apiFunc: APiFunction.AddPlayersInTeam,
+                                               param: ["auth_token": CurrentUser.sharedInstance.authToken!,
+                                                ":id" : team.teamId!,
+                                                "added_user_ids" : [player.playerId!]],
+                                               success: { (code, data) in
+                                                
+                                                self.team.players.append(player)
+                                                self.navigationController?.popViewControllerAnimated(true)
+                }, failure: { (code, data) in
+                    //failure
+                    print("error: \(data)")
+                    
+                }, complete: nil)
+
+        }
+       
     }
 
     func filterContentForSearchText(searchText: String ) {
