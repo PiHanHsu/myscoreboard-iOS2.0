@@ -167,7 +167,7 @@ class HttpManager {
         
     }
     
-    func uploadDataWithImage(httpMethod: HttpMethod,path: String, uploadImage: UIImage, param: [String: AnyObject]?, success: HttpCallbackSuccess? = nil, failure: HttpCallbackFailure? = nil, complete: HttpCallbackComplete? = nil) {
+    func uploadDataWithImage(httpMethod: HttpMethod,path: String, uploadImage: UIImage, imageParam: String, param: [String: AnyObject]?, success: HttpCallbackSuccess? = nil, failure: HttpCallbackFailure? = nil, complete: HttpCallbackComplete? = nil) {
         
         var method: Alamofire.Method = .GET
         
@@ -185,9 +185,9 @@ class HttpManager {
                 method,
                 path,
                 multipartFormData: { multipartFormData in
-                    //multipartFormData.appendBodyPart(data: data, name: name, fileName: "\(name).jpg", mimeType: "image/jpeg")
+                    
                     if let imageData = UIImageJPEGRepresentation(uploadImage, 1.0) {
-                        multipartFormData.appendBodyPart(data: imageData, name: "logo", fileName: "file.png", mimeType: "image/png")
+                        multipartFormData.appendBodyPart(data: imageData, name: imageParam, fileName: "\(imageParam).png", mimeType: "image/png")
                     }
                     for (key, value) in param! {
                         multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
@@ -214,6 +214,42 @@ class HttpManager {
                     case .Failure:
                         failure?(code: nil, data: nil)
                     }
+                    complete?()
+                }
+        )
+    }
+    
+    func uploadData(path: String, name: String, data: NSData, success: HttpCallbackSuccess? = nil, failure: HttpCallbackFailure? = nil, complete: HttpCallbackComplete? = nil) {
+        
+        Alamofire
+            .upload(
+                .POST,
+                path,
+                multipartFormData: { multipartFormData in
+                    multipartFormData.appendBodyPart(data: data, name: name, fileName: "\(name).jpg", mimeType: "image/jpeg")
+                },
+                encodingCompletion: { encodingResult in
+                    switch encodingResult {
+                    case .Success(let upload, _, _):
+                        upload.responseJSON { response in
+                            switch response.result {
+                            case .Success(let data):
+                                let code = response.response?.statusCode
+                                
+                                if code != nil && code! >= 200 && code! < 300 {
+                                    success?(code: code!, data: JSON(data))
+                                } else {
+                                    failure?(code: code, data: JSON(data))
+                                }
+                            case .Failure(_):
+                                print("no data responsed")
+                                failure?(code: nil, data: nil)
+                            }
+                        }
+                    case .Failure:
+                        failure?(code: nil, data: nil)
+                    }
+                    
                     complete?()
                 }
         )

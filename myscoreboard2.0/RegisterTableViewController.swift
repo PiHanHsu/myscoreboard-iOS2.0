@@ -67,30 +67,45 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
         email = emailTextField.text!.trim()
         password = passwordTextField.text!.trim()
         
-        var photoString = ""
-        if (photoImageView.image != nil) {
-          let imageData = UIImagePNGRepresentation(photoImageView.image!);
-          photoString = imageData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
-          print("got photo string")
-        }
-        print(photoString)
-        HttpManager.sharedInstance
-            .request(
-                HttpMethod.HttpMethodPost,
-                apiFunc: APiFunction.Register,
-                param: [
-                    "username" : userName,
-                    "email": email!,
-                    "password": password!,
-                    "gender" : gender!,
-                    "head" : photoString ],
-                success: { (code, data ) in
-                    print("account created!!")
-                    self.success(code, data: data)
+        if photoImageView.image != nil {
+            let path = "https://product.myscoreboardapp.com/api/v1/signup"
+        
+            HttpManager.sharedInstance.uploadDataWithImage(HttpMethod.HttpMethodPost,
+                                                           path: path,
+                                                           uploadImage: photoImageView.image!,
+                                                           imageParam: "head",
+                                                           param:  [
+                                                            "username" : userName,
+                                                            "email": email!,
+                                                            "password": password!,
+                                                            "gender" : gender!,],
+                                                           success: { (code, data) in
+                                                            print("signup user with image success")
+                                                            self.success(code, data: data)
+                                                            
                 }, failure: { (code, data) in
-                    print(data)
-                    //self.failure(code!, data: data!)
+                    print("signup user with image failed: \(data)")
                 }, complete: nil)
+        }else{
+            
+            HttpManager.sharedInstance
+                .request(
+                    HttpMethod.HttpMethodPost,
+                    apiFunc: APiFunction.Register,
+                    param: [
+                        "username" : userName,
+                        "email": email!,
+                        "password": password!,
+                        "gender" : gender!],
+                    success: { (code, data ) in
+                        print("account created!!")
+                        self.success(code, data: data)
+                    }, failure: { (code, data) in
+                        print(data)
+                        //self.failure(code!, data: data!)
+                    }, complete: nil)
+
+        }
     }
     
     func success(code:Int, data:JSON ) {
