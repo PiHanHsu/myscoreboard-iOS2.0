@@ -38,7 +38,11 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
     
     // MARK: CollectionView Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if Teams.sharedInstance.teams.count > 0 {
         return Teams.sharedInstance.teams.count
+        }else {
+            return 0
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
