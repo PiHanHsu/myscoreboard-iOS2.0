@@ -86,7 +86,7 @@ class EditProfileTableViewController: MyScoreBoardEditInfoTableViewController {
     }
     @IBAction func logout(sender: AnyObject) {
         let userDefault = NSUserDefaults.standardUserDefaults()
-        let token = userDefault.objectForKey("token") as! String
+        let token = userDefault.objectForKey("auth_token") as! String
         
         HttpManager.sharedInstance
             .request(
@@ -95,6 +95,7 @@ class EditProfileTableViewController: MyScoreBoardEditInfoTableViewController {
                 param: ["auth_token": token],
                 success: { (code, data ) in
                     Teams.sharedInstance.teams.removeAll()
+                    userDefault.removeObjectForKey("auth_token")
                     
                     //back to root viewcontroller
                     let sb = UIStoryboard(name: "Main", bundle: nil)
