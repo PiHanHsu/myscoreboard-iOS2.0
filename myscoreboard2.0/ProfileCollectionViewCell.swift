@@ -35,7 +35,6 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         self.profileTableView.registerNib(UINib(nibName: gameTableViewCell, bundle: nil), forCellReuseIdentifier: gameTableViewCell)
         self.profileTableView.registerNib(UINib(nibName: bestPartnerTableViewCell, bundle: nil), forCellReuseIdentifier: bestPartnerTableViewCell)
         
-        
         let footerView = UIView()
         footerView.frame = CGRectZero
         self.profileTableView.tableFooterView = footerView
@@ -156,6 +155,7 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
             }
             return cell
         case 2:
+            print("stats: \(statsData)")
             let cell = tableView.dequeueReusableCellWithIdentifier(bestPartnerTableViewCell, forIndexPath: indexPath) as! BestPartnetTableViewCell
             cell.bestDoublePartnerNameLabel.text = statsData["best_double_name"].stringValue
             

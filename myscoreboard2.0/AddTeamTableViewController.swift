@@ -13,6 +13,7 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
 
     var team = Team()
     var isEditMode = false
+    var isTimeSet = false
     
     let dayArray = ["星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
     let startTimeArray = ["00:00","00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00","07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00:","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00:","19:30","20:00","20:30","21:00","21:30","22:00","22:30","23:00","23:30"]
@@ -109,6 +110,7 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                self.team.gameDay = self.daytime
                self.team.gameTimeHour = self.starttime!  + " ~ " + self.endtime!
                self.timeLabel.text = self.team.gameDay! + " " + self.team.gameTimeHour!
+               self.isTimeSet = true
            })
             
           let cancelAction = UIAlertAction(title: "cancel", style: .Cancel, handler: nil)
@@ -135,25 +137,20 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     }
     
     func createTeam() {
-      
+        
+        var params = ["auth_token": CurrentUser.sharedInstance.authToken!,
+                      "name" : teamNameTextField.text!]
+        
+        // set up params
+        params = setParams(params)
         
         if photoImageView.image != nil {
             let path = "https://product.myscoreboardapp.com/api/v1/teams"
-            let lat = String((team.place?.latitude)!)
-            let lng = String((team.place?.longitude)!)
             HttpManager.sharedInstance.uploadDataWithImage(HttpMethod.HttpMethodPost,
                                                            path: path,
                                                            uploadImage: photoImageView.image!,
                                                            imageParam: "logo",
-                                                           param: ["auth_token": CurrentUser.sharedInstance.authToken!,
-                                                            "place_name" : (team.place?.name)!,
-                                                            "address" : (team.place?.address)!,
-                                                            "lat" : lat,
-                                                            "lng" : lng,
-                                                            "name" : teamNameTextField.text!,
-                                                            "day" : daytime!,
-                                                            "start_time" : starttime!,
-                                                            "end_time" : endtime!],
+                                                           param: params,
                                                            success: { (code, data) in
                                                             print("create team with image success")
                                                             self.team.teamId = data["team_id"].stringValue
@@ -173,17 +170,8 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
         }else{
             HttpManager.sharedInstance.request(HttpMethod.HttpMethodPost,
                                                apiFunc: APiFunction.CreateTeam,
-                                               param: ["auth_token": CurrentUser.sharedInstance.authToken!,
-                                                "place_name" : (team.place?.name)!,
-                                                "address" : (team.place?.address)!,
-                                                "lat" : (team.place?.latitude)!,
-                                                "lng" : (team.place?.longitude)!,
-                                                "google_id" : (team.place?.placeId)!,
-                                                "name" : teamNameTextField.text!,
-                                                "day" : daytime!,
-                                                "start_time" : starttime!,
-                                                "end_time" : endtime!]
-                , success: { (code, data) in
+                                               param: params,
+                success: { (code, data) in
                     print("create team success")
                     self.team.teamId = data["team_id"].stringValue
                     
@@ -228,30 +216,80 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     }
     
     func updateTeamInfo() {
-        HttpManager.sharedInstance.request(HttpMethod.HttpMethodPatch,
-                                           apiFunc: APiFunction.EditTeam,
-                                           param: ["auth_token": CurrentUser.sharedInstance.authToken!,
-                                            ":id" : team.teamId!,
-                                            "place_name" : (team.place?.name)!,
-                                            "address" : (team.place?.address)!,
-                                            "lat" : (team.place?.latitude)!,
-                                            "lng" : (team.place?.longitude)!,
-                                            "google_id" : (team.place?.placeId)!,
-                                            "name" : teamNameTextField.text!,
-                                            "day" : team.gameDay!,
-                                            "start_time" : team.gameStartTime!,
-                                            "end_time" : team.gameEndTime!]
-            , success: { (code, data) in
-                print("update success")
-                GlobalFunction.sharedInstance.reloadDataFromServer({
-                    self.navigationController?.popViewControllerAnimated(true)
-                })
-
-            }, failure: { (code, data) in
-                print("update team info failed: \(data)")
-        })
+        
+        var params = ["auth_token": CurrentUser.sharedInstance.authToken!,
+                      ":id" : team.teamId!,
+                      "name" : teamNameTextField.text!]
+        
+        // set up params
+        params = setParams(params)
+        let path = "https://product.myscoreboardapp.com/api/v1/teams/\(team.teamId!)"
+        
+        if photoImageView.image != nil {
+            HttpManager.sharedInstance.uploadDataWithImage(HttpMethod.HttpMethodPatch,
+                                                           path: path,
+                                                           uploadImage: photoImageView.image!,
+                                                           imageParam: "logo",
+                                                           param: params,
+                                                           success: { (code, data) in
+                                                            print("create team with image success")
+                                                            self.team.teamId = data["team_id"].stringValue
+                                                            
+                                                            if self.team.players.count > 1 {
+                                                                self.addPlyaers()
+                                                            }else{
+                                                                GlobalFunction.sharedInstance.reloadDataFromServer({
+                                                                    self.navigationController?.popViewControllerAnimated(true)
+                                                                })
+                                                            }
+                                                            
+                                                            
+                }, failure: { (code, data) in
+                    print("create team with image failed: \(data)")
+                }, complete: nil)
+        }else{
+            HttpManager.sharedInstance.request(HttpMethod.HttpMethodPatch,
+                                               apiFunc: APiFunction.EditTeam,
+                                               param: params,
+                                               success: { (code, data) in
+                                                print("update success")
+                                                GlobalFunction.sharedInstance.reloadDataFromServer({
+                                                    self.navigationController?.popViewControllerAnimated(true)
+                                                })
+                                                
+                }, failure: { (code, data) in
+                    print("update team info failed: \(data)")
+            })
+        }
+        
+        
     }
 
+    func setParams(params: Dictionary<String, String>) -> [String: String] {
+        
+        var newParams = [String: String]()
+        newParams.addDictionary(params)
+        
+        if teamNameTextField.text == nil {
+            print("show alert")
+        }else if team.place != nil {
+            let lat = String((team.place?.latitude)!)
+            let lng = String((team.place?.longitude)!)
+            let placeDict = ["place_name" : (team.place?.name)!,
+                             "address" : (team.place?.address)!,
+                             "lat" : lat,
+                             "lng" : lng,
+                             "google_place_id" : (team.place?.placeId)!]
+            newParams.addDictionary(placeDict)
+        }else if isTimeSet {
+            let timeDict = ["day" : daytime!,
+                            "start_time" : starttime!,
+                            "end_time" : endtime!]
+            newParams.addDictionary(timeDict)
+        }
+
+        return newParams
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

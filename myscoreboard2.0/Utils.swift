@@ -37,6 +37,15 @@ extension Array
     
 }
 
+
+extension Dictionary {
+    mutating func addDictionary(other:Dictionary) {
+        for (key,value) in other {
+            self.updateValue(value, forKey:key)
+        }
+    }
+}
+
 extension RangeReplaceableCollectionType where Generator.Element : Equatable {
     
     // Remove first collection element that is equal to the given `object`:

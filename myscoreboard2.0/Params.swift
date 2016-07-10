@@ -30,7 +30,7 @@ struct Params {
     static let apiUpdateTeam = "teams/"
     static let apiAddPlayerInTeam = "teams/"
     static let apiRemovePlayerInTeam = "teams/"
-    static let apiEditTeam = "teams/:id/edit"
+    static let apiEditTeam = "teams/:id"
     static let apiGetTeamList = "teams"
     static let apiSaveGameScore = "games"
     static let apiGetRanking = "games"
