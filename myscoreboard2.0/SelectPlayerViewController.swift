@@ -32,11 +32,14 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
             players = team.players
         }
         
-        startButton.enabled = false
-        
         self.selectPlayersCollectionView.delegate = self
         self.selectPlayersCollectionView.dataSource = self
         selectPlayersCollectionView.registerNib(UINib(nibName: "PlayerCardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PlayerCardCollectionViewCell")
+        
+        //set up startButton
+        startButton.enabled = false
+        startButton.layer.cornerRadius = 8.0
+        startButton.clipsToBounds = true
     }
     
     func cancel(){
