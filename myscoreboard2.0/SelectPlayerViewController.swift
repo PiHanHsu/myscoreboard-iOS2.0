@@ -98,8 +98,6 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
             if imageUrl != "" {
                 cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!)
             }
-        }else{
-            cell.playerImage.image = UIImage()
         }
         
         return cell

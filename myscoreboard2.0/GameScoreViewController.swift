@@ -129,10 +129,10 @@
             pair2Player1NameLabel.text = currentMatch!.pair2.player1.playerName
             pair2Player2NameLabel.text = currentMatch!.pair2.player2.playerName
             
-            pair1Player1ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair1.player1.playerImageUrl)!) , placeholderImage: nil)
-            pair1Player2ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair1.player2.playerImageUrl)!) , placeholderImage: nil)
-            pair2Player1ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair2.player1.playerImageUrl)!) , placeholderImage: nil)
-            pair2Player2ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair2.player2.playerImageUrl)!) , placeholderImage: nil)
+            pair1Player1ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair1.player1.playerImageUrl)!) , placeholderImage: UIImage(named: "user_placeholder"))
+            pair1Player2ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair1.player2.playerImageUrl)!) , placeholderImage: UIImage(named: "user_placeholder"))
+            pair2Player1ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair2.player1.playerImageUrl)!) , placeholderImage: UIImage(named: "user_placeholder"))
+            pair2Player2ImageView.sd_setImageWithURL(NSURL(string: (currentMatch!.pair2.player2.playerImageUrl)!) , placeholderImage: UIImage(named: "user_placeholder"))
             
         }
         
@@ -159,10 +159,10 @@
             nextPair2Player1NameLabel.text = nextMatch!.pair2.player1.playerName
             nextPair2Player2NameLabel.text = nextMatch!.pair2.player2.playerName
             
-            nextPair1Player1ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair1.player1.playerImageUrl)!) , placeholderImage: nil)
-            nextPair1Player2ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair1.player2.playerImageUrl)!) , placeholderImage: nil)
-            nextPair2Player1ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair2.player1.playerImageUrl)!) , placeholderImage: nil)
-            nextPair2Player2ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair2.player2.playerImageUrl)!) , placeholderImage: nil)
+            nextPair1Player1ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair1.player1.playerImageUrl)!) , placeholderImage: UIImage(named: "user_placeholder"))
+            nextPair1Player2ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair1.player2.playerImageUrl)!) , placeholderImage: UIImage(named: "user_placeholder"))
+            nextPair2Player1ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair2.player1.playerImageUrl)!) , placeholderImage: UIImage(named: "user_placeholder"))
+            nextPair2Player2ImageView.sd_setImageWithURL(NSURL(string: (nextMatch!.pair2.player2.playerImageUrl)!) , placeholderImage: UIImage(named: "user_placeholder"))
         }
         
         
@@ -293,7 +293,7 @@
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
             if segue.identifier == "ChangePlayer" {
                 
-                                let nav = segue.destinationViewController as! UINavigationController
+                let nav = segue.destinationViewController as! UINavigationController
                 let vc =  nav.topViewController as! SelectPlayerViewController
                 vc.delegate = self
                 vc.isChangePlayerMode = true
@@ -359,7 +359,7 @@
                 match = nextMatch!
                 
                 //print("\(match.pair1.player1.playerName!) \(match.pair1.player2.playerName!) \(match.pair2.player1.playerName!) \(match.pair2.player2.playerName!) \(match.mWeight)")
-        
+                
             }
             
             for player in selectedPlayers {
@@ -390,4 +390,4 @@
             
             displayCurrentMatchData()
         }
-}
+    }

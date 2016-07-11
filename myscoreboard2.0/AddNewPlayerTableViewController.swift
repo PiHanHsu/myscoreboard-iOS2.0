@@ -63,12 +63,12 @@ class AddNewPlayerTableViewController: UITableViewController, UISearchController
         
         
         if let imageUrl = player.playerImageUrl {
+            print("\(player.playerName!): \(player.playerImageUrl)")
             if imageUrl != "" {
                 cell.photoImageView.sd_setImageWithURL(NSURL(string: imageUrl)!, placeholderImage: nil, options: SDWebImageOptions.RetryFailed)
             }
-        }else{
-            cell.photoImageView.image = UIImage()
         }
+        
         return cell
     }
     

@@ -86,11 +86,22 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
             
             if let imageUrl = player.playerImageUrl {
                 if imageUrl != "" {
-                    cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!, placeholderImage: nil, options: SDWebImageOptions.RetryFailed)
-                   
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                       cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!, placeholderImage: UIImage(named: "user_placeholder"), options: SDWebImageOptions.RetryFailed)
+                    })
+                }else {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        cell.playerImage.layer.borderColor = UIColor.blackColor().CGColor
+                        cell.playerImage.layer.borderWidth = 1.0
+                        cell.playerImage.image = UIImage(named: "user_placeholder")
+                    })
                 }
             }else{
-                cell.playerImage.image = UIImage()
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    cell.playerImage.layer.borderColor = UIColor.blackColor().CGColor
+                    cell.playerImage.layer.borderWidth = 1.0
+                    cell.playerImage.image = UIImage(named: "user_placeholder")
+                })
             }
         }
 
