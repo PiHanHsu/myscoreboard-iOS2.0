@@ -2363,6 +2363,7 @@
                         <outlet property="footerView" destination="Jaw-35-GgF" id="sIN-aX-WVl"/>
                         <outlet property="searchDisplayController" destination="uV4-nR-K6S" id="Pfm-IE-asB"/>
                         <outlet property="selectPlayersCollectionView" destination="D9E-43-nV4" id="DEh-kZ-RSH"/>
+                        <outlet property="startButton" destination="7cn-cx-Pbo" id="4BB-xd-C7Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emU-2d-DXi" userLabel="First Responder" sceneMemberID="firstResponder"/>

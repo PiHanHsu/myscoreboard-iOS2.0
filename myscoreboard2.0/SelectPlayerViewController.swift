@@ -14,7 +14,7 @@ protocol ChangePlayerDelegate: class {
 class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var selectPlayersCollectionView: UICollectionView!
-    
+    @IBOutlet var startButton: UIButton!
     let team = Teams.sharedInstance.currentPlayingTeam
     var selectedPlayers = [Player]()
     var players = [Player]()
@@ -31,6 +31,8 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
         }else{
             players = team.players
         }
+        
+        startButton.enabled = false
         
         self.selectPlayersCollectionView.delegate = self
         self.selectPlayersCollectionView.dataSource = self
@@ -119,7 +121,26 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
                 cell.selectedButton.layer.borderWidth = 2.0
                 selectedPlayers.append(players[sender.tag])
             }
+            checkStartButtonEnable()
         }
+    }
+    
+    func checkStartButtonEnable() {
+        var m = 0
+        var f = 0
+        for player in selectedPlayers {
+            if player.gender == "male" {
+                m += 1
+            }else {
+                f += 1
+            }
+        }
+        if (m > 1 && f > 1) || m > 3 || f > 3 {
+            startButton.enabled = true
+        }else {
+            startButton.enabled = false
+        }
+        
     }
     
      // MARK: - Navigation
