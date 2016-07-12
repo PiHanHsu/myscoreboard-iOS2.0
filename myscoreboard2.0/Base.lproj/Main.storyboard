@@ -1676,11 +1676,11 @@
             </objects>
             <point key="canvasLocation" x="156" y="378"/>
         </scene>
-        <!--Ranking-->
+        <!--排行榜-->
         <scene sceneID="A5Q-Fl-uvS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JK5-7m-TzS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ranking" image="tab_icon_ranking" id="28e-sf-Vj9"/>
+                    <tabBarItem key="tabBarItem" title="排行榜" image="tab_icon_ranking" id="28e-sf-Vj9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XRl-W2-QVh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1695,11 +1695,11 @@
             </objects>
             <point key="canvasLocation" x="870" y="378"/>
         </scene>
-        <!--Profile-->
+        <!--個人頁面-->
         <scene sceneID="2WP-Wm-Msh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vSd-bv-XPN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="tab_icon_profile" id="xFT-sa-eQF"/>
+                    <tabBarItem key="tabBarItem" title="個人頁面" image="info_icon" id="xFT-sa-eQF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z40-pf-gkO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1714,11 +1714,11 @@
             </objects>
             <point key="canvasLocation" x="870" y="-368"/>
         </scene>
-        <!--Teams-->
+        <!--我的球隊-->
         <scene sceneID="mpA-2K-cEo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="34V-no-ayA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Teams" image="tab_icon_teams" id="ObX-ks-YHq"/>
+                    <tabBarItem key="tabBarItem" title="我的球隊" image="tab_icon_teams" id="ObX-ks-YHq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kPj-Sf-3y5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2536,6 +2536,7 @@
         <image name="icon_pwd_gray" width="50" height="50"/>
         <image name="icon_pwd_white" width="60" height="60"/>
         <image name="icon_time" width="50" height="50"/>
+        <image name="info_icon" width="30" height="30"/>
         <image name="logo_80x80" width="80" height="80"/>
         <image name="slogan" width="322" height="119"/>
         <image name="tab_icon_profile" width="24" height="24"/>
