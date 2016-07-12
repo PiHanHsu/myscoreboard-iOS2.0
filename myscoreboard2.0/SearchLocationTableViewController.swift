@@ -71,6 +71,7 @@ class SearchLocationTableViewController: UITableViewController , UISearchControl
                                             let lng = data["result"]["geometry"]["location"]["lng"].doubleValue
                                             let address = data["result"]["formatted_address"].stringValue
                                             self.team.place = Place(placeId: placeId, name: name, latitude: lat, longitude: lng, address: address)
+                                            self.team.placeName = name
                                             self.navigationController?.popViewControllerAnimated(true)
                                             
             }, failure: { (code, data) in

@@ -37,7 +37,7 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
         if isEditMode {
             teamNameTextField.text = team.teamName!
             timeLabel.text = team.gameDay! + " " + team.gameTimeHour!
-            placeLabel.text = team.place?.name
+            placeLabel.text = team.placeName
             editPlayersLabel.text = "成員(\(team.players.count))"
             createTeamButton.setTitle("更新", forState: .Normal)
             photoImageView.sd_setImageWithURL(NSURL(string: team.TeamImageUrl!), placeholderImage: nil)
@@ -50,8 +50,8 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if team.place != nil {
-            placeLabel.text = team.place!.name
+        if team.placeName != nil {
+            placeLabel.text = team.placeName!
         }
         if team.players.isEmpty {
             let currentPlayer = Player()

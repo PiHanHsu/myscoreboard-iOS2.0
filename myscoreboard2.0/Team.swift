@@ -21,6 +21,7 @@ class Team: NSObject {
     var gameLocation:String?
     
     var teamId:String?
+    //TODO refactor place
     var place: Place?
     var placeName: String?
     
