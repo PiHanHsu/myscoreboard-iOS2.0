@@ -178,7 +178,7 @@ class LoginTableViewController: UITableViewController {
         
         userDefault.synchronize()
         
-        print("userDefault.token: \(token)")
+        //print("userDefault.token: \(token)")
         
         setCurrentUser()
         

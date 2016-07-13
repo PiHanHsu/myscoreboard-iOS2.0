@@ -19,10 +19,14 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
     
     var email:String?
     var password:String?
+    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.indicator.center = self.view.center
+        self.view.addSubview(indicator)
         self.navBarView.backgroundColor = UIColor.mainBlueColor()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +71,7 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
         email = emailTextField.text!.trim()
         password = passwordTextField.text!.trim()
         
+        indicator.startAnimating()
         if photoImageView.image != nil {
             let path = "https://product.myscoreboardapp.com/api/v1/signup"
         
@@ -85,6 +90,7 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
                                                             
                 }, failure: { (code, data) in
                     print("signup user with image failed: \(data)")
+                    
                 }, complete: nil)
         }else{
             
@@ -100,6 +106,7 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
                     success: { (code, data ) in
                         print("account created!!")
                         self.success(code, data: data)
+                       
                     }, failure: { (code, data) in
                         print(data)
                         //self.failure(code!, data: data!)
@@ -118,24 +125,38 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
                     "password": password!],
                 success: { (code, data ) in
                     //save token to userDefault
+                    let token = data["auth_token"].stringValue
+                    let userId = data["user_id"].stringValue
+                    let username = data["username"].stringValue
+                    let gender = data["gender"].stringValue
+                    let photo = data["photo"].stringValue
+                    let email = data["email"].stringValue
                     
-                    let token:String = data["auth_token"].stringValue
                     let userDefault = NSUserDefaults.standardUserDefaults()
-                    userDefault.setObject(token, forKey: "token")
+                    userDefault.setObject(token, forKey: "auth_token")
+                    userDefault.setObject(userId, forKey: "user_id")
+                    userDefault.setObject(username, forKey: "username")
+                    userDefault.setObject(gender, forKey: "gender")
+                    userDefault.setObject(photo, forKey: "photo")
+                    userDefault.setObject(email, forKey: "email")
+                    
                     userDefault.synchronize()
                     
-                    //go to main page
-                    self.performSegueWithIdentifier("Go to main page", sender: self)
+                    print("userDefault.token: \(token)")
+                    
+                    self.setCurrentUser()
+
                 }, failure: { (code, data) in
+                    
+                  print("login failed: \(data)")
                    //self.failure(code!, data: data!)
                 }, complete: nil)
     }
     
     func failure(code:Int, data:JSON ) {
-        print("\(#function)")
-        print(code)
-        print(data)
-        
+        print("sign up failed: \(data)")
+        self.indicator.stopAnimating()
+
         let message = data["message"].stringValue
         let alertController = UIAlertController(title: "登入失敗!", message: message, preferredStyle: .Alert)
         
@@ -153,5 +174,20 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func setCurrentUser() {
+        
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        
+        CurrentUser.sharedInstance.authToken = userDefault.stringForKey("auth_token")
+        CurrentUser.sharedInstance.userId = userDefault.stringForKey("user_id")
+        CurrentUser.sharedInstance.username = userDefault.stringForKey("username")
+        CurrentUser.sharedInstance.gender = userDefault.stringForKey("gender")
+        CurrentUser.sharedInstance.photo_url = userDefault.stringForKey("photo")
+        CurrentUser.sharedInstance.email = userDefault.stringForKey("email")
+        
+        self.performSegueWithIdentifier("Show main page", sender: self)
+        
+    }
+
 
 }
