@@ -272,7 +272,9 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
         
         if teamNameTextField.text == nil {
             print("show alert")
-        }else if team.place != nil {
+        }
+            
+        if team.place != nil {
             let lat = String((team.place?.latitude)!)
             let lng = String((team.place?.longitude)!)
             let placeDict = ["place_name" : (team.place?.name)!,
@@ -281,7 +283,9 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                              "lng" : lng,
                              "google_place_id" : (team.place?.placeId)!]
             newParams.addDictionary(placeDict)
-        }else if isTimeSet {
+        }
+            
+        if isTimeSet {
             let timeDict = ["day" : daytime!,
                             "start_time" : starttime!,
                             "end_time" : endtime!]
