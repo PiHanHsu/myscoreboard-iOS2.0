@@ -48,6 +48,7 @@
         var currentSetIndex = 0
         
         var failCount = 0
+        let backGroundView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width , UIScreen.mainScreen().bounds.height))
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -78,6 +79,18 @@
             //            }else{
             //                print("failed: \(failCount)")
             //            }
+        }
+        
+        override func viewWillAppear(animated: Bool) {
+            super.viewWillAppear(animated)
+            
+            backGroundView.backgroundColor = UIColor.lightGrayColor()
+            backGroundView.alpha = 0.8
+            let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+            indicator.center = backGroundView.center
+            indicator.startAnimating()
+            backGroundView.addSubview(indicator)
+
         }
         
         func createScueduleMatches(matches: [Match]) {
@@ -168,6 +181,8 @@
         
         @IBAction func finishGameAction(sender: UIButton) {
             
+            self.showAndHideIndictor(true)
+            
             let score1 = pair1SidePicker.selectedRowInComponent(0)
             let score2 = pair2SidePicker.selectedRowInComponent(0)
             
@@ -211,11 +226,25 @@
                             self.createScueduleMatches(self.matchesList!)
                             self.pair1SidePicker.selectRow(0, inComponent: 0, animated: true)
                             self.pair2SidePicker.selectRow(0, inComponent: 0, animated: true)
+                            self.showAndHideIndictor(false)
                     },
                          failure: { (code , data) in
                             print("failed with \(code), \(data)")
                     },
                          complete: nil)
+        }
+        
+        // finish game indicator
+        
+        func showAndHideIndictor(isSavingMode: Bool) {
+            
+            
+            if isSavingMode {
+                self.view .addSubview(backGroundView)
+            }else{
+                backGroundView.removeFromSuperview()
+            }
+    
         }
         
         func initPicker() {
