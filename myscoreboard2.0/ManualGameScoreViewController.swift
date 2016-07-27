@@ -20,6 +20,7 @@ class ManualGameScoreViewController: MyScoreBoardGameScoreViewController,ChangeP
     @IBOutlet weak var pair2Player1ImageView: UIImageView!
     @IBOutlet weak var pair2Player2ImageView: UIImageView!
 
+    @IBOutlet var gameTypeSegmentedControl: UISegmentedControl!
     var manualMatch = Match()
     var manualPlayers = [Player]()
     
@@ -59,12 +60,18 @@ class ManualGameScoreViewController: MyScoreBoardGameScoreViewController,ChangeP
     
     func displayCurrentMatchData() {
         
+        switch gameTypeSegmentedControl.selectedSegmentIndex {
+        case 0:
+            displaySingleMatch(false)
+        case 1:
+            displaySingleMatch(true)
+        default:
+            break
+        }
+        
         //set up layout
         
-        pair1Player1ImageView.layoutIfNeeded()
-        pair1Player2ImageView.layoutIfNeeded()
-        pair2Player1ImageView.layoutIfNeeded()
-        pair2Player2ImageView.layoutIfNeeded()
+        self.view.layoutIfNeeded()
         
         pair1Player1ImageView.layer.cornerRadius = pair1Player1ImageView.frame.size.width / 2
         pair1Player1ImageView.clipsToBounds = true
@@ -133,6 +140,33 @@ class ManualGameScoreViewController: MyScoreBoardGameScoreViewController,ChangeP
         
     }
 
+    @IBAction func selectGameType(sender: AnyObject) {
+        
+        switch gameTypeSegmentedControl.selectedSegmentIndex {
+        case 0:
+            displaySingleMatch(false)
+        case 1:
+            displaySingleMatch(true)
+        default:
+            break
+        }
+    }
+    
+    func displaySingleMatch(isSingleMatch: Bool) {
+        if isSingleMatch {
+           pair1Player2ImageView.hidden = true
+           pair1Player2NameLabel.hidden = true
+           pair2Player2ImageView.hidden = true
+           pair2Player2NameLabel.hidden = true
+        }else {
+            pair1Player2ImageView.hidden = false
+            pair1Player2NameLabel.hidden = false
+            pair2Player2ImageView.hidden = false
+            pair2Player2NameLabel.hidden = false
+        }
+    }
+    
+    
     @IBAction func finishGameAction(sender: AnyObject) {
         self.showAndHideIndictor(true)
         
@@ -151,19 +185,30 @@ class ManualGameScoreViewController: MyScoreBoardGameScoreViewController,ChangeP
         }
         let teamId = team.teamId!
         var gameType = ""
+        var scores = []
         
-        let pair1player1Record = ["user":manualMatch.pair1.player1!.playerId!, "score" : score1, "result" : pair1Result]
-        let pair1player2Record = ["user":manualMatch.pair1.player2!.playerId!, "score" : score1, "result" : pair1Result]
-        let pair2player1Record = ["user":manualMatch.pair2.player1!.playerId!, "score" : score2, "result" : pair2Result]
-        let pair2player2Record = ["user":manualMatch.pair2.player2!.playerId!, "score" : score2, "result" : pair2Result]
-        
-        let scores = [ pair1player1Record, pair1player2Record, pair2player1Record, pair2player2Record ]
-        
-        if manualMatch.pair1.player1!.gender == manualMatch.pair1.player2!.gender {
-            gameType = GameType.double
-        }else {
-            gameType = GameType.mix
+        if manualMatch.pair1.player2 == nil {
+            gameType = GameType.single
+            let pair1player1Record = ["user":manualMatch.pair1.player1!.playerId!, "score" : score1, "result" : pair1Result]
+            let pair2player1Record = ["user":manualMatch.pair2.player1!.playerId!, "score" : score2, "result" : pair2Result]
+            scores = [ pair1player1Record, pair2player1Record ]
+
+        }else{
+            let pair1player1Record = ["user":manualMatch.pair1.player1!.playerId!, "score" : score1, "result" : pair1Result]
+            let pair1player2Record = ["user":manualMatch.pair1.player2!.playerId!, "score" : score1, "result" : pair1Result]
+            let pair2player1Record = ["user":manualMatch.pair2.player1!.playerId!, "score" : score2, "result" : pair2Result]
+            let pair2player2Record = ["user":manualMatch.pair2.player2!.playerId!, "score" : score2, "result" : pair2Result]
+            
+            scores = [ pair1player1Record, pair1player2Record, pair2player1Record, pair2player2Record ]
+            
+            if manualMatch.pair1.player1!.gender == manualMatch.pair1.player2!.gender {
+                gameType = GameType.double
+            }else {
+                gameType = GameType.mix
+            }
+
         }
+        
         
         HttpManager.sharedInstance
             .request(HttpMethod.HttpMethodPost,

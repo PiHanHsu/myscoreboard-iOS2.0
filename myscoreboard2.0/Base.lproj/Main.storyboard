@@ -2533,8 +2533,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jF-Qj-yGD">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="k0j-xu-T8x">
+                                        <rect key="frame" x="120" y="15" width="360" height="31"/>
+                                        <segments>
+                                            <segment title="雙打"/>
+                                            <segment title="單打"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="selectGameType:" destination="GTh-K6-M4H" eventType="valueChanged" id="hAp-PF-sJj"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="k0j-xu-T8x" firstAttribute="centerY" secondItem="2jF-Qj-yGD" secondAttribute="centerY" id="9RO-v5-o0W"/>
+                                    <constraint firstItem="k0j-xu-T8x" firstAttribute="width" secondItem="2jF-Qj-yGD" secondAttribute="width" multiplier="0.6" id="A2x-xT-KKO"/>
+                                    <constraint firstItem="k0j-xu-T8x" firstAttribute="centerX" secondItem="2jF-Qj-yGD" secondAttribute="centerX" id="AMf-jZ-y7t"/>
+                                    <constraint firstItem="k0j-xu-T8x" firstAttribute="height" secondItem="2jF-Qj-yGD" secondAttribute="height" multiplier="0.5" id="bEk-6a-5IV"/>
+                                    <constraint firstAttribute="height" constant="60" id="sqU-XO-TnX"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uN9-Ne-Trv">
-                                <rect key="frame" x="0.0" y="64" width="600" height="150"/>
+                                <rect key="frame" x="0.0" y="124" width="600" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6U-tZ-Jsh">
                                         <rect key="frame" x="94" y="19" width="113" height="113"/>
@@ -2632,7 +2655,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7A-0L-WyN">
-                                <rect key="frame" x="0.0" y="214" width="600" height="240"/>
+                                <rect key="frame" x="0.0" y="274" width="600" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XI3-qe-aCU">
                                         <rect key="frame" x="94" y="82" width="113" height="21"/>
@@ -2808,17 +2831,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uN9-Ne-Trv" firstAttribute="height" secondItem="MrH-wn-Dqc" secondAttribute="height" multiplier="1:4" id="0ul-MX-0If"/>
+                            <constraint firstItem="2jF-Qj-yGD" firstAttribute="top" secondItem="sDp-72-SBK" secondAttribute="bottom" id="3kg-Wd-Y3q"/>
                             <constraint firstItem="KNd-af-8f8" firstAttribute="centerX" secondItem="O8h-3T-B97" secondAttribute="centerX" id="5mL-cE-stZ"/>
+                            <constraint firstItem="2jF-Qj-yGD" firstAttribute="width" secondItem="MrH-wn-Dqc" secondAttribute="width" id="7bE-yw-DTf"/>
                             <constraint firstAttribute="trailing" secondItem="uN9-Ne-Trv" secondAttribute="trailing" id="EFY-zY-sZj"/>
+                            <constraint firstItem="2jF-Qj-yGD" firstAttribute="height" secondItem="MrH-wn-Dqc" secondAttribute="height" multiplier="0.15" id="LeN-IY-IDr"/>
+                            <constraint firstItem="uN9-Ne-Trv" firstAttribute="top" secondItem="2jF-Qj-yGD" secondAttribute="bottom" id="QAi-en-5mX"/>
                             <constraint firstItem="uN9-Ne-Trv" firstAttribute="leading" secondItem="MrH-wn-Dqc" secondAttribute="leading" id="Vne-YT-i5x"/>
                             <constraint firstItem="M7A-0L-WyN" firstAttribute="leading" secondItem="MrH-wn-Dqc" secondAttribute="leading" id="a4g-rH-fve"/>
                             <constraint firstItem="uN9-Ne-Trv" firstAttribute="top" secondItem="sDp-72-SBK" secondAttribute="bottom" id="e3D-EM-7EP"/>
                             <constraint firstItem="cAA-2U-ED9" firstAttribute="centerX" secondItem="Fsx-7s-TgV" secondAttribute="centerX" id="gZn-c7-O5P"/>
                             <constraint firstItem="XI3-qe-aCU" firstAttribute="width" secondItem="O8h-3T-B97" secondAttribute="width" id="m8y-95-Wgh"/>
+                            <constraint firstItem="2jF-Qj-yGD" firstAttribute="centerX" secondItem="MrH-wn-Dqc" secondAttribute="centerX" id="sIV-bU-wMF"/>
                             <constraint firstItem="M7A-0L-WyN" firstAttribute="height" secondItem="MrH-wn-Dqc" secondAttribute="height" multiplier="0.4" id="scB-A8-0gu"/>
                             <constraint firstItem="M7A-0L-WyN" firstAttribute="width" secondItem="MrH-wn-Dqc" secondAttribute="width" id="tXw-vv-Swi"/>
                             <constraint firstItem="M7A-0L-WyN" firstAttribute="top" secondItem="uN9-Ne-Trv" secondAttribute="bottom" id="yQg-Eh-igU"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LeN-IY-IDr"/>
+                                <exclude reference="e3D-EM-7EP"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="手動排賽模式" id="goR-NE-awg">
@@ -2826,6 +2860,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="gameTypeSegmentedControl" destination="k0j-xu-T8x" id="dSH-P8-Shc"/>
                         <outlet property="pair1PickerBackgroundView" destination="d6U-tZ-Jsh" id="Ak0-x9-h1O"/>
                         <outlet property="pair1Player1ImageView" destination="KNd-af-8f8" id="a8R-1H-bxg"/>
                         <outlet property="pair1Player1NameLabel" destination="XI3-qe-aCU" id="Nt3-sf-bAf"/>
