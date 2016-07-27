@@ -229,6 +229,13 @@
                             self.showAndHideIndictor(false)
                     },
                          failure: { (code , data) in
+                            let alertController = UIAlertController(title: "Something wrong with internet", message: "Score did not save, please try again", preferredStyle: .Alert)
+                            let alertAction = UIAlertAction(title: "OK", style: .Default, handler: {
+                                  UIAlertAction in
+                                self.showAndHideIndictor(false)
+                                })
+                            alertController.addAction(alertAction)
+                            self.presentViewController(alertController, animated: true, completion: nil)
                             print("failed with \(code), \(data)")
                     },
                          complete: nil)
