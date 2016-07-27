@@ -21,12 +21,20 @@ class ManualGameScoreViewController: MyScoreBoardGameScoreViewController,ChangeP
     @IBOutlet weak var pair2Player2ImageView: UIImageView!
 
     @IBOutlet var gameTypeSegmentedControl: UISegmentedControl!
+    
+    @IBOutlet var finishGameButton: UIButton!
+    
+    @IBOutlet var p1p2Button: UIButton!
+    @IBOutlet var p2p2Button: UIButton!
     var manualMatch = Match()
     var manualPlayers = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        finishGameButton.backgroundColor = UIColor.mainYellowColor()
+        finishGameButton.layer.cornerRadius = 5.0
+        finishGameButton.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
 
@@ -158,11 +166,15 @@ class ManualGameScoreViewController: MyScoreBoardGameScoreViewController,ChangeP
            pair1Player2NameLabel.hidden = true
            pair2Player2ImageView.hidden = true
            pair2Player2NameLabel.hidden = true
+            p1p2Button.enabled = false
+            p2p2Button.enabled = false
         }else {
             pair1Player2ImageView.hidden = false
             pair1Player2NameLabel.hidden = false
             pair2Player2ImageView.hidden = false
             pair2Player2NameLabel.hidden = false
+            p1p2Button.enabled = true
+            p2p2Button.enabled = true
         }
     }
     

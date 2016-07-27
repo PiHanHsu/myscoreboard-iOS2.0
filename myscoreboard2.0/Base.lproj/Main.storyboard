@@ -2521,10 +2521,10 @@
             </objects>
             <point key="canvasLocation" x="2369" y="2639"/>
         </scene>
-        <!--手動排賽模式-->
+        <!--手動賽程-->
         <scene sceneID="HOb-AA-z1F">
             <objects>
-                <viewController storyboardIdentifier="ManualGameScoreViewController" id="GTh-K6-M4H" customClass="ManualGameScoreViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ManualGameScoreViewController" hidesBottomBarWhenPushed="YES" id="GTh-K6-M4H" customClass="ManualGameScoreViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sDp-72-SBK"/>
                         <viewControllerLayoutGuide type="bottom" id="djd-y4-4iW"/>
@@ -2598,9 +2598,9 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="Trn-te-jPD"/>
                                                 <exclude reference="KfJ-zm-FnK"/>
                                                 <exclude reference="Oqa-Ah-eUX"/>
+                                                <exclude reference="Trn-te-jPD"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -2639,18 +2639,18 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="m2n-44-lcx"/>
-                                        <exclude reference="Tn9-gR-mlm"/>
-                                        <exclude reference="BKq-vu-fWl"/>
                                         <exclude reference="6fB-Cn-Skl"/>
-                                        <exclude reference="qxe-a8-pJw"/>
+                                        <exclude reference="BKq-vu-fWl"/>
                                         <exclude reference="K1N-gm-sQB"/>
-                                        <exclude reference="bLm-Wu-yhv"/>
-                                        <exclude reference="I5i-KX-D8G"/>
+                                        <exclude reference="Tn9-gR-mlm"/>
+                                        <exclude reference="m2n-44-lcx"/>
+                                        <exclude reference="qxe-a8-pJw"/>
                                         <exclude reference="2gs-Tz-1Ac"/>
+                                        <exclude reference="I5i-KX-D8G"/>
+                                        <exclude reference="bLm-Wu-yhv"/>
                                         <exclude reference="MIt-mb-r5T"/>
-                                        <exclude reference="Yiw-fg-zyg"/>
                                         <exclude reference="MWT-jv-Spt"/>
+                                        <exclude reference="Yiw-fg-zyg"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -2720,8 +2720,8 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="dT2-Jn-xzq"/>
                                                 <exclude reference="FCH-9w-Ztg"/>
+                                                <exclude reference="dT2-Jn-xzq"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -2815,14 +2815,14 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="hln-dL-NTt"/>
                                         <exclude reference="Z6i-p0-biD"/>
+                                        <exclude reference="hln-dL-NTt"/>
                                         <exclude reference="WaE-DT-eox"/>
                                         <exclude reference="vd3-mD-Hih"/>
-                                        <exclude reference="u9C-Bl-YjB"/>
                                         <exclude reference="E52-Aa-QVa"/>
-                                        <exclude reference="ElS-1E-s5I"/>
+                                        <exclude reference="u9C-Bl-YjB"/>
                                         <exclude reference="4nf-vg-aHe"/>
+                                        <exclude reference="ElS-1E-s5I"/>
                                         <exclude reference="eJV-ck-Oy6"/>
                                     </mask>
                                 </variation>
@@ -2855,12 +2855,19 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="手動排賽模式" id="goR-NE-awg">
-                        <barButtonItem key="rightBarButtonItem" title="今日紀錄" id="KUG-8O-zNW"/>
+                    <navigationItem key="navigationItem" title="手動賽程" id="goR-NE-awg">
+                        <barButtonItem key="rightBarButtonItem" title="今日紀錄" id="KUG-8O-zNW">
+                            <connections>
+                                <segue destination="uf9-0W-Vuw" kind="show" id="X0U-Td-Pkn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="finishGameButton" destination="a4s-i2-rko" id="rXG-mg-DiC"/>
                         <outlet property="gameTypeSegmentedControl" destination="k0j-xu-T8x" id="dSH-P8-Shc"/>
+                        <outlet property="p1p2Button" destination="F2q-XY-pgO" id="wcE-SB-EeU"/>
+                        <outlet property="p2p2Button" destination="XGy-0R-K78" id="cBm-GT-ea6"/>
                         <outlet property="pair1PickerBackgroundView" destination="d6U-tZ-Jsh" id="Ak0-x9-h1O"/>
                         <outlet property="pair1Player1ImageView" destination="KNd-af-8f8" id="a8R-1H-bxg"/>
                         <outlet property="pair1Player1NameLabel" destination="XI3-qe-aCU" id="Nt3-sf-bAf"/>
@@ -2906,9 +2913,10 @@
         <image name="user_placeholder" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gg0-FZ-gQG"/>
-        <segue reference="6yj-8J-Xj3"/>
-        <segue reference="YQx-fW-8c1"/>
         <segue reference="Kdp-vh-fRL"/>
+        <segue reference="6yj-8J-Xj3"/>
+        <segue reference="gg0-FZ-gQG"/>
+        <segue reference="YQx-fW-8c1"/>
+        <segue reference="X0U-Td-Pkn"/>
     </inferredMetricsTieBreakers>
 </document>

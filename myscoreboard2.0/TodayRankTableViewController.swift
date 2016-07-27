@@ -47,32 +47,48 @@ class TodayRankTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return gameData.count
     }
 
-    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(gameTableViewCell, forIndexPath: indexPath) as! GameTableViewCell
         
         let oneGameData = gameData[indexPath.row]["game"]
        
-        cell.team1Player1NameLabel.text = oneGameData[0]["username"].stringValue
-        cell.team1Player2NameLabel.text = oneGameData[1]["username"].stringValue
-        cell.team2Player1NameLabel.text = oneGameData[2]["username"].stringValue
-        cell.team2Player2NameLabel.text = oneGameData[3]["username"].stringValue
-        if oneGameData[0]["score"].intValue > oneGameData[2]["score"].intValue {
-            cell.team1ScoreLabel.textColor = UIColor.redColor()
+        if oneGameData.count == 2 {
+            cell.team1Player1NameLabel.text = oneGameData[0]["username"].stringValue
+            cell.team1Player2NameLabel.text = ""
+            cell.team2Player1NameLabel.text = oneGameData[1]["username"].stringValue
+            cell.team2Player2NameLabel.text = ""
+            if oneGameData[0]["score"].intValue > oneGameData[1]["score"].intValue {
+                cell.team1ScoreLabel.textColor = UIColor.redColor()
+            }else {
+                cell.team2ScoreLabel.textColor = UIColor.redColor()
+            }
+            cell.team1ScoreLabel.text = oneGameData[0]["score"].stringValue
+            cell.team2ScoreLabel.text = oneGameData[1]["score"].stringValue
         }else {
-            cell.team2ScoreLabel.textColor = UIColor.redColor()
+            cell.team1Player1NameLabel.text = oneGameData[0]["username"].stringValue
+            cell.team1Player2NameLabel.text = oneGameData[1]["username"].stringValue
+            cell.team2Player1NameLabel.text = oneGameData[2]["username"].stringValue
+            cell.team2Player2NameLabel.text = oneGameData[3]["username"].stringValue
+            if oneGameData[0]["score"].intValue > oneGameData[2]["score"].intValue {
+                cell.team1ScoreLabel.textColor = UIColor.redColor()
+            }else {
+                cell.team2ScoreLabel.textColor = UIColor.redColor()
+            }
+            cell.team1ScoreLabel.text = oneGameData[0]["score"].stringValue
+            cell.team2ScoreLabel.text = oneGameData[2]["score"].stringValue
         }
-        cell.team1ScoreLabel.text = oneGameData[0]["score"].stringValue
-        cell.team2ScoreLabel.text = oneGameData[2]["score"].stringValue
         
         return cell
     }
