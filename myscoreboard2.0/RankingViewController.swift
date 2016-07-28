@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-
+import UXTesting
 
 class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollectionViewDataSource {
 
@@ -38,7 +38,9 @@ class RankingViewController: MyScoredBoardBaseCollectionViewController, UICollec
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    override func viewDidAppear(animated: Bool) {
+        UXTestingManager.sharedInstance().heatMapStartWithViewName("Ranking page")
+    }
     
     @IBAction func selectedGameType(sender: AnyObject) {
         

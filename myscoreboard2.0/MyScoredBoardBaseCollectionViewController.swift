@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UXTesting
 
 class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView?

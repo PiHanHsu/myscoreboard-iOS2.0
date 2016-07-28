@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import UXTesting
 
 class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollectionViewDataSource, TeamCollectionViewCellDelegate {
     
@@ -27,6 +28,10 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UXTestingManager.sharedInstance().heatMapStartWithViewName("Team page")
     }
     
     // MARK: CollectionView Data Source
@@ -59,6 +64,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == Teams.sharedInstance.teams.count {
           performSegueWithIdentifier("GoToAddNewTeamPage", sender: self)
+          UXTestingManager.sharedInstance().customEvent("Pressed Add new team")
         }
     }
     
@@ -81,7 +87,7 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
     }
     
     func addNewPlayer() {
-        
+       UXTestingManager.sharedInstance().customEvent("Pressed Add new Player")
        self.performSegueWithIdentifier("GoToAddNewPlayerPage", sender: self)
     }
     

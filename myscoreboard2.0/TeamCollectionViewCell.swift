@@ -43,6 +43,7 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
         let size = (self.teamPlayersCollectionView!.frame.size.width)/3 - 10-10
         return CGSize.init(width: size, height: size*1.25)
         
+        
     }
     
     //計算 minimumInteritemSpacing 的間隔是多少
@@ -110,6 +111,7 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
     
     func addNewPlayer() {
        self.delegate?.addNewPlayer()
+       
     }
     
 

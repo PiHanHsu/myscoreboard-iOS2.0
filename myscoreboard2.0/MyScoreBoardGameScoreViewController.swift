@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UXTesting
 
 class MyScoreBoardGameScoreViewController: UIViewController {
     
@@ -53,7 +54,13 @@ class MyScoreBoardGameScoreViewController: UIViewController {
         indicator.center = backGroundView.center
         indicator.startAnimating()
         backGroundView.addSubview(indicator)
+
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
+        UXTestingManager.sharedInstance().heatMapStartWithViewName("Game Score Page")
     }
     
     // finish game indicator
