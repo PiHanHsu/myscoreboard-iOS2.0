@@ -32,6 +32,7 @@
 		E86202B01D0032A60030F798 /* MyScoredBoardBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86202AF1D0032A60030F798 /* MyScoredBoardBaseCollectionViewController.swift */; };
 		E86202B31D0550380030F798 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86202B11D0550380030F798 /* ProfileInfoTableViewCell.swift */; };
 		E86202B41D0550380030F798 /* ProfileInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86202B21D0550380030F798 /* ProfileInfoTableViewCell.xib */; };
+		E873262A1D4B25CA00C03D5A /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87326291D4B25CA00C03D5A /* Reachability.swift */; };
 		E889777F1D06EE3C00F263FF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E889777E1D06EE3C00F263FF /* Color.swift */; };
 		E88977831D07FBE800F263FF /* MyScoreBoardEditInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88977821D07FBE800F263FF /* MyScoreBoardEditInfoTableViewController.swift */; };
 		E88977851D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88977841D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift */; };
@@ -108,6 +109,7 @@
 		E86202AF1D0032A60030F798 /* MyScoredBoardBaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScoredBoardBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		E86202B11D0550380030F798 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		E86202B21D0550380030F798 /* ProfileInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInfoTableViewCell.xib; sourceTree = "<group>"; };
+		E87326291D4B25CA00C03D5A /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E889777E1D06EE3C00F263FF /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E88977821D07FBE800F263FF /* MyScoreBoardEditInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScoreBoardEditInfoTableViewController.swift; sourceTree = "<group>"; };
 		E88977841D0822E600F263FF /* MyScoreBoardBaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScoreBoardBaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 		E89B15D71CE9CEFF0070940D /* models */ = {
 			isa = PBXGroup;
 			children = (
+				E87326291D4B25CA00C03D5A /* Reachability.swift */,
 				E89B15D81CE9CF3B0070940D /* Params.swift */,
 				E89B15DC1CE9CF570070940D /* Api.swift */,
 				E89B15DA1CE9CF4E0070940D /* protocol.swift */,
@@ -535,6 +538,7 @@
 				E89B15DF1CE9CF6E0070940D /* pickerView.swift in Sources */,
 				E89B15D91CE9CF3B0070940D /* Params.swift in Sources */,
 				E862029F1CFE8AEE0030F798 /* ProfileCollectionViewCell.swift in Sources */,
+				E873262A1D4B25CA00C03D5A /* Reachability.swift in Sources */,
 				E80982E61D2BB8FD006F217C /* PlayerListTableViewCell.swift in Sources */,
 				E86202A31CFE8F930030F798 /* TeamViewController.swift in Sources */,
 				E81012951D0B14F8005385C6 /* GameScoreViewController.swift in Sources */,
@@ -667,6 +671,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -706,6 +711,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -717,8 +723,12 @@
 			baseConfigurationReference = A0C678C6BA7468521005B4EF /* Pods-myscoreboard2.0.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BITCODE_GENERATION_MODE = maker;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = myscoreboard2.0/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "-fembed-bitcode-maker";
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pihanhsu.myscoreboard2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -729,8 +739,12 @@
 			baseConfigurationReference = B8CBD25F74E2991D60A78730 /* Pods-myscoreboard2.0.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BITCODE_GENERATION_MODE = bitcode;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = myscoreboard2.0/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pihanhsu.myscoreboard2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
