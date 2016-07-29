@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '849B213790C1B4AD565FDDE9'
+               BlueprintIdentifier = 'A9966988B1742686647A6DE3'
                BlueprintName = 'Pods-myscoreboard2.0'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_myscoreboard2_0.framework'>
