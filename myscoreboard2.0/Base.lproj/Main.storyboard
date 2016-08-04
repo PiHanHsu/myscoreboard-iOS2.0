@@ -1284,7 +1284,7 @@
             </objects>
             <point key="canvasLocation" x="1571" y="1155"/>
         </scene>
-        <!--Add Team Table View Controller-->
+        <!--編輯球隊-->
         <scene sceneID="fOO-zk-vkG">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="mtB-2U-Vfs" customClass="AddTeamTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -1571,6 +1571,7 @@
                             <outlet property="delegate" destination="mtB-2U-Vfs" id="L8b-5S-zHm"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="編輯球隊" id="jYB-Th-N09"/>
                     <connections>
                         <outlet property="createTeamButton" destination="8AN-y4-hwR" id="NBw-wV-N0Y"/>
                         <outlet property="editPlayersLabel" destination="jEy-wu-PwZ" id="GIt-Al-bTR"/>
@@ -1584,7 +1585,7 @@
             </objects>
             <point key="canvasLocation" x="2259" y="1150"/>
         </scene>
-        <!--Edit Player List Table View Controller-->
+        <!--編輯球員名單-->
         <scene sceneID="B3E-fr-2Vl">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="9vo-Rh-Yfz" customClass="EditPlayerListTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -1593,7 +1594,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6vY-Mj-pyB"/>
+                    <navigationItem key="navigationItem" title="編輯球員名單" id="W6B-M2-KY7"/>
                     <connections>
                         <outlet property="addBarButton" destination="uIN-nE-zWb" id="wKf-xb-rSC"/>
                         <outlet property="cancelBarButton" destination="TG7-69-4y5" id="ldR-UQ-IFB"/>
@@ -1626,7 +1627,7 @@
             </objects>
             <point key="canvasLocation" x="2893" y="495"/>
         </scene>
-        <!--Search Location Table View Controller-->
+        <!--選擇球場位置-->
         <scene sceneID="9ho-lQ-mSW">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="Qv9-CD-6HA" customClass="SearchLocationTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -1650,6 +1651,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="選擇球場位置" id="Cec-in-eNN"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juo-mw-eS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2370,7 +2372,7 @@
             </objects>
             <point key="canvasLocation" x="1712" y="1936"/>
         </scene>
-        <!--Add New Player Table View Controller-->
+        <!--新增球員-->
         <scene sceneID="hcY-wW-i65">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="zHM-Ca-sdK" customClass="AddNewPlayerTableViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -2383,6 +2385,7 @@
                             <outlet property="delegate" destination="zHM-Ca-sdK" id="lbA-AN-y97"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="新增球員" id="vNx-T4-fa2"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="co1-0u-9HG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2520,7 +2523,7 @@
             </objects>
             <point key="canvasLocation" x="2369" y="2639"/>
         </scene>
-        <!--手動賽程-->
+        <!--手動賽程計分-->
         <scene sceneID="HOb-AA-z1F">
             <objects>
                 <viewController storyboardIdentifier="ManualGameScoreViewController" hidesBottomBarWhenPushed="YES" id="GTh-K6-M4H" customClass="ManualGameScoreViewController" customModule="myscoreboard2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -2854,7 +2857,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="手動賽程" id="goR-NE-awg">
+                    <navigationItem key="navigationItem" title="手動賽程計分" id="goR-NE-awg">
                         <barButtonItem key="rightBarButtonItem" title="今日紀錄" id="KUG-8O-zNW">
                             <connections>
                                 <segue destination="uf9-0W-Vuw" kind="show" id="X0U-Td-Pkn"/>
@@ -2912,10 +2915,10 @@
         <image name="user_placeholder" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kdp-vh-fRL"/>
-        <segue reference="6yj-8J-Xj3"/>
+        <segue reference="T5z-j1-Fni"/>
         <segue reference="gg0-FZ-gQG"/>
-        <segue reference="YQx-fW-8c1"/>
+        <segue reference="6yj-8J-Xj3"/>
+        <segue reference="Kdp-vh-fRL"/>
         <segue reference="X0U-Td-Pkn"/>
     </inferredMetricsTieBreakers>
 </document>

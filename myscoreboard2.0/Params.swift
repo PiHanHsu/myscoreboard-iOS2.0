@@ -42,7 +42,7 @@ struct Params {
     static let apiGooglePlaceDetail = "https://maps.googleapis.com/maps/api/place/details/json"
     
     //Google place api key
-    static let googlePlaceApiKey = "AIzaSyD9Phzy4CZWofeZD3RnEuFemlWTaM4n_po"
+    static let googlePlaceApiKey = "AIzaSyD7VqkoeBt9YZAv7akagz9MuT8figeE3gU"
 }
 
 class GlobalFunction {

@@ -88,11 +88,11 @@ class SearchLocationTableViewController: UITableViewController , UISearchControl
                                            param: ["input" : searchText,
                                                      "key" : Params.googlePlaceApiKey],
                                            success: { (code, data) in
-                                            //print(data)
+                                            print(data)
                                             self.searchResults = data["predictions"].arrayValue
                                             self.tableView.reloadData()
             }, failure: { (code, data) in
-                
+                print("search location failed : \(data)")
             }, complete: nil)
         
         
