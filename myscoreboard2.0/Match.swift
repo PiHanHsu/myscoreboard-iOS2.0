@@ -11,11 +11,12 @@ import UIKit
 struct Match {
     var pair1 = Pair()
     var pair2 = Pair()
+    //var mWeight: Int = 0
     var mWeight: Int{
         get{
-            let sumOfpWeight = pair1.pWeight + pair2.pWeight
-            let sumOfuWeight = pair1.player1!.uWeight + (pair1.player2?.uWeight)! + pair2.player1!.uWeight + (pair2.player2?.uWeight)!
-            return sumOfpWeight + sumOfuWeight
+            //let sumOfpWeight = pair1.pWeight + pair2.pWeight
+            let sumOfWeight = pair1.player1!.uWeight + (pair1.player2?.uWeight)! + pair2.player1!.uWeight + (pair2.player2?.uWeight)! + pair1.pWeight + pair2.pWeight
+            return sumOfWeight
         }
     }
 }

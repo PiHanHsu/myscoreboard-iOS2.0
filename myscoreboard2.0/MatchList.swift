@@ -16,13 +16,15 @@ class MatchList {
     var matchesList: Array<Match>?
     
     
-    func getMatchesList(players: Array<Player>) -> [Match]?{
+    func getMatchesList(players: Array<Player>) -> (matchList: [Match]?, pairsList: [Pair]?){
         var malePlayerArray = [Player]()
         var femalePlayerArray = [Player]()
         
         var mixMatches = [Match]()
         var maleDoublesMatches = [Match]()
         var femaleDoublesMatches = [Match]()
+        
+        var pairList = [Pair]?()
         
         for player in players {
             if player.gender == "male" {
@@ -33,9 +35,9 @@ class MatchList {
         }
         
         // mix pairs
+        var mixPairs = [Pair]()
         if malePlayerArray.count >= 2 && femalePlayerArray.count >= 2 {
             
-            var mixPairs = [Pair]()
             for malePlayer in malePlayerArray{
                 for femalePlayer in femalePlayerArray {
                     let pair = Pair()
@@ -49,8 +51,8 @@ class MatchList {
         
         // male doubles pairs
         
+        var maleDoublesPairs = [Pair]()
         if malePlayerArray.count >= 4 {
-            var maleDoublesPairs = [Pair]()
             
             for (index, malePlayer1) in malePlayerArray.enumerate() {
                 for malePlayer2 in malePlayerArray[index + 1 ..< malePlayerArray.count] {
@@ -66,8 +68,8 @@ class MatchList {
         
         
         // female doubles pairs
+        var femaleDoublesPairs = [Pair]()
         if femalePlayerArray.count >= 4 {
-            var femaleDoublesPairs = [Pair]()
             
             for (index, femalePlayer1) in femalePlayerArray.enumerate() {
                 for femalePlayer2 in femalePlayerArray[index + 1 ..< femalePlayerArray.count] {
@@ -87,7 +89,9 @@ class MatchList {
            matchesList = matchesList!.shuffle()
         }
         
-        return matchesList
+        pairList = mixPairs + maleDoublesPairs + femaleDoublesPairs
+        
+        return (matchesList, pairList)
     }
     
     func generateMatches(pairs: [Pair]) -> [Match] {

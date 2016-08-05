@@ -35,7 +35,7 @@
 
         var selectedPlayers = [Player]()
         var matchesList: Array<Match>?
-       
+        var pairList: Array<Pair>?
         var nextMatch: Match?
 
         var autoSet:[String:Int] = [:]
@@ -47,7 +47,8 @@
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            matchesList = MatchList.shareInstance.getMatchesList(selectedPlayers)
+            (matchesList, pairList) = MatchList.shareInstance.getMatchesList(selectedPlayers)
+            resetWeight(matchesList!)
             //print("matches count: \(matchesList!.count)")
             currentMatch = matchesList![0]
             //print(" currentMatchWeight: \(currentMatch?.mWeight)")
@@ -60,26 +61,37 @@
             
             
             // test Algorithm
-            //            for _ in 0...100{
-            //                testAlgorithm()
-            //            }
-            //
-            //            if failCount == 0 {
-            //                print("success")
-            //            }else{
-            //                print("failed: \(failCount)")
-            //            }
+//                        for _ in 0...100{
+//                            testAlgorithm()
+//                        }
+//            
+//                        if failCount == 0 {
+//                            print("success")
+//                        }else{
+//                            print("failed: \(failCount)")
+//                        }
+        }
+        func resetWeight(matches: [Match]) {
+            print("reset")
+            for match in matches {
+                match.pair1.pWeight = 0
+                match.pair2.pWeight = 0
+                match.pair1.player1?.uWeight = 0
+                match.pair1.player2?.uWeight = 0
+                match.pair2.player1?.uWeight = 0
+                match.pair2.player2?.uWeight = 0
+            }
         }
         
         func createScueduleMatches(matches: [Match]) {
             let match = matches[0]
             
-            match.pair1.pWeight += 1000
-            match.pair2.pWeight += 1000
-            match.pair1.player1!.uWeight += 100
-            match.pair1.player2!.uWeight += 100
-            match.pair2.player1!.uWeight += 100
-            match.pair2.player2!.uWeight += 100
+            match.pair1.pWeight += 1
+            match.pair2.pWeight += 1
+            match.pair1.player1!.uWeight += 10
+            match.pair1.player2!.uWeight += 10
+            match.pair2.player1!.uWeight += 10
+            match.pair2.player2!.uWeight += 10
             
             matchesList = matchesList?.shuffle()
             matchesList = matches.sort({ $0.mWeight < $1.mWeight})
@@ -190,8 +202,9 @@
             }else {
                 gameType = GameType.mix
             }
-            
-            HttpManager.sharedInstance
+            self.currentMatch = self.nextMatch
+
+                        HttpManager.sharedInstance
                 .request(HttpMethod.HttpMethodPost,
                          apiFunc: APiFunction.SaveGameScore,
                          param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
@@ -265,6 +278,8 @@
         //MARK: - test
         
         func testAlgorithm(){
+            //let matchList = MatchList()
+            //(matchesList, pairList) = matchList.getMatchesList(selectedPlayers)
             var match = Match()
             let set = NSCountedSet()
             match = matchesList![0]
@@ -277,11 +292,13 @@
                 
                 match.pair1.pWeight += 1
                 match.pair2.pWeight += 1
-                match.pair1.player1!.uWeight += 50
-                match.pair1.player2!.uWeight += 50
-                match.pair2.player1!.uWeight += 50
-                match.pair2.player2!.uWeight += 50
+                match.pair1.player1!.uWeight += 10
+                match.pair1.player2!.uWeight += 10
+                match.pair2.player1!.uWeight += 10
+                match.pair2.player2!.uWeight += 10
                 
+                print("match weight: \(match.mWeight)")
+                //print("player weight: \(match.pair1.player1!.uWeight)")
                 matchesList = matchesList?.shuffle()
                 matchesList = matchesList!.sort({ $0.mWeight < $1.mWeight})
                 nextMatch = matchesList![0]
@@ -296,17 +313,20 @@
                 }else if matchPlayerArray.contains((nextMatch?.pair2.player2)!){
                     nextMatch?.pair2.player2!.uWeight += 0
                 }
+//                for (index, match) in matchesList!.enumerate() {
+//                    print("match\(index) : \(match.mWeight)")
+//                }
                 
                 match = nextMatch!
                 
-                //print("\(match.pair1.player1.playerName!) \(match.pair1.player2.playerName!) \(match.pair2.player1.playerName!) \(match.pair2.player2.playerName!) \(match.mWeight)")
+                //print("\(match.pair1.player1!.playerName!) \(match.pair1.player2!.playerName!) \(match.pair2.player1!.playerName!) \(match.pair2.player2!.playerName!) \(match.mWeight)")
                 
             }
             
             for player in selectedPlayers {
                 
                 if set.countForObject(player) != 4 {
-                    //print("\(player.playerName): \(set.countForObject(player))")
+                    print("\(player.playerName): \(set.countForObject(player))")
                     failCount += 1
                     return
                 }
