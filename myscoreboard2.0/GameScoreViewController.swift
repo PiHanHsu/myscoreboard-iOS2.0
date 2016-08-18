@@ -32,17 +32,17 @@
         @IBOutlet weak var nextPair2Player2ImageView: UIImageView!
         @IBOutlet weak var finishGameButton: UIButton!
         
-
+        
         var selectedPlayers = [Player]()
         var matchesList: Array<Match>?
         var pairList: Array<Pair>?
         var nextMatch: Match?
-
+        
         var autoSet:[String:Int] = [:]
         var currentSetIndex = 0
         
         var failCount = 0
-
+        
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -53,26 +53,19 @@
             currentMatch = matchesList![0]
             //print(" currentMatchWeight: \(currentMatch?.mWeight)")
             displayCurrentMatchData()
-            createScueduleMatches(matchesList!)
+            createNextMatch(currentMatch!, isSelectedMode: false)
+            //createScueduleMatches(matchesList!)
             
             finishGameButton.backgroundColor = UIColor.mainYellowColor()
             finishGameButton.layer.cornerRadius = 5.0
             finishGameButton.clipsToBounds = true
             
+            //test
+            //self.goTest(100)
             
-            // test Algorithm
-//                        for _ in 0...100{
-//                            testAlgorithm()
-//                        }
-//            
-//                        if failCount == 0 {
-//                            print("success")
-//                        }else{
-//                            print("failed: \(failCount)")
-//                        }
         }
         func resetWeight(matches: [Match]) {
-            print("reset")
+            
             for match in matches {
                 match.pair1.pWeight = 0
                 match.pair2.pWeight = 0
@@ -83,23 +76,38 @@
             }
         }
         
-        func createScueduleMatches(matches: [Match]) {
-            let match = matches[0]
-            
+        func createNextMatch(match: Match, isSelectedMode: Bool) {
+            if !isSelectedMode {
             match.pair1.pWeight += 1
             match.pair2.pWeight += 1
             match.pair1.player1!.uWeight += 10
             match.pair1.player2!.uWeight += 10
             match.pair2.player1!.uWeight += 10
             match.pair2.player2!.uWeight += 10
-            
+            }
             matchesList = matchesList?.shuffle()
-            matchesList = matches.sort({ $0.mWeight < $1.mWeight})
+            matchesList = matchesList?.sort({ $0.mWeight < $1.mWeight})
             nextMatch = matchesList![0]
             
             displayNextMatchData()
-            
+ 
         }
+//        func createScueduleMatches(matches: [Match]) {
+//            let match = matches[0]
+//            
+//                match.pair1.pWeight += 1
+//                match.pair2.pWeight += 1
+//                match.pair1.player1!.uWeight += 10
+//                match.pair1.player2!.uWeight += 10
+//                match.pair2.player1!.uWeight += 10
+//                match.pair2.player2!.uWeight += 10
+//                matchesList = matchesList?.shuffle()
+//                matchesList = matches.sort({ $0.mWeight < $1.mWeight})
+//                nextMatch = matchesList![0]
+//                
+//                displayNextMatchData()
+//            
+//        }
         
         func displayCurrentMatchData() {
             
@@ -169,7 +177,7 @@
         }
         
         
-
+        
         @IBAction func finishGameAction(sender: UIButton) {
             
             self.showAndHideIndictor(true)
@@ -202,37 +210,36 @@
             }else {
                 gameType = GameType.mix
             }
-            self.currentMatch = self.nextMatch
-
+            
                         HttpManager.sharedInstance
-                .request(HttpMethod.HttpMethodPost,
-                         apiFunc: APiFunction.SaveGameScore,
-                         param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
-                            "team_id": teamId,
-                            "game_type": gameType,
-                            "scores" : scores],
-                         success: { (code , data ) in
-                            print("score saved!!")
-                            self.currentMatch = self.nextMatch
-                            self.displayCurrentMatchData()
-                            self.createScueduleMatches(self.matchesList!)
-                            self.pair1SidePicker.selectRow(0, inComponent: 0, animated: true)
-                            self.pair2SidePicker.selectRow(0, inComponent: 0, animated: true)
-                            self.showAndHideIndictor(false)
-                    },
-                         failure: { (code , data) in
-                            let alertController = UIAlertController(title: "Something wrong with internet", message: "Score did not save, please try again", preferredStyle: .Alert)
-                            let alertAction = UIAlertAction(title: "OK", style: .Default, handler: {
-                                UIAlertAction in
-                                self.showAndHideIndictor(false)
-                            })
-                            alertController.addAction(alertAction)
-                            self.presentViewController(alertController, animated: true, completion: nil)
-                            print("failed with \(code), \(data)")
-                    },
-                         complete: nil)
+                            .request(HttpMethod.HttpMethodPost,
+                                     apiFunc: APiFunction.SaveGameScore,
+                                     param: ["auth_token" : CurrentUser.sharedInstance.authToken!,
+                                        "team_id": teamId,
+                                        "game_type": gameType,
+                                        "scores" : scores],
+                                     success: { (code , data ) in
+                                        print("score saved!!")
+                                        self.currentMatch = self.nextMatch
+                                        self.displayCurrentMatchData()
+                                        self.createNextMatch(self.currentMatch!, isSelectedMode: false)
+                                        self.pair1SidePicker.selectRow(0, inComponent: 0, animated: true)
+                                        self.pair2SidePicker.selectRow(0, inComponent: 0, animated: true)
+                                        self.showAndHideIndictor(false)
+                                },
+                                     failure: { (code , data) in
+                                        let alertController = UIAlertController(title: "Something wrong with internet", message: "Score did not save, please try again", preferredStyle: .Alert)
+                                        let alertAction = UIAlertAction(title: "OK", style: .Default, handler: {
+                                            UIAlertAction in
+                                            self.showAndHideIndictor(false)
+                                        })
+                                        alertController.addAction(alertAction)
+                                        self.presentViewController(alertController, animated: true, completion: nil)
+                                        print("failed with \(code), \(data)")
+                                },
+                                     complete: nil)
         }
-
+        
         // Change player
         
         
@@ -277,9 +284,22 @@
         
         //MARK: - test
         
+        func goTest(times: Int) {
+            for _ in 0...times{
+                testAlgorithm()
+            }
+            
+            if failCount == 0 {
+                print("success")
+            }else{
+                print("failed: \(failCount)")
+            }
+        }
+        
         func testAlgorithm(){
-            //let matchList = MatchList()
-            //(matchesList, pairList) = matchList.getMatchesList(selectedPlayers)
+            let matchList = MatchList()
+            (matchesList, pairList) = matchList.getMatchesList(selectedPlayers)
+            resetWeight(matchesList!)
             var match = Match()
             let set = NSCountedSet()
             match = matchesList![0]
@@ -290,14 +310,14 @@
                 set.addObject(match.pair2.player1!)
                 set.addObject(match.pair2.player2!)
                 
-                match.pair1.pWeight += 1
-                match.pair2.pWeight += 1
+                //match.pair1.pWeight += 1
+                //match.pair2.pWeight += 1
                 match.pair1.player1!.uWeight += 10
                 match.pair1.player2!.uWeight += 10
                 match.pair2.player1!.uWeight += 10
                 match.pair2.player2!.uWeight += 10
                 
-                print("match weight: \(match.mWeight)")
+                //print("match weight: \(match.mWeight)")
                 //print("player weight: \(match.pair1.player1!.uWeight)")
                 matchesList = matchesList?.shuffle()
                 matchesList = matchesList!.sort({ $0.mWeight < $1.mWeight})
@@ -313,9 +333,9 @@
                 }else if matchPlayerArray.contains((nextMatch?.pair2.player2)!){
                     nextMatch?.pair2.player2!.uWeight += 0
                 }
-//                for (index, match) in matchesList!.enumerate() {
-//                    print("match\(index) : \(match.mWeight)")
-//                }
+                //                for (index, match) in matchesList!.enumerate() {
+                //                    print("match\(index) : \(match.mWeight)")
+                //                }
                 
                 match = nextMatch!
                 
@@ -336,19 +356,26 @@
         //change player Delegate
         func changePlayer(player: Player, playerIndex: Int) {
             
+            player.uWeight -= 10
             switch playerIndex {
             case 1:
                 currentMatch!.pair1.player1 = player
+                currentMatch!.pair1.player1?.uWeight += 10
             case 2:
                 currentMatch!.pair1.player2 = player
+                currentMatch!.pair1.player2?.uWeight += 10
             case 3:
                 currentMatch!.pair2.player1 = player
+                currentMatch!.pair2.player1?.uWeight += 10
             case 4:
                 currentMatch!.pair2.player2 = player
+                currentMatch!.pair2.player2?.uWeight += 10
             default:
                 break
             }
             
             displayCurrentMatchData()
+            createNextMatch(currentMatch!, isSelectedMode: true)
+            
         }
     }
