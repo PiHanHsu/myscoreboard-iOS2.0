@@ -34,6 +34,8 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         self.profileTableView.registerNib(UINib(nibName: profileInfoTableViewCell, bundle: nil), forCellReuseIdentifier: profileInfoTableViewCell)
         self.profileTableView.registerNib(UINib(nibName: gameTableViewCell, bundle: nil), forCellReuseIdentifier: gameTableViewCell)
         self.profileTableView.registerNib(UINib(nibName: bestPartnerTableViewCell, bundle: nil), forCellReuseIdentifier: bestPartnerTableViewCell)
+        self.profileTableView.registerNib(UINib(nibName: "EmptyGameTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyGameTableViewCell")
+        self.profileTableView.registerNib(UINib(nibName: "SingleGameTableViewCell", bundle: nil), forCellReuseIdentifier: "SingleGameTableViewCell")
         
         let footerView = UIView()
         footerView.frame = CGRectZero
@@ -137,25 +139,53 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
             
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier(gameTableViewCell, forIndexPath: indexPath) as! GameTableViewCell
+            
+    
             let gameData = statsData["last_3_games"][indexPath.row]["game"]
-            if gameData.count == 4 {
-                cell.team1Player1NameLabel.text = gameData[0]["username"].stringValue
-                cell.team1Player2NameLabel.text = gameData[1]["username"].stringValue
-                cell.team2Player1NameLabel.text = gameData[2]["username"].stringValue
-                cell.team2Player2NameLabel.text = gameData[3]["username"].stringValue
+            
+            if gameData != nil{
                 
-                if gameData[0]["score"].intValue > gameData[2]["score"].intValue {
-                    cell.team1ScoreLabel.textColor = UIColor.redColor()
-                }else {
-                    cell.team2ScoreLabel.textColor = UIColor.redColor()
+            
+                if gameData.count == 4 {
+                    let cell = tableView.dequeueReusableCellWithIdentifier(gameTableViewCell, forIndexPath: indexPath) as! GameTableViewCell
+                    cell.team1Player1NameLabel.text = gameData[0]["username"].stringValue
+                    cell.team1Player2NameLabel.text = gameData[1]["username"].stringValue
+                    cell.team2Player1NameLabel.text = gameData[2]["username"].stringValue
+                    cell.team2Player2NameLabel.text = gameData[3]["username"].stringValue
+                    
+                    if gameData[0]["score"].intValue > gameData[2]["score"].intValue {
+                        cell.team1ScoreLabel.textColor = UIColor.redColor()
+                    }else {
+                        cell.team2ScoreLabel.textColor = UIColor.redColor()
+                    }
+                    cell.team1ScoreLabel.text = gameData[0]["score"].stringValue
+                    cell.team2ScoreLabel.text = gameData[2]["score"].stringValue
+                    
+                    return cell
+                }else if gameData.count == 2 {
+                    
+                    let cell = tableView.dequeueReusableCellWithIdentifier("SingleGameTableViewCell", forIndexPath: indexPath) as! SingleGameTableViewCell
+                    cell.team1Player1NameLabel.text = gameData[0]["username"].stringValue
+                    cell.team2Player1NameLabel.text = gameData[1]["username"].stringValue
+            
+                    if gameData[0]["score"].intValue > gameData[1]["score"].intValue {
+                        cell.team1ScoreLabel.textColor = UIColor.redColor()
+                    }else {
+                        cell.team2ScoreLabel.textColor = UIColor.redColor()
+                    }
+                    cell.team1ScoreLabel.text = gameData[0]["score"].stringValue
+                    cell.team2ScoreLabel.text = gameData[1]["score"].stringValue
+                    
+                    return cell
                 }
-                cell.team1ScoreLabel.text = gameData[0]["score"].stringValue
-                cell.team2ScoreLabel.text = gameData[2]["score"].stringValue
+                
+            }else{
+                let cell = tableView.dequeueReusableCellWithIdentifier("EmptyGameTableViewCell", forIndexPath: indexPath) as! EmptyGameTableViewCell
+                return cell
             }
-            return cell
+            
         case 2:
-            print("stats: \(statsData)")
+            //print("stats: \(statsData)")
             let cell = tableView.dequeueReusableCellWithIdentifier(bestPartnerTableViewCell, forIndexPath: indexPath) as! BestPartnetTableViewCell
             cell.bestDoublePartnerNameLabel.text = statsData["best_double_name"].stringValue
             
