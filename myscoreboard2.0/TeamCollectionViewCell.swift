@@ -89,6 +89,7 @@ class TeamCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UICollectionVi
                 if imageUrl != "" {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                        cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!, placeholderImage: UIImage(named: "user_placeholder"), options: SDWebImageOptions.RetryFailed)
+                        cell.playerImage.layer.borderWidth = 0.0
                     })
                 }else {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 protocol ChangePlayerDelegate: class {
     func changePlayer(player: Player, playerIndex: Int)
 }
@@ -96,8 +98,23 @@ class SelectPlayerViewController: UIViewController, UICollectionViewDelegate, UI
         
         if let imageUrl = player.playerImageUrl {
             if imageUrl != "" {
-                cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    cell.playerImage.sd_setImageWithURL(NSURL(string: imageUrl)!, placeholderImage: UIImage(named: "user_placeholder"), options: SDWebImageOptions.RetryFailed)
+                    cell.playerImage.layer.borderWidth = 0.0
+                })
+            }else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    cell.playerImage.layer.borderColor = UIColor.blackColor().CGColor
+                    cell.playerImage.layer.borderWidth = 1.0
+                    cell.playerImage.image = UIImage(named: "user_placeholder")
+                })
             }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                cell.playerImage.layer.borderColor = UIColor.blackColor().CGColor
+                cell.playerImage.layer.borderWidth = 1.0
+                cell.playerImage.image = UIImage(named: "user_placeholder")
+            })
         }
         
         return cell
