@@ -24,9 +24,10 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
                 param: ["auth_token": CurrentUser.sharedInstance.authToken!],
                 success: { (code, data ) in
                     self.statsData = data["result"]
+                    //print(self.statsData )
                     self.collectionView?.reloadData()
                 }, failure: { (code, data) in
-                    //self.failure(code!, data: data!)
+                    print("error: \(data)")
                 }, complete: nil)
         
     }

@@ -187,21 +187,35 @@ class ProfileCollectionViewCell: MyScoreBoardBaseCollectionViewCell, UITableView
         case 2:
             //print("stats: \(statsData)")
             let cell = tableView.dequeueReusableCellWithIdentifier(bestPartnerTableViewCell, forIndexPath: indexPath) as! BestPartnetTableViewCell
-            cell.bestDoublePartnerNameLabel.text = statsData["best_double_name"].stringValue
+            
+            if statsData["best_double_name"].stringValue != "" {
+                cell.bestDoublePartnerNameLabel.text = statsData["best_double_name"].stringValue
+            }else {
+                cell.bestDoublePartnerNameLabel.text = "尚無資料"
+            }
+            
             
             cell.bestDoublePartnerImageView.layer.cornerRadius = cell.bestDoublePartnerImageView.frame.size.width/2
             cell.bestDoublePartnerImageView.clipsToBounds = true
             if statsData["best_double_photo"] != nil {
-                cell.bestDoublePartnerImageView.sd_setImageWithURL(NSURL(string: statsData["best_double_photo"].stringValue))
+               cell.bestDoublePartnerImageView.sd_setImageWithURL(NSURL(string: statsData["best_double_photo"].stringValue))
+            }else {
+               cell.bestDoublePartnerImageView.image = UIImage(named: "user_placeholder")
             }
             
-            cell.bestMixPartnerNameLabel.text = statsData["best_mix_name"].stringValue
+            if statsData["best_mix_name"].stringValue != "" {
+                cell.bestMixPartnerNameLabel.text = statsData["best_mix_name"].stringValue
+            }else {
+                cell.bestMixPartnerNameLabel.text = "尚無資料"
+            }
             
             cell.bestMixPartnerImageView.layer.cornerRadius = cell.bestMixPartnerImageView.frame.size.width/2
             cell.bestMixPartnerImageView.clipsToBounds = true
 
             if statsData["best_mix_photo"] != nil {
                 cell.bestMixPartnerImageView.sd_setImageWithURL(NSURL(string: statsData["best_mix_photo"].stringValue))
+            }else {
+                cell.bestMixPartnerImageView.image = UIImage(named: "user_placeholder")
             }
             
             return cell
