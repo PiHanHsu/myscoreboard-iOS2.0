@@ -158,9 +158,15 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                                             if self.team.players.count > 1 {
                                                                 self.addPlyaers()
                                                             }else{
-                                                                GlobalFunction.sharedInstance.reloadDataFromServer({
-                                                                    self.navigationController?.popViewControllerAnimated(true)
+                                                                GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
+                                                                    if success {
+                                                             self.navigationController?.popViewControllerAnimated(true)
+                                                                    }else{
+                                                                        print("add team error: \(message)")
+
+                                                                    }
                                                                 })
+                                                              
                                                             }
 
                                                             
@@ -178,9 +184,14 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                     if self.team.players.count > 1 {
                         self.addPlyaers()
                     }else{
-                        GlobalFunction.sharedInstance.reloadDataFromServer({
-                            self.navigationController?.popViewControllerAnimated(true)
+                        GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
+                            if success {
+                                self.navigationController?.popViewControllerAnimated(true)
+                            }else{
+                                print("add team error: \(message)")
+                            }
                         })
+                        
                     }
                     
                 }, failure: { (code, data) in
@@ -204,10 +215,14 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                             "added_user_ids" : playerIds],
                                            success: { (code, data) in
                     print("add players success")
-                                            GlobalFunction.sharedInstance.reloadDataFromServer({
-                                                self.navigationController?.popViewControllerAnimated(true)
-                                            })
+                                            GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
+                                                if success {
+                                                    self.navigationController?.popViewControllerAnimated(true)
+                                                }else{
+                                                    print("add team error: \(message)")
 
+                                                }
+                                            })
             }, failure: { (code, data) in
                 //failure
                 print("error: \(data)")
@@ -238,8 +253,13 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                                             if self.team.players.count > 1 {
                                                                 self.addPlyaers()
                                                             }else{
-                                                                GlobalFunction.sharedInstance.reloadDataFromServer({
-                                                                    self.navigationController?.popViewControllerAnimated(true)
+                                                                GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
+                                                                    if success {
+                                                                        self.navigationController?.popViewControllerAnimated(true)
+                                                                    }else{
+                                                                        print("add team error: \(message)")
+
+                                                                    }
                                                                 })
                                                             }
                                                             
@@ -253,8 +273,13 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                                param: params,
                                                success: { (code, data) in
                                                 print("update success")
-                                                GlobalFunction.sharedInstance.reloadDataFromServer({
-                                                    self.navigationController?.popViewControllerAnimated(true)
+                                                GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
+                                                    if success {
+                                                        self.navigationController?.popViewControllerAnimated(true)
+                                                    }else{
+                                                        print("add team error: \(message)")
+
+                                                    }
                                                 })
                                                 
                 }, failure: { (code, data) in

@@ -251,12 +251,17 @@ class LoginTableViewController: UITableViewController {
         CurrentUser.sharedInstance.photo_url = userDefault.stringForKey("photo")
         CurrentUser.sharedInstance.email = userDefault.stringForKey("email")
         
-        GlobalFunction.sharedInstance.reloadDataFromServer({
-            
-            self.indicator.startAnimating()
-            //go to main page
-            self.performSegueWithIdentifier("Show main page", sender: self)
-        })
+        GlobalFunction.sharedInstance.reloadDataFromServer { (success, message) in
+            if success {
+                self.indicator.startAnimating()
+                //go to main page
+                self.performSegueWithIdentifier("Show main page", sender: self)
+            }else{
+                self.indicator.stopAnimating()
+                print("login page error: \(message)")
+            }
+        }
+        
     }
     
     // validate email and password

@@ -117,10 +117,14 @@ class EditPlayerListTableViewController: UITableViewController {
                     }
                     self.team.players.removeAtIndexes(indicesOfPlayerToDelete)
                     
-                    GlobalFunction.sharedInstance.reloadDataFromServer({ 
-                        self.tableView.reloadData()
-                        self.tableView.setEditing(false, animated: true)
-                        self.updateButtonsToMatchTableState()
+                    GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
+                        if success {
+                            self.tableView.reloadData()
+                            self.tableView.setEditing(false, animated: true)
+                            self.updateButtonsToMatchTableState()
+                        }else{
+                            print("edit player error: \(message)")
+                        }
                     })
                 }, failure: { (code, data) in
                     print("update team info failed: \(data)")

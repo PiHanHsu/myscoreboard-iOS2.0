@@ -48,7 +48,7 @@ struct Params {
 class GlobalFunction {
     static let sharedInstance = GlobalFunction()
     
-    func reloadDataFromServer( completion: () -> ()) -> () {
+    func reloadDataFromServer( completion: (success: Bool, message: String )-> ()) -> () {
         HttpManager.sharedInstance
             .request(HttpMethod.HttpMethodGet,
                      apiFunc: APiFunction.GetTeamList,
@@ -59,11 +59,12 @@ class GlobalFunction {
                         for team in data["results"].arrayValue {
                             Teams.sharedInstance.teams.append(Team(data: team))
                         }
-                     completion()
+                     completion(success: true, message: "success")
                         
                 },
                      failure: { (code , data) in
-                     print("reloadDataFailed: \(data)")
+                     completion(success: false, message: "reloadDataFailed: \(data)")
+
                 },
                      complete: nil)
         
