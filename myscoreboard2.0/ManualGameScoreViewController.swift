@@ -35,6 +35,7 @@ class ManualGameScoreViewController: MyScoreBoardGameScoreViewController,ChangeP
         finishGameButton.backgroundColor = UIColor.mainYellowColor()
         finishGameButton.layer.cornerRadius = 5.0
         finishGameButton.clipsToBounds = true
+        displayCurrentMatchData()
         // Do any additional setup after loading the view.
     }
 
