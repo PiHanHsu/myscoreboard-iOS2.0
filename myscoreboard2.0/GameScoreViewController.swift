@@ -240,6 +240,22 @@
                                      complete: nil)
         }
         
+        //finish Today's games
+        
+        @IBAction func finishTodaysGamesButtonPressed(sender: AnyObject) {
+            let alert = UIAlertController(title: "結束今天比賽", message: "所有對戰組合排序將會重新計算", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "確定", style: .Default) { (UIAlertAction) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+            
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            
+            presentViewController(alert, animated: true, completion: nil)
+            
+        }
+        
         // Change player
         
         
