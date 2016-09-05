@@ -19,6 +19,8 @@ class EditProfileTableViewController: MyScoreBoardEditInfoTableViewController {
         super.viewDidLoad()
         if (CurrentUser.sharedInstance.photo_url != nil) {
             photoImageView.sd_setImageWithURL(NSURL(string: CurrentUser.sharedInstance.photo_url!))
+            cameraImageView.hidden = true
+            uploadImageLabel.hidden = true
         }
         self.userNameTextField.text = CurrentUser.sharedInstance.username
         self.emailTextField.text = CurrentUser.sharedInstance.email

@@ -40,7 +40,13 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
             placeLabel.text = team.placeName
             editPlayersLabel.text = "成員(\(team.players.count))"
             createTeamButton.setTitle("更新", forState: .Normal)
-            photoImageView.sd_setImageWithURL(NSURL(string: team.TeamImageUrl!), placeholderImage: nil)
+            if let imageUrl = team.TeamImageUrl {
+                photoImageView.sd_setImageWithURL(NSURL(string: imageUrl), placeholderImage: nil)
+                if imageUrl != "https://product.myscoreboardapp.com/team_logo_dafault.png" {
+                    cameraImageView.hidden = true
+                    uploadImageLabel.hidden = true
+                }
+            }
             createTeamButton.addTarget(self, action: #selector(AddTeamTableViewController.updateTeamInfo), forControlEvents: .TouchUpInside)
         }else{
             createTeamButton.addTarget(self, action: #selector(AddTeamTableViewController.createTeam), forControlEvents: .TouchUpInside)

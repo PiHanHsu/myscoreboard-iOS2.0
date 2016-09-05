@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="y1q-Ao-LIZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="y1q-Ao-LIZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -606,6 +606,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="cameraImageView" destination="lvL-yy-oDa" id="rYc-A2-Ogb"/>
                         <outlet property="emailTextField" destination="bvq-CO-Wvc" id="KUf-am-M5X"/>
                         <outlet property="genderLabel" destination="o51-QT-RcR" id="HaP-R0-BX8"/>
                         <outlet property="navBarView" destination="tWl-HQ-BpG" id="HMR-Sp-YwY"/>
@@ -613,6 +614,7 @@
                         <outlet property="passwordTextField" destination="tPE-8d-UCL" id="tEY-Cj-ad2"/>
                         <outlet property="photoImageView" destination="M6I-vd-KMM" id="kZb-BV-SDW"/>
                         <outlet property="retypePasswordTextField" destination="XDm-0X-pXf" id="8KP-cN-bRr"/>
+                        <outlet property="uploadImageLabel" destination="0Q0-Uh-P47" id="xe7-sy-dnh"/>
                         <outlet property="view" destination="3u1-UB-R8E" id="hz8-qN-fVg"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="Go to main page" animates="NO" id="6yj-8J-Xj3"/>
                     </connections>
@@ -755,7 +757,7 @@
                                         <constraint firstAttribute="height" constant="100" id="B3V-XN-WWb"/>
                                     </constraints>
                                     <connections>
-                                        <action selector="photoButtonPressed:" destination="l93-W2-1is" eventType="touchUpInside" id="6Fa-bY-jpF"/>
+                                        <action selector="photoButtonPressed:" destination="l93-W2-1is" eventType="touchUpInside" id="YFa-Pu-JFk"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -928,9 +930,11 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cameraImageView" destination="HLW-aq-Idf" id="04q-JC-xC2"/>
                         <outlet property="emailTextField" destination="nIA-Li-HxF" id="DlY-TR-OkB"/>
-                        <outlet property="genderLabel" destination="KCK-oI-Y8U" id="o2g-fM-n9W"/>
+                        <outlet property="genderLabel" destination="KCK-oI-Y8U" id="Fca-zS-Rt0"/>
                         <outlet property="photoImageView" destination="rY4-Zk-pjx" id="CVr-NC-Yzf"/>
+                        <outlet property="uploadImageLabel" destination="7kb-Ff-vsQ" id="xZg-S0-8Gs"/>
                         <outlet property="userNameTextField" destination="eVg-Vh-yx2" id="oYA-vS-DK2"/>
                     </connections>
                 </tableViewController>
@@ -1573,12 +1577,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="編輯球隊" id="jYB-Th-N09"/>
                     <connections>
+                        <outlet property="cameraImageView" destination="T4h-fE-l2o" id="RT9-8z-1aT"/>
                         <outlet property="createTeamButton" destination="8AN-y4-hwR" id="NBw-wV-N0Y"/>
                         <outlet property="editPlayersLabel" destination="jEy-wu-PwZ" id="GIt-Al-bTR"/>
                         <outlet property="photoImageView" destination="2nl-Ij-XIk" id="177-TM-l8q"/>
                         <outlet property="placeLabel" destination="Mji-Vy-Ja5" id="r8B-KE-Yrj"/>
                         <outlet property="teamNameTextField" destination="cmO-pm-vSU" id="Sf1-5f-lH0"/>
                         <outlet property="timeLabel" destination="2Ib-fd-b4t" id="0SJ-1e-g5q"/>
+                        <outlet property="uploadImageLabel" destination="yX3-Vl-H21" id="QhN-8K-h7V"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWO-hC-i8w" userLabel="First Responder" sceneMemberID="firstResponder"/>

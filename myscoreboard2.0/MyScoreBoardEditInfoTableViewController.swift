@@ -12,6 +12,9 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
 
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet var uploadImageLabel: UILabel!
+    @IBOutlet var cameraImageView: UIImageView!
+    
     let imagePicker = UIImagePickerController()
     var gender:String?
     
@@ -23,6 +26,8 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
         imagePicker.delegate = self
         photoImageView.layer.cornerRadius = 50.0
         photoImageView.clipsToBounds = true
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,6 +83,8 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photoImageView.contentMode = .ScaleAspectFill
             photoImageView.image = pickedImage
+            uploadImageLabel.hidden = true
+            cameraImageView.hidden = true
         }
         
         //let image_data = UIImagePNGRepresentation(photoImageView.image!)
