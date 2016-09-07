@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31808C955C6D9D2A7FA88A7A /* Pods_myscoreboard2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D8BBC375238D263101B402 /* Pods_myscoreboard2_0.framework */; };
+		D8B38EDEA119765BA9725D19 /* Pods_myscoreboard2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C95BCF540AF3AA7DF4DCFE2 /* Pods_myscoreboard2_0.framework */; };
 		E80982DD1D2A6C27006F217C /* AddNewPlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */; };
 		E80982E11D2BA05E006F217C /* EditPlayerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982E01D2BA05E006F217C /* EditPlayerListTableViewController.swift */; };
 		E80982E31D2BA06F006F217C /* SearchLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80982E21D2BA06F006F217C /* SearchLocationTableViewController.swift */; };
@@ -86,9 +86,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A0C678C6BA7468521005B4EF /* Pods-myscoreboard2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myscoreboard2.0.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0.debug.xcconfig"; sourceTree = "<group>"; };
-		B1D8BBC375238D263101B402 /* Pods_myscoreboard2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myscoreboard2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8CBD25F74E2991D60A78730 /* Pods-myscoreboard2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myscoreboard2.0.release.xcconfig"; path = "Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0.release.xcconfig"; sourceTree = "<group>"; };
+		3C95BCF540AF3AA7DF4DCFE2 /* Pods_myscoreboard2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myscoreboard2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA37DBC83ECE2BFF32A4B041 /* Pods-myscoreboard2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myscoreboard2.0.release.xcconfig"; path = "Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0.release.xcconfig"; sourceTree = "<group>"; };
 		E80982DC1D2A6C27006F217C /* AddNewPlayerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPlayerTableViewController.swift; sourceTree = "<group>"; };
 		E80982E01D2BA05E006F217C /* EditPlayerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPlayerListTableViewController.swift; sourceTree = "<group>"; };
 		E80982E21D2BA06F006F217C /* SearchLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +152,7 @@
 		E8DE72D51CF68F7700C66DBD /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		E8DE72D61CF68F7700C66DBD /* Teams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
 		E8DE72D91CF68F8800C66DBD /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		F295FA1622CF216C25893E0C /* Pods-myscoreboard2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myscoreboard2.0.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31808C955C6D9D2A7FA88A7A /* Pods_myscoreboard2_0.framework in Frameworks */,
+				D8B38EDEA119765BA9725D19 /* Pods_myscoreboard2_0.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,19 +181,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0029B76AFD34D79D5440B6C3 /* Pods */ = {
+		59EEA83D0F9BD48D84856734 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A0C678C6BA7468521005B4EF /* Pods-myscoreboard2.0.debug.xcconfig */,
-				B8CBD25F74E2991D60A78730 /* Pods-myscoreboard2.0.release.xcconfig */,
+				F295FA1622CF216C25893E0C /* Pods-myscoreboard2.0.debug.xcconfig */,
+				AA37DBC83ECE2BFF32A4B041 /* Pods-myscoreboard2.0.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D7FAA304D6BE720F5AB43D24 /* Frameworks */ = {
+		BECAED69FA992B82FE711F2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B1D8BBC375238D263101B402 /* Pods_myscoreboard2_0.framework */,
+				3C95BCF540AF3AA7DF4DCFE2 /* Pods_myscoreboard2_0.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 				E89B15B61CE8C94F0070940D /* myscoreboard2.0Tests */,
 				E89B15C11CE8C94F0070940D /* myscoreboard2.0UITests */,
 				E89B159E1CE8C94E0070940D /* Products */,
-				0029B76AFD34D79D5440B6C3 /* Pods */,
-				D7FAA304D6BE720F5AB43D24 /* Frameworks */,
+				59EEA83D0F9BD48D84856734 /* Pods */,
+				BECAED69FA992B82FE711F2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -365,12 +365,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E89B15C71CE8C94F0070940D /* Build configuration list for PBXNativeTarget "myscoreboard2.0" */;
 			buildPhases = (
-				F953F153A9680DB00E41A474 /* Check Pods Manifest.lock */,
+				6B5A937D83E3A799BFF78EF0 /* [CP] Check Pods Manifest.lock */,
 				E89B15991CE8C94E0070940D /* Sources */,
 				E89B159A1CE8C94E0070940D /* Frameworks */,
 				E89B159B1CE8C94E0070940D /* Resources */,
-				F1951E4C9A5F4517DAFFAE31 /* Embed Pods Frameworks */,
-				1D43208AE2D31405DE97612E /* Copy Pods Resources */,
+				14FAC8FCDA837F8F4787C9C6 /* [CP] Embed Pods Frameworks */,
+				BA4EDD592661D06FA32650D2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -496,29 +496,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1D43208AE2D31405DE97612E /* Copy Pods Resources */ = {
+		14FAC8FCDA837F8F4787C9C6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F1951E4C9A5F4517DAFFAE31 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,19 +511,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F953F153A9680DB00E41A474 /* Check Pods Manifest.lock */ = {
+		6B5A937D83E3A799BFF78EF0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA4EDD592661D06FA32650D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myscoreboard2.0/Pods-myscoreboard2.0-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -736,7 +736,7 @@
 		};
 		E89B15C81CE8C94F0070940D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0C678C6BA7468521005B4EF /* Pods-myscoreboard2.0.debug.xcconfig */;
+			baseConfigurationReference = F295FA1622CF216C25893E0C /* Pods-myscoreboard2.0.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BITCODE_GENERATION_MODE = maker;
@@ -752,7 +752,7 @@
 		};
 		E89B15C91CE8C94F0070940D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8CBD25F74E2991D60A78730 /* Pods-myscoreboard2.0.release.xcconfig */;
+			baseConfigurationReference = AA37DBC83ECE2BFF32A4B041 /* Pods-myscoreboard2.0.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BITCODE_GENERATION_MODE = bitcode;

@@ -8,4 +8,5 @@ target 'myscoreboard2.0' do
 	pod 'IQKeyboardManagerSwift', '~> 4.0'
 	pod 'SDWebImage'
         pod 'UXTesting'
+        pod 'RealmSwift'
 end
