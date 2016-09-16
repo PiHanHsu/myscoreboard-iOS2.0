@@ -616,7 +616,7 @@
                         <outlet property="retypePasswordTextField" destination="XDm-0X-pXf" id="8KP-cN-bRr"/>
                         <outlet property="uploadImageLabel" destination="0Q0-Uh-P47" id="xe7-sy-dnh"/>
                         <outlet property="view" destination="3u1-UB-R8E" id="hz8-qN-fVg"/>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="Go to main page" animates="NO" id="6yj-8J-Xj3"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="Show main page" animates="NO" id="6yj-8J-Xj3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2l-8L-3VE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2928,8 +2928,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="6yj-8J-Xj3"/>
         <segue reference="gg0-FZ-gQG"/>
-        <segue reference="T5z-j1-Fni"/>
-        <segue reference="4yD-fd-QqW"/>
         <segue reference="XA7-yE-IWt"/>
+        <segue reference="4yD-fd-QqW"/>
+        <segue reference="T5z-j1-Fni"/>
     </inferredMetricsTieBreakers>
 </document>

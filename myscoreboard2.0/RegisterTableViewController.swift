@@ -108,7 +108,7 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
                         self.success(code, data: data)
                        
                     }, failure: { (code, data) in
-                        print(data)
+                        print("signup user without image failed: \(data)")
                         //self.failure(code!, data: data!)
                     }, complete: nil)
 
