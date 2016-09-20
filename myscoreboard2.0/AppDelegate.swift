@@ -30,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor.mainBlueColor()
         UITabBar.appearance().tintColor = UIColor.whiteColor()
         //UILabel.appearance().font = UIFont(name: "PingFang TC", size: 17)
+        
+        
+        // set tableviewcell color for iPad
+        UITableViewCell.appearance().backgroundColor = UIColor.clearColor()
         return true
     }
     
