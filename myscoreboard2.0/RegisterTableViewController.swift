@@ -16,6 +16,7 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var retypePasswordTextField: UITextField!
+    @IBOutlet var createAccountButton: UIButton!
     
     var email:String?
     var password:String?
@@ -26,6 +27,11 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
         self.indicator.center = self.view.center
         self.view.addSubview(indicator)
         self.navBarView.backgroundColor = UIColor.mainBlueColor()
+        //createAccountButton.enabled = false
+        nickNameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        retypePasswordTextField.delegate = self
         
     }
 
@@ -71,48 +77,64 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
         email = emailTextField.text!.trim()
         password = passwordTextField.text!.trim()
         
-        indicator.startAnimating()
-        if photoImageView.image != nil {
-            let path = "https://product.myscoreboardapp.com/api/v1/signup"
+        let (readyToCreate, message) = checkSentButtonEnable()
         
-            HttpManager.sharedInstance.uploadDataWithImage(HttpMethod.HttpMethodPost,
-                                                           path: path,
-                                                           uploadImage: photoImageView.image!,
-                                                           imageParam: "head",
-                                                           param:  [
-                                                            "username" : userName,
-                                                            "email": email!,
-                                                            "password": password!,
-                                                            "gender" : gender!,],
-                                                           success: { (code, data) in
-                                                            print("signup user with image success")
-                                                            self.success(code, data: data)
-                                                            
-                }, failure: { (code, data) in
-                    print("signup user with image failed: \(data)")
-                    
-                }, complete: nil)
-        }else{
-            
-            HttpManager.sharedInstance
-                .request(
-                    HttpMethod.HttpMethodPost,
-                    apiFunc: APiFunction.Register,
-                    param: [
-                        "username" : userName,
-                        "email": email!,
-                        "password": password!,
-                        "gender" : gender!],
-                    success: { (code, data ) in
-                        print("account created!!")
-                        self.success(code, data: data)
-                       
+        if readyToCreate {
+            indicator.startAnimating()
+            if photoImageView.image != nil {
+                let path = "https://product.myscoreboardapp.com/api/v1/signup"
+                
+                HttpManager.sharedInstance.uploadDataWithImage(HttpMethod.HttpMethodPost,
+                                                               path: path,
+                                                               uploadImage: photoImageView.image!,
+                                                               imageParam: "head",
+                                                               param:  [
+                                                                "username" : userName,
+                                                                "email": email!,
+                                                                "password": password!,
+                                                                "gender" : gender!,],
+                                                               success: { (code, data) in
+                                                                print("signup user with image success")
+                                                                self.success(code, data: data)
+                                                                
                     }, failure: { (code, data) in
-                        print("signup user without image failed: \(data)")
-                        //self.failure(code!, data: data!)
+                        print("signup user with image failed: \(data)")
+                        
                     }, complete: nil)
+            }else{
+                
+                HttpManager.sharedInstance
+                    .request(
+                        HttpMethod.HttpMethodPost,
+                        apiFunc: APiFunction.Register,
+                        param: [
+                            "username" : userName,
+                            "email": email!,
+                            "password": password!,
+                            "gender" : gender!],
+                        success: { (code, data ) in
+                            print("account created!!")
+                            self.success(code, data: data)
+                            
+                        }, failure: { (code, data) in
+                            print("signup user without image failed: \(data)")
+                            //self.failure(code!, data: data!)
+                        }, complete: nil)
+                
+            }
 
+        }else {
+            indicator.stopAnimating()
+            let alert = UIAlertController(title: "注意", message: message, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (_) in
+                
+            })
+            
+            alert.addAction(okAction)
+            presentViewController(alert, animated: true, completion: nil)
+            
         }
+        
     }
     
     func success(code:Int, data:JSON ) {
@@ -189,5 +211,75 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
         
     }
 
-
 }
+
+extension RegisterTableViewController: UITextFieldDelegate {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+//        if checkSentButtonEnable() {
+//           createAccountButton.enabled = true
+//        }else {
+//           createAccountButton.enabled = false
+//        }
+        
+        return true
+    }
+    
+    func checkSentButtonEnable() -> (readyToCreate: Bool, message: String) {
+        //var enable = false
+        let textFieldArray = [nickNameTextField, emailTextField, passwordTextField, retypePasswordTextField ]
+        
+        for textField in textFieldArray {
+            guard textField.text != nil else {
+                return (false, "有欄位尚未填寫")
+            }
+        }
+        
+        guard nickNameTextField.text?.characters.count > 0 else {
+            return (false, "暱稱不可為空白")
+        }
+        
+        guard genderLabel.text != "請選擇性別" else {
+            return (false, "請選擇性別")
+        }
+        
+        guard isValidpassword(emailTextField.text!) else {
+            return (false, "Email格式錯誤")
+        }
+        
+        guard isValidpassword(passwordTextField.text!) else {
+            return (false, "密碼格式錯誤")
+        }
+        
+        guard passwordTextField.text == retypePasswordTextField.text else {
+            return (false, "密碼不相同, 請重新輸入密碼！")
+        }
+        
+        return (true, "ready")
+
+    }
+    
+    // validate email and password
+    
+    func isValidEmail(emailStr:String) -> Bool {
+        
+        let emailRegEx = Params.emailReg
+        let range = emailStr.rangeOfString(emailRegEx, options:.RegularExpressionSearch)
+        return range != nil
+    }
+    
+    func isValidpassword(passwordStr:String) -> Bool {
+        
+        let passwordRegEx = Params.passwordReg
+        let range = passwordStr.rangeOfString(passwordRegEx, options:.RegularExpressionSearch)
+        return range != nil
+    }
+    
+}
+
+
+
+
+
+
+
