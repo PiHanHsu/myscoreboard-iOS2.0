@@ -67,7 +67,7 @@ class RegisterTableViewController: MyScoreBoardEditInfoTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 1 {
-            selectGender()
+            selectGender(tableView.cellForRowAtIndexPath(indexPath)!)
         }
     }
    

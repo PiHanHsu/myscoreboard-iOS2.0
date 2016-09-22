@@ -35,7 +35,7 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func photoButtonPressed(sender: AnyObject) {
+    @IBAction func photoButtonPressed(sender: UIButton) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let cameraAction = UIAlertAction(title: "Camera", style: .Default, handler: { cameraAction in
@@ -64,13 +64,18 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
             alertController.dismissViewControllerAnimated(true, completion: nil)
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { defaultAction in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: { defaultAction in
             alertController.dismissViewControllerAnimated(true, completion: nil)
         })
         
         alertController.addAction(cameraAction)
         alertController.addAction(albumAction)
         alertController.addAction(cancelAction)
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
         
         presentViewController(alertController, animated: true, completion: nil)
     }
@@ -113,7 +118,7 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
     }
     
     //select gender
-    func selectGender() {
+    func selectGender(sender: UITableViewCell) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let maleAlertAction = UIAlertAction(title: "男", style: .Default, handler: {
@@ -129,6 +134,11 @@ class MyScoreBoardEditInfoTableViewController: UITableViewController, UIImagePic
         
         alertController.addAction(maleAlertAction)
         alertController.addAction(femaleAlertAction)
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
         
         presentViewController(alertController, animated: true, completion:nil)
     }

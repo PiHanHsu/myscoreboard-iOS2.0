@@ -60,7 +60,7 @@ class EditProfileTableViewController: MyScoreBoardEditInfoTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 && indexPath.row == 1 {
-            selectGender()
+            selectGender(tableView.cellForRowAtIndexPath(indexPath)!)
         }
     }
     

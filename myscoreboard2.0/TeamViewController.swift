@@ -89,6 +89,11 @@ class TeamViewController: MyScoredBoardBaseCollectionViewController,UICollection
        alertController.addAction(autoAction)
        alertController.addAction(manualAction)
         alertController.addAction(cancelAction)
+       
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
        self.presentViewController(alertController, animated: true, completion: nil)
        
     }
