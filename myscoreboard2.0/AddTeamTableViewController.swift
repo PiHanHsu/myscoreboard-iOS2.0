@@ -23,6 +23,7 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     var starttime:String?
     var endtime:String?
     var isFirstTimeSelectTime = true
+    
 
     
     @IBOutlet var teamNameTextField: UITextField!
@@ -159,6 +160,9 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                                            param: params,
                                                            success: { (code, data) in
                                                             print("create team with image success")
+                                                            
+                                                            self.showSuccessAlert()
+                                                            
                                                             self.team.teamId = data["team_id"].stringValue
                                                             
                                                             if self.team.players.count > 1 {
@@ -184,9 +188,12 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                                apiFunc: APiFunction.CreateTeam,
                                                param: params,
                 success: { (code, data) in
+                    
                     print("create team success")
                     self.team.teamId = data["team_id"].stringValue
                     
+                    self.showSuccessAlert()
+
                     if self.team.players.count > 1 {
                         self.addPlyaers()
                     }else{
@@ -295,6 +302,21 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
         
         
     }
+    
+    func showSuccessAlert()
+    {
+        let alertController = UIAlertController(title: "新增成功", message: "", preferredStyle: .Alert)
+        let alertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertController.addAction(alertAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    
+    
+    }
+    
+    
+    
+    
 
     func setParams(params: Dictionary<String, String>) -> [String: String] {
         
