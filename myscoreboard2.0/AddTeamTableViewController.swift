@@ -23,8 +23,7 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     var starttime:String?
     var endtime:String?
     var isFirstTimeSelectTime = true
-    
-
+    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     
     @IBOutlet var teamNameTextField: UITextField!
     @IBOutlet var timeLabel: UILabel!
@@ -34,6 +33,9 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.indicator.center = self.view.center
+        self.indicator.color = UIColor.mainBlueColor()
+        self.view.addSubview(indicator)
         
         if isEditMode {
             teamNameTextField.text = team.teamName!
@@ -145,6 +147,8 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     
     func createTeam() {
         
+        indicator.startAnimating()
+       
         var params = ["auth_token": CurrentUser.sharedInstance.authToken!,
                       "name" : teamNameTextField.text!]
         
@@ -161,16 +165,22 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                                            success: { (code, data) in
                                                             print("create team with image success")
                                                             
-                                                            self.showSuccessAlert()
                                                             
                                                             self.team.teamId = data["team_id"].stringValue
                                                             
                                                             if self.team.players.count > 1 {
                                                                 self.addPlyaers()
+                                                                print("create team with image success and addPlayer")
+                                                                self.indicator.stopAnimating()
+                                                                self.showSuccessAlert()
                                                             }else{
                                                                 GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
                                                                     if success {
-                                                             self.navigationController?.popViewControllerAnimated(true)
+                                                                        print("reloadDataFromServer")
+                                                                        self.indicator.stopAnimating()
+                                                                        self.showSuccessAlert()
+
+//                                                             self.navigationController?.popViewControllerAnimated(true)
                                                                     }else{
                                                                         print("add team error: \(message)")
 
@@ -182,6 +192,7 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                                             
                 }, failure: { (code, data) in
                     print("create team with image failed: \(data)")
+                    
                 }, complete: nil)
         }else{
             HttpManager.sharedInstance.request(HttpMethod.HttpMethodPost,
@@ -190,16 +201,23 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                 success: { (code, data) in
                     
                     print("create team success")
-                    self.team.teamId = data["team_id"].stringValue
                     
-                    self.showSuccessAlert()
+                    self.team.teamId = data["team_id"].stringValue
+//                    self.indicator.stopAnimating()
+//                    self.showSuccessAlert()
 
                     if self.team.players.count > 1 {
                         self.addPlyaers()
+                        print("create team with no image success and addPlayer")
+                        self.indicator.stopAnimating()
+                        self.showSuccessAlert()
                     }else{
                         GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
                             if success {
-                                self.navigationController?.popViewControllerAnimated(true)
+                                print("reloadDataFromServer no photo")
+                                self.indicator.stopAnimating()
+                                self.showSuccessAlert()
+//                                self.navigationController?.popViewControllerAnimated(true)
                             }else{
                                 print("add team error: \(message)")
                             }
@@ -245,6 +263,8 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     
     func updateTeamInfo() {
         
+        indicator.startAnimating()
+        
         var params = ["auth_token": CurrentUser.sharedInstance.authToken!,
                       ":id" : team.teamId!,
                       "name" : teamNameTextField.text!]
@@ -265,10 +285,17 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                                             
                                                             if self.team.players.count > 1 {
                                                                 self.addPlyaers()
+                                                                print("create team with image success and addPlayer")
+                                                                self.indicator.stopAnimating()
+                                                                self.showSuccessAlert()
+                                                            
                                                             }else{
-                                                                GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
+                                                                    GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
                                                                     if success {
-                                                                        self.navigationController?.popViewControllerAnimated(true)
+                                                                        print("reloadDataFromServer")
+                                                                        self.indicator.stopAnimating()
+                                                                        self.showSuccessAlert()
+//                                                                        self.navigationController?.popViewControllerAnimated(true)
                                                                     }else{
                                                                         print("add team error: \(message)")
 
@@ -286,15 +313,29 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
                                                param: params,
                                                success: { (code, data) in
                                                 print("update success")
-                                                GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
+                                                
+                                                self.team.teamId = data["team_id"].stringValue
+//
+                                                if self.team.players.count > 1 {
+                                                    self.addPlyaers()
+                                                    print("up team with no image success and addPlayer")
+                                                    self.indicator.stopAnimating()
+                                                    self.showSuccessAlert()
+                                                }else{
+                                                    GlobalFunction.sharedInstance.reloadDataFromServer({ (success, message) in
                                                     if success {
-                                                        self.navigationController?.popViewControllerAnimated(true)
+                                                        print("reloadDataFromServer no photo")
+                                                        self.indicator.stopAnimating()
+                                                        self.showSuccessAlert()
+
+//                                                        self.navigationController?.popViewControllerAnimated(true)
                                                     }else{
                                                         print("add team error: \(message)")
 
                                                     }
                                                 })
-                                                
+            }
+            
                 }, failure: { (code, data) in
                     print("update team info failed: \(data)")
             })
@@ -306,10 +347,16 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     func showSuccessAlert()
     {
         let alertController = UIAlertController(title: "新增成功", message: "", preferredStyle: .Alert)
-        let alertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let alertAction = UIAlertAction(title: "OK", style: .Default, handler: { action in
+            self.navigationController?.popViewControllerAnimated(true)
+            return
+        })
         
         alertController.addAction(alertAction)
         self.presentViewController(alertController, animated: true, completion: nil)
+//        ＢＵＧ會到前一話面時 編輯鈕不會開啟
+        
+//        self.navigationController?.popViewControllerAnimated(true)
     
     
     }
