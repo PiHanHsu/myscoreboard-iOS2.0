@@ -30,6 +30,8 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     @IBOutlet var placeLabel: UILabel!
     @IBOutlet var editPlayersLabel: UILabel!
     @IBOutlet var createTeamButton: UIButton!
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,8 +149,10 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     
     func createTeam() {
         
+        createTeamButton.enabled = false
+        createTeamButton.adjustsImageWhenDisabled = false
         indicator.startAnimating()
-       
+        
         var params = ["auth_token": CurrentUser.sharedInstance.authToken!,
                       "name" : teamNameTextField.text!]
         
@@ -263,7 +267,10 @@ class AddTeamTableViewController: MyScoreBoardEditInfoTableViewController {
     
     func updateTeamInfo() {
         
+        createTeamButton.enabled = false
+        createTeamButton.adjustsImageWhenDisabled = false
         indicator.startAnimating()
+        
         
         var params = ["auth_token": CurrentUser.sharedInstance.authToken!,
                       ":id" : team.teamId!,
