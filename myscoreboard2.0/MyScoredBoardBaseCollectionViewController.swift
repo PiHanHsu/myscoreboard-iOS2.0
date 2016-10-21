@@ -17,6 +17,8 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
     var heightSize: CGFloat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         collectionView?.delegate = self
         self.automaticallyAdjustsScrollViewInsets = false
         //self.view.backgroundColor = UIColor.backgroundGrayColor()
@@ -25,6 +27,14 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.checkBarButtonItem()
+        
     }
     
     // collectionView Delegate
@@ -56,6 +66,8 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
+        
+        
         let pageWidth = Float(widthSize + Params.spacing)
         let currentOffset = Float(scrollView.contentOffset.x)
         let targetOffset = Float(targetContentOffset.memory.x)
@@ -80,12 +92,16 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
         
         index = Int(newTargetOffset / pageWidth)
         //disale edit button when in Add Team cell
-        if index == Teams.sharedInstance.teams.count {
+        
+        if   index == Teams.sharedInstance.teams.count  {
             navigationItem.rightBarButtonItem?.enabled = false
+        
         }else{
             navigationItem.rightBarButtonItem?.enabled = true
         }
-        if index == 0 {
+       
+            if index == 0 {
+            
             if let cell = self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)){
                 UIView.animateWithDuration(Params.ANIMATION_SPEED) {
                     cell.transform = CGAffineTransformIdentity
@@ -123,6 +139,26 @@ class MyScoredBoardBaseCollectionViewController: UIViewController, UICollectionV
             }
         }
     }
+    
+    func checkBarButtonItem(){
+        
+      
+        if   index == Teams.sharedInstance.teams.count  {
+            navigationItem.rightBarButtonItem?.enabled = false
+        }else{
+            navigationItem.rightBarButtonItem?.enabled = true
+        }
+    }
+//        
+//            if index == Teams.sharedInstance.teams.count  {
+//            //             不開啟
+//            navigationItem.rightBarButtonItem?.enabled = false
+//            //            navigationItem.rightBarButtonItem?.enabled = true
+//            }else{
+//            //        開啟
+////            navigationItem.rightBarButtonItem?.enabled = true
+//        }
+    
     
     // check if Transform needed?
     

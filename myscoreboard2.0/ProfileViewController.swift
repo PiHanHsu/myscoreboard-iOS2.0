@@ -32,6 +32,15 @@ class ProfileViewController: MyScoredBoardBaseCollectionViewController, UICollec
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView?.reloadData()
+        
+        navigationItem.rightBarButtonItem?.enabled = true
+        
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
